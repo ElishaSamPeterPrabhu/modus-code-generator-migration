@@ -1,4 +1,4 @@
-{
+{"Mapping_v1_v2":{
   "modus-accordion": {
     "v2_component": "modus-wc-accordion"
   },
@@ -65,4 +65,147 @@
   "modus-tooltip": {
     "v2_component": "modus-wc-tooltip"
   }
+},
+  "verification_rules": [
+    {
+      "rule": "Audit Codebase for Legacy Components and Attributes",
+      "status": "pending",
+      "details": [
+        "Search through all component templates (e.g., app.component.html) for legacy component tags and deprecated HTML elements.",
+        "Identify outdated property names and event handlers that no longer align with the Modus 2.0 API.",
+        "Document all findings to ensure complete coverage before making any changes."
+      ]
+    },
+    {
+      "rule": "Replace Legacy Component Tags with Modus 2.0 Equivalents",
+      "status": "pending",
+      "details": [
+        "Replace outdated component tags (e.g., <modus-button> and <textarea>) with the new Modus 2.0 tags (e.g., <modus-wc-button> and <modus-wc-textarea>).",
+        "Ensure that replacements follow the new API structure, including additional required attributes such as 'aria-label'.",
+        "Verify that all component instances use the correct tag names as specified in the Modus 2.0 documentation."
+      ]
+    },
+    {
+      "rule": "Map and Transform Property Names and Values",
+      "status": "pending",
+      "details": [
+        "For each updated component, review its properties and confirm that they match the new Modus 2.0 API signatures.",
+        "Rename properties (e.g., change 'buttonStyle' to 'variant') and transform property values as needed.",
+        "Remove any deprecated properties that are no longer supported in the new version."
+      ]
+    },
+    {
+      "rule": "Update Event Handlers and Method Signatures",
+      "status": "pending",
+      "details": [
+        "Review all event bindings and method calls within the components.",
+        "Replace or adjust legacy event handler names and parameter structures to match the updated API.",
+        "Ensure all callback functions and method invocations adhere to the new naming conventions."
+      ]
+    },
+    {
+      "rule": "Apply Structural and Styling Adjustments",
+      "status": "pending",
+      "details": [
+        "Update custom CSS classes, layout structures, and theme variables to align with the new styling framework in Modus 2.0.",
+        "Modify HTML layouts to reflect the new component hierarchy and design guidelines.",
+        "Ensure that the overall UI maintains a consistent look and feel after migration."
+      ]
+    },
+    {
+      "rule": "Verify Legacy Behavior and Dependency Compatibility",
+      "status": "pending",
+      "details": [
+        "Assess the usage of any legacy behaviors, polyfills, and third-party integrations used in Modus 1.0.",
+        "Ensure that any dependency calls are compatible with Modus 2.0, updating or removing features that conflict with the new version.",
+        "Test compatibility manually to catch any issues before finalizing the migration."
+      ]
+    },
+    {
+      "rule": "Conduct Comprehensive Testing and Verification",
+      "status": "pending",
+      "details": [
+        "Test each component after migration to validate that the new tags and properties function as expected.",
+        "Verify the UI rendering, interactive behaviors, and accessibility features (e.g., checking for proper aria-labels in buttons).",
+        "Cross-check each component against provided verification examples, such as converting <modus-button buttonStyle=\"primary\">Click</modus-button> to <modus-wc-button variant=\"primary\" aria-label=\"Click\">Click</modus-wc-button> and ensuring <textarea> becomes <modus-wc-textarea>."
+      ]
+    },
+    {
+      "rule": "Compare the Original codes tags and check if they are replaced with the new tags",
+      "status": "pending",
+      "details": [
+        "Check the original code tags and compare them with the new tags.",
+        "Ensure the 2.0 repo has the tag before changing it, if the 2.0 tag is not present in the 2.0 repo don't change the tag.",
+        "If the tag is not present in the 2.0 repo don't change the tag. Add a comment to the code to say that the tag is not present in the 2.0 repo.",
+        "If the behavior of the component is not present in the 2.0 repo don't change the tag. Add a comment to the code to say that the behavior is not present in the 2.0 repo.",
+        "Ensure that the new tags are used in the codebase.",
+        "Verify that the new tags are correctly implemented in the components."
+      ]
+    },
+    {
+      "rule": "Check the components added as slots to the components and verify the slots as well if it matches the new 2.0 structure perfectly",
+      "status": "pending",
+      "details": [
+        "Check the 2.0 structure of the components.",
+        "Verify that the slots are correctly implemented in the components.",
+        "Ensure that the slots match the new 2.0 structure.",
+        "Check for any discrepancies in the slot implementation."
+      ]
+    },
+    {
+      "rule": "Verify the styling and layout of the components",
+      "status": "pending",
+      "details": [
+        "Check the styling and layout of the components.",
+        "Ensure that the components are styled according to the new design guidelines.",
+        "Verify that the layout structure is updated to match the new hierarchy."
+      ]
+    },
+    {
+      "rule": "Test the components for compatibility and functionality",
+      "status": "pending",
+      "details": [
+        "Test the components for compatibility with Modus 2.0.",
+        "Verify that the components function correctly in the updated environment.",
+        "Check for any compatibility issues with third-party integrations or dependencies."
+      ]
+    }
+  ],
+  "migration_plan": [
+    {
+      "action": "Step 1: Code Audit \u2013 Identify all components and HTML tags used in Modus 1.0. Search through the codebase (e.g., in files like app.component.html and other component templates) to locate outdated component tags, property names, and event handlers that no longer align with the Modus 2.0 API.",
+      "status": "pending",
+      "type": "step"
+    },
+    {
+      "action": "Step 2: Component Tag Replacement \u2013 For each identified custom component, replace the outdated Modus 1.0 tag with its Modus 2.0 equivalent. For example, if any standard HTML elements (e.g., <textarea>) or legacy component tags are employed, update them to the new tags (e.g., <modus-wc-textarea>) as specified in the Modus 2.0 documentation.If a particular tag is present in 1.0 but is not present in 2.0 dont change that tag.",
+      "status": "pending",
+      "type": "step"
+    },
+    {
+      "action": "Step 3: Property Mapping and Transformation \u2013 Review the properties used in each component. For every property present in the Modus 1.0 components, verify the corresponding property in Modus 2.0. Rename or transform property values where needed to match new API signatures. Remove deprecated properties that are no longer supported.",
+      "status": "pending",
+      "type": "step"
+    },
+    {
+      "action": "Step 4: Update Event Handlers and Methods \u2013 Examine event bindings and method calls within components. Replace or adjust event handler names and signatures to fit the updated API. Ensure that callback functions and method invocations follow the new naming conventions and parameter structures outlined in the 2.0 version.",
+      "status": "pending",
+      "type": "step"
+    },
+    {
+      "action": "Step 5: Apply Structural and Styling Adjustments \u2013 With the revamped styling framework in 2.0, update custom CSS classes, layout structures, and theme variables. Modify HTML layouts and component structures to reflect the new hierarchy and design guidelines provided in the documentation.",
+      "status": "pending",
+      "type": "step"
+    },
+    {
+      "action": "Step 6: Legacy Behavior and Dependency Compatibility Review \u2013 Assess the use of legacy behaviors and third-party integrations. Ensure that polyfills, dependency calls, and integration points are compatible with Modus 2.0. Update or remove any features that conflict with the new version as described in the compatibility migration constraints.",
+      "status": "pending",
+      "type": "step"
+    },
+    {
+      "action": "Step 7: Testing and Verification \u2013 After making code changes, carefully test each component. Validate that all replaced components, transformed properties, and updated event handlers function as expected. Verify that the UI now renders correctly using the new Modus 2.0 tags and styling, and that all interactive behaviors reflect the new API.",
+      "status": "pending",
+      "type": "step"
+    }
+  ]
 }

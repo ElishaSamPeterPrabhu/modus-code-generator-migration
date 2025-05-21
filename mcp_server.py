@@ -2,6 +2,8 @@ from mcp.server.fastmcp import FastMCP
 import json
 import logging
 import os
+import re
+from typing import Dict, Any, List
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -61,7 +63,7 @@ def list_components(version: str = "2.0") -> str:
             description = data.get("documentation", "")
             if not description and data.get("props") and len(data["props"]) > 0:
                 for prop in data["props"]:
-                    if prop.get("description"):
+                    if isinstance(prop, dict) and prop.get("description"):
                         description = (
                             f"A component that supports {prop.get('description')}"
                         )
@@ -72,18 +74,30 @@ def list_components(version: str = "2.0") -> str:
 
             # Add prop-based capabilities
             for prop in data.get("props", []):
+                # Ensure prop is a dictionary before accessing its properties
+                if not isinstance(prop, dict):
+                    continue
+
                 prop_name = prop.get("name", "")
                 if prop_name:
                     capabilities.append(f"Can be configured with '{prop_name}'")
 
             # Add event-based capabilities
             for event in data.get("events", []):
+                # Ensure event is a dictionary before accessing its properties
+                if not isinstance(event, dict):
+                    continue
+
                 event_name = event.get("name", "")
                 if event_name:
                     capabilities.append(f"Emits '{event_name}' event")
 
             # Add slot-based capabilities
             for slot in data.get("slots", []):
+                # Ensure slot is a dictionary before accessing its properties
+                if not isinstance(slot, dict):
+                    continue
+
                 slot_name = slot.get("name", "")
                 if slot_name:
                     if slot_name == "default":
@@ -138,9 +152,11 @@ def generate_component(component_name: str, version: str = "2.0") -> str:
     tag_prefix = "modus-" if version == "1.0" else "modus-wc-"
     file_extension = ".js" if version == "1.0" else ".tsx"
 
-    # Possible filenames for the component
+    # Possible filenames for the component - try multiple variations
     possible_files = [
         f"{tag_prefix}{component_name}{file_extension}",
+        f"{tag_prefix}{component_name}",
+        f"{component_name}{file_extension}",
     ]
 
     # Load components file from the modus_migration/component_analysis folder
@@ -159,25 +175,44 @@ def generate_component(component_name: str, version: str = "2.0") -> str:
 
     # Find component data
     component_data = None
+    found_key = None
+
+    # 1. Try exact match
     for file_name in possible_files:
         if file_name in components_data:
             component_data = components_data[file_name]
+            found_key = file_name
             break
 
+    # 2. Try case-insensitive match
     if not component_data:
-        # Try case-insensitive search
-        for file_name, data in components_data.items():
-            if file_name.lower() in [f.lower() for f in possible_files]:
-                component_data = data
+        for data_key in components_data.keys():
+            for pattern in possible_files:
+                if data_key.lower() == pattern.lower():
+                    component_data = components_data[data_key]
+                    found_key = data_key
+                    break
+            if component_data:
+                break
+
+    # 3. Try substring match
+    if not component_data:
+        for data_key in components_data.keys():
+            # Check if component_name is part of any key
+            if component_name.lower() in data_key.lower():
+                component_data = components_data[data_key]
+                found_key = data_key
                 break
 
     if not component_data:
         available_components = []
-        for file_name in components_data.keys():
-            if file_name.startswith(tag_prefix):
-                component = file_name.replace(tag_prefix, "").replace(
-                    file_extension, ""
-                )
+        for file_key in components_data.keys():
+            if file_key.startswith(tag_prefix):
+                component = file_key.replace(tag_prefix, "").replace(file_extension, "")
+                available_components.append(component)
+            # Also check for components without the standard prefix/extension
+            elif component_name.lower() in file_key.lower():
+                component = file_key.replace(file_extension, "")
                 available_components.append(component)
 
         return json.dumps(
@@ -194,6 +229,7 @@ def generate_component(component_name: str, version: str = "2.0") -> str:
     result = {
         "component_name": component_name,
         "tag_name": tag_name,
+        "found_key": found_key,  # Include the actual key found for debugging
         "version": version,
         "props": component_data.get("props", []),
         "events": component_data.get("events", []),
@@ -202,6 +238,288 @@ def generate_component(component_name: str, version: str = "2.0") -> str:
     }
 
     return json.dumps(result, indent=2)
+
+
+@mcp.tool()
+def get_migration_guide() -> str:
+    """
+    Get migration guidance for converting Modus 1.0 components to Modus 2.0
+
+    This function provides guidance on how to approach the migration process.
+    It encourages the agent to identify specific components needing migration
+    and then request detailed migration data for those components.
+
+    Returns:
+        JSON string with migration guidance
+    """
+    logger.info("Providing migration guidance")
+
+    # Load migration plan and verification rules
+    try:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        mapping_path = os.path.join(
+            script_dir,
+            "modus_migration",
+            "component_analysis",
+            "component_mapping.json",
+        )
+
+        with open(mapping_path, "r") as f:
+            mapping_data = json.load(f)
+
+    except Exception as e:
+        logger.error(f"Error loading migration guidance: {e}")
+        return json.dumps({"error": f"Error loading migration guidance: {str(e)}"})
+
+    # Format the migration guidance
+    migration_guide = {
+        "migration_workflow": [
+            "1. Identify which Modus 1.0 components need to be migrated using list_components(version='1.0')",
+            "2. Check which Modus 2.0 components are available using list_components(version='2.0')",
+            "3. For each component to migrate, request specific migration data using get_component_migration_data(component_name)",
+            "4. Apply the migration rules from the verification rules and migration plan",
+        ],
+        "verification_rules": mapping_data.get("verification_rules", []),
+        "migration_plan": mapping_data.get("migration_plan", []),
+        "common_components": [
+            "button",
+            "alert",
+            "badge",
+            "card",
+            "checkbox",
+            "chip",
+            "modal",
+            "navbar",
+            "select",
+            "switch",
+            "table",
+            "tabs",
+        ],
+        "example_request": "To migrate a button component, first call get_component_migration_data('button')",
+    }
+
+    return json.dumps(migration_guide, indent=2)
+
+
+@mcp.tool()
+def get_component_migration_data(component_name: str) -> str:
+    """
+    Get migration data for a specific component
+
+    This function retrieves data needed to migrate a specific component from
+    Modus 1.0 to Modus 2.0, including definitions for both versions and mapping information.
+
+    Args:
+        component_name: The name of the component to get migration data for (e.g., 'button', 'alert')
+
+    Returns:
+        JSON string with component-specific migration data
+    """
+    logger.info(f"Getting migration data for component: {component_name}")
+
+    # Standardize component name (remove any prefix)
+    if component_name.startswith("modus-"):
+        component_name = component_name.replace("modus-", "")
+    elif component_name.startswith("modus-wc-"):
+        component_name = component_name.replace("modus-wc-", "")
+
+    # Load required data
+    try:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        mapping_path = os.path.join(
+            script_dir,
+            "modus_migration",
+            "component_analysis",
+            "component_mapping.json",
+        )
+        v1_path = os.path.join(
+            script_dir, "modus_migration", "component_analysis", "v1_components.json"
+        )
+        v2_path = os.path.join(
+            script_dir, "modus_migration", "component_analysis", "v2_components.json"
+        )
+
+        with open(mapping_path, "r") as f:
+            mapping_data = json.load(f)
+
+        with open(v1_path, "r") as f:
+            v1_components = json.load(f)
+
+        with open(v2_path, "r") as f:
+            v2_components = json.load(f)
+
+    except Exception as e:
+        logger.error(f"Error loading component data: {e}")
+        return json.dumps({"error": f"Error loading component data: {str(e)}"})
+
+    # Get v1 component data with improved lookup
+    v1_tag = f"modus-{component_name}"
+    v1_file = f"{v1_tag}.js"
+    v1_component_data = v1_components.get(v1_file, {})
+
+    if not v1_component_data:
+        # Try alternative formats with more flexible matching
+        for key in v1_components.keys():
+            if component_name.lower() in key.lower():
+                v1_component_data = v1_components[key]
+                v1_file = key
+                break
+
+    # Get v2 component data with improved lookup
+    v2_tag = f"modus-wc-{component_name}"
+    v2_file = f"{v2_tag}.tsx"
+    v2_component_data = v2_components.get(v2_file, {})
+
+    if not v2_component_data:
+        # Try alternative formats with more flexible matching
+        for key in v2_components.keys():
+            if component_name.lower() in key.lower():
+                v2_component_data = v2_components[key]
+                v2_file = key
+                v2_tag = key.replace(".tsx", "")
+                break
+
+    # Get mapping information with improved lookup
+    component_mapping = None
+    for k, v in mapping_data.get("Mapping_v1_v2", {}).items():
+        if (
+            k == v1_tag
+            or k.lower() == v1_tag.lower()
+            or component_name.lower() in k.lower()
+        ):
+            component_mapping = {"v1_tag": k, "v2_tag": v.get("v2_component", "")}
+            break
+
+    # If still no mapping found but we have component data, create a default mapping
+    if not component_mapping and (v1_component_data or v2_component_data):
+        component_mapping = {"v1_tag": v1_tag, "v2_tag": v2_tag}
+
+    # If we couldn't find any data, return an error
+    if not v1_component_data and not v2_component_data:
+        return json.dumps(
+            {
+                "error": f"Could not find component data for '{component_name}' in either version",
+                "v1_file_checked": v1_file,
+                "v2_file_checked": v2_file,
+                "suggestion": "Try using list_components() to see available components",
+            }
+        )
+
+    # Compile component migration data
+    migration_data = {
+        "component_name": component_name,
+        "v1_component": {"tag": v1_tag, "file": v1_file, "data": v1_component_data},
+        "v2_component": {"tag": v2_tag, "file": v2_file, "data": v2_component_data},
+        "mapping": component_mapping,
+        "migration_guidance": {
+            "tag_change": f"Change {v1_tag} to {v2_tag}",
+            "attribute_changes": get_attribute_mappings(
+                component_name, v1_component_data, v2_component_data
+            ),
+        },
+        "verification_rules": [
+            rule
+            for rule in mapping_data.get("verification_rules", [])
+            if "component" not in rule or rule.get("component") == component_name
+        ],
+    }
+
+    return json.dumps(migration_data, indent=2)
+
+
+def get_attribute_mappings(component_name, v1_data, v2_data):
+    """Helper function to determine attribute mappings between v1 and v2 components"""
+
+    # Default mappings for common components
+    if component_name == "button":
+        return {
+            "buttonStyle": "color",
+            "note": "Add aria-label attribute if not present",
+        }
+    elif component_name == "alert":
+        return {"severity": "type"}
+
+    # For other components, compare props and suggest mappings
+    attribute_mappings = {}
+
+    v1_props = {prop.get("name"): prop for prop in v1_data.get("props", [])}
+    v2_props = {prop.get("name"): prop for prop in v2_data.get("props", [])}
+
+    # Find props with similar names
+    for v1_name, v1_prop in v1_props.items():
+        if v1_name in v2_props:
+            # Same name in both versions
+            attribute_mappings[v1_name] = v1_name
+        else:
+            # Look for similar names
+            for v2_name in v2_props.keys():
+                if v1_name.lower() == v2_name.lower() or v1_name.replace(
+                    "-", ""
+                ) == v2_name.replace("-", ""):
+                    attribute_mappings[v1_name] = v2_name
+                    break
+
+    return attribute_mappings
+
+
+@mcp.tool()
+def get_migration_data() -> str:
+    """
+    Get complete migration dataset for all components
+
+    This function returns the complete migration dataset including all component
+    definitions for both versions, mapping rules, verification rules, and migration plan.
+
+    For a more targeted approach, consider using get_component_migration_data(component_name)
+    to get migration data for specific components.
+
+    Returns:
+        JSON string with complete migration dataset
+    """
+    logger.info("Providing complete migration dataset")
+
+    # Load all migration data
+    try:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        mapping_path = os.path.join(
+            script_dir,
+            "modus_migration",
+            "component_analysis",
+            "component_mapping.json",
+        )
+        v1_path = os.path.join(
+            script_dir, "modus_migration", "component_analysis", "v1_components.json"
+        )
+        v2_path = os.path.join(
+            script_dir, "modus_migration", "component_analysis", "v2_components.json"
+        )
+
+        with open(mapping_path, "r") as f:
+            mapping_data = json.load(f)
+
+        with open(v1_path, "r") as f:
+            v1_components = json.load(f)
+
+        with open(v2_path, "r") as f:
+            v2_components = json.load(f)
+
+    except Exception as e:
+        logger.error(f"Error loading migration data: {e}")
+        return json.dumps({"error": f"Error loading migration data: {str(e)}"})
+
+    # Compile complete migration dataset
+    migration_data = {
+        "component_mapping": mapping_data.get("Mapping_v1_v2", {}),
+        "verification_rules": mapping_data.get("verification_rules", []),
+        "migration_plan": mapping_data.get("migration_plan", []),
+        "v1_components": v1_components,
+        "v2_components": v2_components,
+        "usage_guidance": {
+            "process": "For a more targeted approach, use get_component_migration_data(component_name) to get migration data for specific components."
+        },
+    }
+
+    return json.dumps(migration_data, indent=2)
 
 
 # execute and return the stdio output
