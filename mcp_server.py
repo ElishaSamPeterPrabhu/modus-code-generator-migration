@@ -277,7 +277,9 @@ def get_migration_guide() -> str:
             "1. Identify which Modus 1.0 components need to be migrated using list_components(version='1.0')",
             "2. Check which Modus 2.0 components are available using list_components(version='2.0')",
             "3. For each component to migrate, request specific migration data using get_component_migration_data(component_name)",
-            "4. Apply the migration rules from the verification rules and migration plan",
+            "4. Check the 'related_components' section to discover components that might be used together or nested inside each other",
+            "5. Request migration data for any related components as needed based on the suggestions",
+            "6. Apply the migration rules from the verification rules and migration plan",
         ],
         "verification_rules": mapping_data.get("verification_rules", []),
         "migration_plan": mapping_data.get("migration_plan", []),
@@ -295,7 +297,8 @@ def get_migration_guide() -> str:
             "table",
             "tabs",
         ],
-        "example_request": "To migrate a button component, first call get_component_migration_data('button')",
+        "relationship_discovery": "The system dynamically discovers component relationships by analyzing documentation and examples. No predefined relationships are used - all discoveries are made at runtime.",
+        "example_request": "To migrate a component, first call get_component_migration_data('component_name'), then check the related_components section to discover other components that might be used with it.",
     }
 
     return json.dumps(migration_guide, indent=2)
@@ -417,6 +420,9 @@ def get_component_migration_data(component_name: str) -> str:
                 component_name, v1_component_data, v2_component_data
             ),
         },
+        "related_components": detect_related_components(
+            component_name, v2_component_data, v2_components
+        ),
         "verification_rules": [
             rule
             for rule in mapping_data.get("verification_rules", [])
@@ -460,6 +466,72 @@ def get_attribute_mappings(component_name, v1_data, v2_data):
                     break
 
     return attribute_mappings
+
+
+def detect_related_components(component_name, v2_component_data, v2_components):
+    """Dynamically detect components that might be related to the current component"""
+    related = []
+
+    # If we have component documentation, analyze it for component references
+    if (
+        v2_component_data
+        and isinstance(v2_component_data, dict)
+        and "documentation" in v2_component_data
+    ):
+        doc = v2_component_data.get("documentation", "")
+
+        # Search for component references in documentation
+        for other_component in v2_components.keys():
+            component_tag = other_component.replace(".tsx", "")
+            if component_tag in doc and component_name not in component_tag.lower():
+                # Extract the simple component name
+                simple_name = component_tag.replace("modus-wc-", "")
+
+                # Skip the component itself and avoid duplicates
+                if simple_name != component_name and not any(
+                    r["name"] == simple_name for r in related
+                ):
+                    related.append(
+                        {
+                            "name": simple_name,
+                            "tag": component_tag,
+                            "relationship": "referenced-in-docs",
+                            "suggestion": f"This component is referenced in the {component_name} documentation",
+                            "action": f"Consider getting data for this component with get_component_migration_data('{simple_name}')",
+                        }
+                    )
+
+    # Check for common examples in storybook examples
+    if (
+        v2_component_data
+        and isinstance(v2_component_data, dict)
+        and "storybook" in v2_component_data
+    ):
+        examples = v2_component_data.get("storybook", {}).get("examples", [])
+        for example in examples:
+            if isinstance(example, str):
+                # Find all component tags in the example
+                tags = re.findall(r"<([^>\s]+)[^>]*>", example)
+                for tag in tags:
+                    if (
+                        tag.startswith("modus-wc-")
+                        and component_name not in tag.lower()
+                    ):
+                        simple_name = tag.replace("modus-wc-", "")
+
+                        # Skip duplicates
+                        if not any(r["name"] == simple_name for r in related):
+                            related.append(
+                                {
+                                    "name": simple_name,
+                                    "tag": tag,
+                                    "relationship": "used-in-examples",
+                                    "suggestion": f"This component appears in {component_name} examples",
+                                    "action": f"Consider getting data for this component with get_component_migration_data('{simple_name}')",
+                                }
+                            )
+
+    return related
 
 
 @mcp.tool()
