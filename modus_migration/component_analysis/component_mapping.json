@@ -1,0 +1,68 @@
+{
+  "modus-accordion": {
+    "v2_component": "modus-wc-accordion"
+  },
+  "modus-alert": {
+    "v2_component": "modus-wc-alert"
+  },
+  "modus-autocomplete": {
+    "v2_component": "modus-wc-autocomplete"
+  },
+  "modus-badge": {
+    "v2_component": "modus-wc-badge"
+  },
+  "modus-breadcrumb": {
+    "v2_component": "modus-wc-breadcrumbs"
+  },
+  "modus-button": {
+    "v2_component": "modus-wc-button"
+  },
+  "modus-card": {
+    "v2_component": "modus-wc-card"
+  },
+  "modus-checkbox": {
+    "v2_component": "modus-wc-checkbox"
+  },
+  "modus-chip": {
+    "v2_component": "modus-wc-chip"
+  },
+  "modus-modal": {
+    "v2_component": "modus-wc-modal"
+  },
+  "modus-navbar": {
+    "v2_component": "modus-wc-navbar"
+  },
+  "modus-number-input": {
+    "v2_component": "modus-wc-number-input"
+  },
+  "modus-pagination": {
+    "v2_component": "modus-wc-pagination"
+  },
+  "modus-select": {
+    "v2_component": "modus-wc-select"
+  },
+  "modus-slider": {
+    "v2_component": "modus-wc-slider"
+  },
+  "modus-switch": {
+    "v2_component": "modus-wc-switch"
+  },
+  "modus-table": {
+    "v2_component": "modus-wc-table"
+  },
+  "modus-tabs": {
+    "v2_component": "modus-wc-tabs"
+  },
+  "modus-text-input": {
+    "v2_component": "modus-wc-text-input"
+  },
+  "modus-toast": {
+    "v2_component": "modus-wc-toast"
+  },
+  "modus-toolbar": {
+    "v2_component": "modus-wc-toolbar"
+  },
+  "modus-tooltip": {
+    "v2_component": "modus-wc-tooltip"
+  }
+}

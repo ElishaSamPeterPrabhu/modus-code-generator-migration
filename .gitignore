@@ -1,0 +1,29 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# IDE specific files
+.cursor/
+.vscode/
+.idea/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+
+# Embedded repositories
+modus_migration/repos/modus-wc-2.0/
+modus_migration/repos/modus-web-components/ 
