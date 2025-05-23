@@ -1,70 +1,81 @@
-{"Mapping_v1_v2":{
-  "modus-accordion": {
-    "v2_component": "modus-wc-accordion"
-  },
-  "modus-alert": {
-    "v2_component": "modus-wc-alert"
-  },
-  "modus-autocomplete": {
-    "v2_component": "modus-wc-autocomplete"
-  },
-  "modus-badge": {
-    "v2_component": "modus-wc-badge"
-  },
-  "modus-breadcrumb": {
-    "v2_component": "modus-wc-breadcrumbs"
-  },
-  "modus-button": {
-    "v2_component": "modus-wc-button"
-  },
-  "modus-card": {
-    "v2_component": "modus-wc-card"
-  },
-  "modus-checkbox": {
-    "v2_component": "modus-wc-checkbox"
-  },
-  "modus-chip": {
-    "v2_component": "modus-wc-chip"
-  },
-  "modus-modal": {
-    "v2_component": "modus-wc-modal"
-  },
-  "modus-navbar": {
-    "v2_component": "modus-wc-navbar"
-  },
-  "modus-number-input": {
-    "v2_component": "modus-wc-number-input"
-  },
-  "modus-pagination": {
-    "v2_component": "modus-wc-pagination"
-  },
-  "modus-select": {
-    "v2_component": "modus-wc-select"
-  },
-  "modus-slider": {
-    "v2_component": "modus-wc-slider"
-  },
-  "modus-switch": {
-    "v2_component": "modus-wc-switch"
-  },
-  "modus-table": {
-    "v2_component": "modus-wc-table"
-  },
-  "modus-tabs": {
-    "v2_component": "modus-wc-tabs"
-  },
-  "modus-text-input": {
-    "v2_component": "modus-wc-text-input"
-  },
-  "modus-toast": {
-    "v2_component": "modus-wc-toast"
-  },
-  "modus-toolbar": {
-    "v2_component": "modus-wc-toolbar"
-  },
-  "modus-tooltip": {
-    "v2_component": "modus-wc-tooltip"
-  }
+{  "Mapping_v1_v2":{
+  "modus-accordion.tsx": "modus-wc-accordion.tsx",
+  "modus-accordion-item.tsx": "modus-wc-collapse.tsx",
+  "modus-action-bar.tsx": "Not Found",
+  "modus-alert.tsx": "modus-wc-alert.tsx",
+  "modus-autocomplete.tsx": "modus-wc-autocomplete.tsx",
+  "modus-badge.tsx": "modus-wc-badge.tsx",
+  "modus-breadcrumb.tsx": "modus-wc-breadcrumbs.tsx",
+  "modus-button.tsx": "modus-wc-button.tsx",
+  "modus-button-group.tsx": "Not Found",
+  "modus-card.tsx": "modus-wc-card.tsx",
+  "modus-checkbox.tsx": "modus-wc-checkbox.tsx",
+  "modus-chip.tsx": "modus-wc-chip.tsx",
+  "modus-action-bar-item.tsx": "Not Found",
+  "modus-tree-view.tsx": "Not Found",
+  "modus-tree-view-item.tsx": "Not Found",
+  "modus-data-table.tsx": "modus-wc-table.tsx",
+  "modus-date-input.tsx": "modus-wc-date.tsx",
+  "modus-date-picker.tsx": "Not Found",
+  "modus-dropdown.tsx": "modus-wc-menu.tsx",
+  "modus-file-dropzone.tsx": "Not Found",
+  "modus-icons.tsx": "modus-wc-icon.tsx",
+  "modus-list.tsx": "modus-wc-menu.tsx",
+  "modus-list-item.tsx": "modus-wc-menu-item.tsx",
+  "modus-message.tsx": "Not Found",
+  "modus-modal.tsx": "modus-wc-modal.tsx",
+  "modus-navbar.tsx": "Not Found",
+  "modus-navbar-apps-menu.tsx": "Not Found",
+  "modus-navbar-button-menu.tsx": "Not Found",
+  "modus-navbar-main-menu.tsx": "Not Found",
+  "modus-navbar-notifications-menu.tsx": "Not Found",
+  "modus-navbar-profile-menu.tsx": "Not Found",
+  "modus-navbar-search-overlay.tsx": "Not Found",
+  "modus-number-input.tsx": "modus-wc-number-input.tsx",
+  "modus-pagination.tsx": "modus-wc-pagination.tsx",
+  "modus-progress-bar.tsx": "modus-wc-progress.tsx",
+  "modus-radio-group.tsx": "Not Found",
+  "modus-select.tsx": "modus-wc-select.tsx",
+  "modus-sentiment-scale.tsx": "Not Found",
+  "modus-side-navigation.tsx": "Not Found",
+  "modus-side-navigation-item.tsx": "Not Found",
+  "modus-slider.tsx": "modus-wc-slider.tsx",
+  "modus-spinner.tsx": "modus-wc-loader.tsx",
+  "modus-switch.tsx": "modus-wc-toggle.tsx",
+  "modus-table.tsx": "modus-wc-table.tsx",
+  "flex-renderer.tsx": "Not Found",
+  "modus-table-cell-editor.tsx": "Not Found",
+  "modus-table-cell-main.tsx": "Not Found",
+  "modus-table-filler-column.tsx": "Not Found",
+  "modus-table-columns-visibility.tsx": "Not Found",
+  "modus-table-dropdown-menu.tsx": "Not Found",
+  "modus-table-toolbar.tsx": "Not Found",
+  "modus-table-row-actions-cell.tsx": "Not Found",
+  "modus-table-row-actions.tsx": "Not Found",
+  "modus-table-row-actions-menu.tsx": "Not Found",
+  "modus-time-input.tsx": "modus-wc-time-input.tsx",
+  "modus-toast.tsx": "modus-wc-toast.tsx",
+  "modus-divider.tsx": "modus-wc-divider.tsx",
+  "modus-toolbar.tsx": "modus-wc-toolbar.tsx",
+  "modus-tooltip.tsx": "modus-wc-tooltip.tsx",
+  "modus-utility-panel.tsx": "Not Found",
+  "label": "modus-wc-input-label.tsx",
+  "p": "modus-wc-typography.tsx",
+  "h1": "modus-wc-typography.tsx",
+  "h2": "modus-wc-typography.tsx",
+  "h3": "modus-wc-typography.tsx",
+  "h4": "modus-wc-typography.tsx",
+  "h5": "modus-wc-typography.tsx",
+  "h6": "modus-wc-typography.tsx",
+  "button": "modus-wc-button.tsx",
+  "hr": "modus-wc-divider.tsx",
+  "textarea": "modus-wc-textarea.tsx",
+  "input type='text'": "modus-wc-text-input.tsx",
+  "input type='number'": "modus-wc-number-input.tsx",
+  "input type='date'": "modus-wc-date.tsx",
+  "input type='time'": "modus-wc-time-input.tsx",
+  "input type='checkbox'": "modus-wc-checkbox.tsx",
+  "input type='radio'": "modus-wc-radio.tsx"
 },
   "verification_rules": [
     {

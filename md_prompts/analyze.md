@@ -1,36 +1,48 @@
 # Modus Migration Analyze Tool
 
 ## Purpose
-Analyze the provided code for Modus v1 components and suggest Modus v2 replacements.
+Analyze the provided code for Modus v1 components and suggest Modus v2 replacements using authoritative component data. The tool should support analyzing either a single file or all files in a specified folder, as requested by the user.
+
+## Data Sources
+- **component_mapping.json**: Maps v1 component tags to their v2 equivalents (if any).
+- **v1_components.json**: Lists all available v1 components, their properties, events, and documentation.
+- **v2_components.json**: Lists all available v2 components, their properties, events, and documentation.
+
+These files are located in `modus_migration/component_analysis/` and should be loaded and referenced for all analysis.
 
 ## Rules
-- Identify all Modus v1 tags in the input code.
-- Suggest the correct Modus v2 tag for each v1 tag found.
-- Count the number of occurrences for each v1 tag.
-- Output a Markdown table with columns: v1 Tag, v2 Tag, Count, Notes.
-- If a v1 tag has no v2 equivalent, note it in the table.
+- Load and parse the three JSON files above before analyzing code.
+- Based on user input, analyze either:
+  - A single specified file, or
+  - All files within a specified folder (analyzing each file individually).
+- For each file analyzed:
+  - Identify all Modus v1 tags in the input code by matching against the list in v1_components.json.
+  - For each v1 tag found:
+    - Use component_mapping.json to suggest the correct v2 tag, if available.
+    - If no mapping exists, mark as "N/A" and note there is no v2 equivalent.
+    - If a mapping exists but the v2 tag is not present in v2_components.json, mark as "N/A" and note the v2 tag is missing from the library.
+    - Count the number of occurrences for each v1 tag.
+    - Optionally, add notes if there are breaking changes or special migration instructions (from mapping or documentation).
+  - Output a Markdown table with columns: v1 Tag, v2 Tag, Count, Notes.
+  - If a v1 tag is not in v1_components.json, note it as "Unknown component".
 
 ## Output Format
+- The output should begin with a brief statement that the file(s) were analyzed using authoritative component data and mappings.
+- For a single file, output the final Markdown table as described below.
+- For multiple files, output a separate Markdown table for each file, clearly labeled with the file name.
+- Do not include step-by-step or process details.
+
 ```markdown
 | v1 Tag         | v2 Tag            | Count | Notes                |
 |----------------|-------------------|-------|----------------------|
 | modus-button   | modus-wc-button   | 2     | Direct replacement   |
 | modus-alert    | modus-wc-alert    | 1     | Direct replacement   |
 | modus-foo      | N/A               | 1     | No v2 equivalent     |
+| custom-xyz     | N/A               | 1     | Unknown component    |
 ```
 
-## Example
-Given this input:
-```html
-<modus-button>Click</modus-button>
-<modus-alert>Alert</modus-alert>
-<modus-foo>Legacy</modus-foo>
-```
-The output should be:
-```markdown
-| v1 Tag         | v2 Tag            | Count | Notes                |
-|----------------|-------------------|-------|----------------------|
-| modus-button   | modus-wc-button   | 1     | Direct replacement   |
-| modus-alert    | modus-wc-alert    | 1     | Direct replacement   |
-| modus-foo      | N/A               | 1     | No v2 equivalent     |
-``` 
+## How to Use the Data
+- Always check for the presence of a v1 tag in v1_components.json before suggesting a mapping.
+- Use component_mapping.json for authoritative v1→v2 mappings.
+- Validate that any suggested v2 tag exists in v2_components.json before recommending it.
+- Use documentation fields in the JSONs for additional migration notes if needed. 
