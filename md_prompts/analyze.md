@@ -8,8 +8,6 @@ Analyze the provided code for Modus v1 components and suggest Modus v2 replaceme
 - **v1_components.json**: Lists all available v1 components, their properties, events, and documentation.
 - **v2_components.json**: Lists all available v2 components, their properties, events, and documentation.
 
-These files are located in `modus_migration/component_analysis/` and should be loaded and referenced for all analysis.
-
 ## Rules
 - Load and parse the three JSON files above before analyzing code.
 - Based on user input, analyze either:
@@ -32,7 +30,19 @@ These files are located in `modus_migration/component_analysis/` and should be l
 - For multiple files, output a separate Markdown table for each file, clearly labeled with the file name.
 - Do not include step-by-step or process details.
 
+### Save the Analysis as Markdown
+- **Save the analysis result as a markdown (.md) file** so the user can review it later.
+- The file should be named `<original-filename>.analysis.md` (e.g., `my-component.tsx.analysis.md`) and placed alongside the analyzed file or in a designated `analysis/` folder.
+- The markdown file should include:
+  1. **Title and Summary**: A heading with the file name and a summary of the analysis.
+  2. **Detailed Markdown Table**: As described below, listing all v1 components, v2 suggestions, counts, and notes.
+  3. **Additional Notes**: Any migration recommendations, breaking changes, or special considerations.
+
 ```markdown
+# Modus Migration Analysis: <filename>
+
+This file was analyzed using authoritative Modus v1/v2 component data and mappings. Below is a summary of Modus v1 components found and migration recommendations.
+
 | v1 Tag         | v2 Tag            | Count | Notes                |
 |----------------|-------------------|-------|----------------------|
 | modus-button   | modus-wc-button   | 2     | Direct replacement   |
@@ -46,3 +56,7 @@ These files are located in `modus_migration/component_analysis/` and should be l
 - Use component_mapping.json for authoritative v1→v2 mappings.
 - Validate that any suggested v2 tag exists in v2_components.json before recommending it.
 - Use documentation fields in the JSONs for additional migration notes if needed. 
+
+---
+
+**Remember:** The markdown analysis file is for user review and should be clear, detailed, and actionable for migration planning. 

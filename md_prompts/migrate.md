@@ -8,7 +8,6 @@ Migrate Modus v1 code to Modus v2 code using authoritative component data, mappi
 - **v1_components.json**: Lists all available v1 components, their properties, events, and documentation.
 - **v2_components.json**: Lists all available v2 components, their properties, events, and documentation.
 
-These files are located in `modus_migration/component_analysis/` and should be loaded and referenced for all migration steps.
 
 ## Input
 - The tool should use the analysis data (the Markdown table and notes from the analyze step) as the basis for migration.
