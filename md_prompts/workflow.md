@@ -1,116 +1,97 @@
 # Modus Migration Agentic Workflow Tool
 
 ## Purpose
-Guide the user or agent through the Modus Web Components migration process step by step, ensuring confirmation at each stage and using authoritative standards and outputs.
+Guide the user or agent through the Modus Web Components migration process (including Angular and React contexts) step by step, ensuring confirmation at each stage and using authoritative standards and outputs.
 
-## Rules
-- Always start with analysis using authoritative JSONs (`component_mapping.json`, `v1_components.json`, `v2_components.json`).
-- At each step, the agent must reference and follow the corresponding authoritative md file for instructions, output format, and compliance:
-  - **Analysis:** Use `analyze.md` for rules and output.
-  - **Migration:** Use `migrate.md` for rules and output.
-  - **Verification:** Use `verify.md` for rules and output.
-  - **Logging:** Use `log.md` for rules and output.
-- After each step, present the result and prompt the user to confirm before proceeding.
-- Only proceed to migration, verification, or logging if the user explicitly confirms.
-- Each step should use the latest prompt and output format from the corresponding md file:
-  - **Analysis:** Outputs a v1/v2 mapping table and notes, using authoritative data.
-  - **Migration:** Uses the analysis output and authoritative JSONs, migrates only what is supported, adds comments for unmigrated tags or missing features, and supports any code format.
-  - **Verification:** Compares the result to `migration/gold_standard.md`, outputs a compliance table, issues, compliant points, and overall status, for one or multiple files.
-  - **Logging:** Summarizes all steps, includes tables and actionable recommendations, and outputs a separate summary for each file if needed.
-- Summarize the workflow in Markdown at each step.
+## Core Principles
+- **Authoritative Data**: All decisions and actions must be based on the provided JSON data files and the `gold_standard.md`.
+- **Framework Awareness**: The workflow must account for Angular and React specific migration patterns using the `*_framework_data.json` files.
+- **Parent-Child Integrity**: The Parent-Child Migration Rule (if a parent isn't migrated, children aren't either) is paramount and must be enforced throughout.
+- **User Confirmation**: Each major step (Analysis, Migration, Verification, Logging) requires user confirmation before proceeding.
 
-## Output Format
-- Use Markdown headings for each step.
-- Present prompts and results as bullet points or tables.
-- Clearly indicate the current step and next available actions.
-- For multiple files, output a separate summary for each file, clearly labeled.
+## Data Sources to be Used Throughout
+- **JSON Data Files**: `component_mapping.json`, `v1_components.json`, `v2_components.json`, `v1_angular_framework_data.json`, `v1_react_framework_data.json`, `v2_angular_framework_data.json`, `v2_react_framework_data.json`.
+- **Markdown Guides**: `analyze.md`, `migrate.md`, `verify.md`, `log.md` for step-specific instructions.
+- **Gold Standard**: `migration/gold_standard.md` for verification criteria.
 
-## Example
+## Workflow Steps
+
+### 1. Initial Setup & Analysis (`analyze.md`)
+- **Action**: Load all JSON data sources listed above.
+- **Action**: Perform analysis as per `analyze.md`. This includes:
+    - Identifying v1 components.
+    - Detecting Angular/React context and flagging for use of framework data.
+    - Applying the Parent-Child Migration Rule to determine migratability.
+    - Suggesting v2 equivalents or marking as N/A / Blocked by Parent.
+    - Generating the `.analysis.md` file for each input file.
+- **Output**: Present the summary analysis table (as per `analyze.md` example) for each analyzed file. Highlight any framework-specific considerations noted and the impact of the Parent-Child Migration Rule.
+- **User Prompt**: "Analysis complete. Review the generated `.analysis.md` files. Reply 'proceed to migrate' to continue to the migration step, or specify changes/concerns."
+
+### 2. Code Migration (`migrate.md`)
+- **Pre-condition**: User confirms to proceed.
+- **Action**: Perform code migration based *strictly* on the `.analysis.md` output and rules in `migrate.md`. This includes:
+    - Replacing migratable v1 tags with v2 tags.
+    - Applying attribute mappings.
+    - **NOT migrating components marked N/A or N/A (Blocked by Parent) in the analysis.** Add comments explaining why.
+    - Implementing framework-specific changes (wrappers, event handling, imports) using `*_framework_data.json` for Angular/React files.
+    - Adding comments for unmigrated features/properties.
+- **Output**: Present the migrated code block for each file. Below it, list any components that were not migrated and why (consistent with analysis and parent-child rule).
+- **User Prompt**: "Migration attempt complete. Review the modified code. Reply 'proceed to verify' to continue to the verification step, or specify changes/concerns."
+
+### 3. Verification (`verify.md`)
+- **Pre-condition**: User confirms to proceed.
+- **Action**: Verify the migrated code against `gold_standard.md` and framework-specific criteria (from `v2_*_framework_data.json`) as per `verify.md`. This involves:
+    - Confirming adherence to the Parent-Child Migration Rule (i.e., blocked components correctly remained v1).
+    - Checking for correct application of framework-specific patterns for Angular/React.
+    - Validating imports, properties, naming, accessibility, etc.
+- **Output**: Present the detailed verification summary table, list of issues, compliant points, and overall pass/fail status for each file.
+- **User Prompt**: "Verification complete. Review the verification reports. Reply 'proceed to log' to continue to the logging step, or specify changes/concerns."
+
+### 4. Logging (`log.md`)
+- **Pre-condition**: User confirms to proceed.
+- **Action**: Generate a comprehensive migration log as per `log.md`. This log should consolidate:
+    - Analysis summary (including parent-child rule impacts and framework context).
+    - Migration actions (what was changed, what wasn't and why, framework adaptations).
+    - Full verification report.
+    - Final status and actionable recommendations for each file.
+- **Output**: Present the generated consolidated `migration_log.md` (or a snippet if too long, with instructions on where to find the full log).
+- **User Prompt**: "Logging complete. The full migration log has been generated. Review `migration_log.md`. The migration workflow for the selected file(s) is now finished."
+
+## General Rules for the Agent
+- At each step, explicitly state which markdown guide (`analyze.md`, `migrate.md`, etc.) is being followed.
+- When presenting information for multiple files, clearly label each file's section.
+- Ensure all outputs (tables, code blocks, summaries) are well-formatted in Markdown.
+- If the user raises concerns or asks for changes at any step, address them before re-prompting for confirmation to proceed.
+
+## Example Snippet (Illustrating a mid-workflow point)
+
+Currently at: **Step 2: Code Migration** (following `migrate.md`)
+
+**File: `src/components/my-button.jsx`** (React context identified)
+
+Analysis from `my-button.jsx.analysis.md` indicated:
+| v1 Tag         | v2 Tag                     | Count | Notes                                         |
+|----------------|----------------------------|-------|-----------------------------------------------|
+| modus-button   | modus-wc-button            | 1     | Direct replacement. Use React wrapper.        |
+
+Migrated code for `src/components/my-button.jsx`:
+```javascript
+import { ModusWcButton } from '@trimble-oss/moduswebcomponents-react'; // Added based on v2_react_framework_data.json
+
+export const MyButton = ({ onClick, children }) => {
+  return (
+    <ModusWcButton buttonStyle="primary" onButtonClick={onClick}>
+      {children}
+    </ModusWcButton>
+  );
+};
 ```
-# Migration Workflow
 
-## Step 1: Analysis
-| v1 Tag      | v2 Tag          | Count | Notes                |
-|-------------|-----------------|-------|----------------------|
-| modus-button| modus-wc-button | 1     | Direct replacement   |
-| modus-foo   | N/A             | 1     | No v2 equivalent     |
+**Migration Notes for `src/components/my-button.jsx`:**
+- `modus-button` replaced with `ModusWcButton` React component.
+- `buttonStyle="primary"` used as per v2 component properties.
+- Event handling `onButtonClick` used as per React wrapper conventions.
+- Import for `ModusWcButton` added.
 
-**Notes:**
-- All v1 tags analyzed using authoritative mapping.
-- Reply 'proceed' to continue to migration.
-
-## Step 2: Migration
-- Replaced modus-button with modus-wc-button
-- // No v2 equivalent for modus-foo (comment added above component)
-- All required Modus imports added
-- Reply 'verify' to verify the migration.
-
-## Step 3: Verification
-| Section                | Status   | Notes                                      |
-|------------------------|----------|--------------------------------------------|
-| Component Naming       | Pass     | Uses modus-wc-* tags                       |
-| Imports                | Pass     | All required imports present                |
-| Properties/Attributes  | Pass     | Uses 'variant' as per v2 API               |
-| Unmigrated Components  | Pass     | Comment explains missing v2 equivalent      |
-| Accessibility          | Warning  | aria-label missing on button                |
-| Testing                | N/A      | Not applicable for this snippet            |
-| Documentation          | N/A      | Not applicable for this snippet            |
-
-**Issues:**
-- Accessibility: Add aria-label to all buttons
-
-**Compliant:**
-- All tags use the correct modus-wc-* naming.
-- Properties are mapped to the v2 API.
-- Unmigrated components are commented as required.
-
-**Overall Status:**
-- **Fail** (due to missing aria-label)
-- Reply 'log' to log the migration summary.
-
-## Step 4: Logging
-# Migration Summary
-
-## File: example.html
-
-### Analysis
-| v1 Tag      | v2 Tag          | Count | Notes                |
-|-------------|-----------------|-------|----------------------|
-| modus-button| modus-wc-button | 1     | Direct replacement   |
-| modus-foo   | N/A             | 1     | No v2 equivalent     |
-
-**Notes:**
-- All v1 tags analyzed using authoritative mapping.
-
-### Migration
-- Replaced modus-button with modus-wc-button
-- // No v2 equivalent for modus-foo (comment added above component)
-- All required Modus imports added
-
-### Verification Summary
-| Section                | Status   | Notes                                      |
-|------------------------|----------|--------------------------------------------|
-| Component Naming       | Pass     | Uses modus-wc-* tags                       |
-| Imports                | Pass     | All required imports present                |
-| Properties/Attributes  | Pass     | Uses 'variant' as per v2 API               |
-| Unmigrated Components  | Pass     | Comment explains missing v2 equivalent      |
-| Accessibility          | Warning  | aria-label missing on button                |
-| Testing                | N/A      | Not applicable for this snippet            |
-| Documentation          | N/A      | Not applicable for this snippet            |
-
-**Issues:**
-- Accessibility: Add aria-label to all buttons
-
-**Compliant:**
-- All tags use the correct modus-wc-* naming.
-- Properties are mapped to the v2 API.
-- Unmigrated components are commented as required.
-
-**Overall Status:**
-- **Fail** (due to missing aria-label)
-
-### Recommendations
-- Add aria-label to all buttons
-- Review tags with no v2 equivalent
-
-- Workflow complete. 
+---
+Migration attempt complete. Review the modified code. Reply 'proceed to verify' to continue to the verification step, or specify changes/concerns.
