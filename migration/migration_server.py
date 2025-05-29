@@ -84,6 +84,20 @@ def _get_migration_data(guidance_type: str) -> dict:
                 component_analysis_dir, "v2_components.json"
             )
 
+            # Framework-specific data paths
+            v1_angular_framework_data_path = os.path.join(
+                component_analysis_dir, "v1_angular_framework_data.json"
+            )
+            v1_react_framework_data_path = os.path.join(
+                component_analysis_dir, "v1_react_framework_data.json"
+            )
+            v2_angular_framework_data_path = os.path.join(
+                component_analysis_dir, "v2_angular_framework_data.json"
+            )
+            v2_react_framework_data_path = os.path.join(
+                component_analysis_dir, "v2_react_framework_data.json"
+            )
+
             if os.path.exists(component_mapping_path):
                 with open(component_mapping_path, "r") as f:
                     loaded_data["component_data"]["component_mapping"] = json.load(f)
@@ -106,6 +120,47 @@ def _get_migration_data(guidance_type: str) -> dict:
             else:
                 logger.warning(
                     f"V2 components file not found for {guidance_type}: {v2_components_path}"
+                )
+
+            # Load framework-specific data
+            if os.path.exists(v1_angular_framework_data_path):
+                with open(v1_angular_framework_data_path, "r") as f:
+                    loaded_data["component_data"]["v1_angular_framework_data"] = (
+                        json.load(f)
+                    )
+            else:
+                logger.warning(
+                    f"V1 Angular framework data file not found for {guidance_type}: {v1_angular_framework_data_path}"
+                )
+
+            if os.path.exists(v1_react_framework_data_path):
+                with open(v1_react_framework_data_path, "r") as f:
+                    loaded_data["component_data"]["v1_react_framework_data"] = (
+                        json.load(f)
+                    )
+            else:
+                logger.warning(
+                    f"V1 React framework data file not found for {guidance_type}: {v1_react_framework_data_path}"
+                )
+
+            if os.path.exists(v2_angular_framework_data_path):
+                with open(v2_angular_framework_data_path, "r") as f:
+                    loaded_data["component_data"]["v2_angular_framework_data"] = (
+                        json.load(f)
+                    )
+            else:
+                logger.warning(
+                    f"V2 Angular framework data file not found for {guidance_type}: {v2_angular_framework_data_path}"
+                )
+
+            if os.path.exists(v2_react_framework_data_path):
+                with open(v2_react_framework_data_path, "r") as f:
+                    loaded_data["component_data"]["v2_react_framework_data"] = (
+                        json.load(f)
+                    )
+            else:
+                logger.warning(
+                    f"V2 React framework data file not found for {guidance_type}: {v2_react_framework_data_path}"
                 )
 
         # Load gold standard if needed
