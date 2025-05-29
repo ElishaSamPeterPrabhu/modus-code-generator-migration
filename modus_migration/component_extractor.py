@@ -15,13 +15,21 @@ def handle_remove_error(func, path, exc_info):
     func(path)
 
 
-def clone_repo(repo_url, target_dir):
-    """Clone a git repository to the specified directory"""
-    if os.path.exists(target_dir):
-        print(f"Repository directory {target_dir} already exists, skipping clone")
+def clone_repo(repo_url, target_dir, skip_clone_if_exists: bool):
+    """Clone a git repository to the specified directory.
+    If skip_clone_if_exists is True, it will skip if the directory already exists.
+    """
+    if skip_clone_if_exists and os.path.exists(target_dir):
+        print(
+            f"Repository directory {target_dir} already exists, skipping clone as per configuration."
+        )
         return True
 
-    print(f"Cloning {repo_url} into {target_dir}...")
+    # The previous logic for removing the directory has been taken out as per user request.
+    # Git will handle cloning into an existing directory (e.g. if it's already a git repo and clean, or if it's empty).
+    # If the directory exists and is non-empty and not a git repo, git clone will fail, which is standard behavior.
+
+    print(f"Attempting to clone {repo_url} into {target_dir}...")
     try:
         subprocess.run(["git", "clone", repo_url, target_dir], check=True)
         return True
@@ -440,6 +448,79 @@ def create_manual_component_map() -> Dict:
     }
 
 
+def extract_framework_examples(
+    repo_path: str,
+    version: str,
+    framework: str,
+    example_repo_path_relative_to_version_root: str,
+) -> Dict:
+    """Extracts framework-specific examples."""
+    examples = {}
+    framework_examples_path = os.path.join(
+        repo_path, example_repo_path_relative_to_version_root
+    )
+
+    if not os.path.exists(framework_examples_path):
+        print(f"Framework examples path not found: {framework_examples_path}")
+        return examples
+
+    print(f"Extracting {framework} {version} examples from {framework_examples_path}")
+    for item_name in os.listdir(framework_examples_path):
+        item_path = os.path.join(framework_examples_path, item_name)
+        if os.path.isfile(item_path) and (
+            item_path.endswith(".tsx")
+            or item_path.endswith(".ts")
+            or item_path.endswith(".html")
+        ):
+            try:
+                with open(item_path, "r", encoding="utf-8") as f:
+                    content = f.read()
+                    examples[item_name] = content
+                print(f"  Extracted example: {item_name}")
+            except Exception as e:
+                print(f"Error reading example file {item_path}: {e}")
+        elif os.path.isdir(
+            item_path
+        ):  # Handle component-specific example folders (e.g. Angular v1)
+            component_examples = {}
+            for sub_item_name in os.listdir(item_path):
+                sub_item_path = os.path.join(item_path, sub_item_name)
+                if os.path.isfile(sub_item_path) and (
+                    sub_item_path.endswith(".tsx")
+                    or sub_item_path.endswith(".ts")
+                    or sub_item_path.endswith(".html")
+                ):
+                    try:
+                        with open(sub_item_path, "r", encoding="utf-8") as f:
+                            content = f.read()
+                            component_examples[sub_item_name] = content
+                        print(f"  Extracted example: {item_name}/{sub_item_name}")
+                    except Exception as e:
+                        print(f"Error reading example file {sub_item_path}: {e}")
+            if component_examples:
+                examples[item_name] = component_examples
+
+    return examples
+
+
+def extract_framework_documentation(
+    repo_path: str, mdx_file_path_relative_to_repo: str
+) -> str:
+    """Extracts the content of a framework-specific .mdx documentation file."""
+    mdx_file_path = os.path.join(repo_path, mdx_file_path_relative_to_repo)
+    documentation_content = ""
+    if os.path.exists(mdx_file_path):
+        try:
+            with open(mdx_file_path, "r", encoding="utf-8") as f:
+                documentation_content = f.read()
+            print(f"Successfully extracted documentation from: {mdx_file_path}")
+        except Exception as e:
+            print(f"Error reading .mdx documentation file {mdx_file_path}: {e}")
+    else:
+        print(f".mdx documentation file not found: {mdx_file_path}")
+    return documentation_content
+
+
 def main():
     """Main function to extract component details from Modus 1.0 and 2.0 repositories"""
     print("Starting component extraction...")
@@ -454,14 +535,14 @@ def main():
 
     # Repository URLs and paths
     v1_repo_url = "https://github.com/trimble-oss/modus-web-components.git"
-    v2_repo_url = "https://github.com/Trimble-Construction/modus-wc-2.0.git"
+    v2_repo_url = "https://github.com/trimble-oss/modus-wc-2.0.git"
 
     v1_repo_path = os.path.join(repos_dir, "modus-web-components")
     v2_repo_path = os.path.join(repos_dir, "modus-wc-2.0")
 
     # Clone repositories if they don't exist
-    clone_repo(v1_repo_url, v1_repo_path)
-    clone_repo(v2_repo_url, v2_repo_path)
+    clone_repo(v1_repo_url, v1_repo_path, False)
+    clone_repo(v2_repo_url, v2_repo_path, False)
 
     # Modus 1.0 paths
     v1_components_dir = os.path.join(
@@ -473,6 +554,36 @@ def main():
 
     # Modus 2.0 paths
     v2_components_dir = os.path.join(v2_repo_path, "src", "components")
+
+    # Framework example paths
+    v1_angular_examples_path = os.path.join(
+        "angular-workspace", "test-ng15", "src", "examples"
+    )
+    v1_react_examples_path = os.path.join(
+        "react-workspace", "test-react-v17", "src", "examples"
+    )  # Assuming v17 examples are representative for v1
+    v2_react_examples_path_v17 = os.path.join(
+        "integrations", "react", "test-react-v17", "src", "examples"
+    )
+    # V2 Angular does not have a dedicated examples directory like v1
+
+    # Framework .mdx documentation paths
+    v1_angular_mdx_path = os.path.join(
+        "stencil-workspace",
+        "storybook",
+        "stories",
+        "framework-integrations",
+        "angular.mdx",
+    )
+    v1_react_mdx_path = os.path.join(
+        "stencil-workspace",
+        "storybook",
+        "stories",
+        "framework-integrations",
+        "react.mdx",
+    )
+    v2_angular_mdx_path = os.path.join("src", "stories", "frameworks", "angular.mdx")
+    v2_react_mdx_path = os.path.join("src", "stories", "frameworks", "react.mdx")
 
     # Validate paths
     print("\n=== Directory Validation ===")
@@ -589,6 +700,54 @@ def main():
             # Simple mapping - just component names
             component_mapping[v1_name] = {"v2_component": v2_name}
 
+    # Extract framework-specific data (documentation and examples)
+    print("\n=== Extracting Framework Specific Data ===")
+
+    # V1 Angular
+    v1_angular_docs = extract_framework_documentation(v1_repo_path, v1_angular_mdx_path)
+    v1_angular_examples = extract_framework_examples(
+        v1_repo_path, "v1", "Angular", v1_angular_examples_path
+    )
+    v1_angular_framework_data = {
+        "documentation": v1_angular_docs,
+        "examples": v1_angular_examples,
+    }
+
+    # V1 React
+    v1_react_docs = extract_framework_documentation(v1_repo_path, v1_react_mdx_path)
+    v1_react_examples = extract_framework_examples(
+        v1_repo_path, "v1", "React", v1_react_examples_path
+    )
+    v1_react_framework_data = {
+        "documentation": v1_react_docs,
+        "examples": v1_react_examples,
+    }
+
+    # V2 Angular
+    v2_angular_docs = extract_framework_documentation(v2_repo_path, v2_angular_mdx_path)
+    # V2 Angular examples are not in a dedicated directory, so this will likely be empty or based on .mdx content if adapted later
+    v2_angular_examples = (
+        {}
+    )  # Or adapt extract_framework_examples if specific v2 angular examples can be found elsewhere
+    v2_angular_framework_data = {
+        "documentation": v2_angular_docs,
+        "examples": v2_angular_examples,
+    }
+
+    # V2 React
+    v2_react_docs = extract_framework_documentation(v2_repo_path, v2_react_mdx_path)
+    v2_react_examples_v17 = extract_framework_examples(
+        v2_repo_path, "v2", "React v17", v2_react_examples_path_v17
+    )
+    # Consolidate v2 React examples if multiple versions are extracted (e.g., v18, v19)
+    v2_react_examples_consolidated = {}
+    if v2_react_examples_v17:
+        v2_react_examples_consolidated.update(v2_react_examples_v17)
+    v2_react_framework_data = {
+        "documentation": v2_react_docs,
+        "examples": v2_react_examples_consolidated,
+    }
+
     # Save results
     with open(os.path.join(output_dir, "v1_components.json"), "w") as f:
         json.dump(v1_components, f, indent=2)
@@ -599,10 +758,35 @@ def main():
     with open(os.path.join(output_dir, "component_mapping.json"), "w") as f:
         json.dump(component_mapping, f, indent=2)
 
+    # Save framework-specific data
+    with open(os.path.join(output_dir, "v1_angular_framework_data.json"), "w") as f:
+        json.dump(v1_angular_framework_data, f, indent=2)
+
+    with open(os.path.join(output_dir, "v1_react_framework_data.json"), "w") as f:
+        json.dump(v1_react_framework_data, f, indent=2)
+
+    with open(os.path.join(output_dir, "v2_angular_framework_data.json"), "w") as f:
+        json.dump(v2_angular_framework_data, f, indent=2)
+
+    with open(os.path.join(output_dir, "v2_react_framework_data.json"), "w") as f:
+        json.dump(v2_react_framework_data, f, indent=2)
+
     print(f"\nExtraction complete:")
     print(f"- Found {len(v1_components)} Modus 1.0 components")
     print(f"- Found {len(v2_components)} Modus 2.0 components")
     print(f"- Created mapping for {len(component_mapping)} components")
+    print(
+        f"- Extracted V1 Angular framework data (docs + {len(v1_angular_examples)} examples)"
+    )
+    print(
+        f"- Extracted V1 React framework data (docs + {len(v1_react_examples)} examples)"
+    )
+    print(
+        f"- Extracted V2 Angular framework data (docs + {len(v2_angular_examples)} examples)"
+    )
+    print(
+        f"- Extracted V2 React framework data (docs + {len(v2_react_examples_consolidated)} examples)"
+    )
     print(f"Results saved to the {output_dir} directory.")
 
 
