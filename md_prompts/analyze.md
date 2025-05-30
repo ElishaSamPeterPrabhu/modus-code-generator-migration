@@ -10,7 +10,7 @@ Analyze the provided code for Modus v1 components (including those within Angula
 - **v1_angular_framework_data.json**: Contains v1 Angular integration documentation (from `.mdx`) and code examples.
 - **v1_react_framework_data.json**: Contains v1 React integration documentation (from `.mdx`) and code examples.
 - **v2_angular_framework_data.json**: Contains v2 Angular integration documentation (from `.mdx`).
-- **v2_react_framework_data.json**: Contains v2 React integration documentation (from `.mdx`) and code examples.
+- **v2_react_framework_data.json**: Contains v2 React integration documentation (from `.mdx`).
 
 ## Rules
 - Load and parse all JSON data sources listed above before analyzing code.
