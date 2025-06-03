@@ -246,59 +246,106 @@ def parse_component_file(path: Path) -> dict:
         with path.open("r", encoding="utf-8") as f:
             content = f.read()
 
-        # Extract props, events, and slots using regex
-        props = re.findall(r"@Prop\(\)\s+(\w+):", content)
-        events = re.findall(r"@Event\(\)\s+(\w+):", content)
+        # Extract props
+        props_pattern = r"@Prop\s*(?:\([^)]*\))?\s*(\w+)"
+        prop_names = re.findall(props_pattern, content)
+
+        # Extract events
+        events_pattern = r"@StencilEvent\s*(?:\([^)]*\))?\s*(\w+)"
+        event_names = re.findall(events_pattern, content)
+
         slots = re.findall(r'<slot name="(\w+)"', content)
 
-        # Try alternative patterns for v2 - might have different decorators
-        if not props:
-            props = re.findall(r"@property\(\s*\{\s*[^}]*\s*\}\s*\)\s+(\w+)", content)
+        # Fallback for props if using @property decorator
+        if not prop_names:
+            prop_names = re.findall(r"@property\(\s*\{\s*[^}]*\s*\}\s*\)\s*(\w+)", content)
 
-        if not events:
-            events = re.findall(r"@event\(\s*\{\s*[^}]*\s*\}\s*\)\s+(\w+)", content)
+        # Fallback for events if using @event decorator (less common for Stencil V2)
+        if not event_names:
+            event_names = re.findall(r"@event\(\s*\{\s*[^}]*\s*\}\s*\)\s*(\w+)", content)
 
-        # Extract comments for props
+        # Process props with details
         prop_details = []
-        for prop in props:
-            # Find comment above the prop
-            prop_pattern = rf"(\/\*\*[\s\S]*?\*\/)\s*@Prop\(\)[\s\S]*?{prop}:|\/\/.*\n\s*@Prop\(\)[\s\S]*?{prop}:"
-            alt_pattern = rf"(\/\*\*[\s\S]*?\*\/)\s*@property[\s\S]*?{prop}|\/\/.*\n\s*@property[\s\S]*?{prop}"
-
-            prop_match = re.search(prop_pattern, content)
-            if not prop_match:
-                prop_match = re.search(alt_pattern, content)
-
+        for prop_name_match in prop_names:
+            prop_name = prop_name_match # prop_names from findall is already a list of strings
+            escaped_prop_name = re.escape(prop_name)
             comment = ""
-            if prop_match:
-                comment = (
-                    prop_match.group(1)
-                    if "/**" in prop_match.group(0)
-                    else prop_match.group(0).split("\n")[0].strip("//").strip()
-                )
 
-            # Extract type information for props
-            type_pattern = rf"{prop}\s*:([^;=]+)"
+            jsdoc_pattern_prop = rf"(\/\*\*[\s\S]*?\*\/)\s*@Prop\s*(?:\([^)]*\))?[\s\S]*?\b{escaped_prop_name}\b"
+            single_line_pattern_prop = rf"(//[^\n]*)\n\s*@Prop\s*(?:\([^)]*\))?[\s\S]*?\b{escaped_prop_name}\b"
+            jsdoc_pattern_property = rf"(\/\*\*[\s\S]*?\*\/)\s*@property\s*(?:\([^)]*\))?[\s\S]*?\b{escaped_prop_name}\b"
+            single_line_pattern_property = rf"(//[^\n]*)\n\s*@property\s*(?:\([^)]*\))?[\s\S]*?\b{escaped_prop_name}\b"
+
+            match = re.search(jsdoc_pattern_prop, content)
+            if match:
+                comment = match.group(1).strip()
+            else:
+                match = re.search(single_line_pattern_prop, content)
+                if match:
+                    comment = match.group(1).strip("//").strip()
+                else: 
+                    match = re.search(jsdoc_pattern_property, content)
+                    if match:
+                        comment = match.group(1).strip()
+                    else:
+                        match = re.search(single_line_pattern_property, content)
+                        if match:
+                            comment = match.group(1).strip("//").strip()
+            
+            type_pattern = rf"\b{escaped_prop_name}\b\s*[:?!]\s*([^;=]+)"
             type_match = re.search(type_pattern, content)
             prop_type = ""
             if type_match:
                 prop_type = type_match.group(1).strip()
 
             prop_details.append(
-                {"name": prop, "description": comment, "type": prop_type}
+                {"name": prop_name, "description": comment, "type": prop_type}
             )
+
+        # Process events with details
+        event_details = []
+        for event_name_match in event_names:
+            event_name = event_name_match # event_names from findall is already a list of strings
+            escaped_event_name = re.escape(event_name)
+            comment = ""
+
+            jsdoc_pattern_event = rf"(\/\*\*[\s\S]*?\*\/)\s*@StencilEvent\s*(?:\([^)]*\))?[\s\S]*?\b{escaped_event_name}\b"
+            single_line_pattern_event = rf"(//[^\n]*)\n\s*@StencilEvent\s*(?:\([^)]*\))?[\s\S]*?\b{escaped_event_name}\b"
+            # Fallback for @event decorator if needed
+            jsdoc_pattern_alt_event = rf"(\/\*\*[\s\S]*?\*\/)\s*@event\s*(?:\([^)]*\))?[\s\S]*?\b{escaped_event_name}\b"
+            single_line_pattern_alt_event = rf"(//[^\n]*)\n\s*@event\s*(?:\([^)]*\))?[\s\S]*?\b{escaped_event_name}\b"
+
+            match = re.search(jsdoc_pattern_event, content)
+            if match:
+                comment = match.group(1).strip()
+            else:
+                match = re.search(single_line_pattern_event, content)
+                if match:
+                    comment = match.group(1).strip("//").strip()
+                else: # Fallback to @event patterns
+                    match = re.search(jsdoc_pattern_alt_event, content)
+                    if match:
+                        comment = match.group(1).strip()
+                    else:
+                        match = re.search(single_line_pattern_alt_event, content)
+                        if match:
+                            comment = match.group(1).strip("//").strip()
+            
+            event_details.append({"name": event_name, "description": comment})
 
         # Extract default values for props
         default_values = {}
-        for prop in props:
-            default_pattern = rf"{prop}\s*=\s*['\"](.*?)['\"]\s*;"
+        for prop_detail_item in prop_details:
+            current_prop_name = prop_detail_item["name"]
+            escaped_current_prop_name = re.escape(current_prop_name)
+            default_pattern = rf"\b{escaped_current_prop_name}\b\s*(?:[:?!][^=;]*)?\s*=\s*([^;]+?)\s*;"
             default_match = re.search(default_pattern, content)
             if default_match:
-                default_values[prop] = default_match.group(1)
+                default_values[current_prop_name] = default_match.group(1).strip()
 
         return {
             "props": prop_details,
-            "events": events,
+            "events": event_details, # Now a list of dicts with name and description
             "slots": slots,
             "default_values": default_values,
         }

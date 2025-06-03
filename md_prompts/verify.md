@@ -1,78 +1,98 @@
-# Modus Migration Verification Tool
+# Modus Component Migration: Verification Phase
 
-## Purpose
-Verify migrated code or files (including Angular and React specific migrations) against the Modus Web Components Gold Standard (`migration/gold_standard.md`) and framework-specific best practices as outlined in the `_framework_data.json` files.
+## Objective
+Verify that the Modus V1 to V2 component migration has been performed correctly according to the analysis report and the migration guidelines. This involves checking the transformed code and the migration log.
 
-## Data Sources
-- **Gold Standard**: All verification must reference the rules, best practices, and checklist in `migration/gold_standard.md`.
-- **v2_angular_framework_data.json**: Contains v2 Angular integration documentation (from `.mdx`) and expected patterns.
-- **v2_react_framework_data.json**: Contains v2 React integration documentation (from `.mdx`) and expected patterns/examples.
-- **Analysis Report**: The `.analysis.md` file for the component/file being verified. This is crucial to understand what *should* have been migrated and why.
+## Inputs
+*   **Original Source Code File(s)** (or a copy).
+*   **Migrated Source Code File(s)**: Path to the migrated code, e.g., `migrated_code/frontend/src/web-components/Navigation/Navigation.migrated.js`.
+*   Path to the `analysis_report.md` for each migrated file, e.g., `analysis_reports/frontend/src/web-components/Navigation/Navigation.js.analysis.md`.
+*   Path to the `migration.log` for each migrated file, e.g., `migration_logs/frontend/src/web-components/Navigation/Navigation.js.migration.log`.
+*   `v2_components.json`: Details about V2 web components.
+*   `v2_react_framework_data.json`: How-to guide for using V2 web components in React.
+*   `v2_angular_framework_data.json`: How-to guide for using V2 web components in Angular.
+*   `component_mapping.json`.
+*   **(Optional) Gold Standard Files**: If available, known good V2 versions of the migrated files/components for comparison.
 
-## Input
-- The tool should support verifying:
-  - A single file
-  - All files in a specified folder (each file checked individually)
-  - A code snippet
-- The corresponding analysis report (`<filename>.analysis.md`) should be available and consulted.
+## Verification Steps (for each migrated file):
 
-## Rules
-- For each file or code snippet:
-  - **Consult Analysis Report**: Before verification, review the corresponding `.analysis.md` file. Pay close attention to components marked as "N/A" or "N/A (Blocked by Parent)". These components should remain as v1 in the migrated code, and this is considered correct behavior.
-  - **Parent-Child Migration Rule Verification:**
-    - Confirm that if a parent component was not migrated (as per analysis), its child components also remain unmigrated in the code. If child components were migrated despite a non-migrated parent, this is a failure.
-  - **Framework-Specific Verification (Angular/React):**
-    - If the file is an Angular or React file:
-      - Consult the `documentation` and `examples` in `v2_angular_framework_data.json` or `v2_react_framework_data.json`.
-      - Verify that migrated components use correct framework-specific wrappers, event handling, attribute bindings, and import statements as recommended in these data sources and the general `modusmcp` custom instructions.
-      - Check for adherence to best practices mentioned in the framework `.mdx` documentation.
-  - Compare the migrated code against all relevant sections of the gold standard (structure, naming, properties, events, styling, accessibility, testing, documentation, version control, migration best practices, etc.).
-  - For each section/rule (from gold standard or framework data):
-    - Check for both compliance and non-compliance.
-    - If a rule is not met, provide a clear, actionable comment explaining what is missing or incorrect, referencing the relevant gold standard section or framework documentation.
-    - If a rule is met, note the compliance.
-    - If a rule is not applicable (e.g., accessibility for a non-UI utility), state so.
-- Summarize the results for each file or snippet, listing all issues and all points of compliance.
-- Provide an overall pass/fail status for each file or snippet. A "pass" means all applicable rules from the gold standard and relevant framework data are met, and the parent-child migration rule was correctly followed based on the analysis.
+1.  **Review Migration Log**:
+    *   Check for any errors or warnings reported during the migration for this file.
+    *   Note any components that were skipped and verify the reasons (e.g., "No V2 equivalent," "Blocked by parent"). Ensure these components remain as V1 in the migrated code.
+    *   Pay attention to any notes about required manual steps or reviews.
 
-## Output Format
-- For a single file or snippet, output a detailed summary with:
-  - Compliance table (section/rule, status, notes referencing gold standard or framework doc)
-  - List of all issues found, with actionable feedback
-  - List of all points of compliance
-  - Overall pass/fail status
-- For multiple files, output a separate summary for each file, clearly labeled with the file name.
+2.  **Code Review (Comparing Migrated Code to Original and Analysis Report)**:
 
-## Example
-Given migrated code and its analysis report. Analysis showed `modus-parent` was N/A, so it and `modus-child` should remain v1. `modus-button` was migratable.
-Migrated Code (React context):
-```tsx
-// import { ModusWcButton } from '@trimble-oss/moduswebcomponents-react'; // Missing import
-// MODUS MIGRATION: 'modus-parent' not migrated (no v2 equivalent). Child components also not migrated.
-<modus-parent>
-  <modus-child />
-</modus-parent>
-<ModusWcButton color="primary" onClick={handleClick}>Click Me</ModusWcButton> // Incorrect attribute: 'color' instead of 'variant' or buttonStyle as per v2 React component. 
-```
-The output should be:
+    *   **Framework Consistency**: Confirm the migration respected the framework (Vanilla JS, React, Angular) identified in the analysis report.
+    *   **Component Tag Transformation**:
+        *   For each V1 component instance identified in the analysis report that was supposed to be migrated:
+            *   Verify it has been changed to its target V2 **web component tag** (e.g., `modus-button` -> `modus-wc-button`) as specified in the analysis.
+            *   **Exception**: If the analysis *explicitly* targeted an importable V2 framework component (e.g., `ModusSpecialButton`), verify that specific component was used and imported.
+        *   Ensure V1 components marked "Do Not Migrate" (or similar) in the analysis are untouched.
+    *   **Attribute/Property Mapping**:
+        *   Verify that V1 attributes have been correctly mapped to V2 attributes/properties for the migrated components, as per the analysis report.
+        *   Check for correct casing and syntax (e.g., HTML standard for web component attributes).
+    *   **Framework-Specific Integration (React/Angular using Web Components)**:
+        *   **If React**:
+            *   If V2 web components are used, confirm that the usage in JSX aligns with the guidance in `v2_react_framework_data.json`. This includes:
+                *   Correct attribute/property passing (e.g., string literals, boolean attributes, bound values).
+                *   Event handling patterns (e.g., direct `onEventName` or `ref` + `addEventListener`).
+            *   Check for the presence of `import { defineCustomElements } from '@trimble-oss/modus-web-components/loader';` and the call to `defineCustomElements()` if web components were introduced/migrated.
+        *   **If Angular**:
+            *   If V2 web components are used, confirm that the usage in templates aligns with `v2_angular_framework_data.json`. This includes:
+                *   Correct attribute/property binding (`[]`, `{{}}`).
+                *   Event binding (`()`).
+            *   Check if `CUSTOM_ELEMENTS_SCHEMA` is present in the relevant Angular module(s) if web components are used.
+            *   Check for the call to `defineCustomElements()` in the application (e.g., `main.ts`).
+    *   **Preservation of Non-Modus Code**: Ensure that application logic, structure, and non-Modus UI elements outside the migrated components have not been unintentionally altered.
+    *   **Removal of Obsolete V1 Imports**: If V1 Modus libraries were imported (e.g., specific V1 Modus JS files), check if these are now obsolete and can be removed if all their components are migrated. (This might be a broader, multi-file check).
 
-### Verification Summary: my-component.tsx
-| Section                             | Status   | Notes                                                                                      |
-|-------------------------------------|----------|--------------------------------------------------------------------------------------------|
-| Gold Standard: Component Naming     | Pass     | Migrated component `ModusWcButton` uses correct naming.                                    |
-| Gold Standard: Imports              | Fail     | React specific import for `ModusWcButton` is missing.                                      |
-| Gold Standard: Properties/Attributes| Fail     | `ModusWcButton` uses `color="primary"`. Should be `buttonStyle="primary"` or `variant="primary"` (confirm with v2_react_framework_data.json & v2_components.json). |
-| Parent-Child Rule Adherence         | Pass     | `modus-parent` and `modus-child` correctly left unmigrated as per analysis.                |
-| Framework: React Best Practices   | Warning  | Review `v2_react_framework_data.json` for exact prop names for `ModusWcButton`. Example uses `buttonStyle` for `modus-wc-button` in general, but React wrapper might differ.|
-| Accessibility                       | Check    | Needs manual check for ARIA attributes on `ModusWcButton`.                                   |
+3.  **Static Analysis / Linting**:
+    *   Run any available static analysis tools or linters on the migrated code to catch syntax errors or potential issues.
+    *   Pay attention to errors related to unknown components or incorrect property types, especially in React/Angular contexts.
 
-**Issues:**
-- Imports: Add `import { ModusWcButton } from '@trimble-oss/moduswebcomponents-react';` (Verify exact import path from framework data).
-- Properties: `ModusWcButton` attribute `color="primary"` is incorrect. Correct to `buttonStyle="primary"` or `variant="primary"` after checking documentation for the React wrapper.
+4.  **(Optional) Functional Testing / "Smoke Test"**:
+    *   If possible, run the application or relevant parts to perform a basic functional test or "smoke test" of the migrated components.
+    *   Check for console errors in the browser.
+    *   Verify basic interactivity of the migrated components.
 
-**Compliant:**
-- Unmigrated `modus-parent` and `modus-child` correctly handled based on analysis.
-- Migrated `ModusWcButton` uses PascalCase, typical for React components.
+5.  **(Optional) Comparison with Gold Standard**:
+    *   If gold standard files exist, compare the migrated code against them. This is a very effective way to catch subtle differences.
 
-**Overall Status:**
-- **Fail** (due to missing imports and incorrect property usage) 
+## Output
+
+The LLM/tool executing this prompt is responsible for creating the following file(s) in an accessible location within the user's project. **Do not store these files in a temporary, inaccessible, or server-side-only location.**
+
+*   **Verification Report (`verification.report.md`)**:
+    *   A detailed verification report must be generated for each migrated source file processed.
+    *   **Directory Structure for Verification Reports**:
+        *   All verification reports must be saved within a top-level directory named `verification_reports/` relative to the project root.
+        *   **The report file should also follow the replicated subdirectory structure of the original source file.**
+        *   For example, the verification report for `frontend/src/web-components/Navigation/Navigation.js` (after migration) MUST be saved as `verification_reports/frontend/src/web-components/Navigation/Navigation.js.verification.report.md`.
+        *   The directory path (e.g., `verification_reports/frontend/src/web-components/Navigation/`) MUST be created if it does not already exist *before* attempting to save the file.
+    *   **File Naming for Verification Reports**: Use `[original_filename].verification.report.md`.
+    *   **Content**: The report must include:
+        *   Summary of verification findings for each file.
+        *   List of any discrepancies found (e.g., "V1 `modus-table` attribute `sortable-cols` not correctly mapped to V2 `modus-wc-table` equivalent in `data-grid.js`").
+        *   Confirmation of issues noted in the migration log.
+        *   Any new issues identified during verification that require attention or manual fixes.
+        *   Status: "Verified," "Verified with Issues," or "Needs Rework."
+    *   **User Accessibility**: The user must be able to directly access these generated report files.
+
+*   **(If applicable) List of suggested further manual changes or fixes.**
+
+*   **Error Handling during Save (for Verification Reports)**:
+    *   If, after attempting to create directories and save the report, an error still occurs (e.g., permission issues, unexpected file system errors), the agent MUST:
+        *   Clearly inform the user about the failure to save the verification report to its intended structured path.
+        *   Specify the exact path it attempted to save to.
+        *   As a **fallback only** for the *content* of the report it failed to save, provide it directly into the chat or in a raw format that the user can copy and save manually. This fallback should only be used if the primary structured save fails.
+
+## Important Considerations for the LLM Implementing This:
+
+*   **Systematic Approach**: Follow the checklist methodically for each component and file.
+*   **Focus on the Analysis Report**: The analysis report is the key document defining the expected outcome.
+*   **Understand Framework Nuances for Web Components**: Verification must account for how web components are integrated into React (JSX, `defineCustomElements`) and Angular (templates, `CUSTOM_ELEMENTS_SCHEMA`, `defineCustomElements`). The `v2_react/angular_framework_data.json` files are critical references here.
+*   **Be Conservative**: If unsure about a change or its correctness, flag it for human review.
+---
+
+**Remember**: The verification step is crucial for ensuring the quality and correctness of the automated migration. It catches errors made by the migration script and ensures the application remains functional. 

@@ -3,15 +3,26 @@
 ## Purpose
 Log a comprehensive summary of the entire migration process for each analyzed file, including analysis, migration, verification, and any issues or recommendations. This log should reflect considerations for web components, Angular, and React migrations, adhering to the latest workflow and gold standard.
 
-## Key Data to Reference
-- Outputs from `analyze`, `migrate`, and `verify` steps for each file.
-- The `*_framework_data.json` files (for Angular/React context).
-- `component_mapping.json`, `v1_components.json`, `v2_components.json`.
+## Key Inputs (Data to Reference for *each* source file processed)
+
+*   **Original Source Code File**: The path to the original V1 source file (e.g., `frontend/src/web-components/Navigation/Navigation.js`).
+*   **Analysis Report**: Path to the analysis report (e.g., `analysis_reports/frontend/src/web-components/Navigation/Navigation.js.analysis.md`).
+*   **Migrated Code File**: Path to the migrated V2 code file (e.g., `migrated_code/frontend/src/web-components/Navigation/Navigation.migrated.js`).
+*   **Migration Log**: Path to the migration log specific to this file (e.g., `migration_logs/frontend/src/web-components/Navigation/Navigation.js.migration.log`).
+*   **Verification Report**: Path to the verification report (e.g., `verification_reports/frontend/src/web-components/Navigation/Navigation.js.verification.report.md`).
+*   Relevant `v2_react_framework_data.json` or `v2_angular_framework_data.json` files.
+*   `component_mapping.json`, `v1_components.json`, `v2_components.json`.
 
 ## Rules
+
+- The LLM/tool executing this prompt is responsible for creating **one consolidated Markdown log file** that summarizes the migration process for *all* source files provided in a given batch.
+- For each source file processed, a dedicated section must be generated within this consolidated log.
+
+### Per-File Log Section Structure (within the consolidated log):
+
+1.  **File Identification**: Clearly state the original path of the file being logged (e.g., `## File: frontend/src/web-components/Navigation/Navigation.js`).
 - Create a detailed log for *each file* that underwent the migration process.
 - For each file log:
-  - **File Identification**: Clearly state the name of the file being logged.
   - **Framework Context**: Note if the file was identified as Angular or React and if framework-specific rules were applied during analysis, migration, and verification.
   - **Analysis Summary**: Include the Markdown table from the `.analysis.md` report. Explicitly mention if the Parent-Child Migration Rule impacted any components.
   - **Migration Actions Summary**:
@@ -28,13 +39,26 @@ Log a comprehensive summary of the entire migration process for each analyzed fi
   - **Actionable Recommendations**: List specific, actionable steps needed to address any verification failures or warnings for this file. If the Parent-Child rule blocked migrations, recommend manual review for the affected sections.
 - Use Markdown headings, bullet points, and tables for clarity and readability.
 
-## Output Format
-- The primary output is a consolidated migration log, typically a single Markdown file (e.g., `migration_log.md`) that contains summaries for *all* processed files.
-- Each file's summary within this log should follow the structure outlined above.
+## Output Generation (for the LLM executing this prompt)
 
-## Example (for a single file within the consolidated log)
+The LLM/tool executing this prompt is responsible for creating the following file in an accessible location within the user's project. **Do not store this file in a temporary, inaccessible, or server-side-only location.**
+
+1.  **Consolidated Migration Log (`overall_migration_summary.md`)**:
+    *   **File Naming and Location**: The consolidated log MUST be named `overall_migration_summary.md`.
+    *   **Directory for Consolidated Log**: This file MUST be saved in the `migration_logs/` directory at the project root. The `migration_logs/` directory MUST be created if it does not already exist *before* attempting to save the file.
+    *   **Content**: This single Markdown file will contain a collection of sections, where each section details the migration summary for one processed source file, following the "Per-File Log Section Structure" defined above.
+    *   **User Accessibility**: The user must be able to directly access this generated `overall_migration_summary.md` file.
+
+2.  **Error Handling during Save**:
+    *   If, after attempting to create the `migration_logs/` directory (if needed) and save `overall_migration_summary.md`, an error still occurs (e.g., permission issues, unexpected file system errors), the agent MUST:
+        *   Clearly inform the user about the failure to save the consolidated log to its intended path (`migration_logs/overall_migration_summary.md`).
+        *   As a **fallback only** for the *content* of the consolidated log, provide it directly into the chat or in a raw format that the user can copy and save manually. This fallback should only be used if the primary structured save fails.
+
+## Example (Structure of the `overall_migration_summary.md` file)
 
 ```markdown
+# Overall Migration Summary
+
 ## File: src/app/components/my-angular-component.ts
 
 **Framework Context**: Angular component, framework-specific rules applied.
@@ -82,4 +106,54 @@ Log a comprehensive summary of the entire migration process for each analyzed fi
 - **Status**: Migration Successful.
 - **Recommendations**: None. Consider reviewing the unmigrated `modus-parent` section for potential manual refactoring if functionality is critical.
 
+---
+
+## File: src/app/components/another-react-component.js
+
+**Framework Context**: React component, framework-specific rules applied.
+
+### Analysis Summary
+(Content from `another-react-component.js.analysis.md`)
+
+| v1 Tag         | v2 Tag                     | Count | Notes                                         |
+|----------------|----------------------------|-------|-----------------------------------------------|
+| modus-parent   | N/A                        | 1     | No v2 equivalent. Parent-Child Rule applies.  |
+| modus-child    | N/A (Blocked by Parent)    | 2     | Parent 'modus-parent' cannot be migrated.     |
+| modus-button   | modus-wc-button            | 1     | Direct replacement. Requires React wrapper. |
+
+**Notes from Analysis:**
+- Consult `v1_react_framework_data.json` and `v2_react_framework_data.json` for `modus-button` wrapper and event handling.
+
+### Migration Actions Summary
+- **modus-parent**: Not migrated (No v2 equivalent).
+  - Comment added: "// MODUS MIGRATION: 'modus-parent' not migrated (no v2 equivalent). Child components also not migrated."
+- **modus-child**: Not migrated (Blocked by parent 'modus-parent').
+- **modus-button**: Migrated to `modus-wc-button`.
+  - Wrapped with a custom React component `AppModusButton` as per `v2_react_framework_data.json` guidance.
+  - Attribute `(buttonClick)` updated to `(onButtonClick)` event emitter in the wrapper.
+- Imports for `@trimble-oss/moduswebcomponents-react` and component-specific CSS added.
+
+### Verification Results
+(Content from `verify` step output for `another-react-component.js`)
+
+| Section                             | Status   | Notes                                                               |
+|-------------------------------------|----------|---------------------------------------------------------------------|
+| Gold Standard: Imports              | Pass     | Correct React-specific Modus imports present.                     |
+| Parent-Child Rule Adherence         | Pass     | `modus-parent` and `modus-child` correctly left unmigrated.         |
+| Framework: React Best Practices     | Pass     | `modus-button` correctly wrapped and event handling updated.        |
+| ... (other verification checks)     | ...      | ...                                                                 |
+
+**Issues:**
+- None.
+
+**Compliant:**
+- All applicable rules met.
+
+**Overall Verification Status:** Pass
+
+### Overall File Status & Recommendations
+- **Status**: Migration Successful.
+- **Recommendations**: None. Consider reviewing the unmigrated `modus-parent` section for potential manual refactoring if functionality is critical.
+
+(*... more file summaries ...*)
 ``` 
