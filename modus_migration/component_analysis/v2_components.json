@@ -544,9 +544,9 @@
         "<modus-wc-loader\n        aria-label=\"Loading infinity symbol\"\n        color=\"${args.color}\"\n        custom-class=\"${ifDefined(args['custom-class'])}\"\n        size=\"md\"\n        variant=\"infinity\"\n      ></modus-wc-loader>"
       ],
       "variants": [
+        "ring",
         "ball",
         "bars",
-        "ring",
         "dots",
         "${args.variant}",
         "infinity"

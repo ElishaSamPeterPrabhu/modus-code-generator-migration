@@ -802,8 +802,74 @@ def main():
     with open(os.path.join(output_dir, "v2_components.json"), "w") as f:
         json.dump(v2_components, f, indent=2)
 
-    with open(os.path.join(output_dir, "component_mapping.json"), "w") as f:
-        json.dump(component_mapping, f, indent=2)
+    # Generate and update component mapping
+    # Path to the component_mapping.json file
+    mapping_file_path = os.path.join(output_dir, "component_mapping.json")
+    
+    full_mapping_data = {"Mapping_v1_v2": {}, "verification_rules": [], "migration_plan": []} # Default structure
+
+    # Try to load existing mapping file
+    if os.path.exists(mapping_file_path):
+        try:
+            with open(mapping_file_path, "r", encoding="utf-8") as f:
+                full_mapping_data = json.load(f)
+            # Ensure essential keys exist and have correct types, or initialize them
+            if not isinstance(full_mapping_data.get("Mapping_v1_v2"), dict):
+                print(f"Warning: 'Mapping_v1_v2' key missing or not a dict in {mapping_file_path}. Initializing.")
+                full_mapping_data["Mapping_v1_v2"] = {}
+            if not isinstance(full_mapping_data.get("verification_rules"), list):
+                full_mapping_data["verification_rules"] = []
+            if not isinstance(full_mapping_data.get("migration_plan"), list):
+                full_mapping_data["migration_plan"] = []
+        except json.JSONDecodeError:
+            print(f"Warning: Could not decode existing {mapping_file_path}. A new default structure will be used.")
+            # full_mapping_data will use the default structure initialized above
+    else:
+        print(f"Note: {mapping_file_path} not found. A new one will be created with a default structure.")
+
+    # Generate new mappings based on detected v1_components and v2_components
+    script_generated_v1_to_v2_map = {}
+    for v1_name_key in v1_components.keys(): # v1_components is a dict { "modus-button": {details...}, ... }
+        v2_name_candidate = "" # Initialize candidate for each v1 component
+
+        # Handle specific known mappings first
+        if v1_name_key == "modus-breadcrumb":
+            if "modus-wc-breadcrumbs" in v2_components:
+                v2_name_candidate = "modus-wc-breadcrumbs"
+        elif v1_name_key == "modus-switch":
+            if "modus-wc-toggle" in v2_components: # As per user's likely preference from existing JSON
+                v2_name_candidate = "modus-wc-toggle"
+            elif "modus-wc-switch" in v2_components: # Fallback if modus-wc-toggle is not found
+                 v2_name_candidate = "modus-wc-switch"
+        elif v1_name_key == "modus-list":
+            if "modus-wc-menu" in v2_components:
+                v2_name_candidate = "modus-wc-menu"
+        elif v1_name_key == "modus-list-item":
+            if "modus-wc-menu-item" in v2_components:
+                v2_name_candidate = "modus-wc-menu-item"
+        # Add other specific, non-standard mappings here if necessary
+
+        # Default rule if no special mapping produced a candidate
+        if not v2_name_candidate:
+            simple_candidate = v1_name_key.replace("modus-", "modus-wc-")
+            if simple_candidate in v2_components:
+                v2_name_candidate = simple_candidate
+
+        # Assign to the script-generated map
+        if v2_name_candidate: # If any rule resulted in a V2 component name
+            script_generated_v1_to_v2_map[v1_name_key] = v2_name_candidate
+        else:
+            script_generated_v1_to_v2_map[v1_name_key] = "Not Found"
+    
+    # Update the Mapping_v1_v2 part of the loaded (or default) full_mapping_data
+    # This ensures that mappings for components found by the script are updated/added,
+    # while manual mappings for items not processed by the script (e.g., HTML tags) are preserved.
+    full_mapping_data["Mapping_v1_v2"].update(script_generated_v1_to_v2_map)
+
+    # Save the updated (or new) full mapping data, including preserved sections
+    with open(mapping_file_path, "w", encoding="utf-8") as f:
+        json.dump(full_mapping_data, f, indent=2)
+    print(f"Component mapping updated and saved to {mapping_file_path}")
 
     # Save framework-specific data
     with open(os.path.join(output_dir, "v1_angular_framework_data.json"), "w") as f:
