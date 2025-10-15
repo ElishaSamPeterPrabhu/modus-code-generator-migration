@@ -1,0 +1,146 @@
+{
+  "component_name": "modus-wc-number-input",
+  "version": "v2",
+  "props": [
+    {
+      "name": "autoComplete",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": 'on' | 'off'"
+    },
+    {
+      "name": "bordered",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": boolean"
+    },
+    {
+      "name": "currencySymbol",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": string"
+    },
+    {
+      "name": "customClass",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": string"
+    },
+    {
+      "name": "disabled",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": boolean"
+    },
+    {
+      "name": "feedback",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": IInputFeedbackProp"
+    },
+    {
+      "name": "inputId",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": string"
+    },
+    {
+      "name": "inputTabIndex",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": number"
+    },
+    {
+      "name": "label",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": string"
+    },
+    {
+      "name": "max",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": number"
+    },
+    {
+      "name": "min",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": number"
+    },
+    {
+      "name": "name",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": string"
+    },
+    {
+      "name": "placeholder",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": string"
+    },
+    {
+      "name": "readOnly",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": boolean"
+    },
+    {
+      "name": "required",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": boolean"
+    },
+    {
+      "name": "size",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": ModusSize"
+    },
+    {
+      "name": "step",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": number"
+    },
+    {
+      "name": "type",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": ": 'number' | 'range'"
+    },
+    {
+      "name": "value",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */",
+      "type": "string"
+    }
+  ],
+  "events": [
+    {
+      "name": "inputBlur",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */\n  @Prop() autoComplete?: 'on' | 'off';\n\n  /** Indicates that the input should have a border. */\n  @Prop() bordered?: boolean = true;\n\n  /** The currency symbol to display. */\n  @Prop() currencySymbol?: string = '';\n\n  /** Custom CSS class to apply to the input. */\n  @Prop() customClass?: string = '';\n\n  /** Whether the form control is disabled. */\n  @Prop() disabled?: boolean = false;\n\n  /** Feedback to render below the input. */\n  @Prop() feedback?: IInputFeedbackProp;\n\n  /** The ID of the input element. */\n  @Prop() inputId?: string;\n\n  /** Determine the control's relative ordering for sequential focus navigation (typically with the Tab key). */\n  @Prop() inputTabIndex?: number;\n\n  /** The text to display within the label. */\n  @Prop() label?: string;\n\n  /** The input's maximum value. */\n  @Prop() max?: number;\n\n  /** The input's minimum value. */\n  @Prop() min?: number;\n\n  /** Name of the form control. Submitted with the form as part of a name/value pair. */\n  @Prop() name?: string;\n\n  /** Text that appears in the form control when it has no value set. */\n  @Prop() placeholder?: string = '';\n\n  /** Whether the value is editable. */\n  @Prop() readOnly?: boolean = false;\n\n  /** A value is required for the form to be submittable. */\n  @Prop() required?: boolean = false;\n\n  /** The size of the input. */\n  @Prop() size?: ModusSize = 'md';\n\n  /** The granularity that the value adheres to. */\n  @Prop() step?: number;\n\n  /** Type of form control. */\n  @Prop() type?: 'number' | 'range' = 'number';\n\n  /** The value of the control. */\n  @Prop({ mutable: true, reflect: true }) value: string = '';\n\n  /** Event emitted when the input loses focus. */"
+    },
+    {
+      "name": "inputChange",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */\n  @Prop() autoComplete?: 'on' | 'off';\n\n  /** Indicates that the input should have a border. */\n  @Prop() bordered?: boolean = true;\n\n  /** The currency symbol to display. */\n  @Prop() currencySymbol?: string = '';\n\n  /** Custom CSS class to apply to the input. */\n  @Prop() customClass?: string = '';\n\n  /** Whether the form control is disabled. */\n  @Prop() disabled?: boolean = false;\n\n  /** Feedback to render below the input. */\n  @Prop() feedback?: IInputFeedbackProp;\n\n  /** The ID of the input element. */\n  @Prop() inputId?: string;\n\n  /** Determine the control's relative ordering for sequential focus navigation (typically with the Tab key). */\n  @Prop() inputTabIndex?: number;\n\n  /** The text to display within the label. */\n  @Prop() label?: string;\n\n  /** The input's maximum value. */\n  @Prop() max?: number;\n\n  /** The input's minimum value. */\n  @Prop() min?: number;\n\n  /** Name of the form control. Submitted with the form as part of a name/value pair. */\n  @Prop() name?: string;\n\n  /** Text that appears in the form control when it has no value set. */\n  @Prop() placeholder?: string = '';\n\n  /** Whether the value is editable. */\n  @Prop() readOnly?: boolean = false;\n\n  /** A value is required for the form to be submittable. */\n  @Prop() required?: boolean = false;\n\n  /** The size of the input. */\n  @Prop() size?: ModusSize = 'md';\n\n  /** The granularity that the value adheres to. */\n  @Prop() step?: number;\n\n  /** Type of form control. */\n  @Prop() type?: 'number' | 'range' = 'number';\n\n  /** The value of the control. */\n  @Prop({ mutable: true, reflect: true }) value: string = '';\n\n  /** Event emitted when the input loses focus. */"
+    },
+    {
+      "name": "inputFocus",
+      "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport class ModusWcNumberInput {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Hint for form autofill feature. */\n  @Prop() autoComplete?: 'on' | 'off';\n\n  /** Indicates that the input should have a border. */\n  @Prop() bordered?: boolean = true;\n\n  /** The currency symbol to display. */\n  @Prop() currencySymbol?: string = '';\n\n  /** Custom CSS class to apply to the input. */\n  @Prop() customClass?: string = '';\n\n  /** Whether the form control is disabled. */\n  @Prop() disabled?: boolean = false;\n\n  /** Feedback to render below the input. */\n  @Prop() feedback?: IInputFeedbackProp;\n\n  /** The ID of the input element. */\n  @Prop() inputId?: string;\n\n  /** Determine the control's relative ordering for sequential focus navigation (typically with the Tab key). */\n  @Prop() inputTabIndex?: number;\n\n  /** The text to display within the label. */\n  @Prop() label?: string;\n\n  /** The input's maximum value. */\n  @Prop() max?: number;\n\n  /** The input's minimum value. */\n  @Prop() min?: number;\n\n  /** Name of the form control. Submitted with the form as part of a name/value pair. */\n  @Prop() name?: string;\n\n  /** Text that appears in the form control when it has no value set. */\n  @Prop() placeholder?: string = '';\n\n  /** Whether the value is editable. */\n  @Prop() readOnly?: boolean = false;\n\n  /** A value is required for the form to be submittable. */\n  @Prop() required?: boolean = false;\n\n  /** The size of the input. */\n  @Prop() size?: ModusSize = 'md';\n\n  /** The granularity that the value adheres to. */\n  @Prop() step?: number;\n\n  /** Type of form control. */\n  @Prop() type?: 'number' | 'range' = 'number';\n\n  /** The value of the control. */\n  @Prop({ mutable: true, reflect: true }) value: string = '';\n\n  /** Event emitted when the input loses focus. */"
+    }
+  ],
+  "slots": [],
+  "default_values": {
+    "bordered": "true",
+    "currencySymbol": "''",
+    "customClass": "''",
+    "disabled": "false",
+    "max": "{this.max}\n            min={this.min}\n            name={this.name}\n            onBlur={this.handleBlur}\n            onFocus={this.handleFocus}\n            onInput={this.handleInput}\n            placeholder={this.placeholder}\n            readonly={this.readOnly}\n            required={this.required}\n            step={this.step}\n            tabIndex={this.inputTabIndex}\n            type={this.type}\n            value={this.value}\n            {...this.inheritedAttributes}\n          />\n        </div>\n        {this.feedback && (\n          <modus-wc-input-feedback\n            level={this.feedback.level}\n            message={this.feedback.message}\n            size={this.size}\n          />\n        )}\n      </Host>\n    )",
+    "min": "{this.min}\n            name={this.name}\n            onBlur={this.handleBlur}\n            onFocus={this.handleFocus}\n            onInput={this.handleInput}\n            placeholder={this.placeholder}\n            readonly={this.readOnly}\n            required={this.required}\n            step={this.step}\n            tabIndex={this.inputTabIndex}\n            type={this.type}\n            value={this.value}\n            {...this.inheritedAttributes}\n          />\n        </div>\n        {this.feedback && (\n          <modus-wc-input-feedback\n            level={this.feedback.level}\n            message={this.feedback.message}\n            size={this.size}\n          />\n        )}\n      </Host>\n    )",
+    "name": "{this.name}\n            onBlur={this.handleBlur}\n            onFocus={this.handleFocus}\n            onInput={this.handleInput}\n            placeholder={this.placeholder}\n            readonly={this.readOnly}\n            required={this.required}\n            step={this.step}\n            tabIndex={this.inputTabIndex}\n            type={this.type}\n            value={this.value}\n            {...this.inheritedAttributes}\n          />\n        </div>\n        {this.feedback && (\n          <modus-wc-input-feedback\n            level={this.feedback.level}\n            message={this.feedback.message}\n            size={this.size}\n          />\n        )}\n      </Host>\n    )",
+    "placeholder": "''",
+    "readOnly": "false",
+    "required": "false",
+    "size": "'md'",
+    "step": "{this.step}\n            tabIndex={this.inputTabIndex}\n            type={this.type}\n            value={this.value}\n            {...this.inheritedAttributes}\n          />\n        </div>\n        {this.feedback && (\n          <modus-wc-input-feedback\n            level={this.feedback.level}\n            message={this.feedback.message}\n            size={this.size}\n          />\n        )}\n      </Host>\n    )",
+    "type": "'number'",
+    "value": "''"
+  },
+  "documentation": "\n\n--- modus-wc-number-input.stories.ts ---\n\nimport { withActions } from '@storybook/addon-actions/decorator';\nimport { Meta, StoryObj } from '@storybook/web-components';\nimport { html } from 'lit';\nimport { ifDefined } from 'lit/directives/if-defined.js';\nimport { IInputFeedbackProp, ModusSize } from '../types';\n\ninterface NumberInputArgs {\n  'auto-complete'?: 'on' | 'off';\n  bordered?: boolean;\n  'currency-symbol'?: string;\n  'custom-class'?: string;\n  disabled?: boolean;\n  feedback?: IInputFeedbackProp;\n  'input-aria-invalid'?: 'true' | 'false';\n  'input-id'?: string;\n  inputmode?: 'decimal' | 'none' | 'numeric';\n  'input-tab-index'?: number;\n  label?: string;\n  max?: number;\n  min?: number;\n  name?: string;\n  placeholder?: string;\n  'read-only'?: boolean;\n  required?: boolean;\n  size?: ModusSize;\n  step?: number;\n  type?: 'number' | 'range';\n  value: string;\n}\n\nconst meta: Meta<NumberInputArgs> = {\n  title: 'Components/Forms/Number Input',\n  component: 'modus-wc-number-input',\n  args: {\n    bordered: true,\n    disabled: false,\n    inputmode: 'numeric',\n    label: 'Label',\n    size: 'md',\n    type: 'number',\n    value: '',\n  },\n  argTypes: {\n    'auto-complete': {\n      control: { type: 'select' },\n      options: ['on', 'off'],\n    },\n    feedback: {\n      description: 'Feedback prop for input components',\n      table: {\n        type: {\n          detail: `\n            Interface: IInputFeedbackProp\n            Properties:\n            - level ('error' | 'info' | 'success' | 'warning'): The feedback level\n            - message (string, optional): The feedback message\n          `,\n        },\n      },\n    },\n    'input-aria-invalid': {\n      control: { type: 'select' },\n      options: ['true', 'false'],\n    },\n    inputmode: {\n      control: { type: 'select' },\n      options: ['decimal', 'none', 'numeric'],\n    },\n    size: {\n      control: { type: 'select' },\n      options: ['sm', 'md', 'lg'],\n    },\n    type: {\n      control: { type: 'select' },\n      options: ['number', 'range'],\n    },\n  },\n  decorators: [withActions],\n  parameters: {\n    actions: {\n      handles: ['inputBlur', 'inputChange', 'inputFocus'],\n    },\n  },\n};\n\nexport default meta;\n\ntype Story = StoryObj<NumberInputArgs>;\n\nconst Template: Story = {\n  render: (args) => html`\n    <modus-wc-number-input\n      aria-label=\"Number input\"\n      auto-complete=${ifDefined(args['auto-complete'])}\n      ?bordered=${args.bordered}\n      currency-symbol=${ifDefined(args['currency-symbol'])}\n      custom-class=${ifDefined(args['custom-class'])}\n      ?disabled=${args.disabled}\n      .feedback=${args.feedback}\n      input-aria-invalid=${ifDefined(args['input-aria-invalid'])}\n      input-id=${ifDefined(args['input-id'])}\n      inputmode=${ifDefined(args.inputmode)}\n      input-tab-index=${ifDefined(args['input-tab-index'])}\n      label=${ifDefined(args.label)}\n      max=${ifDefined(args.max)}\n      min=${ifDefined(args.min)}\n      name=${ifDefined(args.name)}\n      placeholder=${ifDefined(args.placeholder)}\n      ?read-only=${args['read-only']}\n      ?required=${args.required}\n      size=${ifDefined(args.size)}\n      step=${ifDefined(args.step)}\n      type=${ifDefined(args.type)}\n      .value=${args.value}\n    ></modus-wc-number-input>\n  `,\n};\n\nexport const Default: Story = { ...Template };\n\nconst errorFeedback: IInputFeedbackProp = {\n  level: 'error',\n  message: 'Value is required.',\n};\n\nexport const Currency: Story = {\n  ...Template,\n  args: { 'currency-symbol': '$' },\n};\n\nexport const WithErrorFeedback: Story = {\n  ...Template,\n  args: { feedback: errorFeedback, required: true },\n};\n\nexport const Migration: Story = {\n  parameters: {\n    docs: {\n      description: {\n        story: `\n#### Breaking Changes\n\n  - In 1.0 input state was maintained by the component. 2.0 components encourage users to follow a controlled\n  input model. See the Form Inputs [documentation](/docs/documentation-form-inputs--docs) for\n  additional info and examples.\n  - Instead of changing the internal input type for currency formatting, the component now always renders\n  a number input and displays the currency symbol via the \\`currency-symbol\\` prop.\n  - Size values have changed from verbose names (\\`medium\\`, \\`large\\`) to abbreviations (\\`sm\\`, \\`md\\`, \\`lg\\`).\n\n#### Prop Mapping\n\n| 1.0 Prop     | 2.0 Prop            | Notes                                   |\n|--------------|---------------------|-----------------------------------------|\n| aria-label   | aria-label          |                                         |\n| currency     | currency-symbol     |                                         |\n| disabled     | disabled            |                                         |\n| error-text   | feedback.message    | Use \\`feedback\\` level                  |\n| helper-text  |                     | Not carried over                        |\n| label        | label               |                                         |\n| locale       |                     | Not carried over                        |\n| max-value    | max                 |                                         |\n| min-value    | min                 |                                         |\n| placeholder  | placeholder         |                                         |\n| read-only    | read-only           |                                         |\n| required     | required            |                                         |\n| size         | size                | \\`medium\\` \u2192 \\`md\\`, \\`large\\` \u2192 \\`lg\\` |\n| step         | step                |                                         |\n| text-align   |                     | Not carried over, use CSS instead       |\n| valid-text   | feedback.message    | Use \\`feedback\\` level                  |\n| value        | value               |                                         |\n\n#### Event Mapping\n\n| 1.0 Event    | 2.0 Event    | Notes |\n|--------------|--------------|-------|\n| valueChange  | inputChange  |       |\n        `,\n      },\n    },\n    // To hide the actual story rendering and only show docs:\n    controls: { disable: true },\n    canvas: { disable: true },\n  },\n  // Simple render function or leave it empty\n  render: () => html`<div></div>`,\n};\n",
+  "storybook": {
+    "examples": [
+      "<modus-wc-number-input\n      aria-label=\"Number input\"\n      auto-complete=${ifDefined(args['auto-complete'])}\n      ?bordered=${args.bordered}\n      currency-symbol=${ifDefined(args['currency-symbol'])}\n      custom-class=${ifDefined(args['custom-class'])}\n      ?disabled=${args.disabled}\n      .feedback=${args.feedback}\n      input-aria-invalid=${ifDefined(args['input-aria-invalid'])}\n      input-id=${ifDefined(args['input-id'])}\n      inputmode=${ifDefined(args.inputmode)}\n      input-tab-index=${ifDefined(args['input-tab-index'])}\n      label=${ifDefined(args.label)}\n      max=${ifDefined(args.max)}\n      min=${ifDefined(args.min)}\n      name=${ifDefined(args.name)}\n      placeholder=${ifDefined(args.placeholder)}\n      ?read-only=${args['read-only']}\n      ?required=${args.required}\n      size=${ifDefined(args.size)}\n      step=${ifDefined(args.step)}\n      type=${ifDefined(args.type)}\n      .value=${args.value}\n    ></modus-wc-number-input>",
+      "\n    <modus-wc-number-input\n      aria-label=\"Number input\"\n      auto-complete=${ifDefined(args['auto-complete'])}\n      ?bordered=${args.bordered}\n      currency-symbol=${ifDefined(args['currency-symbol'])}\n      custom-class=${ifDefined(args['custom-class'])}\n      ?disabled=${args.disabled}\n      .feedback=${args.feedback}\n      input-aria-invalid=${ifDefined(args['input-aria-invalid'])}\n      input-id=${ifDefined(args['input-id'])}\n      inputmode=${ifDefined(args.inputmode)}\n      input-tab-index=${ifDefined(args['input-tab-index'])}\n      label=${ifDefined(args.label)}\n      max=${ifDefined(args.max)}\n      min=${ifDefined(args.min)}\n      name=${ifDefined(args.name)}\n      placeholder=${ifDefined(args.placeholder)}\n      ?read-only=${args['read-only']}\n      ?required=${args.required}\n      size=${ifDefined(args.size)}\n      step=${ifDefined(args.step)}\n      type=${ifDefined(args.type)}\n      .value=${args.value}\n    ></modus-wc-number-input>\n  "
+    ],
+    "variants": [],
+    "prop_usage": {
+      "label": [
+        "Number input"
+      ]
+    }
+  },
+  "tag_name": "modus-wc-number-input"
+}

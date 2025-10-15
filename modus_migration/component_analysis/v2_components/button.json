@@ -1,0 +1,134 @@
+{
+  "component_name": "modus-wc-button",
+  "version": "v2",
+  "props": [
+    {
+      "name": "color",
+      "description": "/**\n * A customizable button component used to create buttons with different sizes, variants, and types.\n *\n * The component supports a `<slot>` for injecting content within the button, similar to a native HTML button\n */\n@Component({\n  tag: 'modus-wc-button',\n  styleUrl: 'modus-wc-button.scss',\n  shadow: false,\n})\nexport class ModusWcButton {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** The color variant of the button. */",
+      "type": "'primary' | 'secondary' | 'tertiary' | 'warning' | 'danger'"
+    },
+    {
+      "name": "customClass",
+      "description": "/**\n * A customizable button component used to create buttons with different sizes, variants, and types.\n *\n * The component supports a `<slot>` for injecting content within the button, similar to a native HTML button\n */\n@Component({\n  tag: 'modus-wc-button',\n  styleUrl: 'modus-wc-button.scss',\n  shadow: false,\n})\nexport class ModusWcButton {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** The color variant of the button. */",
+      "type": ": string"
+    },
+    {
+      "name": "disabled",
+      "description": "/**\n * A customizable button component used to create buttons with different sizes, variants, and types.\n *\n * The component supports a `<slot>` for injecting content within the button, similar to a native HTML button\n */\n@Component({\n  tag: 'modus-wc-button',\n  styleUrl: 'modus-wc-button.scss',\n  shadow: false,\n})\nexport class ModusWcButton {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** The color variant of the button. */",
+      "type": ": boolean"
+    },
+    {
+      "name": "fullWidth",
+      "description": "/**\n * A customizable button component used to create buttons with different sizes, variants, and types.\n *\n * The component supports a `<slot>` for injecting content within the button, similar to a native HTML button\n */\n@Component({\n  tag: 'modus-wc-button',\n  styleUrl: 'modus-wc-button.scss',\n  shadow: false,\n})\nexport class ModusWcButton {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** The color variant of the button. */",
+      "type": ": boolean"
+    },
+    {
+      "name": "pressed",
+      "description": "/**\n * A customizable button component used to create buttons with different sizes, variants, and types.\n *\n * The component supports a `<slot>` for injecting content within the button, similar to a native HTML button\n */\n@Component({\n  tag: 'modus-wc-button',\n  styleUrl: 'modus-wc-button.scss',\n  shadow: false,\n})\nexport class ModusWcButton {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** The color variant of the button. */",
+      "type": ": boolean"
+    },
+    {
+      "name": "shape",
+      "description": "/**\n * A customizable button component used to create buttons with different sizes, variants, and types.\n *\n * The component supports a `<slot>` for injecting content within the button, similar to a native HTML button\n */\n@Component({\n  tag: 'modus-wc-button',\n  styleUrl: 'modus-wc-button.scss',\n  shadow: false,\n})\nexport class ModusWcButton {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** The color variant of the button. */",
+      "type": "'circle' | 'rectangle' | 'square'"
+    },
+    {
+      "name": "size",
+      "description": "/**\n * A customizable button component used to create buttons with different sizes, variants, and types.\n *\n * The component supports a `<slot>` for injecting content within the button, similar to a native HTML button\n */\n@Component({\n  tag: 'modus-wc-button',\n  styleUrl: 'modus-wc-button.scss',\n  shadow: false,\n})\nexport class ModusWcButton {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** The color variant of the button. */",
+      "type": "DaisySize"
+    },
+    {
+      "name": "type",
+      "description": "/**\n * A customizable button component used to create buttons with different sizes, variants, and types.\n *\n * The component supports a `<slot>` for injecting content within the button, similar to a native HTML button\n */\n@Component({\n  tag: 'modus-wc-button',\n  styleUrl: 'modus-wc-button.scss',\n  shadow: false,\n})\nexport class ModusWcButton {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** The color variant of the button. */",
+      "type": "'button' | 'submit' | 'reset'"
+    },
+    {
+      "name": "variant",
+      "description": "/**\n * A customizable button component used to create buttons with different sizes, variants, and types.\n *\n * The component supports a `<slot>` for injecting content within the button, similar to a native HTML button\n */\n@Component({\n  tag: 'modus-wc-button',\n  styleUrl: 'modus-wc-button.scss',\n  shadow: false,\n})\nexport class ModusWcButton {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** The color variant of the button. */",
+      "type": "'borderless' | 'filled' | 'outlined'"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "default_values": {
+    "color": "'primary'",
+    "customClass": "''",
+    "disabled": "false",
+    "fullWidth": "false",
+    "pressed": "false",
+    "shape": "'rectangle'",
+    "size": "'md'",
+    "type": "'button'",
+    "variant": "'filled'"
+  },
+  "documentation": "\n\n--- modus-wc-button.stories.ts ---\n\nimport { withActions } from '@storybook/addon-actions/decorator';\nimport { Meta, StoryObj } from '@storybook/web-components';\nimport { html } from 'lit';\nimport { ifDefined } from 'lit/directives/if-defined.js';\nimport { DaisySize } from '../types';\n\ninterface ButtonArgs {\n  color: 'primary' | 'secondary' | 'tertiary' | 'warning' | 'danger';\n  'custom-class'?: string;\n  disabled: boolean;\n  'full-width': boolean;\n  pressed: boolean;\n  shape: 'circle' | 'rectangle' | 'square';\n  size: DaisySize;\n  type: 'button' | 'submit' | 'reset';\n  variant: 'borderless' | 'filled' | 'outlined';\n}\n\nconst meta: Meta<ButtonArgs> = {\n  title: 'Components/Button',\n  component: 'modus-wc-button',\n  args: {\n    color: 'primary',\n    disabled: false,\n    'full-width': false,\n    pressed: false,\n    shape: 'rectangle',\n    size: 'md',\n    type: 'button',\n    variant: 'filled',\n  },\n  argTypes: {\n    color: {\n      control: { type: 'select' },\n      options: ['primary', 'secondary', 'tertiary', 'warning', 'danger'],\n    },\n    shape: {\n      control: { type: 'select' },\n      options: ['circle', 'rectangle', 'square'],\n    },\n    size: {\n      control: { type: 'select' },\n      options: ['xs', 'sm', 'md', 'lg'],\n    },\n    type: {\n      control: { type: 'select' },\n      options: ['button', 'submit', 'reset'],\n    },\n    variant: {\n      control: { type: 'select' },\n      options: ['borderless', 'filled', 'outlined'],\n    },\n  },\n  decorators: [withActions],\n  parameters: {\n    actions: {\n      handles: ['buttonClick'],\n    },\n  },\n};\n\nexport default meta;\n\ntype Story = StoryObj<ButtonArgs>;\n\nconst Template: Story = {\n  render: (args) => {\n    // prettier-ignore\n    return html`\n<modus-wc-button\n  color=\"${args.color}\"\n  custom-class=\"${ifDefined(args['custom-class'])}\"\n  ?disabled=\"${args.disabled}\"\n  ?full-width=\"${args['full-width']}\"\n  ?pressed=\"${args.pressed}\"\n  shape=\"${args.shape}\"\n  size=\"${args.size}\"\n  type=\"${args.type}\"\n  variant=\"${args.variant}\"\n>\n  Click me\n</modus-wc-button>\n    `;\n  },\n};\n\nexport const Default: Story = {\n  ...Template,\n};\n\nexport const ButtonShapes: Story = {\n  render: () => {\n    // prettier-ignore\n    return html`\n<modus-wc-button\n  shape=\"circle\"\n>\n  Circle\n</modus-wc-button>\n<modus-wc-button\n  shape=\"square\"\n>\n  Square\n</modus-wc-button>\n    `;\n  },\n};\n\nexport const DynamicTextUpdate: Story = {\n  render: () => {\n    const updateButtonText = () => {\n      const btnText = document.getElementById('btn-text') as HTMLSpanElement;\n      const input = document.getElementById(\n        'btn-text-input'\n      ) as HTMLInputElement;\n\n      btnText.textContent = input.value;\n    };\n\n    // prettier-ignore\n    return html`\n<script>\n  function updateButtonText() {\n    const btnText = document.getElementById('btn-text');\n    const input = document.getElementById('btn-text-input');\n    btnText.textContent = input.value;\n  }\n</script>\n\n<div>\n  <modus-wc-button id=\"text-update-btn\" color=\"primary\" variant=\"filled\" @buttonClick=${updateButtonText}>\n    <modus-wc-icon decorative name=\"shopping_cart\"></modus-wc-icon><span id=\"btn-text\">Press button to update content</span>\n    <modus-wc-icon decorative name=\"shopping_cart\"></modus-wc-icon>\n  </modus-wc-button>\n\n  <div style=\"margin-top: 8px; display: flex; gap: 8px; align-items: center;\">\n    <modus-wc-text-input id=\"btn-text-input\" type=\"text\" value=\"Updated Text\" style=\"padding: 4px 8px;\" />\n  </div>\n</div>\n    `;\n  },\n};\n\nexport const IconOnlyButton: Story = {\n  render: () => {\n    // prettier-ignore\n    return html`\n<modus-wc-button aria-label=\"Notification button\">\n  <modus-wc-icon decorative name=\"notifications\"></modus-wc-icon>\n</modus-wc-button>\n    `;\n  },\n};\n\nexport const IconLeftButton: Story = {\n  render: () => {\n    // prettier-ignore\n    return html`\n<modus-wc-button>\n  <modus-wc-icon decorative name=\"download\"></modus-wc-icon>\n  Download\n</modus-wc-button>\n    `;\n  },\n};\n\nexport const IconRightButton: Story = {\n  render: () => {\n    // prettier-ignore\n    return html`\n<modus-wc-button>\n  Details\n  <modus-wc-icon decorative name=\"launch\"></modus-wc-icon>\n</modus-wc-button>\n    `;\n  },\n};\n\nexport const IconLeftAndRightButton: Story = {\n  render: () => {\n    // prettier-ignore\n    return html`\n<modus-wc-button>\n  <modus-wc-icon decorative name=\"shopping_cart\"></modus-wc-icon>\n  Checkout\n  <modus-wc-icon decorative name=\"shopping_cart\"></modus-wc-icon>\n</modus-wc-button>\n    `;\n  },\n};\n\nexport const Migration: Story = {\n  parameters: {\n    docs: {\n      description: {\n        story: `\n#### Breaking Changes\n\n  - In 1.0 buttons had specific properties for adding icons (\\`icon-only\\`, \\`left-icon\\`, \\`right-icon\\`). In 2.0, icons are added via slots using the \\`modus-wc-icon\\` component.\n  - The \\`button-style\\` property has been renamed to \\`variant\\` with similar options.\n  - Size values have changed from verbose names (\\`small\\`, \\`medium\\`, \\`large\\`) to abbreviations (\\`sm\\`, \\`md\\`, \\`lg\\`).\n\n#### Prop Mapping\n\n| 1.0 Prop        | 2.0 Prop   | Notes                                                       |\n|-----------------|------------|-------------------------------------------------------------|\n| aria-label      | aria-label |                                                             |\n| button-style    | variant    | \\`fill\\` \u2192 \\`filled\\`, \\`outline\\` \u2192 \\`outlined\\`           |\n| color           | color      | \\`dark\\` and \\`special\\` removed, \\`warning\\` added         |\n| critical-action |            | Not carried over                                            |\n| disabled        | disabled   |                                                             |\n| icon-only       |            | Not carried over, use \\`icon\\` slot                         |\n| left-icon       |            | Not carried over, use \\`icon\\` slot                         |\n| right-icon      |            | Not carried over, use \\`icon\\` slot                         |\n| show-caret      |            | Not carried over                                            |\n| size            | size       | \\`small\\` \u2192 \\`sm\\`, \\`medium\\` \u2192 \\`md\\`, \\`large\\` \u2192 \\`lg\\` |\n| type            | type       |                                                             |\n\n#### Event Mapping\n\n| 1.0 Event    | 2.0 Event    | Notes            |\n|--------------|--------------|------------------|\n| buttonClick  | buttonClick  |                  |\n        `,\n      },\n    },\n    controls: { disable: true },\n    canvas: { disable: true },\n  },\n  render: () => html`<div></div>`,\n};\n",
+  "storybook": {
+    "examples": [
+      "<modus-wc-button\n  color=\"${args.color}\"\n  custom-class=\"${ifDefined(args['custom-class'])}\"\n  ?disabled=\"${args.disabled}\"\n  ?full-width=\"${args['full-width']}\"\n  ?pressed=\"${args.pressed}\"\n  shape=\"${args.shape}\"\n  size=\"${args.size}\"\n  type=\"${args.type}\"\n  variant=\"${args.variant}\"\n>\n  Click me\n</modus-wc-button>",
+      "<modus-wc-button\n  shape=\"circle\"\n>\n  Circle\n</modus-wc-button>",
+      "<modus-wc-button\n  shape=\"square\"\n>\n  Square\n</modus-wc-button>",
+      "<modus-wc-icon decorative name=\"shopping_cart\"></modus-wc-icon>",
+      "<modus-wc-icon decorative name=\"shopping_cart\"></modus-wc-icon>"
+    ],
+    "variants": [
+      "${args.variant}",
+      "filled"
+    ],
+    "prop_usage": {
+      "color": [
+        "${args.color}",
+        "primary"
+      ],
+      "class": [
+        "${ifDefined(args["
+      ],
+      "disabled": [
+        "${args.disabled}"
+      ],
+      "width": [
+        "${args["
+      ],
+      "pressed": [
+        "${args.pressed}"
+      ],
+      "shape": [
+        "${args.shape}",
+        "circle",
+        "square"
+      ],
+      "size": [
+        "${args.size}"
+      ],
+      "type": [
+        "${args.type}",
+        "text"
+      ],
+      "variant": [
+        "${args.variant}",
+        "filled"
+      ],
+      "id": [
+        "text-update-btn",
+        "btn-text",
+        "btn-text-input"
+      ],
+      "name": [
+        "shopping_cart",
+        "notifications",
+        "download",
+        "launch"
+      ],
+      "style": [
+        "margin-top: 8px; display: flex; gap: 8px; align-items: center;",
+        "padding: 4px 8px;"
+      ],
+      "value": [
+        "Updated Text"
+      ],
+      "label": [
+        "Notification button"
+      ]
+    }
+  },
+  "tag_name": "modus-wc-button"
+}

@@ -1,0 +1,108 @@
+{
+  "component_name": "modus-wc-radio",
+  "version": "v2",
+  "props": [
+    {
+      "name": "customClass",
+      "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes: Attributes = {};\n  private generatedId: string = generateElementId();\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the inner div. */",
+      "type": ": string"
+    },
+    {
+      "name": "disabled",
+      "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes: Attributes = {};\n  private generatedId: string = generateElementId();\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the inner div. */",
+      "type": ": boolean"
+    },
+    {
+      "name": "inputId",
+      "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes: Attributes = {};\n  private generatedId: string = generateElementId();\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the inner div. */",
+      "type": ": string"
+    },
+    {
+      "name": "inputTabIndex",
+      "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes: Attributes = {};\n  private generatedId: string = generateElementId();\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the inner div. */",
+      "type": ": number"
+    },
+    {
+      "name": "label",
+      "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes: Attributes = {};\n  private generatedId: string = generateElementId();\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the inner div. */",
+      "type": ": string"
+    },
+    {
+      "name": "name",
+      "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes: Attributes = {};\n  private generatedId: string = generateElementId();\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the inner div. */",
+      "type": ": string"
+    },
+    {
+      "name": "required",
+      "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes: Attributes = {};\n  private generatedId: string = generateElementId();\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the inner div. */",
+      "type": ": boolean"
+    },
+    {
+      "name": "size",
+      "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes: Attributes = {};\n  private generatedId: string = generateElementId();\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the inner div. */",
+      "type": ": ModusSize"
+    },
+    {
+      "name": "value",
+      "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes: Attributes = {};\n  private generatedId: string = generateElementId();\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the inner div. */",
+      "type": "boolean"
+    }
+  ],
+  "events": [
+    {
+      "name": "inputBlur",
+      "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes: Attributes = {};\n  private generatedId: string = generateElementId();\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the inner div. */\n  @Prop() customClass?: string = '';\n\n  /** The disabled state of the radio. */\n  @Prop() disabled?: boolean = false;\n\n  /** The ID of the input element. */\n  @Prop() inputId?: string;\n\n  /** The tabindex of the input. */\n  @Prop() inputTabIndex?: number;\n\n  /** The text to display within the label. */\n  @Prop() label?: string;\n\n  /** Name of the form control. Submitted with the form as part of a name/value pair. */\n  @Prop() name?: string = '';\n\n  /** A value is required for the form to be submittable. */\n  @Prop() required?: boolean = false;\n\n  /** The size of the input. */\n  @Prop() size?: ModusSize = 'md';\n\n  /** The value of the radio. */\n  @Prop({ mutable: true, reflect: true }) value: boolean = false;\n\n  /** Emitted when the input loses focus. */"
+    },
+    {
+      "name": "inputChange",
+      "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes: Attributes = {};\n  private generatedId: string = generateElementId();\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the inner div. */\n  @Prop() customClass?: string = '';\n\n  /** The disabled state of the radio. */\n  @Prop() disabled?: boolean = false;\n\n  /** The ID of the input element. */\n  @Prop() inputId?: string;\n\n  /** The tabindex of the input. */\n  @Prop() inputTabIndex?: number;\n\n  /** The text to display within the label. */\n  @Prop() label?: string;\n\n  /** Name of the form control. Submitted with the form as part of a name/value pair. */\n  @Prop() name?: string = '';\n\n  /** A value is required for the form to be submittable. */\n  @Prop() required?: boolean = false;\n\n  /** The size of the input. */\n  @Prop() size?: ModusSize = 'md';\n\n  /** The value of the radio. */\n  @Prop({ mutable: true, reflect: true }) value: boolean = false;\n\n  /** Emitted when the input loses focus. */"
+    },
+    {
+      "name": "inputFocus",
+      "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes: Attributes = {};\n  private generatedId: string = generateElementId();\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the inner div. */\n  @Prop() customClass?: string = '';\n\n  /** The disabled state of the radio. */\n  @Prop() disabled?: boolean = false;\n\n  /** The ID of the input element. */\n  @Prop() inputId?: string;\n\n  /** The tabindex of the input. */\n  @Prop() inputTabIndex?: number;\n\n  /** The text to display within the label. */\n  @Prop() label?: string;\n\n  /** Name of the form control. Submitted with the form as part of a name/value pair. */\n  @Prop() name?: string = '';\n\n  /** A value is required for the form to be submittable. */\n  @Prop() required?: boolean = false;\n\n  /** The size of the input. */\n  @Prop() size?: ModusSize = 'md';\n\n  /** The value of the radio. */\n  @Prop({ mutable: true, reflect: true }) value: boolean = false;\n\n  /** Emitted when the input loses focus. */"
+    }
+  ],
+  "slots": [],
+  "default_values": {
+    "customClass": "''",
+    "disabled": "false",
+    "name": "''",
+    "required": "false",
+    "size": "'md'",
+    "value": "false"
+  },
+  "documentation": "\n\n--- modus-wc-radio.stories.ts ---\n\nimport { withActions } from '@storybook/addon-actions/decorator';\nimport { Meta, StoryObj } from '@storybook/web-components';\nimport { html } from 'lit';\nimport { ifDefined } from 'lit/directives/if-defined.js';\nimport { ModusSize } from '../types';\n\ninterface RadioArgs {\n  'custom-class'?: string;\n  disabled?: boolean;\n  'input-id'?: string;\n  'input-tab-index'?: number;\n  label?: string;\n  name?: string;\n  required?: boolean;\n  size?: ModusSize;\n  value: boolean;\n}\n\nconst meta: Meta<RadioArgs> = {\n  title: 'Components/Forms/Radio',\n  component: 'modus-wc-radio',\n  args: {\n    'custom-class': '',\n    disabled: false,\n    label: 'Label',\n    name: '',\n    required: false,\n    size: 'md',\n    value: true,\n  },\n  argTypes: {\n    size: {\n      control: { type: 'select' },\n      options: ['xs', 'sm', 'md', 'lg'],\n    },\n  },\n  decorators: [withActions],\n  parameters: {\n    actions: {\n      handles: ['inputBlur', 'inputChange', 'inputFocus'],\n    },\n  },\n};\n\nexport default meta;\n\ntype Story = StoryObj<RadioArgs>;\n\nexport const Default: Story = {\n  render: (args) => {\n    return html`\n      <modus-wc-radio\n        aria-label=\"Radio\"\n        custom-class=${ifDefined(args['custom-class'])}\n        ?disabled=${args.disabled}\n        input-id=${ifDefined(args['input-id'])}\n        input-tab-index=${ifDefined(args['input-tab-index'])}\n        label=${ifDefined(args.label)}\n        name=${ifDefined(args.name)}\n        ?required=${args.required}\n        size=${ifDefined(args.size)}\n        .value=${args.value}\n      ></modus-wc-radio>\n    `;\n  },\n};\n\nexport const RadioGroup: Story = {\n  // prettier-ignore\n  render: (args) => {\n    return html`\n<style>\n  .radio-group {\n    display: flex;\n    flex-direction: column;\n    gap: 0.5rem;\n  }\n  .radio-group legend {\n    margin-bottom: 0.5rem;\n  }\n</style>\n\n<main role=\"main\">\n  <fieldset class=\"radio-group\">\n    <legend>Select an option:</legend>\n\n    <modus-wc-radio\n      label=\"Option 1\"\n      name=\"radio-group-demo\"\n      input-id=\"option1\"\n      ?disabled=${args.disabled}\n      size=${ifDefined(args.size)}\n      .value=${true}\n      @inputChange=${(e: CustomEvent) => {\n        // In a real app, you would update your state management here\n        console.log('Selected:', e.target);\n      }}\n    ></modus-wc-radio>\n\n    <modus-wc-radio\n      label=\"Option 2\"\n      name=\"radio-group-demo\"\n      input-id=\"option2\"\n      ?disabled=${args.disabled}\n      size=${ifDefined(args.size)}\n      .value=${false}\n      @inputChange=${(e: CustomEvent) => {\n        console.log('Selected:', e.target);\n      }}\n    ></modus-wc-radio>\n\n    <modus-wc-radio\n      label=\"Option 3\"\n      name=\"radio-group-demo\"\n      input-id=\"option3\"\n      ?disabled=${args.disabled}\n      size=${ifDefined(args.size)}\n      .value=${false}\n      @inputChange=${(e: CustomEvent) => {\n        console.log('Selected:', e.target);\n      }}\n    ></modus-wc-radio>\n  </fieldset>\n</main>\n    `;\n  },\n};\n\nexport const Migration: Story = {\n  parameters: {\n    docs: {\n      description: {\n        story: `\n#### Breaking Changes\n\n  - In 1.0 input state was maintained by the component. 2.0 components encourage users to follow a controlled\n  input model. See the Form Inputs [documentation](/docs/documentation-form-inputs--docs) for\n  additional info and examples.\n  - Size values have changed from verbose names (\\`small\\`, \\`medium\\`) to abbreviations (\\`xs\\`, \\`sm\\`, \\`md\\`, \\`lg\\`).\n\n#### Prop Mapping\n\n| 1.0 Prop            | 2.0 Prop    | Notes                                                |\n|---------------------|-------------|----------------------------------------------------- |\n| checked             | value       |                                                      |\n| disabled            | disabled    |                                                      |\n| handle-button-click |             | Not carried over                                     |\n| handle-keydown      |             | Not carried over                                     |\n| id                  | input-id    |                                                      |\n| label               | label       |                                                      |\n| name                | name        |                                                      |\n| ref                 |             | Not carried over                                     |\n| size                | size        | \\`small\\` \u2192 \\`sm\\`, \\`medium\\` \u2192 \\`md\\`              |\n\n#### Event Mapping\n\n| 1.0 Event   | 2.0 Event   | Notes                                               |\n|-------------|-------------|-----------------------------------------------------|\n| buttonClick | inputChange | Now emits an \\`InputEvent\\` instead of a \\`string\\` |\n        `,\n      },\n    },\n    // To hide the actual story rendering and only show docs:\n    controls: { disable: true },\n    canvas: { disable: true },\n  },\n  // Simple render function or leave it empty\n  render: () => html`<div></div>`,\n};\n",
+  "storybook": {
+    "examples": [
+      "<modus-wc-radio\n        aria-label=\"Radio\"\n        custom-class=${ifDefined(args['custom-class'])}\n        ?disabled=${args.disabled}\n        input-id=${ifDefined(args['input-id'])}\n        input-tab-index=${ifDefined(args['input-tab-index'])}\n        label=${ifDefined(args.label)}\n        name=${ifDefined(args.name)}\n        ?required=${args.required}\n        size=${ifDefined(args.size)}\n        .value=${args.value}\n      ></modus-wc-radio>",
+      "<modus-wc-radio\n      label=\"Option 1\"\n      name=\"radio-group-demo\"\n      input-id=\"option1\"\n      ?disabled=${args.disabled}\n      size=${ifDefined(args.size)}\n      .value=${true}\n      @inputChange=${(e: CustomEvent) => {\n        // In a real app, you would update your state management here\n        console.log('Selected:', e.target);\n      }}\n    ></modus-wc-radio>",
+      "<modus-wc-radio\n      label=\"Option 2\"\n      name=\"radio-group-demo\"\n      input-id=\"option2\"\n      ?disabled=${args.disabled}\n      size=${ifDefined(args.size)}\n      .value=${false}\n      @inputChange=${(e: CustomEvent) => {\n        console.log('Selected:', e.target);\n      }}\n    ></modus-wc-radio>",
+      "<modus-wc-radio\n      label=\"Option 3\"\n      name=\"radio-group-demo\"\n      input-id=\"option3\"\n      ?disabled=${args.disabled}\n      size=${ifDefined(args.size)}\n      .value=${false}\n      @inputChange=${(e: CustomEvent) => {\n        console.log('Selected:', e.target);\n      }}\n    ></modus-wc-radio>",
+      "\n      <modus-wc-radio\n        aria-label=\"Radio\"\n        custom-class=${ifDefined(args['custom-class'])}\n        ?disabled=${args.disabled}\n        input-id=${ifDefined(args['input-id'])}\n        input-tab-index=${ifDefined(args['input-tab-index'])}\n        label=${ifDefined(args.label)}\n        name=${ifDefined(args.name)}\n        ?required=${args.required}\n        size=${ifDefined(args.size)}\n        .value=${args.value}\n      ></modus-wc-radio>\n    "
+    ],
+    "variants": [],
+    "prop_usage": {
+      "label": [
+        "Radio",
+        "Option 1",
+        "Option 2",
+        "Option 3"
+      ],
+      "role": [
+        "main"
+      ],
+      "class": [
+        "radio-group"
+      ],
+      "name": [
+        "radio-group-demo"
+      ],
+      "id": [
+        "option1",
+        "option2",
+        "option3"
+      ]
+    }
+  },
+  "tag_name": "modus-wc-radio"
+}

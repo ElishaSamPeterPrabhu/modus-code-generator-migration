@@ -1,0 +1,78 @@
+{
+  "component_name": "modus-progress-bar",
+  "version": "v1",
+  "props": [
+    {
+      "name": "ariaLabel",
+      "description": "/** (optional) The progress bar's aria-label. */",
+      "type": "string | null"
+    },
+    {
+      "name": "backgroundColor",
+      "description": "/** (optional) The progress bar's aria-label. */",
+      "type": "string"
+    },
+    {
+      "name": "color",
+      "description": "/** (optional) The progress bar's aria-label. */",
+      "type": "string"
+    },
+    {
+      "name": "maxValue",
+      "description": "/** (optional) The progress bar's aria-label. */",
+      "type": "null}\n        aria-valuemin"
+    },
+    {
+      "name": "minValue",
+      "description": "/** (optional) The progress bar's aria-label. */",
+      "type": "null}\n        aria-valuenow"
+    },
+    {
+      "name": "mode",
+      "description": "/** (optional) The progress bar's aria-label. */",
+      "type": "'determinate' | 'indeterminate'"
+    },
+    {
+      "name": "size",
+      "description": "/** (optional) The progress bar's aria-label. */",
+      "type": "'default' | 'small' | 'compact'"
+    },
+    {
+      "name": "text",
+      "description": "/** (optional) The progress bar's aria-label. */",
+      "type": "string"
+    },
+    {
+      "name": "textColor",
+      "description": "/** (optional) The progress bar's aria-label. */",
+      "type": "string"
+    },
+    {
+      "name": "value",
+      "description": "/** (optional) The progress bar's aria-label. */",
+      "type": "null}\n        role"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "default_values": {
+    "backgroundColor": "== 'determinate' ? `${percentage}%` : '100%',\n    }",
+    "color": "== 'determinate' ? `${percentage}%` : '100%',\n    }",
+    "maxValue": "100",
+    "minValue": "0",
+    "mode": "'determinate'",
+    "size": "'default'",
+    "value": "0"
+  },
+  "documentation": "\n\n--- modus-progress-bar-storybook-docs.mdx ---\n\nimport { Anchor } from '@storybook/addon-docs';\n\n# Progress Bar\n\n---\n\n[Modus Progress Bar](https://modus.trimble.com/components/web/progress-bars/) web components display the completion progress of a task. They are referenced using the `<modus-progress-bar>` custom HTML element.\n\n### Default\n\n<div>\n  <modus-progress-bar value=\"3\" max-value=\"4\" min-value=\"0\" text=\"75%\"></modus-progress-bar>\n</div>\n\n<Anchor storyId=\"components-progress-bar--default\" />\n\n### Small\n\n<div>\n  <modus-progress-bar value=\"3\" max-value=\"4\" min-value=\"0\" size=\"small\"></modus-progress-bar>\n</div>\n\n<Anchor storyId=\"components-progress-bar--small\" />\n\n### Compact\n\n<div>\n  <modus-progress-bar value=\"3\" max-value=\"4\" min-value=\"0\" size=\"compact\"></modus-progress-bar>\n</div>\n\n### Indeterminate\n\n<div>\n  <modus-progress-bar mode=\"indeterminate\"></modus-progress-bar>\n</div>\n\n<Anchor storyId=\"components-progress-bar--compact\" />\n\n```html\n<modus-progress-bar value=\"3\" max-value=\"4\" min-value=\"0\" text=\"75%\"></modus-progress-bar>\n<modus-progress-bar value=\"3\" max-value=\"4\" min-value=\"0\" size=\"small\"></modus-progress-bar>\n<modus-progress-bar value=\"3\" max-value=\"4\" min-value=\"0\" size=\"compact\"></modus-progress-bar>\n<modus-progress-bar mode=\"indeterminate\"></modus-progress-bar>\n```\n\n### Properties\n\n| Name               | Description                   | Type                                | Default Value                | Required |\n| ------------------ | ----------------------------- | ----------------------------------- | ---------------------------- | -------- |\n| `aria-label`       | The progress bar's aria-label | `string`                            |                              |          |\n| `background-color` | The bar's background color    | `string`                            | `#FFFFFF` (Trimble White)    |          |\n| `color`            | The bar's color               | `string`                            | `#005F9E` (Trimble Blue Mid) |          |\n| `max-value`        | The maximum value             | `number`                            | `100`                        |          |\n| `mode`             | The progress bar's mode       | `'determinate'`, `'indeterminate'`  | `determinate`                |          |\n| `min-value `       | The minimum value             | `number`                            | `0`                          |          |\n| `size`             | The size of the bar           | `'default'`, `'small'`, `'compact'` | `default`                    |          |\n| `text`             | The text displayed on the bar | `string`                            |                              |          |\n| `text-color`       | The text color                | `string`                            | `#FFFFFF` (Trimble White)    |          |\n| `value`            | The progress value            | `number`                            | `0`                          |          |\n\n### Accessibility\n\n- Progress Bar has `role` of `progressbar`.\n- Progress Bar gets an `aria-label` provided by the `aria-label` property input.\n- Progress Bar gets an `aria-maxvalue` provided by the `max-value` property input.\n- Progress Bar gets an `aria-minvalue` provided by the `min-value` property input.\n- Progress Bar gets an `aria-valuenow` set to the current value.\n- Progress Bar in `indeterminate` mode has `aria-valuetext`,`aria-maxvalue` and `aria-minvalue` set to `null`.\n",
+  "storybook_content": "\n\n--- modus-progress-bar.stories.tsx ---\n\n// @ts-ignore: JSX/MDX with Stencil\nimport docs from './modus-progress-bar-storybook-docs.mdx';\nimport { html } from 'lit-html';\n\nexport default {\n  title: 'Components/Progress Bar',\n  argTypes: {\n    ariaLabel: {\n      name: 'aria-label',\n      description: \"The progress bar's aria-label\",\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n    backgroundColor: {\n      name: 'background-color',\n      description: \"The progress bar's background-color\",\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n    color: {\n      description: \"The progress bar's color\",\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n    maxValue: {\n      name: 'max-value',\n      description: \"The progress bar's maximum value\",\n      table: {\n        defaultValue: { summary: 100 },\n        type: { summary: 'number' },\n      },\n    },\n    mode: {\n      name: 'mode',\n      options: ['determinate', 'indeterminate'],\n      type: 'select',\n      description: \"The progress bar's mode\",\n      table: {\n        defaultValue: { summary: 'determinate' },\n        type: { summary: \"'determinate' | 'indeterminate'\" },\n      },\n    },\n    minValue: {\n      name: 'min-value',\n      description: \"The progress bar's minimum value\",\n      table: {\n        defaultValue: { summary: 0 },\n        type: { summary: 'number' },\n      },\n    },\n    size: {\n      options: ['default', 'small', 'compact'],\n      type: 'select',\n      description: \"The progress bar's size\",\n      table: {\n        defaultValue: { summary: 'default' },\n        type: { summary: `'default' | 'small' | 'compact'` },\n      },\n    },\n    text: {\n      description: \"The progress bar's text\",\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n    textColor: {\n      name: 'text-color',\n      description: \"The progress bar's text color\",\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n    value: {\n      description: \"The progress bar's value\",\n      table: {\n        defaultValue: { summary: 0 },\n        type: { summary: 'number' },\n      },\n    },\n  },\n  parameters: {\n    controls: { expanded: true, sort: 'requiredFirst' },\n    docs: {\n      page: docs,\n    },\n    options: {\n      isToolshown: true,\n    },\n    design: {\n      type: 'figma',\n      url: 'https://www.figma.com/design/wyfVJUHWRMkeCfdB38HFEE/Modus---Web?node-id=1850-15481&m=dev',\n    },\n  },\n};\n\nconst Template = ({ ariaLabel, backgroundColor, color, maxValue, minValue, mode, size, text, textColor, value }) => html`\n  <modus-progress-bar\n    aria-label=${ariaLabel}\n    background-color=${backgroundColor}\n    color=${color}\n    max-value=${maxValue}\n    mode=${mode}\n    min-value=${minValue}\n    size=${size}\n    text=${text}\n    text-color=${textColor}\n    value=${value}>\n  </modus-progress-bar>\n`;\n\nexport const Default = Template.bind({});\nDefault.args = {\n  ariaLabel: 'progress bar',\n  backgroundColor: '',\n  color: '',\n  maxValue: 100,\n  mode: 'determinate',\n  minValue: 0,\n  size: 'default',\n  text: 'Some progress!',\n  textColor: '',\n  value: 50,\n};\n\nexport const Small = Template.bind({});\nSmall.args = {\n  ariaLabel: 'progress bar',\n  backgroundColor: '',\n  color: '',\n  maxValue: 100,\n  mode: 'determinate',\n  minValue: 0,\n  size: 'small',\n  text: '',\n  textColor: '',\n  value: 50,\n};\n\nexport const Compact = Template.bind({});\nCompact.args = {\n  ariaLabel: 'progress bar',\n  backgroundColor: '',\n  color: '',\n  maxValue: 100,\n  mode: 'determinate',\n  minValue: 0,\n  size: 'compact',\n  text: '',\n  textColor: '',\n  value: 50,\n};\n\nexport const Indeterminate = Template.bind({});\nIndeterminate.args = {\n  ariaLabel: 'progress bar',\n  backgroundColor: '',\n  color: '',\n  maxValue: 100,\n  mode: 'indeterminate',\n  minValue: 0,\n  size: 'default',\n  text: 'Indeterminate progress!',\n  textColor: '',\n  value: 50,\n};\n",
+  "storybook": {
+    "examples": [
+      "<modus-progress-bar\n    aria-label=${ariaLabel}\n    background-color=${backgroundColor}\n    color=${color}\n    max-value=${maxValue}\n    mode=${mode}\n    min-value=${minValue}\n    size=${size}\n    text=${text}\n    text-color=${textColor}\n    value=${value}>\n  </modus-progress-bar>",
+      "\n  <modus-progress-bar\n    aria-label=${ariaLabel}\n    background-color=${backgroundColor}\n    color=${color}\n    max-value=${maxValue}\n    mode=${mode}\n    min-value=${minValue}\n    size=${size}\n    text=${text}\n    text-color=${textColor}\n    value=${value}>\n  </modus-progress-bar>\n"
+    ],
+    "variants": [],
+    "prop_usage": {}
+  },
+  "tag_name": "modus-progress-bar"
+}
