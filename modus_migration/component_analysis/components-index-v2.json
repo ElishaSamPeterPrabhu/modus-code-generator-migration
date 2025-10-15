@@ -1,0 +1,314 @@
+{
+  "version": "v2",
+  "total_components": 44,
+  "components": [
+    {
+      "file": "accordion.json",
+      "component_name": "modus-wc-accordion",
+      "props_count": 1,
+      "events_count": 1,
+      "slots_count": 0
+    },
+    {
+      "file": "alert.json",
+      "component_name": "modus-wc-alert",
+      "props_count": 7,
+      "events_count": 0,
+      "slots_count": 2
+    },
+    {
+      "file": "autocomplete.json",
+      "component_name": "modus-wc-autocomplete",
+      "props_count": 0,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "avatar.json",
+      "component_name": "modus-wc-avatar",
+      "props_count": 6,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "badge.json",
+      "component_name": "modus-wc-badge",
+      "props_count": 4,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "breadcrumbs.json",
+      "component_name": "modus-wc-breadcrumbs",
+      "props_count": 3,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "button.json",
+      "component_name": "modus-wc-button",
+      "props_count": 9,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "card.json",
+      "component_name": "modus-wc-card",
+      "props_count": 5,
+      "events_count": 0,
+      "slots_count": 5
+    },
+    {
+      "file": "checkbox.json",
+      "component_name": "modus-wc-checkbox",
+      "props_count": 10,
+      "events_count": 3,
+      "slots_count": 0
+    },
+    {
+      "file": "chip.json",
+      "component_name": "modus-wc-chip",
+      "props_count": 9,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "collapse.json",
+      "component_name": "modus-wc-collapse",
+      "props_count": 5,
+      "events_count": 1,
+      "slots_count": 2
+    },
+    {
+      "file": "date.json",
+      "component_name": "modus-wc-date",
+      "props_count": 14,
+      "events_count": 3,
+      "slots_count": 0
+    },
+    {
+      "file": "divider.json",
+      "component_name": "modus-wc-divider",
+      "props_count": 6,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "dropdown-menu.json",
+      "component_name": "modus-wc-dropdown-menu",
+      "props_count": 11,
+      "events_count": 1,
+      "slots_count": 2
+    },
+    {
+      "file": "icon.json",
+      "component_name": "modus-wc-icon",
+      "props_count": 5,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "input-feedback.json",
+      "component_name": "modus-wc-input-feedback",
+      "props_count": 5,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "input-label.json",
+      "component_name": "modus-wc-input-label",
+      "props_count": 6,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "loader.json",
+      "component_name": "modus-wc-loader",
+      "props_count": 4,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "menu-item.json",
+      "component_name": "modus-wc-menu-item",
+      "props_count": 13,
+      "events_count": 1,
+      "slots_count": 0
+    },
+    {
+      "file": "menu.json",
+      "component_name": "modus-wc-menu",
+      "props_count": 4,
+      "events_count": 1,
+      "slots_count": 0
+    },
+    {
+      "file": "modal.json",
+      "component_name": "modus-wc-modal",
+      "props_count": 7,
+      "events_count": 0,
+      "slots_count": 3
+    },
+    {
+      "file": "navbar.json",
+      "component_name": "modus-wc-navbar",
+      "props_count": 12,
+      "events_count": 15,
+      "slots_count": 5
+    },
+    {
+      "file": "number-input.json",
+      "component_name": "modus-wc-number-input",
+      "props_count": 19,
+      "events_count": 3,
+      "slots_count": 0
+    },
+    {
+      "file": "pagination.json",
+      "component_name": "modus-wc-pagination",
+      "props_count": 7,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "progress.json",
+      "component_name": "modus-wc-progress",
+      "props_count": 6,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "radio.json",
+      "component_name": "modus-wc-radio",
+      "props_count": 9,
+      "events_count": 3,
+      "slots_count": 0
+    },
+    {
+      "file": "rating.json",
+      "component_name": "modus-wc-rating",
+      "props_count": 8,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "select.json",
+      "component_name": "modus-wc-select",
+      "props_count": 12,
+      "events_count": 3,
+      "slots_count": 0
+    },
+    {
+      "file": "side-navigation.json",
+      "component_name": "modus-wc-side-navigation",
+      "props_count": 6,
+      "events_count": 1,
+      "slots_count": 0
+    },
+    {
+      "file": "skeleton.json",
+      "component_name": "modus-wc-skeleton",
+      "props_count": 4,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "slider.json",
+      "component_name": "modus-wc-slider",
+      "props_count": 12,
+      "events_count": 3,
+      "slots_count": 0
+    },
+    {
+      "file": "stepper.json",
+      "component_name": "modus-wc-stepper",
+      "props_count": 3,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "switch.json",
+      "component_name": "modus-wc-switch",
+      "props_count": 10,
+      "events_count": 3,
+      "slots_count": 0
+    },
+    {
+      "file": "table.json",
+      "component_name": "modus-wc-table",
+      "props_count": 15,
+      "events_count": 6,
+      "slots_count": 0
+    },
+    {
+      "file": "tabs.json",
+      "component_name": "modus-wc-tabs",
+      "props_count": 5,
+      "events_count": 1,
+      "slots_count": 0
+    },
+    {
+      "file": "text-input.json",
+      "component_name": "modus-wc-text-input",
+      "props_count": 24,
+      "events_count": 3,
+      "slots_count": 0
+    },
+    {
+      "file": "textarea.json",
+      "component_name": "modus-wc-textarea",
+      "props_count": 18,
+      "events_count": 3,
+      "slots_count": 0
+    },
+    {
+      "file": "theme-switcher.json",
+      "component_name": "modus-wc-theme-switcher",
+      "props_count": 1,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "time-input.json",
+      "component_name": "modus-wc-time-input",
+      "props_count": 19,
+      "events_count": 3,
+      "slots_count": 0
+    },
+    {
+      "file": "toast.json",
+      "component_name": "modus-wc-toast",
+      "props_count": 3,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "toolbar.json",
+      "component_name": "modus-wc-toolbar",
+      "props_count": 1,
+      "events_count": 0,
+      "slots_count": 3
+    },
+    {
+      "file": "tooltip.json",
+      "component_name": "modus-wc-tooltip",
+      "props_count": 6,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "typography.json",
+      "component_name": "modus-wc-typography",
+      "props_count": 4,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "utility-panel.json",
+      "component_name": "modus-wc-utility-panel",
+      "props_count": 3,
+      "events_count": 0,
+      "slots_count": 3
+    }
+  ]
+}

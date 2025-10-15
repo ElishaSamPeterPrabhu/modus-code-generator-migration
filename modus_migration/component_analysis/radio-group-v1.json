@@ -1,0 +1,50 @@
+{
+  "component_name": "modus-radio-group",
+  "version": "v1",
+  "props": [
+    {
+      "name": "ariaLabel",
+      "description": "/** The radio group's aria-label. */",
+      "type": "string | null"
+    },
+    {
+      "name": "checkedId",
+      "description": "/** The radio group's aria-label. */",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "description": "/** The radio group's aria-label. */",
+      "type": "string"
+    },
+    {
+      "name": "radioButtons",
+      "description": "/** The radio group's aria-label. */",
+      "type": "RadioButton[]"
+    },
+    {
+      "name": "size",
+      "description": "/** The radio group's aria-label. */",
+      "type": ": 'small' | 'medium'"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "default_values": {
+    "checkedId": "radioButton.checked ? radioButton.id : this.checkedId",
+    "name": "{this.name}\n              id={radioButton.id}\n              handleButtonClick={(id) => this.handleButtonClick(id)}\n              handleKeydown={(event, id) => this.handleButtonKeydown(event, id)}></ModusRadioButton>\n          )",
+    "radioButtons": "[]",
+    "size": "'medium'"
+  },
+  "documentation": "\n\n--- modus-radio-group-storybook-docs.mdx ---\n\nimport { Story } from '@storybook/blocks';\nimport * as RadioGroup from './modus-radio-group.stories.tsx';\n\n# Radio Group\n\n---\n\n[Modus Radio Group](https://modus.trimble.com/components/radio-buttons/) web components are wrappers around native `<modus-radio-button>` custom HTML elements. They are referenced using the `<modus-radio-group>` custom HTML element.\n\nA TypeScript typing has been provided named RadioButton defined as:\n\n```ts\n{\n  checked?: boolean;\n  disabled?: boolean;\n  id: string;\n  label: string;\n}\n```\n\n### Default\n\n<Story of={RadioGroup.Default} height={'150px'} />\n\n```html\n<modus-radio-group checked-id=\"1\" name=\"my-group\"></modus-radio-group>\n\n<script>\n  const modusRadioGroup = document.querySelector('modus-radio-group');\n  modusRadioGroup.radioButtons = [\n    {\n      id: '0',\n      label: 'Radio 1',\n    },\n    {\n      id: '1',\n      checked: true,\n      label: 'Radio 2',\n    },\n    {\n      id: '2',\n      label: 'Radio 3',\n    },\n  ];\n</script>\n```\n\n### Properties\n\n| Name           | Description                                                                                                                                                                          | Type            | Options          | Default Value | Required |\n| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------- | ---------------- | ------------- | -------- |\n| `checked-id`   | The id of the checked radio button                                                                                                                                                   | `string`        |                  |               | \u2714       |\n| `name`         | The [name](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#defining_a_radio_group) of the radio group. Used to group individual radio elements into one group. | `string`        |                  |               | \u2714       |\n| `radioButtons` | The radio buttons                                                                                                                                                                    | `RadioButton[]` |                  |               | \u2714       |\n| `aria-label`   | The radio group's aria-label                                                                                                                                                         | `string`        |                  |               |          |\n| `size`         | The radio group's size                                                                                                                                                               | `string`        | \"small\",\"medium\" | \"medium\"      |          |\n\n### DOM Events\n\n| Name          | Description                 | Emits                              |\n| ------------- | --------------------------- | ---------------------------------- |\n| `buttonClick` | Fires on radio button click | The currently checked radio button |\n\n### Accessibility\n\n- When a Radio Button has focus, <kbd>Enter</kbd> selects it, and emits `buttonClick` event.\n",
+  "storybook_content": "\n\n--- modus-radio-group.stories.tsx ---\n\n// @ts-ignore: JSX/MDX with Stencil\nimport docs from './modus-radio-group-storybook-docs.mdx';\nimport { html } from 'lit-html';\nimport { withActions } from '@storybook/addon-actions/decorator';\n\nexport default {\n  title: 'User Inputs/Radio Group',\n  argTypes: {\n    ariaLabel: {\n      name: 'aria-label',\n      description: \"The radio group's aria-label\",\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n    disabled: {\n      description: 'If true, the radio group is disabled',\n      type: 'boolean',\n      table: {\n        defaultValue: { summary: false },\n        type: { summary: 'boolean' },\n      },\n    },\n    name: {\n      description: 'The radio button group name. Used to group individual radio elements into one group.',\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n    size: {\n      options: ['small', 'medium'],\n      type: 'select',\n      description: 'The size of the radio group',\n      table: {\n        defaultValue: { summary: `'medium'` },\n        type: { summary: 'string' },\n      },\n    },\n  },\n  parameters: {\n    actions: {\n      handles: ['buttonClick'],\n    },\n    controls: { expanded: true },\n    docs: {\n      page: docs,\n    },\n    options: {\n      isToolshown: true,\n    },\n    design: {\n      type: 'figma',\n      url: 'https://www.figma.com/design/wyfVJUHWRMkeCfdB38HFEE/Modus---Web?node-id=1346-8&m=dev',\n    },\n  },\n  decorators: [withActions],\n};\n\nconst Template = ({ ariaLabel, disabled, name, size }) => html`\n  <modus-radio-group aria-label=${ariaLabel} ?disabled=${disabled} name=${name} size=${size}></modus-radio-group>\n  ${setRadioGroup()}\n`;\n\nexport const Default = Template.bind({});\nDefault.args = {\n  ariaLabel: '',\n  disabled: false,\n  name: '',\n  size: 'medium',\n};\nconst setRadioGroup = () => {\n  const tag = document.createElement('script');\n  tag.innerHTML = `\n    document.querySelector('modus-radio-group').radioButtons = [\n      {\n        id: '0',\n        label: 'Radio 1',\n      },\n      {\n        checked: true,\n        id: '1',\n        label: 'Radio 2',\n      },\n      {\n        id: '2',\n        label: 'Radio 3'\n      }\n    ];\n  `;\n\n  return tag;\n};\n",
+  "storybook": {
+    "examples": [
+      "<modus-radio-group aria-label=${ariaLabel} ?disabled=${disabled} name=${name} size=${size}></modus-radio-group>",
+      "\n  <modus-radio-group aria-label=${ariaLabel} ?disabled=${disabled} name=${name} size=${size}></modus-radio-group>\n  ${setRadioGroup()}\n"
+    ],
+    "variants": [],
+    "prop_usage": {}
+  },
+  "tag_name": "modus-radio-group"
+}

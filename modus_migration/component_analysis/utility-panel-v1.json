@@ -1,0 +1,63 @@
+{
+  "component_name": "modus-utility-panel",
+  "version": "v1",
+  "props": [
+    {
+      "name": "expanded",
+      "description": "/** The panel is expanded or closed */",
+      "type": ""
+    },
+    {
+      "name": "pushContent",
+      "description": "/** The panel is expanded or closed */",
+      "type": ""
+    },
+    {
+      "name": "targetContent",
+      "description": "/** The panel is expanded or closed */",
+      "type": "string"
+    }
+  ],
+  "events": [],
+  "slots": [
+    "header",
+    "body",
+    "footer"
+  ],
+  "default_values": {
+    "expanded": "false",
+    "pushContent": "true"
+  },
+  "documentation": "\n\n--- modus-utility-panel-storybook-docs.mdx ---\n\nimport { Story } from '@storybook/blocks';\nimport * as UtilityPanel from './modus-utility-panel.stories.tsx';\n\n# Utility Panel\n\n---\n\nThe `modus-utility-panel` component is a versatile panel that can be used for various purposes such as displaying\nadditional information, hosting forms, or any content that complements the main content of the page.\nIt has header, body, and footer slots for adding content. It supports both overlay and push content modes.\n\n<Story of={UtilityPanel.Default} />\n\n```html\n    <div id=\"defaultTemplate\">\n      <div\n        style=\"width: 100%; align-items: center; height: 56px; box-shadow: 0 0 2px var(--modus-secondary)!important; margin-top: 50px;\">\n        <modus-navbar\n          id=\"navbar\"\n          show-main-menu\n          .buttons=${[\n            {\n              id: 'addMenu',\n              icon: 'add',\n              tooltip: {\n                text: 'Add',\n              },\n            },\n          ]}>\n        </modus-navbar>\n      </div>\n  <div\n    id=\"container\"\n    style=\"display:flex; min-height:500px; overflow:hidden; position: relative; box-shadow: 0 0 2px var(--modus-secondary)!important;\">\n    <modus-utility-panel\n      target-content=\"#panelcontent\"\n      expanded=\"${expanded}\"\n      push-content=\"${pushContent}\"\n      target-content=\"${targetContent}\">\n      <span slot=\"header\">Utility Panel Header</span>\n      <div slot=\"body\">Content of the utility panel goes here.</div>\n      <span slot=\"footer\">Utility Panel Footer</span>\n    </modus-utility-panel>\n\n    <div id=\"panelcontent\" style=\"padding: 10px;\">\n      <div id=\"overview\">\n        <p>\n          The side navigation of an application provides context through accessible menu options and positions a consistent\n          component to connect to various pages in the application. The side navigation is a collapsible side content of the\n          site\u2019s pages. It is located alongside the page\u2019s primary content. The component is designed to add side content to\n          a fullscreen application. It is activated through the \u201chamburger\u201d menu in the Navbar.\n        </p>\n      </div>\n    </div>\n  </div>\n</div>\n<script>\n  const element = document.querySelector('modus-navbar');\n  element.buttons = [{ id: 'addMenu', icon: 'add' }];\n  document.addEventListener('buttonClick', (e) => {\n    const panel = document.querySelector('modus-utility-panel');\n    panel.expanded = !panel.expanded;\n  });\n</script>\n```\n\n## Properties\n\n| Property        | Description                                                                                                                   | Type      | Default |\n| --------------- | ----------------------------------------------------------------------------------------------------------------------------- | --------- | ------- |\n| `expanded`      | Controls the expanded state of the utility panel. When `true`, the panel is visible.                                          | `boolean` | false   |\n| `pushContent`   | Determines whether the utility panel should push the main content to the right (`true`) or overlay the content (`false`).     | `boolean` | false   |\n| `targetContent` | Specifies the selector for the page's content that will be affected by the utility panel based on the `pushContent` property. | `string`  |         |\n\n## CSS Custom Properties\n\nMore info on CSS Custom Properties: [Customizing Components with Custom Properties](https://stenciljs.com/docs/styling#customizing-components-with-custom-properties)\n\n| Property          | Description                                    |\n| ----------------- | ---------------------------------------------- |\n| `--panel-padding` | Padding of the utility panel, defaults to 1rem |\n",
+  "storybook_content": "\n\n--- modus-utility-panel.stories.tsx ---\n\nimport docs from './modus-utility-panel-storybook-docs.mdx';\nimport { html } from 'lit-html';\nimport { useEffect } from '@storybook/preview-api';\nimport { withActions } from '@storybook/addon-actions/decorator';\n\nexport default {\n  title: 'Components/Utility Panel',\n  argTypes: {\n    ariaLabel: {\n      description: 'The aria label for the panel',\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n    expanded: {\n      description: 'The expanded state of side navigation panel and items',\n      table: {\n        type: { summary: 'boolean' },\n      },\n    },\n    pushContent: {\n      description: 'Specify if the side navigation should push the content to the right or overlay the content',\n      table: {\n        type: { summary: 'boolean' },\n      },\n    },\n    targetContent: {\n      name: 'target-content',\n      description:\n        \"Specify the selector for the page's content for which paddings and margins will be set by side navigation based on the `mode`\",\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n  },\n  parameters: {\n    actions: {\n      handles: ['helpOpen'],\n    },\n    docs: {\n      page: docs,\n    },\n    options: {\n      isToolshown: true,\n    },\n    controls: { expanded: true, sort: 'requiredFirst' },\n    viewMode: 'docs',\n    design: {\n      type: 'figma',\n      url: 'https://www.figma.com/design/wyfVJUHWRMkeCfdB38HFEE/Modus---Web?node-id=20254-48469&m=dev',\n    },\n  },\n  decorators: [withActions],\n};\n\nconst DefaultTemplate = ({ ariaLabel, expanded, targetContent, pushContent }) => {\n  return html`\n    <div id=\"defaultTemplate\">\n      <div\n        style=\"width: 100%; align-items: center; height: 56px; box-shadow: 0 0 2px var(--modus-secondary)!important; margin-top: 50px;\">\n        <modus-navbar\n          id=\"navbar\"\n          show-main-menu\n          .buttons=${[\n            {\n              id: 'addMenu',\n              icon: 'add',\n              tooltip: {\n                text: 'Add',\n              },\n            },\n          ]}>\n        </modus-navbar>\n      </div>\n\n      <div\n        id=\"container\"\n        style=\"display:flex; min-height:500px; overflow:hidden; position: relative; box-shadow: 0 0 2px var(--modus-secondary)!important;\">\n        <modus-utility-panel\n          aria-label=${ariaLabel}\n          target-content=\"#panelcontent\"\n          expanded=${expanded}\n          push-content=${pushContent}\n          target-content=${targetContent}>\n          <span slot=\"header\">Utility Panel Header</span>\n          <div slot=\"body\">Content of the utility panel goes here.</div>\n          <span slot=\"footer\">Utility Panel Footer</span>\n        </modus-utility-panel>\n\n        <div id=\"panelcontent\" style=\"padding: 10px;\">\n          <div id=\"overview\">\n            <p>\n              The side navigation of an application provides context through accessible menu options and positions a\n              consistent component to connect to various pages in the application. The side navigation is a collapsible side\n              content of the site\u2019s pages. It is located alongside the page\u2019s primary content. The component is designed to\n              add side content to a fullscreen application. It is activated through the \u201chamburger\u201d menu in the Navbar.\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  `;\n};\n\nexport const Default = DefaultTemplate.bind({});\n\nDefault.args = {\n  ariaLabel: 'Utility Panel',\n  expanded: false,\n  pushContent: true,\n  targetContent: '#panelcontent',\n};\n\nDefault.decorators = [\n  (Story) => {\n    useEffect(() => {\n      const handleHelpOpen = () => {\n        const panel = document.querySelector('modus-utility-panel');\n        if (panel) {\n          const isExpanded = panel.getAttribute('expanded') === 'true';\n          panel.setAttribute('expanded', (!isExpanded).toString());\n        }\n      };\n      document.addEventListener('buttonClick', handleHelpOpen);\n\n      return () => {\n        document.removeEventListener('buttonClick', handleHelpOpen);\n      };\n    }, []);\n\n    return Story();\n  },\n];\n",
+  "storybook": {
+    "examples": [
+      "<modus-navbar\n          id=\"navbar\"\n          show-main-menu\n          .buttons=${[\n            {\n              id: 'addMenu',\n              icon: 'add',\n              tooltip: {\n                text: 'Add',\n              },\n            },\n          ]}>\n        </modus-navbar>",
+      "\n    <div id=\"defaultTemplate\">\n      <div\n        style=\"width: 100%; align-items: center; height: 56px; box-shadow: 0 0 2px var(--modus-secondary)!important; margin-top: 50px;\">\n        <modus-navbar\n          id=\"navbar\"\n          show-main-menu\n          .buttons=${[\n            {\n              id: 'addMenu',\n              icon: 'add',\n              tooltip: {\n                text: 'Add',\n              },\n            },\n          ]}>\n        </modus-navbar>\n      </div>\n\n      <div\n        id=\"container\"\n        style=\"display:flex; min-height:500px; overflow:hidden; position: relative; box-shadow: 0 0 2px var(--modus-secondary)!important;\">\n        <modus-utility-panel\n          aria-label=${ariaLabel}\n          target-content=\"#panelcontent\"\n          expanded=${expanded}\n          push-content=${pushContent}\n          target-content=${targetContent}>\n          <span slot=\"header\">Utility Panel Header</span>\n          <div slot=\"body\">Content of the utility panel goes here.</div>\n          <span slot=\"footer\">Utility Panel Footer</span>\n        </modus-utility-panel>\n\n        <div id=\"panelcontent\" style=\"padding: 10px;\">\n          <div id=\"overview\">\n            <p>\n              The side navigation of an application provides context through accessible menu options and positions a\n              consistent component to connect to various pages in the application. The side navigation is a collapsible side\n              content of the site\u2019s pages. It is located alongside the page\u2019s primary content. The component is designed to\n              add side content to a fullscreen application. It is activated through the \u201chamburger\u201d menu in the Navbar.\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n  "
+    ],
+    "variants": [],
+    "prop_usage": {
+      "id": [
+        "defaultTemplate",
+        "navbar",
+        "container",
+        "panelcontent",
+        "overview"
+      ],
+      "style": [
+        "width: 100%; align-items: center; height: 56px; box-shadow: 0 0 2px var(--modus-secondary)!important; margin-top: 50px;",
+        "display:flex; min-height:500px; overflow:hidden; position: relative; box-shadow: 0 0 2px var(--modus-secondary)!important;",
+        "padding: 10px;"
+      ],
+      "content": [
+        "#panelcontent"
+      ],
+      "slot": [
+        "header",
+        "body",
+        "footer"
+      ]
+    }
+  },
+  "tag_name": "modus-utility-panel"
+}

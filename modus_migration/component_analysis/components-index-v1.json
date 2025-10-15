@@ -1,0 +1,307 @@
+{
+  "version": "v1",
+  "total_components": 43,
+  "components": [
+    {
+      "file": "accordion-item.json",
+      "component_name": "modus-accordion-item",
+      "props_count": 7,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "accordion.json",
+      "component_name": "modus-accordion",
+      "props_count": 1,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "action-bar.json",
+      "component_name": "modus-action-bar",
+      "props_count": 3,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "alert.json",
+      "component_name": "modus-alert",
+      "props_count": 6,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "autocomplete.json",
+      "component_name": "modus-autocomplete",
+      "props_count": 22,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "badge.json",
+      "component_name": "modus-badge",
+      "props_count": 4,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "breadcrumb.json",
+      "component_name": "modus-breadcrumb",
+      "props_count": 3,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "button-group.json",
+      "component_name": "modus-button-group",
+      "props_count": 0,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "button.json",
+      "component_name": "modus-button",
+      "props_count": 12,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "card.json",
+      "component_name": "modus-card",
+      "props_count": 6,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "checkbox.json",
+      "component_name": "modus-checkbox",
+      "props_count": 7,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "chip.json",
+      "component_name": "modus-chip",
+      "props_count": 13,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "content-tree.json",
+      "component_name": "modus-content-tree",
+      "props_count": 0,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "data-table.json",
+      "component_name": "modus-data-table",
+      "props_count": 6,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "date-input.json",
+      "component_name": "modus-date-input",
+      "props_count": 22,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "date-picker.json",
+      "component_name": "modus-date-picker",
+      "props_count": 3,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "dropdown.json",
+      "component_name": "modus-dropdown",
+      "props_count": 10,
+      "events_count": 0,
+      "slots_count": 2
+    },
+    {
+      "file": "file-dropzone.json",
+      "component_name": "modus-file-dropzone",
+      "props_count": 14,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "icons.json",
+      "component_name": "modus-icons",
+      "props_count": 3,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "list-item.json",
+      "component_name": "modus-list-item",
+      "props_count": 9,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "list.json",
+      "component_name": "modus-list",
+      "props_count": 0,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "message.json",
+      "component_name": "modus-message",
+      "props_count": 3,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "modal.json",
+      "component_name": "modus-modal",
+      "props_count": 12,
+      "events_count": 0,
+      "slots_count": 1
+    },
+    {
+      "file": "navbar.json",
+      "component_name": "modus-navbar",
+      "props_count": 22,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "number-input.json",
+      "component_name": "modus-number-input",
+      "props_count": 17,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "pagination.json",
+      "component_name": "modus-pagination",
+      "props_count": 7,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "progress-bar.json",
+      "component_name": "modus-progress-bar",
+      "props_count": 10,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "radio-group.json",
+      "component_name": "modus-radio-group",
+      "props_count": 5,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "select.json",
+      "component_name": "modus-select",
+      "props_count": 12,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "sentiment-scale.json",
+      "component_name": "modus-sentiment-scale",
+      "props_count": 0,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "side-navigation.json",
+      "component_name": "modus-side-navigation",
+      "props_count": 6,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "slider.json",
+      "component_name": "modus-slider",
+      "props_count": 6,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "spinner.json",
+      "component_name": "modus-spinner",
+      "props_count": 2,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "switch.json",
+      "component_name": "modus-switch",
+      "props_count": 5,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "table.json",
+      "component_name": "modus-table",
+      "props_count": 29,
+      "events_count": 0,
+      "slots_count": 3
+    },
+    {
+      "file": "tabs.json",
+      "component_name": "modus-tabs",
+      "props_count": 4,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "text-input.json",
+      "component_name": "modus-text-input",
+      "props_count": 28,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "textarea-input.json",
+      "component_name": "modus-textarea-input",
+      "props_count": 20,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "time-picker.json",
+      "component_name": "modus-time-picker",
+      "props_count": 0,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "toast.json",
+      "component_name": "modus-toast",
+      "props_count": 7,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "toolbar.json",
+      "component_name": "modus-toolbar",
+      "props_count": 2,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "tooltip.json",
+      "component_name": "modus-tooltip",
+      "props_count": 4,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "utility-panel.json",
+      "component_name": "modus-utility-panel",
+      "props_count": 3,
+      "events_count": 0,
+      "slots_count": 3
+    }
+  ]
+}

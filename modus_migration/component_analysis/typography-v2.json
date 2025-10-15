@@ -1,0 +1,44 @@
+{
+  "component_name": "modus-wc-typography",
+  "version": "v2",
+  "props": [
+    {
+      "name": "customClass",
+      "description": "/**\n * A customizable typography component used to render text with different sizes, hierarchy, and weights.\n *\n * Note: When using heading elements (h1-h6), the default heading CSS styling can be accessed without modifying\n * the default size (size=\"md\") and weight (weight=\"normal\") properties. Default styling can be overridden by\n * providing your own custom values for the size or weight properties from the available options.\n */\n@Component({\n  tag: 'modus-wc-typography',\n  styleUrl: 'modus-wc-typography.scss',\n  shadow: false,\n})\nexport class ModusWCTypography {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the typography element. */",
+      "type": ": string"
+    },
+    {
+      "name": "hierarchy",
+      "description": "/**\n * A customizable typography component used to render text with different sizes, hierarchy, and weights.\n *\n * Note: When using heading elements (h1-h6), the default heading CSS styling can be accessed without modifying\n * the default size (size=\"md\") and weight (weight=\"normal\") properties. Default styling can be overridden by\n * providing your own custom values for the size or weight properties from the available options.\n */\n@Component({\n  tag: 'modus-wc-typography',\n  styleUrl: 'modus-wc-typography.scss',\n  shadow: false,\n})\nexport class ModusWCTypography {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the typography element. */",
+      "type": "TypographyHierarchy"
+    },
+    {
+      "name": "size",
+      "description": "/**\n * A customizable typography component used to render text with different sizes, hierarchy, and weights.\n *\n * Note: When using heading elements (h1-h6), the default heading CSS styling can be accessed without modifying\n * the default size (size=\"md\") and weight (weight=\"normal\") properties. Default styling can be overridden by\n * providing your own custom values for the size or weight properties from the available options.\n */\n@Component({\n  tag: 'modus-wc-typography',\n  styleUrl: 'modus-wc-typography.scss',\n  shadow: false,\n})\nexport class ModusWCTypography {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the typography element. */",
+      "type": ": TypographySize"
+    },
+    {
+      "name": "weight",
+      "description": "/**\n * A customizable typography component used to render text with different sizes, hierarchy, and weights.\n *\n * Note: When using heading elements (h1-h6), the default heading CSS styling can be accessed without modifying\n * the default size (size=\"md\") and weight (weight=\"normal\") properties. Default styling can be overridden by\n * providing your own custom values for the size or weight properties from the available options.\n */\n@Component({\n  tag: 'modus-wc-typography',\n  styleUrl: 'modus-wc-typography.scss',\n  shadow: false,\n})\nexport class ModusWCTypography {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the typography element. */",
+      "type": ": TypographyWeight"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "default_values": {
+    "customClass": "''",
+    "hierarchy": "'p'",
+    "size": "\"md\") and weight (weight=\"normal\") properties. Default styling can be overridden by\n * providing your own custom values for the size or weight properties from the available options.\n */\n@Component({\n  tag: 'modus-wc-typography',\n  styleUrl: 'modus-wc-typography.scss',\n  shadow: false,\n})\nexport class ModusWCTypography {\n  private inheritedAttributes: Attributes = {}",
+    "weight": "\"normal\") properties. Default styling can be overridden by\n * providing your own custom values for the size or weight properties from the available options.\n */\n@Component({\n  tag: 'modus-wc-typography',\n  styleUrl: 'modus-wc-typography.scss',\n  shadow: false,\n})\nexport class ModusWCTypography {\n  private inheritedAttributes: Attributes = {}"
+  },
+  "documentation": "\n\n--- modus-wc-typography.stories.ts ---\n\nimport { Meta, StoryObj } from '@storybook/web-components';\nimport { html, render } from 'lit';\nimport { ifDefined } from 'lit/directives/if-defined.js';\nimport {\n  TypographyHierarchy,\n  TypographySize,\n  TypographyWeight,\n} from './modus-wc-typography';\n\n// Slot content was lost due to rendering issues when changing the \"variant\" attribute.\n// Because of this, each variant is rendered as a unique story below.\n\nconst content = 'The quick brown fox jumps over the lazy dog';\n\ninterface TypographyArgs {\n  'custom-class'?: string;\n  hierarchy: TypographyHierarchy;\n  size?: TypographySize;\n  weight?: TypographyWeight;\n}\n\nconst meta: Meta<TypographyArgs> = {\n  title: 'Components/Typography',\n  component: 'modus-wc-typography',\n  args: {\n    hierarchy: 'p',\n    size: 'md',\n    weight: 'normal',\n  },\n  argTypes: {\n    hierarchy: {\n      control: { type: 'select' },\n      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'],\n    },\n    size: {\n      control: { type: 'select' },\n      options: [\n        'xs',\n        'sm',\n        'md',\n        'lg',\n        'xl',\n        '2xl',\n        '3xl',\n        '4xl',\n        '5xl',\n        '6xl',\n        '7xl',\n        '8xl',\n        '9xl',\n      ],\n    },\n    weight: {\n      control: { type: 'select' },\n      options: ['light', 'normal', 'semibold', 'bold'],\n    },\n  },\n  decorators: [\n    (story) => {\n      // Create a stable container that won't be recreated on re-renders\n      const container = document.createElement('div');\n      const template = document.createElement('template');\n      template.innerHTML = content;\n\n      const renderStory = () => {\n        render(story(), container);\n\n        // Ensure slot content is present after render\n        const typography = container.querySelector('modus-wc-typography');\n        if (typography && !typography.textContent) {\n          typography.textContent = template.innerHTML;\n        }\n      };\n\n      renderStory();\n      return container;\n    },\n  ],\n};\n\nexport default meta;\n\ntype Story = StoryObj<TypographyArgs>;\n\nexport const Default: Story = {\n  render: (args) => html`\n    <modus-wc-typography\n      custom-class=${ifDefined(args['custom-class'])}\n      hierarchy=${args.hierarchy}\n      size=${ifDefined(args.size)}\n      weight=${ifDefined(args.weight)}\n    ></modus-wc-typography>\n  `,\n};\n\nexport const Heading1: Story = {\n  args: {\n    hierarchy: 'h1',\n  },\n};\n\nexport const Heading2: Story = {\n  args: {\n    hierarchy: 'h2',\n  },\n};\n\nexport const Heading3: Story = {\n  args: {\n    hierarchy: 'h3',\n  },\n};\n\nexport const Heading4: Story = {\n  args: {\n    hierarchy: 'h4',\n  },\n};\n\nexport const Heading5: Story = {\n  args: {\n    hierarchy: 'h5',\n  },\n};\n\nexport const Heading6: Story = {\n  args: {\n    hierarchy: 'h6',\n  },\n};\n\nexport const Paragraph: Story = {\n  args: {\n    hierarchy: 'p',\n  },\n};\n",
+  "storybook": {
+    "examples": [
+      "<modus-wc-typography\n      custom-class=${ifDefined(args['custom-class'])}\n      hierarchy=${args.hierarchy}\n      size=${ifDefined(args.size)}\n      weight=${ifDefined(args.weight)}\n    ></modus-wc-typography>",
+      "\n    <modus-wc-typography\n      custom-class=${ifDefined(args['custom-class'])}\n      hierarchy=${args.hierarchy}\n      size=${ifDefined(args.size)}\n      weight=${ifDefined(args.weight)}\n    ></modus-wc-typography>\n  "
+    ],
+    "variants": [],
+    "prop_usage": {}
+  },
+  "tag_name": "modus-wc-typography"
+}

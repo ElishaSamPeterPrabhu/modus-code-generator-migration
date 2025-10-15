@@ -1,0 +1,61 @@
+{
+  "component_name": "modus-toast",
+  "version": "v1",
+  "props": [
+    {
+      "name": "ariaLabel",
+      "description": "/** (optional) The toast's aria-label. */",
+      "type": "string | null"
+    },
+    {
+      "name": "dismissible",
+      "description": "/** (optional) The toast's aria-label. */",
+      "type": "boolean"
+    },
+    {
+      "name": "delay",
+      "description": "/** (optional) The toast's aria-label. */",
+      "type": ""
+    },
+    {
+      "name": "retainElement",
+      "description": "/** (optional) The toast's aria-label. */",
+      "type": ""
+    },
+    {
+      "name": "role",
+      "description": "/** (optional) The toast's aria-label. */",
+      "type": "string | null"
+    },
+    {
+      "name": "showIcon",
+      "description": "/** (optional) The toast's aria-label. */",
+      "type": ""
+    },
+    {
+      "name": "type",
+      "description": "/** (optional) The toast's aria-label. */",
+      "type": "'danger' | 'dark' | 'default' | 'primary' | 'secondary' | 'success' | 'warning'"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "default_values": {
+    "delay": "15000",
+    "retainElement": "false",
+    "role": "'status'",
+    "showIcon": "true",
+    "type": "'default'"
+  },
+  "documentation": "\n\n--- modus-toast-storybook-docs.mdx ---\n\nimport { Anchor } from '@storybook/addon-docs';\n\n# Toast\n\n---\n\n[Modus Toast](https://modus.trimble.com/components/web/toasts/) web components are referenced using the `<modus-toast>` custom HTML element.\n\n### Primary\n\n<modus-toast type=\"primary\">Primary</modus-toast>\n\n<Anchor storyId=\"components-toast--primary\" />\n\n### Secondary\n\n<modus-toast type=\"secondary\">Secondary</modus-toast>\n\n<Anchor storyId=\"components-toast--secondary\" />\n\n### Success\n\n<modus-toast type=\"success\">Success</modus-toast>\n\n<Anchor storyId=\"components-toast--success\" />\n\n### Danger\n\n<modus-toast type=\"danger\">Danger</modus-toast>\n\n<Anchor storyId=\"components-toast--danger\" />\n\n### Retained Toast\n\n<modus-toast type=\"primary\" retain-element=\"true\">Retained Toast</modus-toast>\n\n<Anchor storyId=\"components-toast--retained-toast\" />\n\n```html\n<modus-toast type=\"primary\">Primary</modus-toast>\n<modus-toast type=\"secondary\">Secondary</modus-toast>\n<modus-toast type=\"success\">Success</modus-toast>\n<modus-toast type=\"danger\">Danger</modus-toast>\n<modus-toast type=\"primary\" retain-element=\"true\">Retained Toast</modus-toast>\n```\n\n### Properties\n\n| Name             | Description                                                            | Type      | Options                                      | Default Value |\n| ---------------- | ---------------------------------------------------------------------- | --------- | -------------------------------------------- | ------------- |\n| `aria-label`     | The toast's aria-label                                                 | `string`  |                                              |               |\n| `delay`          | Time taken to dismiss the toast                                        | `number`  |                                              | 15000         |\n| `dismissible`    | Whether the toast is dismissible                                       | `boolean` |                                              | false         |\n| `retain-element` | Whether to retain the toast's element in the DOM after it is dismissed | `boolean` |                                              | false         |\n| `role`           | Role taken by the toast                                                | `string`  | 'alert', 'log', 'marquee', 'status', 'timer' | 'status'      |\n| `show-icon`      | Whether to show the toast's                                            | `boolean` |                                              | false         |\n| `type`           | The toast's type                                                       | `string`  | 'danger', 'primary', 'secondary', 'success', | 'primary'     |\n\n### DOM Events\n\n| Name           | Description            | Emits |\n| -------------- | ---------------------- | ----- |\n| `dismissClick` | Fires on dismiss click |       |\n\n### Accessibility\n\n- Toast has `role` of `status`.\n- Toast gets an `aria-label` provided by the `aria-label` property input.\n",
+  "storybook_content": "\n\n--- modus-toast.stories.tsx ---\n\n// @ts-ignore: JSX/MDX with Stencil\nimport docs from './modus-toast-storybook-docs.mdx';\nimport { html } from 'lit-html';\nimport { withActions } from '@storybook/addon-actions/decorator';\n\nexport default {\n  title: 'Components/Toast',\n  argTypes: {\n    ariaLabel: {\n      name: 'aria-label',\n      description: \"The toast's aria-label\",\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n    delay: {\n      description: 'Time taken to dismiss the toast',\n      table: {\n        defaultValue: { summary: 15000 },\n        type: { summary: 'number' },\n      },\n    },\n    dismissible: {\n      description: 'Whether the toast is dismissible, renders the close icon',\n      table: {\n        defaultValue: { summary: false },\n        type: { summary: 'boolean' },\n      },\n    },\n    retainElement: {\n      name: 'retain-element',\n      description: 'Whether to retain the element in the DOM after it has been dismissed',\n      table: {\n        defaultValue: { summary: false },\n        type: { summary: 'boolean' },\n      },\n    },\n    role: {\n      options: ['alert', 'log', 'marquee', 'status', 'timer'],\n      type: 'select',\n      description: 'Role taken by the toast',\n      table: {\n        defaultValue: { summary: 'status' },\n        type: { summary: '\"alert\" | \"log\" | \"marquee\" | \"status\" | \"timer\"' },\n      },\n    },\n    showIcon: {\n      name: 'show-icon',\n      description: \"The toast's message\",\n      table: {\n        defaultValue: { summary: true },\n        type: { summary: 'boolean' },\n      },\n    },\n    type: {\n      options: ['danger', 'primary', 'secondary', 'success'],\n      type: 'select',\n      description: 'The type of the toast',\n      table: {\n        defaultValue: { summary: `'default'` },\n        type: {\n          summary: `'danger' | 'primary' | 'secondary' | 'success'`,\n        },\n      },\n    },\n  },\n  parameters: {\n    actions: {\n      handles: ['dismissClick'],\n    },\n    controls: { expanded: true, sort: 'requiredFirst' },\n    docs: {\n      page: docs,\n    },\n    options: {\n      isToolshown: true,\n    },\n    design: {\n      type: 'figma',\n      url: 'https://www.figma.com/design/wyfVJUHWRMkeCfdB38HFEE/Modus---Web?node-id=1346-4&m=dev',\n    },\n  },\n  decorators: [withActions],\n};\n\nconst Template = ({ ariaLabel, dismissible, showIcon, retainElement, role, type, delay }) => html`\n  <modus-toast\n    aria-label=${ariaLabel}\n    delay=${delay}\n    dismissible=${dismissible}\n    show-icon=${showIcon}\n    retain-element=${retainElement}\n    role=${role}\n    type=${type}\n    >Toast!</modus-toast\n  >\n`;\n\nexport const Primary = Template.bind({});\nPrimary.args = {\n  ariaLabel: '',\n  delay: 0,\n  dismissible: false,\n  retainElement: false,\n  role: 'status',\n  showIcon: true,\n  type: 'primary',\n};\n\nexport const Secondary = Template.bind({});\nSecondary.args = {\n  ariaLabel: '',\n  delay: 0,\n  dismissible: false,\n  retainElement: false,\n  role: 'status',\n  showIcon: true,\n  type: 'secondary',\n};\n\nexport const Success = Template.bind({});\nSuccess.args = {\n  ariaLabel: '',\n  delay: 0,\n  dismissible: false,\n  retainElement: false,\n  role: 'status',\n  showIcon: true,\n  type: 'success',\n};\n\nexport const Danger = Template.bind({});\nDanger.args = {\n  ariaLabel: '',\n  delay: 0,\n  dismissible: false,\n  retainElement: false,\n  role: 'status',\n  showIcon: true,\n  type: 'danger',\n};\n\nexport const RetainedToast = Template.bind({});\nRetainedToast.args = {\n  ariaLabel: '',\n  delay: 2000,\n  dismissible: false,\n  retainElement: true,\n  role: 'status',\n  showIcon: true,\n  type: 'primary',\n};\n",
+  "storybook": {
+    "examples": [
+      "<modus-toast\n    aria-label=${ariaLabel}\n    delay=${delay}\n    dismissible=${dismissible}\n    show-icon=${showIcon}\n    retain-element=${retainElement}\n    role=${role}\n    type=${type}\n    >Toast!</modus-toast\n  >",
+      "\n  <modus-toast\n    aria-label=${ariaLabel}\n    delay=${delay}\n    dismissible=${dismissible}\n    show-icon=${showIcon}\n    retain-element=${retainElement}\n    role=${role}\n    type=${type}\n    >Toast!</modus-toast\n  >\n"
+    ],
+    "variants": [],
+    "prop_usage": {}
+  },
+  "tag_name": "modus-toast"
+}
