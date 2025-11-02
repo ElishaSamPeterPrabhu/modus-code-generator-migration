@@ -1,0 +1,59 @@
+{
+  "component_name": "Alert",
+  "import_path": "@mui/material/Alert",
+  "props": [
+    {
+      "name": "action",
+      "type": "React.ReactNode",
+      "description": "The action to display"
+    },
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "description": "The content of the component"
+    },
+    {
+      "name": "closeText",
+      "type": "string",
+      "description": "Override the default label for the close popup icon button"
+    },
+    {
+      "name": "color",
+      "type": "'error' | 'info' | 'success' | 'warning'",
+      "description": "The main color for the alert"
+    },
+    {
+      "name": "icon",
+      "type": "React.ReactNode | false",
+      "description": "Override the icon displayed before the children"
+    },
+    {
+      "name": "iconMapping",
+      "type": "object",
+      "description": "The component maps the severity prop to a range of different icons"
+    },
+    {
+      "name": "onClose",
+      "type": "(event: React.SyntheticEvent) => void",
+      "description": "Callback fired when the component requests to be closed"
+    },
+    {
+      "name": "severity",
+      "type": "'error' | 'info' | 'success' | 'warning'",
+      "description": "The severity of the alert"
+    },
+    {
+      "name": "variant",
+      "type": "'filled' | 'outlined' | 'standard'",
+      "description": "The variant to use"
+    }
+  ],
+  "events": [
+    "onClose"
+  ],
+  "default_values": {
+    "closeText": "Close",
+    "severity": "success",
+    "variant": "standard"
+  }
+}

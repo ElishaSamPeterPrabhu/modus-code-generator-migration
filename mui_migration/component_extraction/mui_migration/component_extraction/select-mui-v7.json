@@ -1,0 +1,153 @@
+{
+  "component_name": "Select",
+  "import_path": "@mui/material/Select",
+  "props": [
+    {
+      "name": "autoWidth",
+      "type": "boolean",
+      "description": "If true, the width of the popover will automatically be set according to the items inside the menu"
+    },
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "description": "The option elements to populate the select with"
+    },
+    {
+      "name": "defaultOpen",
+      "type": "boolean",
+      "description": "If true, the component is initially open"
+    },
+    {
+      "name": "defaultValue",
+      "type": "any",
+      "description": "The default value"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "If true, the select will be disabled"
+    },
+    {
+      "name": "displayEmpty",
+      "type": "boolean",
+      "description": "If true, a value is displayed even if no items are selected"
+    },
+    {
+      "name": "error",
+      "type": "boolean",
+      "description": "If true, the label will be displayed in an error state"
+    },
+    {
+      "name": "fullWidth",
+      "type": "boolean",
+      "description": "If true, the input will take up the full width of its container"
+    },
+    {
+      "name": "IconComponent",
+      "type": "elementType",
+      "description": "The icon that displays the arrow"
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "description": "The id of the wrapper element"
+    },
+    {
+      "name": "input",
+      "type": "element",
+      "description": "An Input element"
+    },
+    {
+      "name": "inputProps",
+      "type": "object",
+      "description": "Attributes applied to the input element"
+    },
+    {
+      "name": "label",
+      "type": "React.ReactNode",
+      "description": "The label content"
+    },
+    {
+      "name": "labelId",
+      "type": "string",
+      "description": "The ID of an element that acts as an additional label"
+    },
+    {
+      "name": "MenuProps",
+      "type": "object",
+      "description": "Props applied to the Menu element"
+    },
+    {
+      "name": "multiple",
+      "type": "boolean",
+      "description": "If true, value must be an array and the menu will support multiple selections"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "Name attribute of the select or hidden input element"
+    },
+    {
+      "name": "native",
+      "type": "boolean",
+      "description": "If true, the component will be using a native select element"
+    },
+    {
+      "name": "onChange",
+      "type": "(event: SelectChangeEvent<T>) => void",
+      "description": "Callback fired when a menu item is selected"
+    },
+    {
+      "name": "onClose",
+      "type": "(event: React.SyntheticEvent) => void",
+      "description": "Callback fired when the component requests to be closed"
+    },
+    {
+      "name": "onOpen",
+      "type": "(event: React.SyntheticEvent) => void",
+      "description": "Callback fired when the component requests to be opened"
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "description": "If true, the component is shown"
+    },
+    {
+      "name": "renderValue",
+      "type": "(value: T) => React.ReactNode",
+      "description": "Render the selected value"
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "description": "If true, the label is displayed as required"
+    },
+    {
+      "name": "value",
+      "type": "T",
+      "description": "The input value"
+    },
+    {
+      "name": "variant",
+      "type": "'filled' | 'outlined' | 'standard'",
+      "description": "The variant to use"
+    }
+  ],
+  "events": [
+    "onChange",
+    "onClose",
+    "onOpen"
+  ],
+  "default_values": {
+    "autoWidth": false,
+    "defaultOpen": false,
+    "disabled": false,
+    "displayEmpty": false,
+    "error": false,
+    "fullWidth": false,
+    "multiple": false,
+    "native": false,
+    "required": false,
+    "variant": "outlined"
+  }
+}

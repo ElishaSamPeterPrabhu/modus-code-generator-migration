@@ -1,0 +1,121 @@
+{
+  "component_name": "TextField",
+  "import_path": "@mui/material/TextField",
+  "props": [
+    {
+      "name": "autoComplete",
+      "type": "string",
+      "description": "This prop helps users to fill forms faster"
+    },
+    {
+      "name": "autoFocus",
+      "type": "boolean",
+      "description": "If true, the input element will be focused during the first mount"
+    },
+    {
+      "name": "color",
+      "type": "'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning'",
+      "description": "The color of the component"
+    },
+    {
+      "name": "defaultValue",
+      "type": "any",
+      "description": "The default value of the input element"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "If true, the input element will be disabled"
+    },
+    {
+      "name": "error",
+      "type": "boolean",
+      "description": "If true, the label will be displayed in an error state"
+    },
+    {
+      "name": "fullWidth",
+      "type": "boolean",
+      "description": "If true, the input will take up the full width of its container"
+    },
+    {
+      "name": "helperText",
+      "type": "React.ReactNode",
+      "description": "The helper text content"
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "description": "The id of the input element"
+    },
+    {
+      "name": "label",
+      "type": "React.ReactNode",
+      "description": "The label content"
+    },
+    {
+      "name": "multiline",
+      "type": "boolean",
+      "description": "If true, a textarea element will be rendered instead of an input"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "Name attribute of the input element"
+    },
+    {
+      "name": "onChange",
+      "type": "(event: React.ChangeEvent<HTMLInputElement>) => void",
+      "description": "Callback fired when the value is changed"
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "The short hint displayed in the input before the user enters a value"
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "description": "If true, the label is displayed as required"
+    },
+    {
+      "name": "rows",
+      "type": "string | number",
+      "description": "Number of rows to display when multiline option is set to true"
+    },
+    {
+      "name": "size",
+      "type": "'small' | 'medium'",
+      "description": "The size of the text field"
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "description": "Type of the input element"
+    },
+    {
+      "name": "value",
+      "type": "any",
+      "description": "The value of the input element"
+    },
+    {
+      "name": "variant",
+      "type": "'filled' | 'outlined' | 'standard'",
+      "description": "The variant to use"
+    }
+  ],
+  "events": [
+    "onChange",
+    "onBlur",
+    "onFocus"
+  ],
+  "default_values": {
+    "color": "primary",
+    "disabled": false,
+    "error": false,
+    "fullWidth": false,
+    "multiline": false,
+    "required": false,
+    "size": "medium",
+    "variant": "outlined"
+  }
+}

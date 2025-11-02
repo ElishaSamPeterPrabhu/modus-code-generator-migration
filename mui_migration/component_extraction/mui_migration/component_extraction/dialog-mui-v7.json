@@ -1,0 +1,77 @@
+{
+  "component_name": "Dialog",
+  "import_path": "@mui/material/Dialog",
+  "props": [
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "description": "Dialog children, usually the included sub-components"
+    },
+    {
+      "name": "disableEscapeKeyDown",
+      "type": "boolean",
+      "description": "If true, hitting escape will not fire the onClose callback"
+    },
+    {
+      "name": "fullScreen",
+      "type": "boolean",
+      "description": "If true, the dialog will be full-screen"
+    },
+    {
+      "name": "fullWidth",
+      "type": "boolean",
+      "description": "If true, the dialog stretches to maxWidth"
+    },
+    {
+      "name": "maxWidth",
+      "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | false",
+      "description": "Determine the max-width of the dialog"
+    },
+    {
+      "name": "onClose",
+      "type": "(event: object, reason: 'escapeKeyDown' | 'backdropClick') => void",
+      "description": "Callback fired when the component requests to be closed"
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "description": "If true, the component is shown"
+    },
+    {
+      "name": "PaperComponent",
+      "type": "elementType",
+      "description": "The component used to render the body of the dialog"
+    },
+    {
+      "name": "PaperProps",
+      "type": "object",
+      "description": "Props applied to the Paper element"
+    },
+    {
+      "name": "scroll",
+      "type": "'body' | 'paper'",
+      "description": "Determine the container for scrolling the dialog"
+    },
+    {
+      "name": "TransitionComponent",
+      "type": "elementType",
+      "description": "The component used for the transition"
+    },
+    {
+      "name": "transitionDuration",
+      "type": "number | object",
+      "description": "The duration for the transition"
+    }
+  ],
+  "events": [
+    "onClose"
+  ],
+  "default_values": {
+    "disableEscapeKeyDown": false,
+    "fullScreen": false,
+    "fullWidth": false,
+    "maxWidth": "sm",
+    "open": false,
+    "scroll": "paper"
+  }
+}

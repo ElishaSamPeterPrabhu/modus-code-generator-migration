@@ -1,0 +1,99 @@
+{
+  "component_name": "Tabs",
+  "import_path": "@mui/material/Tabs",
+  "props": [
+    {
+      "name": "action",
+      "type": "React.Ref<TabsActions>",
+      "description": "Callback fired when the component mounts"
+    },
+    {
+      "name": "allowScrollButtonsMobile",
+      "type": "boolean",
+      "description": "If true, the scroll buttons aren't forced hidden on mobile"
+    },
+    {
+      "name": "aria-label",
+      "type": "string",
+      "description": "The label for the Tabs as a string"
+    },
+    {
+      "name": "aria-labelledby",
+      "type": "string",
+      "description": "An id or list of ids separated by a space that label the Tabs"
+    },
+    {
+      "name": "centered",
+      "type": "boolean",
+      "description": "If true, the tabs will be centered"
+    },
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "description": "The content of the component"
+    },
+    {
+      "name": "indicatorColor",
+      "type": "'primary' | 'secondary'",
+      "description": "Determines the color of the indicator"
+    },
+    {
+      "name": "onChange",
+      "type": "(event: React.SyntheticEvent, value: any) => void",
+      "description": "Callback fired when the value changes"
+    },
+    {
+      "name": "orientation",
+      "type": "'horizontal' | 'vertical'",
+      "description": "The tabs orientation"
+    },
+    {
+      "name": "scrollButtons",
+      "type": "'auto' | false | true",
+      "description": "Determine behavior of scroll buttons when tabs are set to scroll"
+    },
+    {
+      "name": "selectionFollowsFocus",
+      "type": "boolean",
+      "description": "If true the selected tab changes on focus"
+    },
+    {
+      "name": "TabIndicatorProps",
+      "type": "object",
+      "description": "Props applied to the tab indicator element"
+    },
+    {
+      "name": "TabScrollButtonProps",
+      "type": "object",
+      "description": "Props applied to the TabScrollButton element"
+    },
+    {
+      "name": "textColor",
+      "type": "'inherit' | 'primary' | 'secondary'",
+      "description": "Determines the color of the Tab"
+    },
+    {
+      "name": "value",
+      "type": "any",
+      "description": "The value of the currently selected Tab"
+    },
+    {
+      "name": "variant",
+      "type": "'fullWidth' | 'scrollable' | 'standard'",
+      "description": "Determines additional display behavior of the tabs"
+    }
+  ],
+  "events": [
+    "onChange"
+  ],
+  "default_values": {
+    "allowScrollButtonsMobile": false,
+    "centered": false,
+    "indicatorColor": "primary",
+    "orientation": "horizontal",
+    "scrollButtons": "auto",
+    "selectionFollowsFocus": false,
+    "textColor": "primary",
+    "variant": "standard"
+  }
+}

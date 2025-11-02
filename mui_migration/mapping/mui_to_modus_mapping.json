@@ -1,0 +1,261 @@
+{
+  "description": "Mapping of MUI v7 components to Modus V2 components",
+  "version": "1.0",
+  "created": "2025-11-02",
+  "mapping": {
+    "Button": {
+      "modus_component": "modus-wc-button",
+      "confidence": "high",
+      "notes": "Direct mapping with property transformations needed",
+      "complexity": "medium"
+    },
+    "TextField": {
+      "modus_component": "modus-wc-text-input",
+      "confidence": "high",
+      "notes": "TextField maps to text-input, multiline TextField maps to textarea",
+      "complexity": "medium",
+      "conditional_mapping": {
+        "multiline": "modus-wc-textarea"
+      }
+    },
+    "Checkbox": {
+      "modus_component": "modus-wc-checkbox",
+      "confidence": "high",
+      "notes": "Direct mapping available",
+      "complexity": "low"
+    },
+    "Select": {
+      "modus_component": "modus-wc-select",
+      "confidence": "high",
+      "notes": "Direct mapping with some property differences",
+      "complexity": "medium"
+    },
+    "Card": {
+      "modus_component": "modus-wc-card",
+      "confidence": "high",
+      "notes": "Direct mapping, MUI Card subcomponents need special handling",
+      "complexity": "medium"
+    },
+    "Dialog": {
+      "modus_component": "modus-wc-modal",
+      "confidence": "high",
+      "notes": "Dialog maps to Modal in Modus",
+      "complexity": "medium"
+    },
+    "Alert": {
+      "modus_component": "modus-wc-alert",
+      "confidence": "high",
+      "notes": "Direct mapping with severity to type conversion",
+      "complexity": "low"
+    },
+    "Chip": {
+      "modus_component": "modus-wc-chip",
+      "confidence": "high",
+      "notes": "Direct mapping available",
+      "complexity": "low"
+    },
+    "Switch": {
+      "modus_component": "modus-wc-switch",
+      "confidence": "high",
+      "notes": "Direct mapping available",
+      "complexity": "low"
+    },
+    "Table": {
+      "modus_component": "modus-wc-table",
+      "confidence": "medium",
+      "notes": "Complex component, MUI Table uses composition pattern",
+      "complexity": "high",
+      "related_components": {
+        "TableHead": "Part of modus-wc-table structure",
+        "TableBody": "Part of modus-wc-table structure",
+        "TableRow": "Part of modus-wc-table structure",
+        "TableCell": "Part of modus-wc-table structure"
+      }
+    },
+    "Tabs": {
+      "modus_component": "modus-wc-tabs",
+      "confidence": "high",
+      "notes": "Direct mapping, Tab component maps to tab items",
+      "complexity": "medium",
+      "related_components": {
+        "Tab": "Part of modus-wc-tabs structure"
+      }
+    },
+    "Accordion": {
+      "modus_component": "modus-wc-accordion",
+      "confidence": "high",
+      "notes": "Direct mapping available",
+      "complexity": "medium",
+      "related_components": {
+        "AccordionSummary": "Maps to modus-wc-collapse header",
+        "AccordionDetails": "Maps to modus-wc-collapse content"
+      }
+    },
+    "Badge": {
+      "modus_component": "modus-wc-badge",
+      "confidence": "high",
+      "notes": "Direct mapping available",
+      "complexity": "low"
+    },
+    "Avatar": {
+      "modus_component": "modus-wc-avatar",
+      "confidence": "high",
+      "notes": "Direct mapping available",
+      "complexity": "low"
+    },
+    "Tooltip": {
+      "modus_component": "modus-wc-tooltip",
+      "confidence": "high",
+      "notes": "Direct mapping with placement differences",
+      "complexity": "medium"
+    },
+    "Slider": {
+      "modus_component": "modus-wc-slider",
+      "confidence": "high",
+      "notes": "Direct mapping available",
+      "complexity": "medium"
+    },
+    "Autocomplete": {
+      "modus_component": "modus-wc-autocomplete",
+      "confidence": "medium",
+      "notes": "Limited implementation in Modus V2, may need custom handling",
+      "complexity": "high"
+    },
+    "Pagination": {
+      "modus_component": "modus-wc-pagination",
+      "confidence": "high",
+      "notes": "Direct mapping available",
+      "complexity": "medium"
+    },
+    "CircularProgress": {
+      "modus_component": "modus-wc-progress",
+      "confidence": "medium",
+      "notes": "Use radial variant of progress component",
+      "complexity": "low",
+      "variant_mapping": {
+        "default": "radial"
+      }
+    },
+    "LinearProgress": {
+      "modus_component": "modus-wc-progress",
+      "confidence": "high",
+      "notes": "Use default variant of progress component",
+      "complexity": "low",
+      "variant_mapping": {
+        "default": "default"
+      }
+    },
+    "Snackbar": {
+      "modus_component": "modus-wc-toast",
+      "confidence": "high",
+      "notes": "Snackbar maps to Toast in Modus",
+      "complexity": "medium"
+    },
+    "Menu": {
+      "modus_component": "modus-wc-dropdown-menu",
+      "confidence": "medium",
+      "notes": "Menu maps to dropdown-menu, may need additional wrapper",
+      "complexity": "high",
+      "related_components": {
+        "MenuItem": "modus-wc-menu-item"
+      }
+    },
+    "AppBar": {
+      "modus_component": "modus-wc-navbar",
+      "confidence": "medium",
+      "notes": "AppBar maps to navbar with different structure",
+      "complexity": "high"
+    },
+    "Drawer": {
+      "modus_component": "modus-wc-side-navigation",
+      "confidence": "medium",
+      "notes": "Drawer maps to side-navigation with limitations",
+      "complexity": "high"
+    },
+    "IconButton": {
+      "modus_component": "modus-wc-button",
+      "confidence": "high",
+      "notes": "Use button with icon slot and appropriate styling",
+      "complexity": "medium",
+      "special_handling": "icon-only"
+    },
+    "List": {
+      "modus_component": "modus-wc-menu",
+      "confidence": "medium",
+      "notes": "List can map to menu for interactive lists",
+      "complexity": "medium",
+      "related_components": {
+        "ListItem": "modus-wc-menu-item",
+        "ListItemText": "Part of menu-item content",
+        "ListItemIcon": "Use modus-wc-icon within menu-item"
+      }
+    },
+    "Divider": {
+      "modus_component": "modus-wc-divider",
+      "confidence": "high",
+      "notes": "Direct mapping available",
+      "complexity": "low"
+    },
+    "Skeleton": {
+      "modus_component": "modus-wc-skeleton",
+      "confidence": "high",
+      "notes": "Direct mapping available",
+      "complexity": "low"
+    },
+    "Rating": {
+      "modus_component": "modus-wc-rating",
+      "confidence": "high",
+      "notes": "Direct mapping available",
+      "complexity": "low"
+    },
+    "Stepper": {
+      "modus_component": "modus-wc-stepper",
+      "confidence": "high",
+      "notes": "Direct mapping with structural differences",
+      "complexity": "high",
+      "related_components": {
+        "Step": "Part of stepper structure",
+        "StepLabel": "Part of stepper structure"
+      }
+    }
+  },
+  "no_direct_mapping": [
+    "Grid",
+    "Box",
+    "Container",
+    "Stack",
+    "Paper",
+    "Typography",
+    "Backdrop",
+    "Fade",
+    "Grow",
+    "Slide",
+    "Zoom",
+    "SpeedDial",
+    "ToggleButton",
+    "ToggleButtonGroup",
+    "BottomNavigation",
+    "Breadcrumbs",
+    "Link",
+    "FormControl",
+    "FormLabel",
+    "FormHelperText",
+    "InputLabel",
+    "InputAdornment",
+    "FilledInput",
+    "OutlinedInput",
+    "Input",
+    "FormControlLabel",
+    "FormGroup",
+    "RadioGroup",
+    "Radio"
+  ],
+  "migration_notes": {
+    "layout_components": "MUI layout components (Grid, Box, Container, Stack) have no direct Modus equivalent. Use CSS Grid/Flexbox instead.",
+    "form_helpers": "MUI form helper components should be recreated using Modus input components with proper label/helper text props.",
+    "animation_components": "MUI transition components have no Modus equivalent. Use CSS transitions/animations.",
+    "theme_system": "MUI's theme system needs to be migrated to Modus design tokens and CSS variables.",
+    "icons": "MUI icons need to be replaced with modus-wc-icon component and appropriate icon names.",
+    "composition": "MUI's composition pattern needs to be adapted to Modus's web component structure."
+  }
+}

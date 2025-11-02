@@ -1,0 +1,60 @@
+{
+  "component_name": "Accordion",
+  "import_path": "@mui/material/Accordion",
+  "props": [
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "description": "The content of the component"
+    },
+    {
+      "name": "defaultExpanded",
+      "type": "boolean",
+      "description": "If true, expands the accordion by default"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "If true, the component will be disabled"
+    },
+    {
+      "name": "disableGutters",
+      "type": "boolean",
+      "description": "If true, it removes the margin between two expanded accordion items"
+    },
+    {
+      "name": "expanded",
+      "type": "boolean",
+      "description": "If true, expands the accordion, otherwise collapse it"
+    },
+    {
+      "name": "onChange",
+      "type": "(event: React.SyntheticEvent, expanded: boolean) => void",
+      "description": "Callback fired when the expand/collapse state is changed"
+    },
+    {
+      "name": "square",
+      "type": "boolean",
+      "description": "If true, rounded corners are disabled"
+    },
+    {
+      "name": "TransitionComponent",
+      "type": "elementType",
+      "description": "The component used for the transition"
+    },
+    {
+      "name": "TransitionProps",
+      "type": "object",
+      "description": "Props applied to the transition element"
+    }
+  ],
+  "events": [
+    "onChange"
+  ],
+  "default_values": {
+    "defaultExpanded": false,
+    "disabled": false,
+    "disableGutters": false,
+    "square": false
+  }
+}

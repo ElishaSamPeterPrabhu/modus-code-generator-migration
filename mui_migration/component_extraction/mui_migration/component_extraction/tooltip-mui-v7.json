@@ -1,0 +1,120 @@
+{
+  "component_name": "Tooltip",
+  "import_path": "@mui/material/Tooltip",
+  "props": [
+    {
+      "name": "arrow",
+      "type": "boolean",
+      "description": "If true, adds an arrow to the tooltip"
+    },
+    {
+      "name": "children",
+      "type": "element",
+      "description": "Tooltip reference element"
+    },
+    {
+      "name": "describeChild",
+      "type": "boolean",
+      "description": "Set to true if the title acts as an accessible description"
+    },
+    {
+      "name": "disableFocusListener",
+      "type": "boolean",
+      "description": "Do not respond to focus-visible events"
+    },
+    {
+      "name": "disableHoverListener",
+      "type": "boolean",
+      "description": "Do not respond to hover events"
+    },
+    {
+      "name": "disableInteractive",
+      "type": "boolean",
+      "description": "Makes a tooltip not interactive"
+    },
+    {
+      "name": "disableTouchListener",
+      "type": "boolean",
+      "description": "Do not respond to long press touch events"
+    },
+    {
+      "name": "enterDelay",
+      "type": "number",
+      "description": "The number of milliseconds to wait before showing the tooltip"
+    },
+    {
+      "name": "enterNextDelay",
+      "type": "number",
+      "description": "The number of milliseconds to wait before showing the tooltip when one was already recently opened"
+    },
+    {
+      "name": "enterTouchDelay",
+      "type": "number",
+      "description": "The number of milliseconds a user must touch the element before showing the tooltip"
+    },
+    {
+      "name": "followCursor",
+      "type": "boolean",
+      "description": "If true, the tooltip follow the cursor over the wrapped element"
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "description": "This prop is used to help implement the accessibility logic"
+    },
+    {
+      "name": "leaveDelay",
+      "type": "number",
+      "description": "The number of milliseconds to wait before hiding the tooltip"
+    },
+    {
+      "name": "leaveTouchDelay",
+      "type": "number",
+      "description": "The number of milliseconds after the user stops touching an element before hiding the tooltip"
+    },
+    {
+      "name": "onClose",
+      "type": "(event: React.SyntheticEvent | Event) => void",
+      "description": "Callback fired when the component requests to be closed"
+    },
+    {
+      "name": "onOpen",
+      "type": "(event: React.SyntheticEvent | Event) => void",
+      "description": "Callback fired when the component requests to be open"
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "description": "If true, the component is shown"
+    },
+    {
+      "name": "placement",
+      "type": "'bottom-end' | 'bottom-start' | 'bottom' | 'left-end' | 'left-start' | 'left' | 'right-end' | 'right-start' | 'right' | 'top-end' | 'top-start' | 'top'",
+      "description": "Tooltip placement"
+    },
+    {
+      "name": "title",
+      "type": "React.ReactNode",
+      "description": "Tooltip title"
+    }
+  ],
+  "events": [
+    "onClose",
+    "onOpen"
+  ],
+  "default_values": {
+    "arrow": false,
+    "describeChild": false,
+    "disableFocusListener": false,
+    "disableHoverListener": false,
+    "disableInteractive": false,
+    "disableTouchListener": false,
+    "enterDelay": 100,
+    "enterNextDelay": 0,
+    "enterTouchDelay": 700,
+    "followCursor": false,
+    "leaveDelay": 0,
+    "leaveTouchDelay": 1500,
+    "placement": "bottom"
+  }
+}

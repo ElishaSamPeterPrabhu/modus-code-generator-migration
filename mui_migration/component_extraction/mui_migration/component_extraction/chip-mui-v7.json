@@ -1,0 +1,67 @@
+{
+  "component_name": "Chip",
+  "import_path": "@mui/material/Chip",
+  "props": [
+    {
+      "name": "avatar",
+      "type": "element",
+      "description": "Avatar element"
+    },
+    {
+      "name": "clickable",
+      "type": "boolean",
+      "description": "If true, the chip will appear clickable"
+    },
+    {
+      "name": "color",
+      "type": "'default' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning'",
+      "description": "The color of the component"
+    },
+    {
+      "name": "deleteIcon",
+      "type": "element",
+      "description": "Override the default delete icon element"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "If true, the chip will be disabled"
+    },
+    {
+      "name": "icon",
+      "type": "element",
+      "description": "Icon element"
+    },
+    {
+      "name": "label",
+      "type": "React.ReactNode",
+      "description": "The content of the label"
+    },
+    {
+      "name": "onDelete",
+      "type": "(event: React.SyntheticEvent) => void",
+      "description": "Callback fired when the delete icon is clicked"
+    },
+    {
+      "name": "size",
+      "type": "'small' | 'medium'",
+      "description": "The size of the chip"
+    },
+    {
+      "name": "variant",
+      "type": "'filled' | 'outlined'",
+      "description": "The variant to use"
+    }
+  ],
+  "events": [
+    "onClick",
+    "onDelete"
+  ],
+  "default_values": {
+    "clickable": false,
+    "color": "default",
+    "disabled": false,
+    "size": "medium",
+    "variant": "filled"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "component_name": "Table",
+  "import_path": "@mui/material/Table",
+  "props": [
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "description": "The content of the table, normally TableHead and TableBody"
+    },
+    {
+      "name": "padding",
+      "type": "'normal' | 'checkbox' | 'none'",
+      "description": "Allows TableCells to inherit padding of the Table"
+    },
+    {
+      "name": "size",
+      "type": "'small' | 'medium'",
+      "description": "Allows TableCells to inherit size of the Table"
+    },
+    {
+      "name": "stickyHeader",
+      "type": "boolean",
+      "description": "Set the header sticky"
+    }
+  ],
+  "events": [],
+  "default_values": {
+    "padding": "normal",
+    "size": "medium",
+    "stickyHeader": false
+  }
+}

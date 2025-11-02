@@ -1,0 +1,109 @@
+{
+  "component_name": "Pagination",
+  "import_path": "@mui/material/Pagination",
+  "props": [
+    {
+      "name": "boundaryCount",
+      "type": "number",
+      "description": "Number of always visible pages at the beginning and end"
+    },
+    {
+      "name": "color",
+      "type": "'primary' | 'secondary' | 'standard'",
+      "description": "The active color"
+    },
+    {
+      "name": "count",
+      "type": "number",
+      "description": "The total number of pages"
+    },
+    {
+      "name": "defaultPage",
+      "type": "number",
+      "description": "The page selected by default when the component is uncontrolled"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "If true, the component is disabled"
+    },
+    {
+      "name": "getItemAriaLabel",
+      "type": "(type: 'first' | 'last' | 'next' | 'previous' | 'page', page: number, selected: boolean) => string",
+      "description": "Accepts a function which returns a string value that provides a user-friendly name for the current page"
+    },
+    {
+      "name": "hideNextButton",
+      "type": "boolean",
+      "description": "If true, hide the next-page button"
+    },
+    {
+      "name": "hidePrevButton",
+      "type": "boolean",
+      "description": "If true, hide the previous-page button"
+    },
+    {
+      "name": "onChange",
+      "type": "(event: React.ChangeEvent<unknown>, page: number) => void",
+      "description": "Callback fired when the page is changed"
+    },
+    {
+      "name": "page",
+      "type": "number",
+      "description": "The current page"
+    },
+    {
+      "name": "renderItem",
+      "type": "(item: PaginationItem) => React.ReactNode",
+      "description": "Render the item"
+    },
+    {
+      "name": "shape",
+      "type": "'circular' | 'rounded'",
+      "description": "The shape of the pagination items"
+    },
+    {
+      "name": "showFirstButton",
+      "type": "boolean",
+      "description": "If true, show the first-page button"
+    },
+    {
+      "name": "showLastButton",
+      "type": "boolean",
+      "description": "If true, show the last-page button"
+    },
+    {
+      "name": "siblingCount",
+      "type": "number",
+      "description": "Number of always visible pages before and after the current page"
+    },
+    {
+      "name": "size",
+      "type": "'small' | 'medium' | 'large'",
+      "description": "The size of the component"
+    },
+    {
+      "name": "variant",
+      "type": "'outlined' | 'text'",
+      "description": "The variant to use"
+    }
+  ],
+  "events": [
+    "onChange"
+  ],
+  "default_values": {
+    "boundaryCount": 1,
+    "color": "standard",
+    "count": 1,
+    "defaultPage": 1,
+    "disabled": false,
+    "hideNextButton": false,
+    "hidePrevButton": false,
+    "shape": "circular",
+    "showFirstButton": false,
+    "showLastButton": false,
+    "siblingCount": 1,
+    "size": "medium",
+    "variant": "text"
+  }
+}

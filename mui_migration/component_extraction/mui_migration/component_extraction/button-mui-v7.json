@@ -1,0 +1,89 @@
+{
+  "component_name": "Button",
+  "import_path": "@mui/material/Button",
+  "props": [
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "description": "The content of the button"
+    },
+    {
+      "name": "color",
+      "type": "'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning'",
+      "description": "The color of the button"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "If true, the button will be disabled"
+    },
+    {
+      "name": "disableElevation",
+      "type": "boolean",
+      "description": "If true, no elevation is used"
+    },
+    {
+      "name": "disableFocusRipple",
+      "type": "boolean",
+      "description": "If true, the keyboard focus ripple will be disabled"
+    },
+    {
+      "name": "disableRipple",
+      "type": "boolean",
+      "description": "If true, the ripple effect will be disabled"
+    },
+    {
+      "name": "endIcon",
+      "type": "React.ReactNode",
+      "description": "Element placed after the children"
+    },
+    {
+      "name": "fullWidth",
+      "type": "boolean",
+      "description": "If true, the button will take up the full width of its container"
+    },
+    {
+      "name": "href",
+      "type": "string",
+      "description": "The URL to link to when the button is clicked"
+    },
+    {
+      "name": "size",
+      "type": "'small' | 'medium' | 'large'",
+      "description": "The size of the button"
+    },
+    {
+      "name": "startIcon",
+      "type": "React.ReactNode",
+      "description": "Element placed before the children"
+    },
+    {
+      "name": "variant",
+      "type": "'text' | 'outlined' | 'contained'",
+      "description": "The variant to use"
+    },
+    {
+      "name": "onClick",
+      "type": "(event: React.MouseEvent<HTMLButtonElement>) => void",
+      "description": "Callback fired when the button is clicked"
+    },
+    {
+      "name": "sx",
+      "type": "SxProps<Theme>",
+      "description": "The system prop that allows defining system overrides as well as additional CSS styles"
+    }
+  ],
+  "events": [
+    "onClick"
+  ],
+  "default_values": {
+    "color": "primary",
+    "disabled": false,
+    "disableElevation": false,
+    "disableFocusRipple": false,
+    "disableRipple": false,
+    "fullWidth": false,
+    "size": "medium",
+    "variant": "text"
+  }
+}

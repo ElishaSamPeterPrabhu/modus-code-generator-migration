@@ -1,0 +1,64 @@
+{
+  "component_name": "Badge",
+  "import_path": "@mui/material/Badge",
+  "props": [
+    {
+      "name": "anchorOrigin",
+      "type": "{ horizontal: 'left' | 'right', vertical: 'bottom' | 'top' }",
+      "description": "The anchor of the badge"
+    },
+    {
+      "name": "badgeContent",
+      "type": "React.ReactNode",
+      "description": "The content rendered within the badge"
+    },
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "description": "The badge will be added relative to this node"
+    },
+    {
+      "name": "color",
+      "type": "'default' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning'",
+      "description": "The color of the component"
+    },
+    {
+      "name": "invisible",
+      "type": "boolean",
+      "description": "If true, the badge will be invisible"
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "description": "Max count to show"
+    },
+    {
+      "name": "overlap",
+      "type": "'circular' | 'rectangular'",
+      "description": "Wrapped shape the badge should overlap"
+    },
+    {
+      "name": "showZero",
+      "type": "boolean",
+      "description": "Controls whether the badge is hidden when badgeContent is zero"
+    },
+    {
+      "name": "variant",
+      "type": "'dot' | 'standard'",
+      "description": "The variant to use"
+    }
+  ],
+  "events": [],
+  "default_values": {
+    "anchorOrigin": {
+      "horizontal": "right",
+      "vertical": "top"
+    },
+    "color": "default",
+    "invisible": false,
+    "max": 99,
+    "overlap": "rectangular",
+    "showZero": false,
+    "variant": "standard"
+  }
+}

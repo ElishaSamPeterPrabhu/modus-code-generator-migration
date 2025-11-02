@@ -1,0 +1,25 @@
+{
+  "component_name": "Card",
+  "import_path": "@mui/material/Card",
+  "props": [
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "description": "The content of the component"
+    },
+    {
+      "name": "raised",
+      "type": "boolean",
+      "description": "If true, the card will use raised styling"
+    },
+    {
+      "name": "sx",
+      "type": "SxProps<Theme>",
+      "description": "The system prop that allows defining system overrides"
+    }
+  ],
+  "events": [],
+  "default_values": {
+    "raised": false
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "component_name": "Avatar",
+  "import_path": "@mui/material/Avatar",
+  "props": [
+    {
+      "name": "alt",
+      "type": "string",
+      "description": "Used in combination with src or srcSet to provide an alt attribute"
+    },
+    {
+      "name": "children",
+      "type": "React.ReactNode",
+      "description": "Used to render icon or text elements inside the Avatar"
+    },
+    {
+      "name": "imgProps",
+      "type": "object",
+      "description": "Attributes applied to the img element if the component is used to display an image"
+    },
+    {
+      "name": "sizes",
+      "type": "string",
+      "description": "The sizes attribute for the img element"
+    },
+    {
+      "name": "src",
+      "type": "string",
+      "description": "The src attribute for the img element"
+    },
+    {
+      "name": "srcSet",
+      "type": "string",
+      "description": "The srcSet attribute for the img element"
+    },
+    {
+      "name": "variant",
+      "type": "'circular' | 'rounded' | 'square'",
+      "description": "The shape of the avatar"
+    }
+  ],
+  "events": [],
+  "default_values": {
+    "variant": "circular"
+  }
+}

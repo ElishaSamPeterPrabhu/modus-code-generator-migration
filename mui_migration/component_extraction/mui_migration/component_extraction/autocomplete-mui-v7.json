@@ -1,0 +1,320 @@
+{
+  "component_name": "Autocomplete",
+  "import_path": "@mui/material/Autocomplete",
+  "props": [
+    {
+      "name": "autoComplete",
+      "type": "boolean",
+      "description": "If true, the portion of the selected suggestion that has not been typed by the user will appear inline in the textbox"
+    },
+    {
+      "name": "autoHighlight",
+      "type": "boolean",
+      "description": "If true, the first option is automatically highlighted"
+    },
+    {
+      "name": "autoSelect",
+      "type": "boolean",
+      "description": "If true, the selected option becomes the value of the input when the Autocomplete loses focus"
+    },
+    {
+      "name": "blurOnSelect",
+      "type": "'mouse' | 'touch' | boolean",
+      "description": "Control if the input should be blurred when an option is selected"
+    },
+    {
+      "name": "clearIcon",
+      "type": "React.ReactNode",
+      "description": "The icon to display in place of the default clear icon"
+    },
+    {
+      "name": "clearOnBlur",
+      "type": "boolean",
+      "description": "If true, the input's text is cleared on blur if no value is selected"
+    },
+    {
+      "name": "clearOnEscape",
+      "type": "boolean",
+      "description": "If true, clear all values when the user presses escape and the popup is closed"
+    },
+    {
+      "name": "clearText",
+      "type": "string",
+      "description": "Override the default text for the clear icon button"
+    },
+    {
+      "name": "closeText",
+      "type": "string",
+      "description": "Override the default text for the close popup icon button"
+    },
+    {
+      "name": "defaultValue",
+      "type": "any",
+      "description": "The default value"
+    },
+    {
+      "name": "disableClearable",
+      "type": "boolean",
+      "description": "If true, the input can't be cleared"
+    },
+    {
+      "name": "disableCloseOnSelect",
+      "type": "boolean",
+      "description": "If true, the popup won't close when a value is selected"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "If true, the component is disabled"
+    },
+    {
+      "name": "disabledItemsFocusable",
+      "type": "boolean",
+      "description": "If true, will allow focus on disabled items"
+    },
+    {
+      "name": "disableListWrap",
+      "type": "boolean",
+      "description": "If true, the list box in the popup will not wrap focus"
+    },
+    {
+      "name": "disablePortal",
+      "type": "boolean",
+      "description": "If true, the Popper content will be under the DOM hierarchy of the parent component"
+    },
+    {
+      "name": "filterOptions",
+      "type": "(options: T[], state: FilterOptionsState<T>) => T[]",
+      "description": "A function that determines the filtered options to be rendered on search"
+    },
+    {
+      "name": "filterSelectedOptions",
+      "type": "boolean",
+      "description": "If true, hide the selected options from the list box"
+    },
+    {
+      "name": "forcePopupIcon",
+      "type": "'auto' | boolean",
+      "description": "Force the visibility display of the popup icon"
+    },
+    {
+      "name": "freeSolo",
+      "type": "boolean",
+      "description": "If true, the Autocomplete is free solo, meaning that the user input is not bound to provided options"
+    },
+    {
+      "name": "fullWidth",
+      "type": "boolean",
+      "description": "If true, the input will take up the full width of its container"
+    },
+    {
+      "name": "getLimitTagsText",
+      "type": "(more: number) => React.ReactNode",
+      "description": "The label to display when the tags are truncated"
+    },
+    {
+      "name": "getOptionDisabled",
+      "type": "(option: T) => boolean",
+      "description": "Used to determine the disabled state for a given option"
+    },
+    {
+      "name": "getOptionLabel",
+      "type": "(option: T) => string",
+      "description": "Used to determine the string value for a given option"
+    },
+    {
+      "name": "groupBy",
+      "type": "(option: T) => string",
+      "description": "If provided, the options will be grouped under the returned string"
+    },
+    {
+      "name": "handleHomeEndKeys",
+      "type": "boolean",
+      "description": "If true, the component handles the Home and End keys"
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "description": "This prop is used to help implement the accessibility logic"
+    },
+    {
+      "name": "includeInputInList",
+      "type": "boolean",
+      "description": "If true, the highlight can move to the input"
+    },
+    {
+      "name": "inputValue",
+      "type": "string",
+      "description": "The input value"
+    },
+    {
+      "name": "isOptionEqualToValue",
+      "type": "(option: T, value: T) => boolean",
+      "description": "Used to determine if the option represents the given value"
+    },
+    {
+      "name": "limitTags",
+      "type": "number",
+      "description": "The maximum number of tags that will be visible when not focused"
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "description": "If true, the component is in a loading state"
+    },
+    {
+      "name": "loadingText",
+      "type": "React.ReactNode",
+      "description": "Text to display when in a loading state"
+    },
+    {
+      "name": "multiple",
+      "type": "boolean",
+      "description": "If true, value must be an array and the menu will support multiple selections"
+    },
+    {
+      "name": "noOptionsText",
+      "type": "React.ReactNode",
+      "description": "Text to display when there are no options"
+    },
+    {
+      "name": "onChange",
+      "type": "(event: React.SyntheticEvent, value: T | T[], reason: AutocompleteChangeReason, details?: AutocompleteChangeDetails<T>) => void",
+      "description": "Callback fired when the value changes"
+    },
+    {
+      "name": "onClose",
+      "type": "(event: React.SyntheticEvent, reason: AutocompleteCloseReason) => void",
+      "description": "Callback fired when the popup requests to be closed"
+    },
+    {
+      "name": "onHighlightChange",
+      "type": "(event: React.SyntheticEvent, option: T, reason: AutocompleteHighlightChangeReason) => void",
+      "description": "Callback fired when the highlight option changes"
+    },
+    {
+      "name": "onInputChange",
+      "type": "(event: React.SyntheticEvent, value: string, reason: AutocompleteInputChangeReason) => void",
+      "description": "Callback fired when the input value changes"
+    },
+    {
+      "name": "onOpen",
+      "type": "(event: React.SyntheticEvent) => void",
+      "description": "Callback fired when the popup requests to be opened"
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "description": "If true, the component is shown"
+    },
+    {
+      "name": "openOnFocus",
+      "type": "boolean",
+      "description": "If true, the popup will open on input focus"
+    },
+    {
+      "name": "openText",
+      "type": "string",
+      "description": "Override the default text for the open popup icon button"
+    },
+    {
+      "name": "options",
+      "type": "T[]",
+      "description": "Array of options"
+    },
+    {
+      "name": "PaperComponent",
+      "type": "elementType",
+      "description": "The component used to render the body of the popup"
+    },
+    {
+      "name": "popupIcon",
+      "type": "React.ReactNode",
+      "description": "The icon to display in place of the default popup icon"
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "description": "If true, the component becomes readonly"
+    },
+    {
+      "name": "renderGroup",
+      "type": "(params: AutocompleteRenderGroupParams) => React.ReactNode",
+      "description": "Render the group"
+    },
+    {
+      "name": "renderInput",
+      "type": "(params: AutocompleteRenderInputParams) => React.ReactNode",
+      "description": "Render the input"
+    },
+    {
+      "name": "renderOption",
+      "type": "(props: React.HTMLAttributes<HTMLLIElement>, option: T, state: AutocompleteRenderOptionState) => React.ReactNode",
+      "description": "Render the option"
+    },
+    {
+      "name": "renderTags",
+      "type": "(value: T[], getTagProps: AutocompleteGetTagProps) => React.ReactNode",
+      "description": "Render the selected value"
+    },
+    {
+      "name": "selectOnFocus",
+      "type": "boolean",
+      "description": "If true, the input's text is selected on focus"
+    },
+    {
+      "name": "size",
+      "type": "'small' | 'medium'",
+      "description": "The size of the component"
+    },
+    {
+      "name": "slotProps",
+      "type": "object",
+      "description": "The props used for each slot inside"
+    },
+    {
+      "name": "value",
+      "type": "T | T[]",
+      "description": "The value of the autocomplete"
+    }
+  ],
+  "events": [
+    "onChange",
+    "onClose",
+    "onHighlightChange",
+    "onInputChange",
+    "onOpen"
+  ],
+  "default_values": {
+    "autoComplete": false,
+    "autoHighlight": false,
+    "autoSelect": false,
+    "blurOnSelect": false,
+    "clearOnBlur": true,
+    "clearOnEscape": false,
+    "clearText": "Clear",
+    "closeText": "Close",
+    "disableClearable": false,
+    "disableCloseOnSelect": false,
+    "disabled": false,
+    "disabledItemsFocusable": false,
+    "disableListWrap": false,
+    "disablePortal": false,
+    "filterSelectedOptions": false,
+    "forcePopupIcon": "auto",
+    "freeSolo": false,
+    "fullWidth": false,
+    "handleHomeEndKeys": true,
+    "includeInputInList": false,
+    "limitTags": -1,
+    "loading": false,
+    "loadingText": "Loading\u2026",
+    "multiple": false,
+    "noOptionsText": "No options",
+    "openOnFocus": false,
+    "openText": "Open",
+    "readOnly": false,
+    "selectOnFocus": true,
+    "size": "medium"
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "description": "MUI v7 Components Index",
+  "version": "7.x",
+  "total_components": 18,
+  "components": [
+    {
+      "file": "button-mui-v7.json",
+      "component_name": "Button",
+      "import_path": "@mui/material/Button",
+      "props_count": 14,
+      "events_count": 1,
+      "has_children": true
+    },
+    {
+      "file": "textfield-mui-v7.json",
+      "component_name": "TextField",
+      "import_path": "@mui/material/TextField",
+      "props_count": 20,
+      "events_count": 3,
+      "has_children": false
+    },
+    {
+      "file": "checkbox-mui-v7.json",
+      "component_name": "Checkbox",
+      "import_path": "@mui/material/Checkbox",
+      "props_count": 17,
+      "events_count": 1,
+      "has_children": false
+    },
+    {
+      "file": "select-mui-v7.json",
+      "component_name": "Select",
+      "import_path": "@mui/material/Select",
+      "props_count": 26,
+      "events_count": 3,
+      "has_children": true
+    },
+    {
+      "file": "card-mui-v7.json",
+      "component_name": "Card",
+      "import_path": "@mui/material/Card",
+      "props_count": 3,
+      "events_count": 0,
+      "has_children": true
+    },
+    {
+      "file": "dialog-mui-v7.json",
+      "component_name": "Dialog",
+      "import_path": "@mui/material/Dialog",
+      "props_count": 12,
+      "events_count": 1,
+      "has_children": true
+    },
+    {
+      "file": "alert-mui-v7.json",
+      "component_name": "Alert",
+      "import_path": "@mui/material/Alert",
+      "props_count": 9,
+      "events_count": 1,
+      "has_children": true
+    },
+    {
+      "file": "chip-mui-v7.json",
+      "component_name": "Chip",
+      "import_path": "@mui/material/Chip",
+      "props_count": 10,
+      "events_count": 2,
+      "has_children": false
+    },
+    {
+      "file": "switch-mui-v7.json",
+      "component_name": "Switch",
+      "import_path": "@mui/material/Switch",
+      "props_count": 13,
+      "events_count": 1,
+      "has_children": false
+    },
+    {
+      "file": "table-mui-v7.json",
+      "component_name": "Table",
+      "import_path": "@mui/material/Table",
+      "props_count": 4,
+      "events_count": 0,
+      "has_children": true
+    },
+    {
+      "file": "tabs-mui-v7.json",
+      "component_name": "Tabs",
+      "import_path": "@mui/material/Tabs",
+      "props_count": 16,
+      "events_count": 1,
+      "has_children": true
+    },
+    {
+      "file": "accordion-mui-v7.json",
+      "component_name": "Accordion",
+      "import_path": "@mui/material/Accordion",
+      "props_count": 9,
+      "events_count": 1,
+      "has_children": true
+    },
+    {
+      "file": "badge-mui-v7.json",
+      "component_name": "Badge",
+      "import_path": "@mui/material/Badge",
+      "props_count": 9,
+      "events_count": 0,
+      "has_children": true
+    },
+    {
+      "file": "avatar-mui-v7.json",
+      "component_name": "Avatar",
+      "import_path": "@mui/material/Avatar",
+      "props_count": 7,
+      "events_count": 0,
+      "has_children": true
+    },
+    {
+      "file": "tooltip-mui-v7.json",
+      "component_name": "Tooltip",
+      "import_path": "@mui/material/Tooltip",
+      "props_count": 19,
+      "events_count": 2,
+      "has_children": true
+    },
+    {
+      "file": "slider-mui-v7.json",
+      "component_name": "Slider",
+      "import_path": "@mui/material/Slider",
+      "props_count": 23,
+      "events_count": 2,
+      "has_children": false
+    },
+    {
+      "file": "autocomplete-mui-v7.json",
+      "component_name": "Autocomplete",
+      "import_path": "@mui/material/Autocomplete",
+      "props_count": 55,
+      "events_count": 5,
+      "has_children": false
+    },
+    {
+      "file": "pagination-mui-v7.json",
+      "component_name": "Pagination",
+      "import_path": "@mui/material/Pagination",
+      "props_count": 17,
+      "events_count": 1,
+      "has_children": false
+    }
+  ]
+}

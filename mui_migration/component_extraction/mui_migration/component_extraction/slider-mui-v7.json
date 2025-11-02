@@ -1,0 +1,138 @@
+{
+  "component_name": "Slider",
+  "import_path": "@mui/material/Slider",
+  "props": [
+    {
+      "name": "aria-label",
+      "type": "string",
+      "description": "The label of the slider"
+    },
+    {
+      "name": "aria-labelledby",
+      "type": "string",
+      "description": "The id of the element containing a label for the slider"
+    },
+    {
+      "name": "aria-valuetext",
+      "type": "string",
+      "description": "A string value that provides a user-friendly name for the current value of the slider"
+    },
+    {
+      "name": "color",
+      "type": "'primary' | 'secondary'",
+      "description": "The color of the component"
+    },
+    {
+      "name": "defaultValue",
+      "type": "number | number[]",
+      "description": "The default value"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "If true, the component will be disabled"
+    },
+    {
+      "name": "disableSwap",
+      "type": "boolean",
+      "description": "If true, the active thumb doesn't swap when moving pointer over a thumb while dragging another thumb"
+    },
+    {
+      "name": "getAriaLabel",
+      "type": "(index: number) => string",
+      "description": "Accepts a function which returns a string value that provides a user-friendly name for the thumb labels of the slider"
+    },
+    {
+      "name": "getAriaValueText",
+      "type": "(value: number, index: number) => string",
+      "description": "Accepts a function which returns a string value that provides a user-friendly name for the current value of the slider"
+    },
+    {
+      "name": "marks",
+      "type": "boolean | Mark[]",
+      "description": "Marks indicate predetermined values to which the user can move the slider"
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "description": "The maximum allowed value of the slider"
+    },
+    {
+      "name": "min",
+      "type": "number",
+      "description": "The minimum allowed value of the slider"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "Name attribute of the hidden input element"
+    },
+    {
+      "name": "onChange",
+      "type": "(event: Event, value: number | number[], activeThumb: number) => void",
+      "description": "Callback function that is fired when the slider's value changed"
+    },
+    {
+      "name": "onChangeCommitted",
+      "type": "(event: React.SyntheticEvent | Event, value: number | number[]) => void",
+      "description": "Callback function that is fired when the mouseup is triggered"
+    },
+    {
+      "name": "orientation",
+      "type": "'horizontal' | 'vertical'",
+      "description": "The orientation of the slider"
+    },
+    {
+      "name": "scale",
+      "type": "(value: number) => number",
+      "description": "A transformation function, to change the scale of the slider"
+    },
+    {
+      "name": "size",
+      "type": "'small' | 'medium'",
+      "description": "The size of the slider"
+    },
+    {
+      "name": "step",
+      "type": "number",
+      "description": "The granularity with which the slider can step through values"
+    },
+    {
+      "name": "track",
+      "type": "'inverted' | 'normal' | false",
+      "description": "The track presentation"
+    },
+    {
+      "name": "value",
+      "type": "number | number[]",
+      "description": "The value of the slider"
+    },
+    {
+      "name": "valueLabelDisplay",
+      "type": "'auto' | 'off' | 'on'",
+      "description": "Controls when the value label is displayed"
+    },
+    {
+      "name": "valueLabelFormat",
+      "type": "string | ((value: number, index: number) => React.ReactNode)",
+      "description": "The format function the value label's value"
+    }
+  ],
+  "events": [
+    "onChange",
+    "onChangeCommitted"
+  ],
+  "default_values": {
+    "color": "primary",
+    "disabled": false,
+    "disableSwap": false,
+    "marks": false,
+    "max": 100,
+    "min": 0,
+    "orientation": "horizontal",
+    "size": "medium",
+    "step": 1,
+    "track": "normal",
+    "valueLabelDisplay": "off"
+  }
+}
