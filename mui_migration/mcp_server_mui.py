@@ -360,3 +360,5 @@ def list_mui_components() -> Dict[str, List[str]]:
 # Run the server
 if __name__ == "__main__":
     mcp.run()
+
+

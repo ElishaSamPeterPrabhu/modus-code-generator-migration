@@ -1,0 +1,138 @@
+{
+  "name": "Migration MCP",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "=agentic/n8n-server/v1/migration-modus"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 2,
+      "position": [
+        -32,
+        0
+      ],
+      "id": "68f2a285-b0a3-4dcf-97d7-6fdf2a77669e",
+      "name": "Migration MCP",
+      "webhookId": "b923b821-4ba0-4b56-ad3d-922c9c69885d"
+    },
+    {
+      "parameters": {
+        "description": "Fetch migration guidance documents that explain the migration process and best practices.\n\nAvailable Files (5 markdown documents):\n1. analyze.md- How to analyze V1 code and identify components\n2. migrate.md- Migration process, property transformations, best practices\n3. verify.md- Verification checklist and testing strategies\n4. log.md - Logging guidelines and documentation standards\n5. workflow.md - Overall migration workflow and process orchestration\n\nWhen to Use:\n- For migration: Fetch \"migrate.md\" to understand the migration process\n- For analyzing code: Fetch \"analyze.md\" to learn code analysis techniques\n- After migration: Fetch \"verify.md\" to validate the migrated code\n- For documentation: Fetch \"log.md\" to learn logging standards\n- For overview: Fetch \"workflow.md\" to understand the complete process\n\nHow to Use:\nPass the file name as input. Example: {\"file_name\": \"migrate.md\"}",
+        "workflowId": {
+          "__rl": true,
+          "value": "wlRnkQNeHalTwNGp",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/wlRnkQNeHalTwNGp",
+          "cachedResultName": "get_migration_guidance"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "file_name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('file_name', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "file_name"
+          ],
+          "schema": [
+            {
+              "id": "file_name",
+              "displayName": "file_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        -16,
+        224
+      ],
+      "id": "baac4136-9e09-4278-954b-fff546a9fd4e",
+      "name": "get_migration_guidance"
+    },
+    {
+      "parameters": {
+        "description": "Fetches Modus component data files from the unified component analysis folder. All component files are organized in a single directory with version suffixes (-v1, -v2). Use this tool to get component details, indexes, mappings, or framework data for Modus web component migration and analysis.\n\n\nUse cases:\n- Get specific component data: \"button-v1.json\", \"text-input-v2.json\"  \n- Get component indexes: \"components-index-v1.json\"\n- Get component mapping: \"component_mapping.json\"\n- Get framework examples: \"v1_angular_framework_data.json\"\n```\n\n\n## 📋 **Available Files Reference**\n\n### **🔍 Component Files (89 files)**\n\n#### **V1 Components (43 files)**\nPattern: `{component-name}-v1.json`\n\n```\naccordion-item-v1.json          accordion-v1.json               action-bar-v1.json\nalert-v1.json                   autocomplete-v1.json            badge-v1.json\nbreadcrumb-v1.json              button-group-v1.json            button-v1.json\ncard-v1.json                    checkbox-v1.json                chip-v1.json\ncontent-tree-v1.json            data-table-v1.json              date-input-v1.json\ndate-picker-v1.json             dropdown-v1.json                file-dropzone-v1.json\nicons-v1.json                   list-item-v1.json               list-v1.json\nmessage-v1.json                 modal-v1.json                   navbar-v1.json\nnumber-input-v1.json            pagination-v1.json              progress-bar-v1.json\nradio-group-v1.json             select-v1.json                  sentiment-scale-v1.json\nside-navigation-v1.json         slider-v1.json                  spinner-v1.json\nswitch-v1.json                  table-v1.json                   tabs-v1.json\ntext-input-v1.json              textarea-input-v1.json          time-picker-v1.json\ntoast-v1.json                   toolbar-v1.json                 tooltip-v1.json\nutility-panel-v1.json\n```\n\n#### **V2 Components (44 files)**\nPattern: `{component-name}-v2.json`\n\n```\naccordion-v2.json               alert-v2.json                   autocomplete-v2.json\navatar-v2.json                  badge-v2.json                   breadcrumbs-v2.json\nbutton-v2.json                  card-v2.json                    checkbox-v2.json\nchip-v2.json                    collapse-v2.json                date-v2.json\ndivider-v2.json                 dropdown-menu-v2.json           icon-v2.json\ninput-feedback-v2.json          input-label-v2.json             loader-v2.json\nmenu-item-v2.json               menu-v2.json                    modal-v2.json\nnavbar-v2.json                  number-input-v2.json            pagination-v2.json\nprogress-v2.json                radio-v2.json                   rating-v2.json\nselect-v2.json                  side-navigation-v2.json         skeleton-v2.json\nslider-v2.json                  stepper-v2.json                 switch-v2.json\ntable-v2.json                   tabs-v2.json                    text-input-v2.json\ntextarea-v2.json                theme-switcher-v2.json          time-input-v2.json\ntoast-v2.json                   toolbar-v2.json                 tooltip-v2.json\ntypography-v2.json              utility-panel-v2.json\n```\n\n### **📊 Index Files (3 files)**\n\n```\ncomponents-index-v1.json        # V1 components metadata (7KB)\ncomponents-index-v2.json        # V2 components metadata (7KB)  \ncomponents-unified-index.json   # Combined index with usage guide (8KB)\n```\n\n### **🗺️ Mapping & Framework Files (5 files)**\n\n```\ncomponent_mapping.json          # V1 to V2 component mapping (11KB)\nv1_angular_framework_data.json  # V1 Angular examples & docs (80KB)\nv1_react_framework_data.json    # V1 React examples & docs (15KB)\nv2_angular_framework_data.json  # V2 Angular examples & docs (12KB)\nv2_react_framework_data.json    # V2 React examples & docs (10KB)\n```\n\n---\n\n## 💡 **Usage Examples**\n\n### **Get V2 Button Component:**\n```json\n{\n  \"filename\": \"button-v2.json\"\n}\n```\n\n### **Get V1 Text Input Component:**\n```json\n{\n  \"filename\": \"text-input-v1.json\"\n}\n```\n\n### **Get Component Index:**\n```json\n{\n  \"filename\": \"components-unified-index.json\"\n}\n```\n\n### **Get Component Mapping:**\n```json\n{\n  \"filename\": \"component_mapping.json\"\n}\n```\n\n### **Get Framework Data:**\n```json\n{\n  \"filename\": \"v1_angular_framework_data.json\"\n}",
+        "workflowId": {
+          "__rl": true,
+          "value": "T7VTAYpcAAO6I2IO",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/T7VTAYpcAAO6I2IO",
+          "cachedResultName": "get_component_details"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "file_name": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('file_name', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "file_name",
+              "displayName": "file_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        112,
+        224
+      ],
+      "id": "6fd0a54c-47fe-4733-8626-b10331427d81",
+      "name": "get_component_details"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "get_migration_guidance": {
+      "ai_tool": [
+        [
+          {
+            "node": "Migration MCP",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_component_details": {
+      "ai_tool": [
+        [
+          {
+            "node": "Migration MCP",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "863c2b59-e64b-4133-92b5-48f36a7360c5",
+  "meta": {
+    "instanceId": "9864951ea4472b9d0ea716c66bb2527efb446aa6309ab9f74077ab1db432402b"
+  },
+  "id": "ILM6W5ytngjRueSa",
+  "tags": []
+}
