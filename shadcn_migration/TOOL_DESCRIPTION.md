@@ -10,9 +10,14 @@ A string representing either:
 ## Output
 
 ### If input is "mapping"
-Returns both mapping JSON files:
-- `shadcn_to_modus_mapping.json` (shadcn → Modus component mappings)
-- `modus_to_shadcn_mapping.json` (Modus → shadcn component mappings)
+Returns the unified mapping JSON file containing both directions:
+- `component_mappings.json` with structure:
+  ```json
+  {
+    "shadcn_to_modus": { "Button": "modus-wc-button", ... },
+    "modus_to_shadcn": { "modus-wc-button": "Button", ... }
+  }
+  ```
 
 ### If input is a process name
 Returns the filename of the workflow documentation:
@@ -23,7 +28,7 @@ Returns the filename of the workflow documentation:
 - `"workflow"` → `"workflow_shadcn.md"`
 
 ## Examples
-- Input: `"mapping"` → Output: `{ shadcn_to_modus_mapping.json, modus_to_shadcn_mapping.json }`
+- Input: `"mapping"` → Output: `component_mappings.json`
 - Input: `"analyze"` → Output: `"analyze_shadcn.md"`
 - Input: `"workflow"` → Output: `"workflow_shadcn.md"`
 
