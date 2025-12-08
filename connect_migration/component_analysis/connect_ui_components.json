@@ -1,0 +1,475 @@
+{
+  "Accordion": {
+    "props": {
+      "title": "string",
+      "isExpanded": "boolean",
+      "content": "string | JSX.Element"
+    }
+  },
+  "ActionButton": {
+    "props": {
+      "icon": "string | TempSvgIcon",
+      "title": "string",
+      "testId": "string"
+    }
+  },
+  "Alert": {
+    "props": {
+      "content": "JSXElement | string",
+      "children": "JSXElement | string",
+      "type": "AlertType",
+      "icon": "string",
+      "buttonText": "string",
+      "buttonColor": "AlertButtonColor",
+      "title": "string",
+      "aria-label": "string",
+      "data-cy": "string",
+      "role": "AlertRole",
+      "class": "string"
+    }
+  },
+  "AuthImage": {
+    "props": {
+      "src": "string",
+      "className": "string",
+      "errImg": "string",
+      "e": "MouseEvent): void",
+      "asBackground": "boolean",
+      "alt": "string",
+      "style": "Record<string, string | number>",
+      "imageProps": "Record<string, any>",
+      "accessToken": "string",
+      "url": "string): string"
+    }
+  },
+  "Button": {
+    "props": {
+      "content": "JSXElement | string",
+      "children": "JSXElement | string",
+      "type": "ButtonType",
+      "color": "BtnClasses",
+      "size": "ButtonSize",
+      "fullWidth": "boolean",
+      "icon": "string",
+      "iconPosition": "IconPosition",
+      "iconOnly": "boolean",
+      "disabled": "boolean",
+      "state": "ButtonState",
+      "buttonType": "'button' | 'submit' | 'reset'",
+      "title": "string",
+      "aria-label": "string",
+      "data-cy": "string",
+      "class": "string"
+    }
+  },
+  "Cards": {
+    "props": {
+      "cards": "CardItem[]",
+      "defaultImageUrl": "string",
+      "className": "string",
+      "clickable": "boolean",
+      "columnClasses": "string",
+      "card": "CardItem): void",
+      "cardId": "string, option: string, index: number): void"
+    }
+  },
+  "Chips": {
+    "props": {
+      "chips": "string[]",
+      "limit": "number",
+      "chipShape": "'REGULAR' | 'RECTANGLE'"
+    }
+  },
+  "ConfirmPopup": {
+    "props": {
+      "show": "boolean",
+      "waiting": "boolean",
+      "title": "string",
+      "description": "string | JSXElement",
+      "hideClose": "boolean",
+      "primaryBtnLabel": "string",
+      "primaryBtnClass": "BtnClasses",
+      "secondaryBtnLabel": "string",
+      "secondaryBtnClass": "BtnClasses"
+    }
+  },
+  "ConnectSnackbar": {
+    "props": {
+      "message": "ISnackBarMessage",
+      "color": "string"
+    }
+  },
+  "CustomCheckbox": {
+    "props": {
+      "name": "string",
+      "value": "string",
+      "id": "string",
+      "checked": "boolean",
+      "disabled": "boolean",
+      "required": "boolean",
+      "data-cy": "string",
+      "dataCy": "string",
+      "event": "Event & { currentTarget: HTMLInputElement"
+    }
+  },
+  "CustomDatePicker": {
+    "props": {
+      "name": "string",
+      "label": "string",
+      "setFocus": "boolean",
+      "id": "string",
+      "value": "string",
+      "placeholder": "string",
+      "disabled": "boolean",
+      "readonly": "boolean",
+      "required": "boolean",
+      "data-cy": "string",
+      "dataCy": "string",
+      "error": "string",
+      "touched": "boolean",
+      "event": "InputEvent & { currentTarget: HTMLInputElement"
+    }
+  },
+  "CustomError": {
+    "props": {
+      "msg": "string",
+      "id": "string"
+    }
+  },
+  "CustomInput": {
+    "props": {
+      "name": "string",
+      "label": "string",
+      "id": "string",
+      "value": "string",
+      "placeholder": "string",
+      "type": "string",
+      "disabled": "boolean",
+      "readonly": "boolean",
+      "required": "boolean",
+      "class": "string",
+      "data-cy": "string",
+      "dataCy": "string",
+      "autocomplete": "boolean",
+      "error": "string",
+      "touched": "boolean",
+      "ref": "HTMLInputElement | undefined): void",
+      "event": "InputEvent & { currentTarget: HTMLInputElement"
+    }
+  },
+  "CustomSelect": {
+    "props": {
+      "name": "string",
+      "label": "string",
+      "options": "readonly unknown[] | string",
+      "item": "unknown): string",
+      "defaultValue": "string | number",
+      "value": "string | number",
+      "event": "Event & { currentTarget: HTMLSelectElement"
+    }
+  },
+  "CustomTextarea": {
+    "props": {
+      "name": "string",
+      "label": "string",
+      "setFocus": "boolean",
+      "id": "string",
+      "value": "string",
+      "placeholder": "string",
+      "disabled": "boolean",
+      "readonly": "boolean",
+      "required": "boolean",
+      "rows": "number",
+      "maxLength": "number",
+      "data-cy": "string",
+      "dataCy": "string",
+      "error": "string",
+      "touched": "boolean",
+      "event": "InputEvent & { currentTarget: HTMLTextAreaElement"
+    }
+  },
+  "CustomTooltip": {
+    "props": {
+      "text": "string",
+      "position": "TooltipPositions",
+      "notDynamic": "boolean",
+      "disableToolTip": "boolean",
+      "className": "string",
+      "arrow": "boolean",
+      "children": "JSXElement",
+      "el": "HTMLDivElement): void",
+      "tooltipClass": "string",
+      "class": "string"
+    }
+  },
+  "DeleteConfirmationModal": {
+    "props": {
+      "title": "string",
+      "message": "string",
+      "waiting": "boolean"
+    }
+  },
+  "DropDownMenu": {
+    "props": {
+      "className": "string",
+      "type": "'icon' | 'link' | 'button' | 'selector'",
+      "anchorText": "string",
+      "anchorIcon": "string",
+      "customAnchorIcon": "string",
+      "customAnchorClassName": "string",
+      "anchorStyle": "string",
+      "anchorClassName": "string",
+      "anchorIconShape": "'icon-square' | 'icon-circle'",
+      "anchorIconPosition": "'left' | 'right'",
+      "optionsType": "'text' | 'icon' | 'both'",
+      "dropDownOptions": "string[] | DropDownOption[]",
+      "dropDownClassName": "string",
+      "iconTooltip": "string",
+      "disabledOptionsTooltipTitle": "string",
+      "disabledOptionsTooltipClassName": "string",
+      "size": "'small' | 'medium'",
+      "position": "| 'left'\n    | 'right'\n    | 'top left'\n    | 'top right'\n    | 'middle'\n    | 'top middle'",
+      "iconPosition": "'left' | 'right'",
+      "showOnScroll": "boolean",
+      "disabled": "boolean",
+      "selected": "string",
+      "useFixedStyle": "boolean",
+      "customPosition": "boolean",
+      "customPositionClass": "string",
+      "customPositionStyle": "string",
+      "setWidth": "string",
+      "unsetHeight": "boolean",
+      "addSeparators": "number[]"
+    }
+  },
+  "DropdownOptions": {
+    "props": {
+      "position": "| 'left'\n    | 'right'\n    | 'top left'\n    | 'top right'\n    | 'middle'\n    | 'top middle'",
+      "iconPosition": "'left' | 'right'",
+      "className": "string",
+      "optionsType": "'text' | 'icon' | 'both'",
+      "dropDownOptions": "string[] | DropDownOption[]",
+      "selected": "string",
+      "style": "string",
+      "customPositionClass": "string",
+      "isOpen": "boolean",
+      "setWidth": "string",
+      "unsetHeight": "boolean",
+      "addSeparators": "number[]"
+    }
+  },
+  "Empty": {
+    "props": {
+      "title": "string",
+      "message": "string",
+      "icon": "string",
+      "content": "JSXElement",
+      "isSmallContainer": "boolean",
+      "class": "string",
+      "data-testid": "string"
+    }
+  },
+  "FabButton": {
+    "props": {
+      "icon": "string",
+      "btnClass": "BtnClasses",
+      "fabClass": "string",
+      "alwaysDisplay": "boolean",
+      "disable": "boolean",
+      "policyToolTip": "IPolicyToolTipAttributes",
+      "isToolTipDisabled": "boolean"
+    }
+  },
+  "Icon": {
+    "props": {
+      "icon": "string | TempSvgIcon",
+      "size": "IconSize",
+      "class": "string",
+      "modusHostClass": "string"
+    }
+  },
+  "IconButton": {
+    "props": {
+      "icon": "string",
+      "size": "IconSize",
+      "color": "BtnClasses",
+      "shape": "IconShape",
+      "title": "string",
+      "disabled": "boolean",
+      "data-cy": "string",
+      "buttonClasses": "string",
+      "classes": "string"
+    }
+  },
+  "Image": {
+    "props": {
+      "src": "string",
+      "className": "string",
+      "errImg": "string",
+      "onClick": "() => void"
+    }
+  },
+  "LimitVisibleItems": {
+    "props": {
+      "itemLimit": "number",
+      "className": "string",
+      "showMore": "string",
+      "showLess": "string",
+      "content": "JSXElement"
+    }
+  },
+  "PanelLayout": {
+    "props": {
+      "className": "string",
+      "title": "string",
+      "titleDataCy": "string",
+      "titleSectionRight": "JSXElement",
+      "leftActions": "JSXElement | JSXElement[]",
+      "rightActions": "JSXElement | JSXElement[]",
+      "content": "JSXElement"
+    }
+  },
+  "Popup": {
+    "props": {
+      "show": "boolean",
+      "name": "string",
+      "heading": "string",
+      "subHeading": "string",
+      "content": "string | JSXElement",
+      "overflowClass": "string",
+      "overflowStyle": "string",
+      "hideFooter": "boolean",
+      "hideClose": "boolean",
+      "primaryBtnLabel": "string",
+      "primaryBtnClass": "BtnClasses",
+      "primaryBtnDisabled": "boolean",
+      "secondaryBtnLabel": "string",
+      "secondaryBtnClass": "BtnClasses",
+      "secondaryBtnDisabled": "boolean"
+    }
+  },
+  "ProgressBar": {
+    "props": {
+      "progress": "number",
+      "progressPercent": "string",
+      "class": "string",
+      "show": "boolean",
+      "content": "JSXElement",
+      "inFooter": "boolean"
+    }
+  },
+  "ProgressWidget": {
+    "props": {
+      "title": "string",
+      "icon": "string",
+      "progress": "number",
+      "progressPercent": "string",
+      "content": "JSXElement",
+      "collapsed": "boolean): void",
+      "showProgress": "boolean",
+      "class": "string",
+      "progressClass": "string"
+    }
+  },
+  "RestrictedAccessSplashScreen": {
+    "props": {
+      "title": "string",
+      "subHeading": "string",
+      "description": "string",
+      "showIcon": "boolean",
+      "linkText": "string",
+      "linkUrl": "string",
+      "buttonLabel": "string",
+      "showBackgroundImage": "boolean",
+      "buttonType": "ButtonType",
+      "isLoading": "boolean",
+      "content": "JSXElement"
+    }
+  },
+  "Rightpanel": {
+    "props": {
+      "header": "JSXElement",
+      "headerTitle": "string",
+      "topLeftButton": "string",
+      "topRightPrimaryButton": "string",
+      "topRightSecondaryButton": "string",
+      "footer": "IRightpanelFooter",
+      "sectionProps": "any",
+      "bodyProps": "any",
+      "content": "JSXElement",
+      "button": "IRightpanelFooterButton,\n    event: MouseEvent\n  ): void"
+    }
+  },
+  "Spinner": {
+    "props": {
+      "show": "boolean",
+      "message": "string",
+      "class": "string"
+    }
+  },
+  "SwitchButton": {
+    "props": {
+      "name": "string",
+      "checked": "boolean): void",
+      "id": "string",
+      "isChecked": "boolean",
+      "label": "string",
+      "disabled": "boolean"
+    }
+  },
+  "Tabs": {
+    "props": {
+      "selected": "number",
+      "selectedTab": "string",
+      "allowClose": "boolean",
+      "className": "string",
+      "tabSelectorClass": "string",
+      "tabDragBarClass": "string",
+      "tabButtonClass": "string",
+      "tabContentClass": "string",
+      "index": "number, key?: string): void",
+      "resizing": "boolean): void",
+      "movedX": "number",
+      "finishedMoving": "number",
+      "minWidth": "number",
+      "ids": "string[]): void",
+      "content": "JSXElement"
+    }
+  },
+  "TagEditor": {
+    "props": {
+      "separator": "Separators[]",
+      "selectedTagList": "ITagItem[]",
+      "matchCase": "boolean",
+      "title": "string",
+      "placeHolder": "string",
+      "validateRx": "RegExp",
+      "invalidErrorMsg": "string",
+      "notFoundErrorMsg": "string",
+      "tagList": "ITagItem[]",
+      "searchBy": "SearchBy",
+      "allowCustomTag": "boolean",
+      "setFocus": "boolean",
+      "id": "string",
+      "customErrorMessage": "string",
+      "matchBy": "SearchBy",
+      "autoSave": "boolean",
+      "enableSearchIcon": "boolean",
+      "predefinedTagList": "ITagItem[]",
+      "tagListTitle": "string",
+      "maxLength": "number",
+      "inputCount": "IInputCount",
+      "limitErrorMessage": "string",
+      "tags": "ITagItem[]): void",
+      "query": "string): void"
+    }
+  },
+  "WithLabel": {
+    "props": {
+      "name": "string",
+      "label": "string",
+      "children": "JSX.Element",
+      "id": "string"
+    }
+  }
+}

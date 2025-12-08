@@ -1,0 +1,999 @@
+{
+  "Accordion": {
+    "connect_component": "Accordion",
+    "connect_properties": {
+      "title": "string",
+      "isExpanded": "boolean",
+      "content": "string | JSX.Element"
+    },
+    "modus_equivalent": "modus-wc-accordion",
+    "property_mappings": {
+      "title": "options.title (on modus-wc-collapse child)",
+      "isExpanded": "expanded (on modus-wc-collapse child)",
+      "content": "Place in <div slot='content'> of modus-wc-collapse"
+    },
+    "migration_notes": "Use modus-wc-accordion with modus-wc-collapse children. Accordion has single 'custom-class' prop. Each collapse item uses options object with title, description, icon. Place content in collapse's content slot.",
+    "migration_type": "direct_with_children"
+  },
+  "ActionButton": {
+    "connect_component": "ActionButton",
+    "connect_properties": {
+      "icon": "string | TempSvgIcon",
+      "title": "string",
+      "testId": "string"
+    },
+    "modus_equivalent": "modus-wc-button",
+    "migration_notes": "Use modus-wc-button with variant='borderless'. Place icon as child: <modus-wc-button variant='borderless'><modus-wc-icon name='close'></modus-wc-icon></modus-wc-button>",
+    "migration_type": "custom_css_required",
+    "property_mappings": {
+      "icon": "Place <modus-wc-icon> as child in default slot",
+      "title": "aria-label",
+      "testId": "data-testid or id"
+    }
+  },
+  "Alert": {
+    "connect_component": "Alert",
+    "connect_properties": {
+      "content": "JSXElement | string",
+      "children": "JSXElement | string",
+      "type": "AlertType",
+      "icon": "string",
+      "buttonText": "string",
+      "buttonColor": "AlertButtonColor",
+      "title": "string",
+      "aria-label": "string",
+      "data-cy": "string",
+      "role": "AlertRole",
+      "class": "string"
+    },
+    "modus_equivalent": "modus-wc-alert",
+    "property_mappings": {
+      "content": "alert-description or use content slot",
+      "children": "alert-description or use content slot",
+      "type": "variant",
+      "icon": "icon",
+      "buttonText": "Place <modus-wc-button slot='button'> with text",
+      "buttonColor": "Set color on button: <modus-wc-button slot='button' color='tertiary'>",
+      "title": "title",
+      "aria-label": "aria-label",
+      "data-cy": "data-testid",
+      "role": "role",
+      "class": "class"
+    },
+    "migration_notes": "Use modus-wc-alert. Has alert-title and alert-description props. For action buttons, use button slot: <modus-wc-button slot='button'>. Icon is a prop, not slotted.",
+    "migration_type": "direct_with_slots"
+  },
+  "AuthImage": {
+    "connect_component": "AuthImage",
+    "connect_properties": {
+      "src": "string",
+      "className": "string",
+      "errImg": "string",
+      "e": "MouseEvent): void",
+      "asBackground": "boolean",
+      "alt": "string",
+      "style": "Record<string, string | number>",
+      "imageProps": "Record<string, any>",
+      "accessToken": "string",
+      "url": "string): string"
+    },
+    "modus_equivalent": "not available",
+    "property_mappings": {
+      "src": "not available",
+      "className": "not available",
+      "errImg": "not available",
+      "e": "not available",
+      "asBackground": "not available",
+      "alt": "not available",
+      "style": "not available",
+      "imageProps": "not available",
+      "accessToken": "not available",
+      "url": "not available"
+    }
+  },
+  "Button": {
+    "connect_component": "Button",
+    "connect_properties": {
+      "content": "JSXElement | string",
+      "children": "JSXElement | string",
+      "type": "ButtonType",
+      "color": "BtnClasses",
+      "size": "ButtonSize",
+      "fullWidth": "boolean",
+      "icon": "string",
+      "iconPosition": "IconPosition",
+      "iconOnly": "boolean",
+      "disabled": "boolean",
+      "state": "ButtonState",
+      "buttonType": "'button' | 'submit' | 'reset'",
+      "title": "string",
+      "aria-label": "string",
+      "data-cy": "string",
+      "class": "string"
+    },
+    "modus_equivalent": "modus-wc-button",
+    "property_mappings": {
+      "content": "content",
+      "children": "children",
+      "type": "variant (map type values: solid->filled, hollow->outlined, outline->outlined)",
+      "color": "color",
+      "size": "size",
+      "fullWidth": "full-width",
+      "icon": "Place <modus-wc-icon name='icon-name'> in default slot",
+      "iconPosition": "Place icon before or after text in slot",
+      "iconOnly": "icon-only",
+      "disabled": "disabled",
+      "state": "not available",
+      "buttonType": "type",
+      "title": "title",
+      "aria-label": "aria-label",
+      "data-cy": "data-testid",
+      "class": "class"
+    },
+    "migration_notes": "Use modus-wc-button. Icons placed in default slot as <modus-wc-icon>. Supports variant (filled/outlined/borderless), shape (rectangle/circle/square), size (xs/sm/md/lg).",
+    "migration_type": "direct_with_icon_slot"
+  },
+  "Cards": {
+    "connect_component": "Cards",
+    "connect_properties": {
+      "cards": "CardItem[]",
+      "defaultImageUrl": "string",
+      "className": "string",
+      "clickable": "boolean",
+      "columnClasses": "string",
+      "card": "CardItem): void",
+      "cardId": "string, option: string, index: number): void"
+    },
+    "modus_equivalent": "modus-wc-card",
+    "property_mappings": {
+      "cards": "not available (render multiple cards manually)",
+      "defaultImageUrl": "Place <img> in header slot",
+      "className": "custom-class",
+      "clickable": "Add onclick handler",
+      "columnClasses": "not available (use CSS grid/flex)",
+      "card": "not available",
+      "cardId": "id"
+    },
+    "migration_notes": "Use modus-wc-card with slots: header, title, subtitle, default (body), actions, footer. Properties: layout (vertical/horizontal), padding (normal/compact), bordered, background-figure.",
+    "migration_type": "direct_with_slots"
+  },
+  "Chips": {
+    "connect_component": "Chips",
+    "connect_properties": {
+      "chips": "string[]",
+      "limit": "number",
+      "chipShape": "'REGULAR' | 'RECTANGLE'"
+    },
+    "modus_equivalent": "modus-wc-chip",
+    "property_mappings": {
+      "chips": "Render multiple modus-wc-chip components",
+      "limit": "not available (handle with conditional rendering)",
+      "chipShape": "shape (rectangle/circle)"
+    },
+    "migration_notes": "Use modus-wc-chip with label prop. Has size (sm/md/lg), variant (filled/outline), shape (rectangle/circle). Can place icon/avatar in default slot. Events: chipClick, chipRemove.",
+    "migration_type": "direct_with_slot"
+  },
+  "ConfirmPopup": {
+    "connect_component": "ConfirmPopup",
+    "connect_properties": {
+      "show": "boolean",
+      "waiting": "boolean",
+      "title": "string",
+      "description": "string | JSXElement",
+      "hideClose": "boolean",
+      "primaryBtnLabel": "string",
+      "primaryBtnClass": "BtnClasses",
+      "secondaryBtnLabel": "string",
+      "secondaryBtnClass": "BtnClasses"
+    },
+    "modus_equivalent": "not available",
+    "property_mappings": {
+      "show": "not available",
+      "waiting": "not available",
+      "title": "not available",
+      "description": "not available",
+      "hideClose": "not available",
+      "primaryBtnLabel": "not available",
+      "primaryBtnClass": "not available",
+      "secondaryBtnLabel": "not available",
+      "secondaryBtnClass": "not available"
+    },
+    "migration_notes": "No direct equivalent. Use modus-wc-modal with custom footer buttons. Modal has show prop and slots for header, body, footer.",
+    "migration_type": "use_modal"
+  },
+  "ConnectSnackbar": {
+    "connect_component": "ConnectSnackbar",
+    "connect_properties": {
+      "message": "ISnackBarMessage",
+      "color": "string"
+    },
+    "modus_equivalent": "modus-wc-toast",
+    "migration_notes": "Use modus-wc-toast with position prop. Place modus-wc-alert as child: <modus-wc-toast delay='5000' position='top-end'><modus-wc-alert variant='success' alert-title='Message'>Text</modus-wc-alert></modus-wc-toast>",
+    "migration_type": "direct_with_mapping",
+    "property_mappings": {
+      "message.text": "Place modus-wc-alert as child with alert-title",
+      "message.type": "Use modus-wc-alert variant (success, error, warning, default)",
+      "message.timeoutMilliseconds": "delay",
+      "message.buttonText": "not available (toast has no built-in action button)",
+      "message.callBack": "not available",
+      "color": "not available (use alert variant instead)"
+    }
+  },
+  "CustomCheckbox": {
+    "connect_component": "CustomCheckbox",
+    "connect_properties": {
+      "name": "string",
+      "value": "string",
+      "id": "string",
+      "checked": "boolean",
+      "disabled": "boolean",
+      "required": "boolean",
+      "data-cy": "string",
+      "dataCy": "string",
+      "event": "Event & { currentTarget: HTMLInputElement"
+    },
+    "modus_equivalent": "modus-wc-checkbox",
+    "property_mappings": {
+      "name": "name",
+      "value": "value",
+      "id": "input-id",
+      "checked": "value",
+      "disabled": "disabled",
+      "required": "required",
+      "data-cy": "not available",
+      "dataCy": "not available",
+      "event": "inputChange event"
+    },
+    "migration_notes": "Use modus-wc-checkbox. Props: value (instead of checked), label, disabled, indeterminate, required, size (sm/md/lg). Events: inputChange (instead of checkboxClick), inputBlur, inputFocus.",
+    "migration_type": "direct"
+  },
+  "CustomDatePicker": {
+    "connect_component": "CustomDatePicker",
+    "connect_properties": {
+      "name": "string",
+      "label": "string",
+      "setFocus": "boolean",
+      "id": "string",
+      "value": "string",
+      "placeholder": "string",
+      "disabled": "boolean",
+      "readonly": "boolean",
+      "required": "boolean",
+      "data-cy": "string",
+      "dataCy": "string",
+      "error": "string",
+      "touched": "boolean",
+      "event": "InputEvent & { currentTarget: HTMLInputElement"
+    },
+    "modus_equivalent": "modus-wc-date",
+    "property_mappings": {
+      "name": "name",
+      "label": "label",
+      "setFocus": "not available",
+      "id": "input-id",
+      "value": "value",
+      "placeholder": "not available",
+      "disabled": "disabled",
+      "readonly": "readonly",
+      "required": "required",
+      "data-cy": "not available",
+      "dataCy": "not available",
+      "error": "feedback.message with feedback.level='error'",
+      "touched": "not available",
+      "event": "inputChange event"
+    },
+    "migration_notes": "Use modus-wc-date (not date-picker). Has format prop for date display format, min/max for date range, weekStartDay. Events: inputChange, calendarMonthChange, calendarYearChange.",
+    "migration_type": "direct"
+  },
+  "CustomError": {
+    "connect_component": "CustomError",
+    "connect_properties": {
+      "msg": "string",
+      "id": "string"
+    },
+    "modus_equivalent": "modus-wc-alert",
+    "migration_notes": "Use modus-wc-alert with variant='error'. Place error text as child content.",
+    "migration_type": "direct",
+    "property_mappings": {
+      "error": "Use as text content in default slot"
+    }
+  },
+  "CustomInput": {
+    "connect_component": "CustomInput",
+    "connect_properties": {
+      "name": "string",
+      "label": "string",
+      "id": "string",
+      "value": "string",
+      "placeholder": "string",
+      "type": "string",
+      "disabled": "boolean",
+      "readonly": "boolean",
+      "required": "boolean",
+      "class": "string",
+      "data-cy": "string",
+      "dataCy": "string",
+      "autocomplete": "boolean",
+      "error": "string",
+      "touched": "boolean",
+      "ref": "HTMLInputElement | undefined): void",
+      "event": "InputEvent & { currentTarget: HTMLInputElement"
+    },
+    "modus_equivalent": "modus-wc-text-input",
+    "property_mappings": {
+      "name": "name",
+      "label": "label",
+      "id": "input-id",
+      "value": "value",
+      "placeholder": "placeholder",
+      "type": "type",
+      "disabled": "disabled",
+      "readonly": "readonly",
+      "required": "required",
+      "class": "custom-class",
+      "data-cy": "not available",
+      "dataCy": "not available",
+      "autocomplete": "auto-complete",
+      "error": "feedback.message with feedback.level='error'",
+      "touched": "not available",
+      "ref": "not available",
+      "event": "inputChange/inputBlur/inputFocus events"
+    },
+    "migration_notes": "Use modus-wc-text-input. Has feedback prop for errors (feedback.level='error', feedback.message). Events: inputChange, inputBlur, inputFocus. Size values: sm/md/lg. Type prop for input type.",
+    "migration_type": "direct"
+  },
+  "CustomSelect": {
+    "connect_component": "CustomSelect",
+    "connect_properties": {
+      "name": "string",
+      "label": "string",
+      "options": "readonly unknown[] | string",
+      "item": "unknown): string",
+      "defaultValue": "string | number",
+      "value": "string | number",
+      "event": "Event & { currentTarget: HTMLSelectElement"
+    },
+    "modus_equivalent": "modus-wc-select",
+    "property_mappings": {
+      "name": "name",
+      "label": "label",
+      "options": "options (must be ISelectOption[] format)",
+      "item": "not available",
+      "defaultValue": "not available",
+      "value": "value",
+      "event": "inputChange event"
+    },
+    "migration_notes": "Use modus-wc-select with options array. Options format: {label: string, value: string, disabled?: boolean}. Has feedback prop for errors. Events: inputChange, inputBlur, inputFocus.",
+    "migration_type": "direct"
+  },
+  "CustomTextarea": {
+    "connect_component": "CustomTextarea",
+    "connect_properties": {
+      "name": "string",
+      "label": "string",
+      "setFocus": "boolean",
+      "id": "string",
+      "value": "string",
+      "placeholder": "string",
+      "disabled": "boolean",
+      "readonly": "boolean",
+      "required": "boolean",
+      "rows": "number",
+      "maxLength": "number",
+      "data-cy": "string",
+      "dataCy": "string",
+      "error": "string",
+      "touched": "boolean",
+      "event": "InputEvent & { currentTarget: HTMLTextAreaElement"
+    },
+    "modus_equivalent": "modus-wc-textarea",
+    "property_mappings": {
+      "name": "name",
+      "label": "label",
+      "setFocus": "not available",
+      "id": "input-id",
+      "value": "value",
+      "placeholder": "placeholder",
+      "disabled": "disabled",
+      "readonly": "readonly",
+      "required": "required",
+      "rows": "rows",
+      "maxLength": "max-length",
+      "data-cy": "not available",
+      "dataCy": "not available",
+      "error": "feedback.message with feedback.level='error'",
+      "touched": "not available",
+      "event": "inputChange/inputBlur/inputFocus events"
+    },
+    "migration_notes": "Use modus-wc-textarea. Has feedback prop for errors. Props: readonly, maxLength, minLength, rows. Events: inputChange, inputBlur, inputFocus. Size: sm/md/lg.",
+    "migration_type": "direct"
+  },
+  "CustomTooltip": {
+    "connect_component": "CustomTooltip",
+    "connect_properties": {
+      "text": "string",
+      "position": "TooltipPositions",
+      "notDynamic": "boolean",
+      "disableToolTip": "boolean",
+      "className": "string",
+      "arrow": "boolean",
+      "children": "JSXElement",
+      "el": "HTMLDivElement): void",
+      "tooltipClass": "string",
+      "class": "string"
+    },
+    "modus_equivalent": "modus-wc-tooltip",
+    "property_mappings": {
+      "text": "content",
+      "position": "position",
+      "notDynamic": "notDynamic",
+      "disableToolTip": "disabled",
+      "className": "className",
+      "arrow": "arrow",
+      "children": "Place in default slot (element to attach tooltip to)",
+      "el": "el",
+      "tooltipClass": "tooltipClass",
+      "class": "class"
+    },
+    "migration_notes": "Use modus-wc-tooltip with content prop. Position: auto/top/right/bottom/left. Wrap element in tooltip: <modus-wc-tooltip content='text' position='top'><element>Hover me</element></modus-wc-tooltip>. Can disable with disabled prop.",
+    "migration_type": "direct"
+  },
+  "DeleteConfirmationModal": {
+    "connect_component": "DeleteConfirmationModal",
+    "connect_properties": {
+      "title": "string",
+      "message": "string",
+      "waiting": "boolean"
+    },
+    "modus_equivalent": "modus-wc-modal",
+    "property_mappings": {
+      "title": "Place in header slot",
+      "message": "Place in content slot",
+      "waiting": "Set disabled on buttons while waiting"
+    },
+    "migration_notes": "Use modus-wc-modal with slots. Place title in header slot, message in content slot, buttons in footer slot. Control visibility with showModal()/close() methods on modal element using modal-id.",
+    "migration_type": "direct_with_slots"
+  },
+  "DropDownMenu": {
+    "connect_component": "DropDownMenu",
+    "connect_properties": {
+      "className": "string",
+      "type": "'icon' | 'link' | 'button' | 'selector'",
+      "anchorText": "string",
+      "anchorIcon": "string",
+      "customAnchorIcon": "string",
+      "customAnchorClassName": "string",
+      "anchorStyle": "string",
+      "anchorClassName": "string",
+      "anchorIconShape": "'icon-square' | 'icon-circle'",
+      "anchorIconPosition": "'left' | 'right'",
+      "optionsType": "'text' | 'icon' | 'both'",
+      "dropDownOptions": "string[] | DropDownOption[]",
+      "dropDownClassName": "string",
+      "iconTooltip": "string",
+      "disabledOptionsTooltipTitle": "string",
+      "disabledOptionsTooltipClassName": "string",
+      "size": "'small' | 'medium'",
+      "position": "| 'left'\n    | 'right'\n    | 'top left'\n    | 'top right'\n    | 'middle'\n    | 'top middle'",
+      "iconPosition": "'left' | 'right'",
+      "showOnScroll": "boolean",
+      "disabled": "boolean",
+      "selected": "string",
+      "useFixedStyle": "boolean",
+      "customPosition": "boolean",
+      "customPositionClass": "string",
+      "customPositionStyle": "string",
+      "setWidth": "string",
+      "unsetHeight": "boolean",
+      "addSeparators": "number[]"
+    },
+    "modus_equivalent": "modus-wc-dropdown-menu",
+    "property_mappings": {
+      "className": "custom-class",
+      "type": "not available (use button slot content)",
+      "anchorText": "Place in button slot",
+      "anchorIcon": "Place <modus-wc-icon> in button slot",
+      "customAnchorIcon": "Place custom icon in button slot",
+      "customAnchorClassName": "not available",
+      "anchorStyle": "not available",
+      "anchorClassName": "not available",
+      "anchorIconShape": "not available",
+      "anchorIconPosition": "Icon position in button slot",
+      "optionsType": "not available",
+      "dropDownOptions": "Render as <modus-wc-menu-item> in menu slot",
+      "dropDownClassName": "not available",
+      "iconTooltip": "not available",
+      "disabledOptionsTooltipTitle": "Set disabled on menu-item",
+      "disabledOptionsTooltipClassName": "not available",
+      "size": "button-size and menu-size",
+      "position": "menu-placement",
+      "iconPosition": "Position in button slot",
+      "showOnScroll": "not available",
+      "disabled": "disabled",
+      "selected": "Handle via menu-item itemSelect event",
+      "useFixedStyle": "not available",
+      "customPosition": "menu-placement",
+      "customPositionClass": "not available",
+      "customPositionStyle": "not available",
+      "setWidth": "not available (use CSS)",
+      "unsetHeight": "not available (use CSS)",
+      "addSeparators": "not available"
+    },
+    "migration_notes": "Use modus-wc-dropdown-menu with button and menu slots. Button props: button-color, button-size, button-variant. Menu props: menu-placement, menu-visible, menu-size. Place modus-wc-menu-item components in menu slot.",
+    "migration_type": "direct_with_slots"
+  },
+  "DropdownOptions": {
+    "connect_component": "DropdownOptions",
+    "connect_properties": {
+      "position": "| 'left'\n    | 'right'\n    | 'top left'\n    | 'top right'\n    | 'middle'\n    | 'top middle'",
+      "iconPosition": "'left' | 'right'",
+      "className": "string",
+      "optionsType": "'text' | 'icon' | 'both'",
+      "dropDownOptions": "string[] | DropDownOption[]",
+      "selected": "string",
+      "style": "string",
+      "customPositionClass": "string",
+      "isOpen": "boolean",
+      "setWidth": "string",
+      "unsetHeight": "boolean",
+      "addSeparators": "number[]"
+    },
+    "modus_equivalent": "modus-wc-menu-item",
+    "property_mappings": {
+      "position": "not available (handled by parent modus-wc-menu/modus-wc-dropdown-menu)",
+      "iconPosition": "Use start-icon slot or default slot positioning",
+      "className": "custom-class",
+      "optionsType": "not available (icon via start-icon slot)",
+      "dropDownOptions": "Render multiple modus-wc-menu-item",
+      "selected": "selected",
+      "style": "not available (use custom-class)",
+      "customPositionClass": "not available",
+      "isOpen": "not available (handled by parent)",
+      "setWidth": "not available (use CSS)",
+      "unsetHeight": "not available (use CSS)",
+      "addSeparators": "not available"
+    },
+    "migration_notes": "Use modus-wc-menu-item (individual menu option). Has label, value, disabled, selected, start-icon props. Can place icon in start-icon slot. Used inside modus-wc-menu or modus-wc-dropdown-menu's menu slot.",
+    "migration_type": "direct"
+  },
+  "Empty": {
+    "connect_component": "Empty",
+    "connect_properties": {
+      "title": "string",
+      "message": "string",
+      "icon": "string",
+      "content": "JSXElement",
+      "isSmallContainer": "boolean",
+      "class": "string",
+      "data-testid": "string"
+    },
+    "modus_equivalent": "not available",
+    "migration_notes": "No direct equivalent. Create custom component with centered layout using modus-wc-typography for title/description and modus-wc-icon for icon.",
+    "migration_type": "custom_implementation",
+    "property_mappings": {
+      "title": "not available",
+      "description": "not available",
+      "icon": "not available"
+    }
+  },
+  "FabButton": {
+    "connect_component": "FabButton",
+    "connect_properties": {
+      "icon": "string",
+      "btnClass": "BtnClasses",
+      "fabClass": "string",
+      "alwaysDisplay": "boolean",
+      "disable": "boolean",
+      "policyToolTip": "IPolicyToolTipAttributes",
+      "isToolTipDisabled": "boolean"
+    },
+    "modus_equivalent": "modus-wc-button",
+    "migration_notes": "Use modus-wc-button with variant='filled', shape='circle'. Add custom CSS: position:fixed; bottom:16px; right:16px; z-index:1000;",
+    "migration_type": "custom_css_required",
+    "property_mappings": {
+      "icon": "Place <modus-wc-icon> as child in default slot",
+      "btnClass": "color",
+      "fabClass": "custom-class",
+      "alwaysDisplay": "not available",
+      "disable": "disabled",
+      "policyToolTip": "aria-label"
+    }
+  },
+  "Icon": {
+    "connect_component": "Icon",
+    "connect_properties": {
+      "icon": "string | TempSvgIcon",
+      "size": "IconSize",
+      "class": "string",
+      "modusHostClass": "string"
+    },
+    "modus_equivalent": "modus-wc-icon",
+    "property_mappings": {
+      "icon": "name (for Modus icons) OR custom-class='icon-font tc-icon-name' with empty name (for Connect icons)",
+      "size": "size (map icon-small->sm, icon-medium->md, icon-large->lg)",
+      "class": "custom-class",
+      "modusHostClass": "not available (apply to parent element)"
+    },
+    "migration_notes": "Use modus-wc-icon with name prop for Modus icons (solid/outlined variants). For Connect icons (tc-icon-*), install Connect icon font via CDN and use custom-class: <modus-wc-icon custom-class='icon-font tc-icon-name' name='' size='lg'>. Link: https://resources.connect.trimble.com/1.12.0/fonts/icon-font.min.css",
+    "migration_type": "direct_with_custom_icons"
+  },
+  "IconButton": {
+    "connect_component": "IconButton",
+    "connect_properties": {
+      "icon": "string",
+      "size": "IconSize",
+      "color": "BtnClasses",
+      "shape": "IconShape",
+      "title": "string",
+      "disabled": "boolean",
+      "data-cy": "string",
+      "buttonClasses": "string",
+      "classes": "string"
+    },
+    "modus_equivalent": "modus-wc-button",
+    "migration_notes": "Use modus-wc-button with shape='circle' or 'square', variant='borderless' for icon-only appearance. Icon as child in default slot.",
+    "migration_type": "direct_with_mapping",
+    "property_mappings": {
+      "icon": "Place <modus-wc-icon> as child in default slot",
+      "title": "aria-label",
+      "size": "size (icon-small->sm, icon-medium->md, icon-large->lg)",
+      "color": "color",
+      "shape": "shape (icon-circle->circle, icon-square->square)"
+    }
+  },
+  "Image": {
+    "connect_component": "Image",
+    "connect_properties": {
+      "src": "string",
+      "className": "string",
+      "errImg": "string",
+      "onClick": "() => void"
+    },
+    "modus_equivalent": "not available",
+    "migration_notes": "Use standard HTML <img> tag. No Modus component needed. Error handling: <img src='url' onerror=\"this.src='fallback-url'\" />",
+    "migration_type": "native_html",
+    "property_mappings": {
+      "src": "src",
+      "className": "class",
+      "errImg": "Handle via onerror event",
+      "onClick": "onclick"
+    }
+  },
+  "LimitVisibleItems": {
+    "connect_component": "LimitVisibleItems",
+    "connect_properties": {
+      "itemLimit": "number",
+      "className": "string",
+      "showMore": "string",
+      "showLess": "string",
+      "content": "JSXElement"
+    },
+    "modus_equivalent": "not available",
+    "property_mappings": {
+      "itemLimit": "not available",
+      "className": "not available",
+      "showMore": "not available",
+      "showLess": "not available",
+      "content": "not available"
+    }
+  },
+  "PanelLayout": {
+    "connect_component": "PanelLayout",
+    "connect_properties": {
+      "className": "string",
+      "title": "string",
+      "titleDataCy": "string",
+      "titleSectionRight": "JSXElement",
+      "leftActions": "JSXElement | JSXElement[]",
+      "rightActions": "JSXElement | JSXElement[]",
+      "content": "JSXElement"
+    },
+    "modus_equivalent": "not available",
+    "property_mappings": {
+      "className": "not available",
+      "title": "not available",
+      "titleDataCy": "not available",
+      "titleSectionRight": "not available",
+      "leftActions": "not available",
+      "rightActions": "not available",
+      "content": "not available"
+    }
+  },
+  "Popup": {
+    "connect_component": "Popup",
+    "connect_properties": {
+      "show": "boolean",
+      "name": "string",
+      "heading": "string",
+      "subHeading": "string",
+      "content": "string | JSXElement",
+      "overflowClass": "string",
+      "overflowStyle": "string",
+      "hideFooter": "boolean",
+      "hideClose": "boolean",
+      "primaryBtnLabel": "string",
+      "primaryBtnClass": "BtnClasses",
+      "primaryBtnDisabled": "boolean",
+      "secondaryBtnLabel": "string",
+      "secondaryBtnClass": "BtnClasses",
+      "secondaryBtnDisabled": "boolean"
+    },
+    "modus_equivalent": "not available",
+    "property_mappings": {
+      "show": "not available",
+      "name": "not available",
+      "heading": "not available",
+      "subHeading": "not available",
+      "content": "not available",
+      "overflowClass": "not available",
+      "overflowStyle": "not available",
+      "hideFooter": "not available",
+      "hideClose": "not available",
+      "primaryBtnLabel": "not available",
+      "primaryBtnClass": "not available",
+      "primaryBtnDisabled": "not available",
+      "secondaryBtnLabel": "not available",
+      "secondaryBtnClass": "not available",
+      "secondaryBtnDisabled": "not available"
+    }
+  },
+  "ProgressBar": {
+    "connect_component": "ProgressBar",
+    "connect_properties": {
+      "progress": "number",
+      "progressPercent": "string",
+      "class": "string",
+      "show": "boolean",
+      "content": "JSXElement",
+      "inFooter": "boolean"
+    },
+    "modus_equivalent": "modus-wc-progress",
+    "property_mappings": {
+      "progress": "value",
+      "progressPercent": "value (numeric 0-100)",
+      "class": "custom-class",
+      "show": "Conditional rendering",
+      "content": "label",
+      "inFooter": "inFooter"
+    },
+    "migration_notes": "Use modus-wc-progress with value prop (0-100). Has variant='default' for bar or 'radial' for circular. Can add label prop for text. Indeterminate mode for unknown progress.",
+    "migration_type": "direct"
+  },
+  "ProgressWidget": {
+    "connect_component": "ProgressWidget",
+    "connect_properties": {
+      "title": "string",
+      "icon": "string",
+      "progress": "number",
+      "progressPercent": "string",
+      "content": "JSXElement",
+      "collapsed": "boolean): void",
+      "showProgress": "boolean",
+      "class": "string",
+      "progressClass": "string"
+    },
+    "modus_equivalent": "not available",
+    "property_mappings": {
+      "title": "not available",
+      "icon": "not available",
+      "progress": "not available",
+      "progressPercent": "not available",
+      "content": "not available",
+      "collapsed": "not available",
+      "showProgress": "not available",
+      "class": "not available",
+      "progressClass": "not available"
+    }
+  },
+  "RestrictedAccessSplashScreen": {
+    "connect_component": "RestrictedAccessSplashScreen",
+    "connect_properties": {
+      "title": "string",
+      "subHeading": "string",
+      "description": "string",
+      "showIcon": "boolean",
+      "linkText": "string",
+      "linkUrl": "string",
+      "buttonLabel": "string",
+      "showBackgroundImage": "boolean",
+      "buttonType": "ButtonType",
+      "isLoading": "boolean",
+      "content": "JSXElement"
+    },
+    "modus_equivalent": "not available",
+    "property_mappings": {
+      "title": "not available",
+      "subHeading": "not available",
+      "description": "not available",
+      "showIcon": "not available",
+      "linkText": "not available",
+      "linkUrl": "not available",
+      "buttonLabel": "not available",
+      "showBackgroundImage": "not available",
+      "buttonType": "not available",
+      "isLoading": "not available",
+      "content": "not available"
+    }
+  },
+  "Rightpanel": {
+    "connect_component": "Rightpanel",
+    "connect_properties": {
+      "header": "JSXElement",
+      "headerTitle": "string",
+      "topLeftButton": "string",
+      "topRightPrimaryButton": "string",
+      "topRightSecondaryButton": "string",
+      "footer": "IRightpanelFooter",
+      "sectionProps": "any",
+      "bodyProps": "any",
+      "content": "JSXElement",
+      "button": "IRightpanelFooterButton,\n    event: MouseEvent\n  ): void"
+    },
+    "modus_equivalent": "modus-wc-utility-panel",
+    "migration_notes": "Use modus-wc-utility-panel with expanded property. Use slots: <div slot='header'> for title/buttons, <div slot='body'> for content, <div slot='footer'> for footer buttons. Listen to panelClosed event for close handling.",
+    "migration_type": "direct_with_slots",
+    "property_mappings": {
+      "panelVisible": "expanded",
+      "headerTitle": "Place in header slot",
+      "leftButton": "Place button in header slot",
+      "primaryButton": "Place button in header slot",
+      "content": "Place in body slot",
+      "footerButtons": "Place buttons in footer slot",
+      "onClose": "Listen to panelClosed event",
+      "onLeftButtonClick": "not available",
+      "onPrimaryButtonClick": "not available"
+    }
+  },
+  "Spinner": {
+    "connect_component": "Spinner",
+    "connect_properties": {
+      "show": "boolean",
+      "message": "string",
+      "class": "string"
+    },
+    "modus_equivalent": "modus-wc-loader",
+    "migration_notes": "Use modus-wc-loader with variant='spinner'. Loader doesn't support text - place message separately using modus-wc-typography if needed.",
+    "migration_type": "direct",
+    "property_mappings": {
+      "show": "Conditional rendering (not a prop)",
+      "message": "not available (loader has no text prop)",
+      "class": "custom-class"
+    }
+  },
+  "SwitchButton": {
+    "connect_component": "SwitchButton",
+    "connect_properties": {
+      "name": "string",
+      "checked": "boolean): void",
+      "id": "string",
+      "isChecked": "boolean",
+      "label": "string",
+      "disabled": "boolean"
+    },
+    "modus_equivalent": "modus-wc-switch",
+    "property_mappings": {
+      "name": "name",
+      "checked": "value",
+      "id": "input-id",
+      "isChecked": "value",
+      "label": "label",
+      "disabled": "disabled"
+    },
+    "migration_notes": "Use modus-wc-switch. Property 'checked' renamed to 'value'. Event 'switchClick' renamed to 'inputChange'. Size: sm/md/lg. Has indeterminate state.",
+    "migration_type": "direct"
+  },
+  "Tabs": {
+    "connect_component": "Tabs",
+    "connect_properties": {
+      "selected": "number",
+      "selectedTab": "string",
+      "allowClose": "boolean",
+      "className": "string",
+      "tabSelectorClass": "string",
+      "tabDragBarClass": "string",
+      "tabButtonClass": "string",
+      "tabContentClass": "string",
+      "index": "number, key?: string): void",
+      "resizing": "boolean): void",
+      "movedX": "number",
+      "finishedMoving": "number",
+      "minWidth": "number",
+      "ids": "string[]): void",
+      "content": "JSXElement"
+    },
+    "modus_equivalent": "modus-wc-tabs",
+    "property_mappings": {
+      "selected": "active-tab-index",
+      "selectedTab": "active-tab-index",
+      "allowClose": "allowClose",
+      "className": "className",
+      "tabSelectorClass": "tabSelectorClass",
+      "tabDragBarClass": "tabDragBarClass",
+      "tabButtonClass": "tabButtonClass",
+      "tabContentClass": "tabContentClass",
+      "index": "index",
+      "resizing": "resizing",
+      "movedX": "movedX",
+      "finishedMoving": "finishedMoving",
+      "minWidth": "minWidth",
+      "ids": "ids",
+      "content": "Use slot='tab-{index}' for tab panel content"
+    },
+    "migration_notes": "Use modus-wc-tabs with tabs array (ITab[]). Each tab: {label, icon, iconPosition, disabled, slotName}. Props: active-tab-index, tab-style (boxed/bordered/lifted/none), size. Event: tabChange with {previousTab, newTab}.",
+    "migration_type": "direct"
+  },
+  "TagEditor": {
+    "connect_component": "TagEditor",
+    "connect_properties": {
+      "separator": "Separators[]",
+      "selectedTagList": "ITagItem[]",
+      "matchCase": "boolean",
+      "title": "string",
+      "placeHolder": "string",
+      "validateRx": "RegExp",
+      "invalidErrorMsg": "string",
+      "notFoundErrorMsg": "string",
+      "tagList": "ITagItem[]",
+      "searchBy": "SearchBy",
+      "allowCustomTag": "boolean",
+      "setFocus": "boolean",
+      "id": "string",
+      "customErrorMessage": "string",
+      "matchBy": "SearchBy",
+      "autoSave": "boolean",
+      "enableSearchIcon": "boolean",
+      "predefinedTagList": "ITagItem[]",
+      "tagListTitle": "string",
+      "maxLength": "number",
+      "inputCount": "IInputCount",
+      "limitErrorMessage": "string",
+      "tags": "ITagItem[]): void",
+      "query": "string): void"
+    },
+    "modus_equivalent": "not available",
+    "property_mappings": {
+      "separator": "not available",
+      "selectedTagList": "not available",
+      "matchCase": "not available",
+      "title": "not available",
+      "placeHolder": "not available",
+      "validateRx": "not available",
+      "invalidErrorMsg": "not available",
+      "notFoundErrorMsg": "not available",
+      "tagList": "not available",
+      "searchBy": "not available",
+      "allowCustomTag": "not available",
+      "setFocus": "not available",
+      "id": "not available",
+      "customErrorMessage": "not available",
+      "matchBy": "not available",
+      "autoSave": "not available",
+      "enableSearchIcon": "not available",
+      "predefinedTagList": "not available",
+      "tagListTitle": "not available",
+      "maxLength": "not available",
+      "inputCount": "not available",
+      "limitErrorMessage": "not available",
+      "tags": "not available",
+      "query": "not available"
+    }
+  },
+  "WithLabel": {
+    "connect_component": "WithLabel",
+    "connect_properties": {
+      "name": "string",
+      "label": "string",
+      "children": "JSX.Element",
+      "id": "string"
+    },
+    "modus_equivalent": "modus-wc-input-label",
+    "property_mappings": {
+      "name": "for-id",
+      "label": "label-text",
+      "children": "Place input in default slot or use for-id to associate",
+      "id": "for-id"
+    },
+    "migration_notes": "Use modus-wc-input-label with label-text prop. Has for-id to associate with input, sub-label-text for helper text, required indicator, size (sm/md/lg).",
+    "migration_type": "direct"
+  }
+}
