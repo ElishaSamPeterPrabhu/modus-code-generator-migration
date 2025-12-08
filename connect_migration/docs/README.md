@@ -12,19 +12,32 @@ Complete guide for migrating from Trimble Connect-UI library to Modus Web Compon
 
 ## Quick Start
 
-### 1. Analyze Your Code
-```bash
-# Run analysis on your Connect-UI code
-# See analyze_connect.md for details
+### 1. Check Component Availability
+**Use MCP Tool 1** - Component Mapping Lookup
+```
+Input: "mapping"
+Output: component_mappings.json (shows what's available)
 ```
 
-### 2. Check Component Mappings
-**Location**: `../component_analysis/connect_ui_to_modus_mapping.json`
+### 2. Get Connect Component Details
+**Use MCP Tool 2** - Connect Component Details (NEW)
+```
+Input: "ComponentName" (e.g., "Button", "Spinner")
+Output: Complete migration info for that component
+```
 
-**Key Info**:
-- 36 Connect-UI components mapped
-- 26 have Modus equivalents
-- 10 require custom implementation or native HTML
+### 3. Get Modus Component Details
+**Use MCP Tool 3** - Modus Documentation
+```
+Input: "modus-wc-component-name"
+Output: Modus properties, events, slots, examples
+```
+
+### Tool Integration
+**Three complementary MCP tools**:
+1. **Mapping Lookup** - Quick availability check
+2. **Connect Details** - Connect-specific migration info
+3. **Modus Docs** - Modus component documentation
 
 ### 3. Migrate Components
 Follow patterns in `migrate_connect.md`:

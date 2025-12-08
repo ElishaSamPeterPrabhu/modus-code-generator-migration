@@ -91,8 +91,26 @@ Complete workflow for migrating from Connect-UI library to Modus Web Components.
 
 ## Tools & Resources
 
+### MCP Tools (Three Complementary Tools)
+
+**Tool 1: Mapping Lookup**
+- Input: `"mapping"` → Quick bidirectional lookup
+- Input: Process name → Workflow docs
+- Fast availability check
+
+**Tool 2: Connect Component Details** ⭐ NEW
+- Input: Component name (e.g., "Button")
+- Output: Complete migration info for that Connect component
+- Includes: properties, mappings, migration notes, migration type
+
+**Tool 3: Modus Documentation** (Existing Modus MCP)
+- Input: Modus component name (e.g., "modus-wc-button")
+- Output: Modus properties, events, slots, examples
+- Official Modus documentation
+
 ### JSON Files
-- `connect_ui_to_modus_mapping.json`: Component and property mappings
+- `component_mappings.json`: Simple bidirectional mapping
+- `connect_ui_to_modus_mapping.json`: Detailed migration info (source for Tool 2)
 - `connect_ui_components.json`: Connect component catalog
 - `connect_ui_to_modus_status.csv`: Migration status spreadsheet
 

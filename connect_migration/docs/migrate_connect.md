@@ -5,9 +5,39 @@ Migrate Connect-UI components to Modus Web Components based on the analysis repo
 
 ## Prerequisites
 1. Analysis report from `analyze_connect.md`
-2. `connect_ui_to_modus_mapping.json` for component mappings
+2. MCP Tools configured:
+   - **Tool 1**: Mapping Lookup (quick availability check)
+   - **Tool 2**: Connect Component Details (detailed migration info)
+   - **Tool 3**: Modus Documentation (Modus component details)
 3. Connect CSS loaded (temporarily, for visual verification)
 4. Modus Web Components installed
+
+## Using MCP Tools During Migration
+
+### Step 1: Check Availability
+```
+MCP Tool 1 Input: "mapping"
+Output: component_mappings.json
+Check: Does component have Modus equivalent?
+```
+
+### Step 2: Get Connect Migration Details
+```
+MCP Tool 2 Input: "ComponentName"
+Output: Complete migration data
+- Connect properties
+- Property mappings
+- Migration notes
+- Migration type
+```
+
+### Step 3: Get Modus Component Info
+```
+MCP Tool 3 Input: "modus-wc-component-name"
+Output: Modus documentation
+- Properties, events, slots
+- Usage examples
+```
 
 ## Connect UI Styling During Migration
 

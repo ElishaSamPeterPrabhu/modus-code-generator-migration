@@ -4,12 +4,21 @@
 Analyze provided code for Connect-UI components. For each Connect-UI component, identify its Modus web component equivalent and outline the migration approach based on the detected framework (React, SolidJS, or Vanilla JS). This analysis will serve as the blueprint for the migration phase.
 
 ## Data Sources
-- `connect_ui_to_modus_mapping.json`: Complete mapping of Connect-UI components to Modus web components with:
-  - Component equivalents
-  - Property mappings
-  - Migration notes
-  - Migration types
-- `connect_ui_components.json`: Details about all Connect-UI components and their properties
+
+### MCP Tools Available
+1. **Mapping Lookup Tool**: Get simple bidirectional mappings
+   - Input: "mapping" → Returns `component_mappings.json`
+   
+2. **Connect Component Details Tool**: Get detailed migration info
+   - Input: Component name → Returns complete migration data for that component
+   
+3. **Modus Documentation Tool**: Get Modus component details
+   - Input: Modus component name → Returns Modus properties, events, slots
+
+### JSON Files
+- `component_mappings.json`: Simple bidirectional mapping (connect_to_modus + modus_to_connect)
+- `connect_ui_to_modus_mapping.json`: Complete detailed mappings (source for Tool 2)
+- `connect_ui_components.json`: Connect component catalog with all properties
 
 ## Connect UI Styling
 Connect-UI components use Trimble Connect design system. To maintain styling during migration:
