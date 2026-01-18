@@ -12,7 +12,10 @@
 These components are 100% using Modus Web Components:
 
 ### Foundation Components (5)
-1. **Icon** → `modus-wc-icon` - Handles both Modus and Connect (tc-icon-*) icons
+1. **Icon** → `modus-wc-icon` - Handles both Modus icons and Connect icons (tc-icon-*)
+   - **Modus icons:** `<modus-wc-icon name="close" size="md" />`
+   - **Connect icons:** `<modus-wc-icon custom-class="icon-font tc-icon-cloud-queue" name="" size="lg" />`
+   - Requires: `<link rel="stylesheet" href="https://resources.connect.trimble.com/1.12.0/fonts/icon-font.min.css">`
 2. **Button** → `modus-wc-button` - Type→variant mapping (solid→filled, hollow/outline→outlined)
 3. **ActionButton** → `modus-wc-button` - Borderless variant, circle shape
 4. **IconButton** → Button wrapper → `modus-wc-button` - Shape and size mapping
@@ -65,10 +68,10 @@ These keep original functionality but use Modus for UI elements:
 - ✅ Full migration → `modus-wc-tooltip` (**335→73 lines, -78%**)
 - ✅ Position mapping (top-start→top, etc.)
 
-**Limitations:**
-- ⚠️ Lost arrow support (Modus doesn't have)
+**Simplified:**
 - ⚠️ Simplified positions (5 instead of 14 options)
 - ⚠️ No overflow detection (notDynamic removed)
+- ⚠️ Arrow styling handled by Modus defaults
 
 **Result:** Acceptable - simpler but functional
 
@@ -298,6 +301,23 @@ onMount(() => {
     border: none !important;
   }
 `}</style>
+```
+
+### Using Connect Icons with Modus
+```tsx
+// Load Connect icon font CSS (in preview.tsx or index.html)
+<link rel="stylesheet" href="https://resources.connect.trimble.com/1.12.0/fonts/icon-font.min.css">
+
+// Use Connect icons with modus-wc-icon
+<modus-wc-icon 
+  custom-class="icon-font tc-icon-cloud-queue" 
+  name="" 
+  size="lg"
+  aria-label="Cloud Queue icon"
+/>
+
+// Or use Modus icons normally
+<modus-wc-icon name="close" size="md" />
 ```
 
 ---
