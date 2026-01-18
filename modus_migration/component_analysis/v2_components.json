@@ -558,12 +558,12 @@
         "<modus-wc-loader\n        aria-label=\"Loading infinity symbol\"\n        color=\"${args.color}\"\n        custom-class=\"${ifDefined(args['custom-class'])}\"\n        size=\"md\"\n        variant=\"infinity\"\n      ></modus-wc-loader>"
       ],
       "variants": [
-        "ball",
         "ring",
-        "dots",
         "bars",
+        "ball",
+        "infinity",
         "${args.variant}",
-        "infinity"
+        "dots"
       ],
       "prop_usage": {
         "label": [
@@ -1945,9 +1945,9 @@
         "<modus-wc-autocomplete\n  aria-label=\"Fruit autocomplete\"\n  ?bordered=${args.bordered}\n  custom-class=${ifDefined(args['custom-class'])}\n  debounce-ms=${ifDefined(args['debounce-ms'])}\n  ?disabled=${args.disabled}\n  ?include-clear=${args['include-clear']}\n  ?include-search=${args['include-search']}\n  input-id=${ifDefined(args['input-id'])}\n  input-tab-index=${ifDefined(args['input-tab-index'])}\n  .items=${args.items}\n  label=${ifDefined(args.label)}\n  ?leave-menu-open=${args['leave-menu-open']}\n  max-chips=${args['max-chips'] ?? 4}\n  min-chars=${args['min-chars']}\n  min-input-width=${ifDefined(args['min-input-width'])}\n  ?multi-select=${true}\n  name=${ifDefined(args.name)}\n  .noResults=${args['no-results']}\n  placeholder=${ifDefined(args.placeholder)}\n  ?read-only=${args['read-only']}\n  ?required=${args.required}\n  ?show-menu-on-focus=${args['show-menu-on-focus']}\n  size=${ifDefined(args.size)}\n  value=${args.value}\n></modus-wc-autocomplete>"
       ],
       "variants": [
+        "danger",
         "secondary",
-        "primary",
-        "danger"
+        "primary"
       ],
       "prop_usage": {
         "label": [
@@ -3723,8 +3723,8 @@
       ],
       "variants": [
         "solid",
-        "filled",
-        "counter"
+        "counter",
+        "filled"
       ],
       "prop_usage": {
         "index": [
