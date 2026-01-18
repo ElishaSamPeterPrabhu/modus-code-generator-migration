@@ -12,11 +12,14 @@
 These components are 100% using Modus Web Components:
 
 ### Foundation Components (5)
-1. **Icon** → `modus-wc-icon` - Handles both Modus icons and Connect icons (tc-icon-*)
+1. **Icon** → Hybrid approach for best compatibility
    - **Modus icons:** `<modus-wc-icon name="close" size="md" />`
-   - **Connect icons:** `<modus-wc-icon custom-class="icon-font tc-icon-cloud-queue" name="" size="lg" />`
+   - **Connect icons:** `<i class="icon-font tc-icon-*">` (native to avoid CSS conflicts)
+   - **SVG icons:** Custom SVG rendering
    - Requires: `<link rel="stylesheet" href="https://resources.connect.trimble.com/1.12.0/fonts/icon-font.min.css">`
 2. **Button** → `modus-wc-button` - Type→variant mapping (solid→filled, hollow/outline→outlined)
+   - Icons and text as separate direct children for proper .5rem gap
+   - Inverse color uses borderless variant with white text styling
 3. **ActionButton** → `modus-wc-button` - Borderless variant, circle shape
 4. **IconButton** → Button wrapper → `modus-wc-button` - Shape and size mapping
 5. **FabButton** → Button wrapper → `modus-wc-button` - Filled, circle, large size
