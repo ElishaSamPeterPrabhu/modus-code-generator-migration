@@ -1,536 +1,86 @@
-# Connect UI to Modus Web Components Migration Guide
+# Connect UI to Modus Web Components Migration - Pilot Study
 
 **Document Version:** 1.0  
 **Date:** January 18, 2026  
 **Target Audience:** Connect Division Development Teams  
-**Purpose:** Migration methodology and implementation guide
+**Purpose:** Feasibility assessment and migration approach proposal
 
 ---
 
 ## Executive Summary
 
-This document outlines the successful migration of 34 out of 36 Connect UI components (94%) to Trimble Modus Web Components. The migration maintains backward compatibility while modernizing the component library to align with the Trimble Design System.
+This document presents findings from a pilot migration of Connect UI primitive components to Trimble Modus Web Components. We successfully migrated a representative set of components to validate the approach and identify key patterns for division-wide adoption.
 
-**Migration Scope:**
-- Total Components: 36
-- Fully Migrated: 29 (81%)
-- Partially Migrated (UI Updated): 5 (14%)
-- Retained Original: 2 (5%)
-- Code Reduction: Approximately 2,400 lines removed
-- Dependency Removal: @rnwonder/solid-date-picker eliminated
+**Pilot Results:**
+- Migrated 34 out of 36 components as proof of concept
+- Established reusable migration patterns
+- Identified Modus limitations requiring workarounds
+- Maintained full backward compatibility
+- Reduced codebase by approximately 2,400 lines
 
----
-
-## Migration Methodology
-
-### 1. Component Analysis Phase
-
-Each component was evaluated against three criteria:
-
-1. **Modus Equivalency**: Does a direct Modus component exist?
-2. **Feature Parity**: Can Modus support all existing features?
-3. **Migration Complexity**: Cost vs. benefit analysis
-
-**Decision Matrix:**
-
-| Criterion | Migrate Fully | Migrate Partially | Keep Original |
-|-----------|---------------|-------------------|---------------|
-| Modus equivalent exists | Yes | Yes | No |
-| Feature parity | 100% | >70% | <70% |
-| Breaking changes required | None | Minimal | Significant |
-
-### 2. Property Mapping Strategy
-
-Properties were mapped using systematic transformations:
-
-#### Size Conversions
-```
-small  → sm
-medium → md
-large  → lg
-```
-
-#### Variant Mappings
-```
-type: "solid"   → variant: "filled"
-type: "hollow"  → variant: "borderless"
-type: "outline" → variant: "outlined"
-```
-
-#### Boolean Property Transformations
-```
-checked   → value (checkbox/switch)
-isChecked → value (switch)
-readonly  → read-only (inputs)
-```
-
-#### Error Handling Pattern
-```typescript
-// Before (Connect)
-error?: string;
-touched?: boolean;
-
-// After (Modus)
-feedback?: {
-  level: 'error' | 'warning' | 'info' | 'success';
-  message: string;
-}
-```
-
-### 3. Event Transformation Pattern
-
-All form input events were transformed from native DOM events to Modus CustomEvents:
-
-```typescript
-// Before (Connect)
-onChange?: (event: Event & { currentTarget: HTMLInputElement }) => void;
-
-// After (Modus)
-onInputChange?: (event: CustomEvent) => void;
-
-// Implementation
-const handleInputChange = (e: CustomEvent) => {
-  const value = (e.detail?.value as string) || '';
-  
-  // Emit backward-compatible event for existing consumers
-  const customEvent = new CustomEvent('tc-custominput-change', {
-    detail: { value },
-    bubbles: true
-  });
-  element.dispatchEvent(customEvent);
-  
-  // Call original handler with synthetic event
-  if (props.onChange) {
-    const syntheticEvent = {
-      currentTarget: e.target as HTMLInputElement,
-      target: e.target as Element
-    } as Event & { currentTarget: HTMLInputElement };
-    props.onChange(syntheticEvent);
-  }
-};
-```
-
-**Key Points:**
-- CustomEvent detail object contains the value
-- Backward-compatible events emitted for existing code
-- Synthetic events created to match original API
-
-### 4. Component Structure Patterns
-
-#### Slot-Based Components
-
-Components using web component slots (modals, panels, cards):
-
-```typescript
-<modus-wc-modal modal-id="unique-id">
-  <div slot="header">
-    <h3>{title}</h3>
-  </div>
-  <div slot="content">
-    {content}
-  </div>
-  <div slot="footer">
-    <Button onClick={onConfirm}>Confirm</Button>
-  </div>
-</modus-wc-modal>
-```
-
-**Pattern:** Solid components placed in slots must be wrapped in native HTML elements.
-
-#### Modal Visibility Control
-
-Modals require special handling for show/hide functionality:
-
-```typescript
-// Dialog element created by modus-wc-modal
-createEffect(() => {
-  const dialog = document.getElementById(modalId) as HTMLDialogElement | null;
-  if (!dialog) return;
-  
-  if (props.show) {
-    if (!dialog.open) {
-      dialog.showModal();
-    }
-  } else {
-    if (dialog.open) {
-      dialog.close();
-    }
-  }
-}, 100); // Timeout ensures dialog is in DOM
-
-// Sync state when modal closes via X button or backdrop
-onMount(() => {
-  const dialog = document.getElementById(modalId);
-  if (dialog) {
-    dialog.addEventListener('close', () => {
-      props.onClose?.();
-    });
-  }
-});
-```
-
-**Critical:** Dialog close event must trigger parent state update to maintain sync.
-
-#### Icon Rendering Strategy
-
-Hybrid approach for maximum compatibility:
-
-```typescript
-// Icon component implementation
-<Switch
-  fallback={
-    // Modus icons
-    <modus-wc-icon
-      name={props.icon}
-      size={toModusSize(props.size)}
-    />
-  }
->
-  <Match when={isTcIcon()}>
-    {/* Connect icons - native <i> to avoid CSS conflicts */}
-    <i class={`icon-font ${props.icon}`} aria-hidden="true" />
-  </Match>
-  <Match when={isSvgIcon()}>
-    {/* Custom SVG rendering */}
-    {getSvgIcon(props.icon, props.size)}
-  </Match>
-</Switch>
-```
-
-**Rationale:** Using modus-wc-icon with `name=""` and `custom-class="icon-font tc-icon-*"` creates CSS conflicts. Native `<i>` element for Connect icons prevents this.
+**Recommendation:** Proceed with phased migration using documented patterns.
 
 ---
 
-## Implementation Results
+## Migration Approach
 
-### Fully Migrated Components (29)
+### Objective
 
-**Foundation (5):**
-- Icon, Button, ActionButton, IconButton, FabButton
+Evaluate feasibility of migrating Connect UI components to Modus Web Components while:
+- Maintaining existing component APIs
+- Preserving all functionality
+- Achieving design system alignment
+- Reducing maintenance burden
 
-**Form Inputs (6):**
-- CustomInput, CustomSelect, CustomTextarea, CustomCheckbox, SwitchButton, CustomDatePicker
+### Scope of Pilot
 
-**Feedback (5):**
-- Alert, Spinner, ProgressBar, ProgressWidget, ConnectSnackbar
-
-**UI Elements (4):**
-- Accordion, Cards, Chips, WithLabel
-
-**Modals (3):**
-- ConfirmPopup, Popup, DeleteConfirmationModal
-
-**Layout (2):**
-- PanelLayout, Rightpanel
-
-**Utilities (4):**
-- CustomError, LimitVisibleItems, RestrictedAccessSplashScreen, Empty
-
-### Partially Migrated Components (5)
-
-These components use Modus for UI elements while retaining Connect logic:
-
-**1. CustomTooltip**
-- Migrated: Full tooltip to modus-wc-tooltip
-- Code reduction: 335 lines to 73 lines (78%)
-- Trade-off: Simplified positioning options (14 to 5)
-
-**2. DropDownMenu**
-- Migrated: Button, Icon, CustomTooltip to Modus components
-- Retained: Custom positioning logic, multiple anchor types
-- Reason: Modus dropdown-menu lacks support for icon/button/link/selector anchor variations
-
-**3. DropdownOptions**
-- Migrated: Menu structure to modus-wc-menu and modus-wc-menu-item
-- Custom CSS required: Background and padding overrides
-- Retained: Custom positioning wrapper for dropdown-pane behavior
-
-**4. Tabs**
-- Migrated: Icons to modus-wc-icon (via Icon component)
-- Retained: Drag-to-resize, custom scroll handling, close buttons
-- Reason: Modus tabs do not support drag/resize functionality
-
-**5. TagEditor**
-- Migrated: Chips to modus-wc-chip, Icons to modus-wc-icon, Loader to modus-wc-loader
-- Retained: Separator keys, validation regex, custom tag creation, keyboard navigation
-- Reason: Modus autocomplete lacks separator configuration and custom validation support
-
-### Components Retained (2)
-
-**Image:** Simple native img wrapper with error handling - no Modus component needed
-
-**AuthImage:** Custom authentication logic with token handling - uses modus-wc-loader for spinner only
+We selected primitive components across different categories to test migration patterns:
+- Form inputs (text input, select, textarea, checkbox, switch, date picker)
+- Buttons (standard, icon, action, fab)
+- Feedback components (alert, spinner, progress)
+- Layout components (panels, cards, accordion)
+- Complex components (dropdown menu, tabs, modals)
 
 ---
 
-## Custom CSS Requirements
+## Key Migration Patterns
 
-Several components required custom CSS to override Modus defaults:
+### 1. Property Mapping Pattern
 
-### Input Fields
-```css
-modus-wc-text-input input {
-  background: transparent !important;
-  border: none !important;
-}
-modus-wc-text-input input:focus {
-  background: transparent !important;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-```
+**Example: CustomInput (modus-wc-text-input)**
 
-### Dropdown Menu Items
-```css
-.dropdown-pane {
-  padding: 0 !important;
-  box-shadow: none !important;
-  background: transparent !important;
-}
-.dropdown-pane modus-wc-menu {
-  background: transparent !important;
-  padding: 0 !important;
-  border: none !important;
-}
-.dropdown-pane modus-wc-menu-item button:hover {
-  background: transparent !important;
-}
-```
+Connect UI properties were systematically mapped to Modus equivalents:
 
-### Inverse Buttons
-```css
-.inverse-button {
-  color: white !important;
-}
-.inverse-button:hover {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-  color: white !important;
-}
-```
-
-**Note:** These overrides maintain Connect's visual design while using Modus components.
-
----
-
-## Migration Challenges and Solutions
-
-### Challenge 1: Modal Visibility Management
-
-**Problem:** Modus modals use HTML dialog API with showModal()/close() methods, not reactive props.
-
-**Solution:** 
-- Use createEffect to react to show prop changes
-- Call dialog.showModal() and dialog.close() programmatically
-- Listen to dialog 'close' event to sync parent state
-- Use setTimeout to ensure dialog is in DOM before accessing
-
-### Challenge 2: Icon Rendering Conflicts
-
-**Problem:** Using modus-wc-icon with custom-class for Connect icons adds conflicting CSS classes.
-
-**Solution:**
-- Modus icons: Use modus-wc-icon with name prop
-- Connect icons: Use native `<i>` element with icon-font classes
-- Hybrid Icon component handles both cases transparently
-
-### Challenge 3: Button Icon Spacing
-
-**Problem:** modus-wc-button's internal gap blocked by wrapped content.
-
-**Solution:**
-- Render icons and text as separate direct children
-- Only wrap text content in `<span>`
-- Icons remain outside span as direct children
-- Allows button's .5rem gap to work correctly
-
-### Challenge 4: Form Input Event Compatibility
-
-**Problem:** Modus components emit CustomEvents, existing code expects native Events.
-
-**Solution:**
-- Transform CustomEvents to synthetic native events
-- Emit backward-compatible custom events
-- Maintain dual event system during transition period
-
----
-
-## Package Update Requirements
-
-Teams consuming these components must update their dependencies:
-
-### Required Updates
-
-**package.json:**
-```json
-{
-  "dependencies": {
-    "@trimble-oss/moduswebcomponents": "^1.0.3"
-  }
-}
-```
-
-**Initialization (preview.tsx or main entry):**
 ```typescript
-import { defineCustomElements } from '@trimble-oss/moduswebcomponents/loader';
-import '@trimble-oss/moduswebcomponents/modus-wc-styles.css';
+// Connect Interface (unchanged)
+export interface CustomInputProps {
+  name: string;
+  label: string;
+  value?: string;
+  placeholder?: string;
+  disabled?: boolean;
+  readonly?: boolean;
+  error?: string;
+  touched?: boolean;
+  onChange?(event: Event): void;
+}
 
-defineCustomElements();
-```
-
-**Connect Icon Font (required for tc-icon-* icons):**
-```html
-<link rel="stylesheet" href="https://resources.connect.trimble.com/1.24.0/fonts/icon-font.min.css">
-```
-
-### Removed Dependencies
-
-The following can be safely removed:
-```
-@rnwonder/solid-date-picker
-```
-
-Note: @floating-ui/dom was also removed (CustomTooltip now uses modus-wc-tooltip)
-
----
-
-## Breaking Changes and Migration Impact
-
-### For Component Consumers
-
-**No Breaking Changes Required**
-
-All component interfaces remain unchanged. Existing code using these components will continue to work without modification.
-
-**Example:**
-```typescript
-// This code works before and after migration
-<Button
-  content="Click Me"
-  type="solid"
-  color="primary"
-  size="medium"
-  icon="tc-icon-add"
-  onClick={handleClick}
+// Internal Mapping to Modus
+<modus-wc-text-input
+  label={props.label}
+  name={props.name}
+  value={props.value}
+  placeholder={props.placeholder}
+  disabled={props.disabled}
+  readonly={props.readonly}           // Property name matches
+  feedback={getFeedback()}            // Transformed from error/touched
+  onInputChange={handleInputChange}   // Event transformation
 />
 ```
 
-### Internal Changes Only
-
-All changes are internal to component implementation:
-
-1. **Event transformation** - Handled internally
-2. **Property mapping** - Handled internally  
-3. **Modus component usage** - Transparent to consumers
-4. **Backward-compatible events** - Emitted for compatibility
-
-### Type Definitions
-
-Some type assertions were necessary for web component integration:
-
+**Transformation Logic:**
 ```typescript
-// Example from Button component
-color={getColor() as unknown as 'primary' | 'secondary' | 'tertiary'}
-variant={getVariant() as unknown as 'filled' | 'outlined' | 'borderless'}
-```
-
-**Reason:** TypeScript enum values need explicit casting to web component string literal types.
-
----
-
-## Validation and Quality Assurance
-
-### Automated Validation
-
-All components passed automated quality checks:
-
-- **TypeScript Compilation:** 0 errors
-- **ESLint Validation:** 0 warnings
-- **Build Process:** Successful compilation
-- **Type Safety:** Full type coverage maintained
-
-### Manual Validation
-
-Components were validated through:
-
-1. **Storybook Testing:** All stories functional
-2. **Visual Regression:** Compared against Connect UI originals
-3. **Interaction Testing:** Click, hover, focus, keyboard navigation
-4. **Responsive Testing:** Mobile and desktop viewports
-5. **Theme Testing:** Classic Light/Dark, Connect Light/Dark
-
-### Known Limitations
-
-**Modus Component Limitations Documented:**
-
-1. **Tabs:** No drag-to-resize support
-2. **DropDownMenu:** Limited to single anchor type in pure Modus
-3. **TagEditor:** No custom separator key support in modus-wc-autocomplete
-4. **CustomTooltip:** Simplified positioning options
-
-**Mitigation:** Partial migrations preserve Connect features while using Modus for UI elements.
-
----
-
-## Recommendations for Other Teams
-
-### 1. Assessment Phase
-
-**Before starting migration:**
-
-- Inventory all components and their dependencies
-- Map component props to Modus equivalents using Connect mapping JSON
-- Identify components with no Modus equivalent
-- Evaluate feature parity for each component
-- Document custom behaviors that must be preserved
-
-### 2. Migration Priority
-
-**Recommended order:**
-
-1. **Foundation components** (Icon, Button) - Used by many others
-2. **Form inputs** - High usage, direct Modus equivalents
-3. **Simple components** - Low complexity, high confidence
-4. **Layout components** - Medium complexity
-5. **Complex components** - Requires careful planning
-
-### 3. Testing Strategy
-
-**For each migrated component:**
-
-1. Unit tests with existing test suite
-2. Visual comparison in Storybook
-3. Integration testing in consuming applications
-4. Accessibility validation (WCAG compliance)
-5. Cross-browser testing (Chrome, Firefox, Safari)
-
-### 4. Rollout Strategy
-
-**Phased approach recommended:**
-
-**Phase 1:** Deploy to development environment
-- Test with subset of users
-- Gather feedback on functionality and appearance
-- Fix issues before wider rollout
-
-**Phase 2:** Deploy to staging environment
-- Full integration testing
-- Performance benchmarking
-- User acceptance testing
-
-**Phase 3:** Production deployment
-- Gradual rollout with feature flags
-- Monitor error rates and user feedback
-- Rollback plan in place
-
----
-
-## Technical Implementation Patterns
-
-### Pattern 1: Feedback Object for Validation
-
-**Implementation:**
-```typescript
+// Error state to feedback object
 const getFeedback = () => {
   if (props.touched && props.error) {
     return {
@@ -540,268 +90,661 @@ const getFeedback = () => {
   }
   return undefined;
 };
-
-<modus-wc-text-input
-  feedback={getFeedback()}
-  // ... other props
-/>
 ```
 
-**Usage in:** CustomInput, CustomSelect, CustomTextarea, CustomDatePicker
+**Result:** Component API remains unchanged; consumers see no difference.
 
-### Pattern 2: Event Wrapper with Backward Compatibility
+---
 
-**Implementation:**
+### 2. Event Transformation Pattern
+
+**Challenge:** Modus components emit CustomEvents; existing code expects native Events.
+
+**Solution:** Dual event system with backward compatibility.
+
+**Example: Form Input Events**
+
 ```typescript
-const emit = (eventName: string, event: Event, detail?: Record<string, unknown>) => {
-  const customEvent = new CustomEvent(eventName, {
-    detail: { ...detail, originalEvent: event },
-    bubbles: true
-  });
-  (event.target as HTMLElement)?.dispatchEvent(customEvent);
-};
-
 const handleInputChange = (e: CustomEvent) => {
+  // Extract value from Modus CustomEvent
   const value = (e.detail?.value as string) || '';
   
-  // Emit Connect-compatible event
-  emit('tc-custominput-change', e as unknown as Event, { value });
+  // Update internal state
+  setInnerValue(value);
   
-  // Call Modus handler
-  props.onInput?.(syntheticEvent);
+  // Emit backward-compatible event for existing listeners
+  const customEvent = new CustomEvent('tc-custominput-change', {
+    detail: { value },
+    bubbles: true
+  });
+  (e.target as HTMLElement)?.dispatchEvent(customEvent);
+  
+  // Call original handler with synthetic native event
+  if (props.onChange) {
+    const syntheticEvent = {
+      currentTarget: e.target as HTMLInputElement,
+      target: e.target as Element
+    } as Event & { currentTarget: HTMLInputElement };
+    props.onChange(syntheticEvent);
+  }
+};
+
+<modus-wc-text-input onInputChange={handleInputChange} />
+```
+
+**Pattern Applied To:** All form inputs (text, textarea, select, checkbox, switch, date picker)
+
+**Benefits:**
+- Existing event listeners continue to work
+- No changes required in consuming applications
+- Smooth transition path
+
+---
+
+### 3. Modal Visibility Control Pattern
+
+**Challenge:** Modus modals use HTML dialog API (showModal/close methods), not reactive show props.
+
+**Example: ConfirmPopup**
+
+```typescript
+const ConfirmPopup = (props) => {
+  // React to show prop changes
+  createEffect(() => {
+    const dialog = document.getElementById(modalId) as HTMLDialogElement;
+    if (!dialog) return;
+    
+    if (props.show) {
+      if (!dialog.open) dialog.showModal();
+    } else {
+      if (dialog.open) dialog.close();
+    }
+  }, 100); // Timeout ensures dialog rendered
+  
+  // Sync state when user closes via X button or backdrop
+  onMount(() => {
+    const dialog = document.getElementById(modalId);
+    if (dialog) {
+      dialog.addEventListener('close', () => {
+        props.onClose?.(); // Update parent state
+      });
+    }
+  });
+  
+  return (
+    <modus-wc-modal modal-id={modalId}>
+      <div slot="header">{title}</div>
+      <div slot="content">{content}</div>
+      <div slot="footer">{buttons}</div>
+    </modus-wc-modal>
+  );
 };
 ```
 
-**Benefit:** Existing event listeners continue to work during transition period.
+**Critical Insight:** Close event listener required to keep parent and dialog states synchronized.
 
-### Pattern 3: Ref Handling for Nested Elements
+---
 
-**Implementation:**
+### 4. Icon Rendering Strategy
+
+**Challenge:** Connect icons (tc-icon-*) conflict with Modus icon system when both CSS classes applied.
+
+**Solution:** Hybrid rendering based on icon source.
+
 ```typescript
-let inputRef: HTMLInputElement | undefined;
-
-<modus-wc-text-input
-  ref={(el: HTMLElement | null) => {
-    inputRef = el instanceof HTMLElement 
-      ? (el.querySelector('input') as HTMLInputElement | undefined) 
-      : undefined;
-    props.onInputRef?.(inputRef);
-  }}
-/>
+const Icon = (props) => {
+  // Detect icon type
+  const isTcIcon = /tc-[^\s]+/.test(props.icon);
+  
+  return (
+    <Switch>
+      <Match when={isTcIcon}>
+        {/* Connect icons: Use native <i> to avoid CSS conflicts */}
+        <i class={`icon-font ${props.icon}`} aria-hidden="true" />
+      </Match>
+      <Match when={!isTcIcon}>
+        {/* Modus icons: Use modus-wc-icon */}
+        <modus-wc-icon name={props.icon} size={size} />
+      </Match>
+    </Switch>
+  );
+};
 ```
 
-**Reason:** Modus components wrap native inputs; refs must query internal elements.
+**Rationale:** Using modus-wc-icon with `custom-class="icon-font tc-icon-*"` adds both `modus-icons` and `icon-font` classes, causing rendering conflicts.
 
-### Pattern 4: Custom CSS Overrides
+**Requires:** Connect icon font CSS loaded globally:
+```html
+<link rel="stylesheet" href="https://resources.connect.trimble.com/1.24.0/fonts/icon-font.min.css">
+```
 
-**When Modus defaults conflict with Connect design:**
+---
 
+### 5. Partial Migration Strategy
+
+**When Full Migration Not Feasible:**
+
+For components where Modus lacks feature parity, migrate UI elements while preserving logic.
+
+**Example: DropDownMenu**
+
+**Migrated:**
+- Anchor buttons → Modus Button component
+- Icons → Icon component (modus-wc-icon for Modus icons)
+- Tooltips → modus-wc-tooltip
+
+**Retained:**
+- Custom positioning logic (useFixedStyle, customPosition)
+- Multiple anchor types (icon, button, link, selector)
+- Scroll handling and outside-click detection
+
+**Result:** Component uses Modus for visual elements but keeps Connect logic for features Modus doesn't support.
+
+---
+
+## CSS Isolation Strategy
+
+### Decision: No Shadow DOM, Selective CSS Overrides
+
+After evaluation, we chose a hybrid approach balancing isolation with flexibility.
+
+### Option 1: Shadow DOM (Not Chosen)
+
+**Pros:**
+- Complete CSS isolation
+- No style leakage between components
+- Modus components work in isolation
+
+**Cons:**
+- Cannot style Modus components from outside
+- Global Connect styles don't apply (requires duplication)
+- Slot styling complexities
+- Debugging more difficult
+
+**Decision:** Not used - too restrictive for our needs.
+
+### Option 2: CSS Overrides with !important (Chosen)
+
+**Approach:**
+- Modus components render without Shadow DOM
+- Connect global styles apply normally
+- Selective overrides using scoped `<style>` tags and `!important`
+- Custom CSS only where Modus defaults conflict with Connect design
+
+**Example:**
 ```typescript
-const Component = (props) => {
+const CustomInput = (props) => {
   return (
     <>
       <style>
         {`
-          modus-wc-component element {
-            property: value !important;
+          /* Override Modus defaults for Connect design */
+          modus-wc-text-input input {
+            background: transparent !important;
+            border: none !important;
+          }
+          modus-wc-text-input input:focus {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
           }
         `}
       </style>
-      <modus-wc-component {...props} />
+      <modus-wc-text-input {...props} />
     </>
   );
 };
 ```
 
-**Use sparingly:** Only when Modus defaults cannot be configured via props.
+**Benefits:**
+- Connect global styles continue to work
+- Can override Modus where needed
+- Minimal CSS required (only conflicts)
+- Easy to debug and customize
 
----
+**Drawbacks:**
+- Potential for style conflicts
+- Must maintain override CSS
+- Not truly isolated
 
-## Code Quality Metrics
+### Option 3: Class-Based Scoping (Complementary)
 
-### Before Migration
+**Approach:**
+- Use `custom-class` prop on Modus components
+- Scope overrides to specific contexts
 
-- Total lines of code: ~5,200
-- Custom implementations: 35/36 components
-- Heavy dependencies: 2 (@rnwonder/solid-date-picker, @floating-ui/dom)
-- Maintenance complexity: High
-
-### After Migration
-
-- Total lines of code: ~2,800
-- Using Modus: 34/36 components (94%)
-- Heavy dependencies: 0
-- Maintenance complexity: Low
-- Code reduction: 46%
-
-### Specific Improvements
-
-| Component | Before | After | Reduction |
-|-----------|--------|-------|-----------|
-| CustomDatePicker | 557 | 90 | 84% |
-| CustomTooltip | 335 | 73 | 78% |
-| Tabs (icons only) | 18 | 2 | 89% |
-
----
-
-## Deployment Considerations
-
-### Pre-Deployment Checklist
-
-- [ ] All TypeScript compilation errors resolved
-- [ ] ESLint validation passing
-- [ ] Unit tests updated and passing
-- [ ] Storybook stories verified
-- [ ] Visual regression tests passed
-- [ ] Integration tests in consuming apps passed
-- [ ] Performance benchmarks acceptable
-- [ ] Accessibility audit completed
-- [ ] Documentation updated
-- [ ] Team training completed
-
-### Rollback Plan
-
-All changes are isolated to component implementation. Rollback procedure:
-
-1. Checkout previous commit/tag
-2. Rebuild application
-3. Deploy previous version
-4. Investigate issues for re-migration
-
-**Git History:**
-- All changes committed in logical, reversible commits
-- Clear commit messages for easy identification
-- Branch: modus-ui-trial (can merge or revert)
-
----
-
-## Impact on Consuming Applications
-
-### No Code Changes Required
-
-Applications using these components through standard imports require no updates:
-
+**Example:**
 ```typescript
-// Imports remain unchanged
-import { Button, CustomInput, Alert } from '@tcweb/modus-ui';
+<modus-wc-menu custom-class="dropdown-list">
+  <modus-wc-menu-item custom-class="dropdown-item" />
+</modus-wc-menu>
 
-// Usage remains unchanged
-<Button content="Submit" onClick={handleSubmit} />
+<style>
+  {`
+    .dropdown-pane modus-wc-menu {
+      background: transparent !important;
+    }
+  `}
+</style>
 ```
 
-### Optional Optimizations
+**Benefits:**
+- Scoped to specific use cases
+- Multiple instances can have different styles
+- More maintainable than global overrides
 
-Teams may choose to update event handler types for better type safety:
+### Recommendation for Division
 
-```typescript
-// Old (still works)
-onChange={(e: Event) => {
-  const value = (e.target as HTMLInputElement).value;
-}}
+**For new components:** Use Modus defaults without overrides when possible.
 
-// New (better types)
-onInput={(e: InputEvent) => {
-  // Handler receives synthetic event, works as before
-}}
+**For migrated components:** Use selective overrides (Option 2 + 3) to maintain Connect visual consistency during transition.
+
+**Long-term goal:** Align Connect design with Modus defaults to eliminate overrides.
+
+---
+
+## Critical Implementation Decisions
+
+### 1. Backward Compatibility Priority
+
+**Decision:** Maintain 100% backward compatibility.
+
+**Impact:**
+- Component interfaces unchanged
+- Dual event system (CustomEvent + synthetic native events)
+- No breaking changes for consuming applications
+- Gradual adoption possible
+
+### 2. Partial Migration Acceptable
+
+**Decision:** Components can be partially migrated if Modus lacks features.
+
+**Criteria for Partial Migration:**
+- Use Modus for all supported UI elements
+- Retain Connect logic for unsupported features
+- Document limitations clearly
+- Provide migration path when Modus adds features
+
+**Examples:** DropDownMenu (anchor types), Tabs (drag/resize), TagEditor (separators)
+
+### 3. Custom CSS When Necessary
+
+**Decision:** Allow `!important` overrides to maintain Connect design.
+
+**Guidelines:**
+- Use sparingly and document why needed
+- Scope to specific components
+- Plan to remove when Connect design aligns with Modus
+- Keep overrides in component file (co-located with usage)
+
+---
+
+## Package and Dependency Management
+
+### Required Dependencies
+
+**Add to package.json:**
+```json
+{
+  "dependencies": {
+    "@trimble-oss/moduswebcomponents": "^1.0.3"
+  }
+}
 ```
 
----
+### Initialization Requirements
 
-## Recommendations for Division Teams
+**In application entry point or Storybook preview:**
+```typescript
+import { defineCustomElements } from '@trimble-oss/moduswebcomponents/loader';
+import '@trimble-oss/moduswebcomponents/modus-wc-styles.css';
 
-### Short-Term Actions
+// Initialize Modus web components
+defineCustomElements();
+```
 
-1. **Review this migration** - Validate approach and results
-2. **Test in your applications** - Integration testing with your specific use cases
-3. **Provide feedback** - Report any issues or concerns
-4. **Plan adoption timeline** - Determine when to integrate changes
+**For Connect icons:**
+```html
+<!-- In index.html or preview.tsx -->
+<link rel="stylesheet" href="https://resources.connect.trimble.com/1.24.0/fonts/icon-font.min.css">
+```
 
-### Medium-Term Actions
+### Dependencies Removed
 
-1. **Update consuming applications** - Integrate migrated components
-2. **Remove old dependencies** - Clean up package.json
-3. **Update documentation** - Component usage guides for your team
-4. **Train developers** - On new patterns (CustomEvent handling, feedback objects, etc.)
-
-### Long-Term Considerations
-
-1. **Standardization** - Align all Trimble Connect apps on Modus
-2. **Shared component library** - Reduce duplication across teams
-3. **Design system governance** - Process for handling Modus updates
-4. **Migration of remaining components** - Plan for Image, Tabs if needed
+The following dependencies are no longer needed:
+- `@rnwonder/solid-date-picker` (replaced by modus-wc-date)
+- `@floating-ui/dom` (replaced by modus-wc-tooltip)
 
 ---
 
-## Technical Support
+## Validation Results
 
-### Migration Resources
+### Quality Metrics
 
-- **Mapping Documentation:** `connect_migration/component_analysis/connect_ui_to_modus_mapping.json`
-- **Component Analysis:** `connect_migration/component_analysis/connect_ui_components.json`
+- TypeScript compilation: 0 errors
+- ESLint validation: 0 warnings
+- All existing tests passing
+- Storybook stories functional
+- Visual parity confirmed
+
+### Component Validation
+
+All migrated components validated through:
+- Manual testing in Storybook
+- Comparison with Connect UI originals
+- Event handler verification
+- Responsive behavior testing
+- Theme compatibility (Light/Dark modes)
+
+---
+
+## Recommendations for Division Adoption
+
+### Phase 1: Pilot Review (Current)
+
+**Actions:**
+1. Review this migration approach
+2. Test migrated components in your applications
+3. Provide feedback on patterns and decisions
+4. Identify any concerns or blockers
+
+**Deliverable:** Approval to proceed or requested modifications
+
+### Phase 2: Team Migration (If Approved)
+
+**Actions:**
+1. Each team migrates their component library using these patterns
+2. Share learnings and edge cases
+3. Update division-wide component library
+4. Coordinate on common dependencies
+
+**Timeline:** TBD based on team capacity
+
+### Phase 3: Standardization
+
+**Actions:**
+1. Consolidate migrated components into shared library
+2. Deprecate Connect UI components
+3. Remove Connect-specific CSS overrides gradually
+4. Align fully with Modus design system
+
+**Timeline:** Long-term goal
+
+---
+
+## Open Questions for Division Teams
+
+1. **Shadow DOM Strategy:** Should we mandate Shadow DOM for future components, or continue with CSS overrides?
+
+2. **Partial Migrations:** Is partial migration (Modus UI + Connect logic) acceptable for complex components?
+
+3. **CSS Override Policy:** Should we limit `!important` overrides, or allow as needed for visual consistency?
+
+4. **Timeline:** What is realistic timeline for division-wide adoption?
+
+5. **Shared Library:** Should migrated components go into a division-wide package?
+
+6. **Testing Requirements:** What level of testing is required before production deployment?
+
+---
+
+## Technical Support and Resources
+
+### Migration Artifacts
+
+- **Component Mapping:** `connect_migration/component_analysis/connect_ui_to_modus_mapping.json`
 - **Migration Summary:** `MIGRATION_SUMMARY_FINAL.md`
+- **Source Code:** Branch `modus-ui-trial` in repository
 
-### Common Issues and Solutions
+### Contact for Questions
 
-**Issue:** Event handlers not firing  
-**Solution:** Check event name changed from onChange to onInputChange
-
-**Issue:** Feedback/errors not displaying  
-**Solution:** Use feedback object format: `{level: 'error', message: 'text'}`
-
-**Issue:** Refs not working  
-**Solution:** Query nested element: `el?.querySelector('input')`
-
-**Issue:** Modal not appearing  
-**Solution:** Ensure dialog.showModal() called after dialog is in DOM (use setTimeout)
-
-**Issue:** Icons not rendering  
-**Solution:** Verify Connect icon font CSS loaded, check icon name format
+Please direct technical questions or concerns to the migration engineering team.
 
 ---
 
-## Approval and Next Steps
+## Next Steps
 
-### For Review By
+1. **Review Period:** Connect division teams review this document
+2. **Feedback Collection:** Gather concerns and suggestions
+3. **Decision:** Approve approach or request modifications
+4. **Planning:** If approved, plan division-wide migration timeline
+5. **Execution:** Teams begin migration using documented patterns
 
-- Connect Division Architecture Team
-- UI/UX Design Team
-- QA/Testing Team
-- Development Team Leads
+---
 
-### Questions for Review
+## Appendix A: Example Migration - CustomInput
 
-1. Does this migration approach align with division standards?
-2. Are there concerns about the partial migration strategy?
-3. Should Image and Tabs components be migrated despite trade-offs?
-4. What is the preferred timeline for adoption?
-5. Are there additional testing requirements?
+### Original Connect Component
 
-### Acceptance Criteria
+```typescript
+interface CustomInputProps {
+  name: string;
+  label: string;
+  value?: string;
+  placeholder?: string;
+  error?: string;
+  touched?: boolean;
+  onChange?(event: Event): void;
+}
 
-- [ ] Technical review approved
-- [ ] Design review approved
-- [ ] Testing strategy approved
-- [ ] Rollout plan approved
-- [ ] Documentation complete
-- [ ] Training plan approved
+const CustomInput = (props) => {
+  return (
+    <div class="tc-custom-field">
+      <label>{props.label}</label>
+      <div class="input-focus-group">
+        <input
+          name={props.name}
+          value={props.value}
+          placeholder={props.placeholder}
+          class={props.touched && props.error ? 'error' : ''}
+          onChange={props.onChange}
+        />
+        <div class="line" />
+      </div>
+      {props.touched && props.error && (
+        <div class="error-message">{props.error}</div>
+      )}
+    </div>
+  );
+};
+```
+
+### Migrated to Modus
+
+```typescript
+interface CustomInputProps {
+  // Interface unchanged - backward compatible
+  name: string;
+  label: string;
+  value?: string;
+  placeholder?: string;
+  error?: string;
+  touched?: boolean;
+  onChange?(event: Event): void;
+}
+
+const CustomInput = (props) => {
+  // Transform error to feedback object
+  const getFeedback = () => {
+    if (props.touched && props.error) {
+      return { level: 'error' as const, message: props.error };
+    }
+    return undefined;
+  };
+  
+  // Handle Modus CustomEvent and call original onChange
+  const handleInputChange = (e: CustomEvent) => {
+    const value = (e.detail?.value as string) || '';
+    
+    if (props.onChange) {
+      // Create synthetic event matching original API
+      const syntheticEvent = {
+        currentTarget: e.target as HTMLInputElement,
+        target: e.target as Element
+      } as Event & { currentTarget: HTMLInputElement };
+      props.onChange(syntheticEvent);
+    }
+  };
+  
+  // Optional: Remove Modus default styling
+  return (
+    <>
+      <style>
+        {`
+          modus-wc-text-input input {
+            background: transparent !important;
+            border: none !important;
+          }
+        `}
+      </style>
+      <modus-wc-text-input
+        label={props.label}
+        name={props.name}
+        value={props.value}
+        placeholder={props.placeholder}
+        feedback={getFeedback()}
+        onInputChange={handleInputChange}
+      />
+    </>
+  );
+};
+```
+
+### Key Changes
+
+1. **Property Transformation:** error + touched → feedback object
+2. **Event Transformation:** onChange → onInputChange (CustomEvent)
+3. **Event Compatibility:** Synthetic event matches original API
+4. **CSS Override:** Remove Modus border/background for Connect styling
+5. **Interface Preserved:** No changes to CustomInputProps
+
+**Result:** Drop-in replacement - existing code works without modification.
+
+---
+
+## Appendix B: Handling Modus Limitations
+
+### Case Study: DropDownMenu
+
+**Modus Limitation:** modus-wc-dropdown-menu supports single button type, not icon/button/link/selector variations.
+
+**Migration Strategy:**
+
+**What We Migrated:**
+- Anchor buttons → Modus Button component
+- Icons → Icon component (modus-wc-icon)
+- Tooltips → modus-wc-tooltip
+
+**What We Kept:**
+- Custom positioning logic (useFixedStyle, customPosition)
+- Multiple anchor type support (icon, button, link, selector)
+- Outside-click and scroll handling
+
+**Code Structure:**
+```typescript
+<div onClick={handleStateChange}>
+  {/* Icon type uses Modus Button */}
+  <CustomTooltip text={tooltip}>
+    <Button icon={anchorIcon} type="outline" shape="circle" />
+  </CustomTooltip>
+  
+  {/* Dropdown uses Modus Menu */}
+  <Show when={isOpen}>
+    <div style={positionStyle}>
+      <modus-wc-menu>
+        <For each={options}>
+          {(option) => <modus-wc-menu-item label={option} />}
+        </For>
+      </modus-wc-menu>
+    </div>
+  </Show>
+</div>
+```
+
+**Outcome:** Component uses Modus UI while maintaining all Connect functionality.
+
+---
+
+## Appendix C: CSS Isolation Decision Matrix
+
+### Context
+
+Web components can use Shadow DOM for complete CSS isolation, but this has trade-offs.
+
+### Analysis
+
+| Approach | Pros | Cons | Verdict |
+|----------|------|------|---------|
+| **Shadow DOM** | Complete isolation, no conflicts | Cannot style from outside, global styles don't apply, debugging harder | Not recommended |
+| **CSS Overrides (!important)** | Flexible, can style from anywhere, easy debugging | Potential conflicts, must maintain overrides | Recommended for migration |
+| **BEM/Class Scoping** | Good organization, moderate isolation | Requires discipline, not enforced | Complementary approach |
+
+### Recommendation
+
+**For Connect Division Migration:**
+
+Use **CSS Overrides with Class Scoping** approach:
+
+1. **Default:** Let Modus styles apply (no overrides)
+2. **When Needed:** Add scoped overrides using component-specific selectors
+3. **Scope Pattern:** `.connect-component modus-wc-element { /* overrides */ }`
+4. **Documentation:** Document all overrides with reason
+
+**Example:**
+```typescript
+<style>
+  {`
+    /* Scoped to dropdown context only */
+    .dropdown-pane modus-wc-menu {
+      background: transparent !important;
+      padding: 0 !important;
+    }
+  `}
+</style>
+```
+
+**Long-Term:**
+- Work with Modus team to add missing features
+- Reduce overrides as designs converge
+- Eventually remove all overrides when full alignment achieved
+
+### Guidelines for Teams
+
+**Do:**
+- Scope overrides to specific components/contexts
+- Document why override is necessary
+- Use `!important` when overriding web component styles
+- Keep override CSS co-located with component
+
+**Don't:**
+- Use Shadow DOM for Connect components (breaks global styles)
+- Add global overrides affecting all Modus components
+- Override without documentation
+- Assume overrides are permanent (plan to remove)
 
 ---
 
 ## Conclusion
 
-This migration successfully modernizes 94% of Connect UI components to use Trimble Modus Web Components while maintaining full backward compatibility. The hybrid approach for complex components balances Modus adoption with preservation of critical Connect features.
+This pilot migration demonstrates that Connect UI components can be successfully migrated to Modus Web Components while maintaining full backward compatibility. The documented patterns provide a blueprint for division-wide adoption.
 
-**Benefits Achieved:**
-- Alignment with Trimble Design System
-- Reduced code maintenance burden (2,400 lines removed)
-- Eliminated heavy dependencies
-- Improved type safety and accessibility
-- Maintained all critical functionality
+**Key Success Factors:**
+- Systematic property and event mapping
+- Backward compatibility through dual event system
+- Hybrid approach for complex components
+- Selective CSS overrides for visual consistency
+- Clear documentation of patterns and decisions
 
-**Recommended Action:** Approve migration and proceed with phased rollout to Connect division teams.
+**Recommended Path Forward:**
+
+1. Division teams review and approve this approach
+2. Select pilot team to migrate their components using these patterns
+3. Refine patterns based on pilot team feedback
+4. Roll out division-wide with shared learnings
+5. Consolidate into shared component library
 
 ---
 
-**Document Prepared By:** Migration Engineering Team  
-**Review Status:** Pending  
-**Next Review Date:** TBD
+**Document Status:** Ready for Review  
+**Approval Required From:** Connect Division Architecture Board  
+**Prepared By:** Migration Engineering Team
