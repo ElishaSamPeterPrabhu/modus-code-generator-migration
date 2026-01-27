@@ -409,6 +409,7 @@
         "customClass",
         "disabled",
         "feedback",
+        "format",
         "inputId",
         "inputTabIndex",
         "label",
@@ -417,10 +418,14 @@
         "name",
         "readOnly",
         "required",
+        "showWeekNumbers",
         "size",
-        "value"
+        "value",
+        "weekStartDay"
       ],
       "available_events": [
+        "calendarMonthChange",
+        "calendarYearChange",
         "inputBlur",
         "inputChange",
         "inputFocus"
@@ -532,6 +537,7 @@
         "value"
       ],
       "available_events": [
+        "clearClick",
         "inputBlur",
         "inputChange",
         "inputFocus"
@@ -860,6 +866,7 @@
         "customClass",
         "disabled",
         "focused",
+        "hasSubmenu",
         "label",
         "selected",
         "size",
@@ -1078,28 +1085,10 @@
       ],
       "available_events": [],
       "available_slots": [
-        "header",
         "body",
-        "footer"
-      ],
-      "prop_details": {
-        "customClass": {
-          "type": "string",
-          "description": "Custom CSS class to apply to the outer div."
-        },
-        "floating": {
-          "type": "boolean",
-          "description": "Enable floating mode with elevated shadow."
-        },
-        "height": {
-          "type": "string",
-          "description": "Height of the panel in pixels. Default: '700px'"
-        },
-        "width": {
-          "type": "string",
-          "description": "Width of the panel in pixels. Default: '350px'"
-        }
-      }
+        "footer",
+        "header"
+      ]
     }
   },
   "Popup": {
@@ -1499,8 +1488,7 @@
     "modus_component_details": {
       "available_props": [],
       "available_events": [],
-      "available_slots": [],
-      "prop_details": {}
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-avatar": {
@@ -1520,33 +1508,7 @@
         "size"
       ],
       "available_events": [],
-      "available_slots": [],
-      "prop_details": {
-        "alt": {
-          "type": "string",
-          "description": "/**\n * A customizable avatar component used to create avatars with different images or user initials.\n * When no image is provided, the component can display initials (up to 3 characters) from the ini"
-        },
-        "customClass": {
-          "type": "string",
-          "description": "/**\n * A customizable avatar component used to create avatars with different images or user initials.\n * When no image is provided, the component can display initials (up to 3 characters) from the ini"
-        },
-        "imgSrc": {
-          "type": "string",
-          "description": "/**\n * A customizable avatar component used to create avatars with different images or user initials.\n * When no image is provided, the component can display initials (up to 3 characters) from the ini"
-        },
-        "initials": {
-          "type": "string",
-          "description": "/**\n * A customizable avatar component used to create avatars with different images or user initials.\n * When no image is provided, the component can display initials (up to 3 characters) from the ini"
-        },
-        "shape": {
-          "type": "'circle' | 'square'",
-          "description": "/**\n * A customizable avatar component used to create avatars with different images or user initials.\n * When no image is provided, the component can display initials (up to 3 characters) from the ini"
-        },
-        "size": {
-          "type": "DaisySize",
-          "description": "/**\n * A customizable avatar component used to create avatars with different images or user initials.\n * When no image is provided, the component can display initials (up to 3 characters) from the ini"
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-badge": {
@@ -1564,25 +1526,7 @@
         "variant"
       ],
       "available_events": [],
-      "available_slots": [],
-      "prop_details": {
-        "color": {
-          "type": "| 'primary'\n    | 'secondary'\n    | 'tertiary'\n    | 'high-contrast'\n    | 'success'\n    | 'warning'\n    | 'danger'",
-          "description": "/**\n * A customizable badge component used to create badges with different sizes, types, and colors.\n *\n * The component supports a `<slot>` for injecting content within the badge.\n */\n@Component({\n  "
-        },
-        "customClass": {
-          "type": "string",
-          "description": "/**\n * A customizable badge component used to create badges with different sizes, types, and colors.\n *\n * The component supports a `<slot>` for injecting content within the badge.\n */\n@Component({\n  "
-        },
-        "size": {
-          "type": "ModusSize",
-          "description": "/**\n * A customizable badge component used to create badges with different sizes, types, and colors.\n *\n * The component supports a `<slot>` for injecting content within the badge.\n */\n@Component({\n  "
-        },
-        "variant": {
-          "type": "'counter' | 'filled' | 'outlined' | 'text'",
-          "description": "/**\n * A customizable badge component used to create badges with different sizes, types, and colors.\n *\n * The component supports a `<slot>` for injecting content within the badge.\n */\n@Component({\n  "
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-breadcrumbs": {
@@ -1599,21 +1543,7 @@
         "size"
       ],
       "available_events": [],
-      "available_slots": [],
-      "prop_details": {
-        "items": {
-          "type": "IBreadcrumb[]",
-          "description": "/** The text to render in the breadcrumb. */\n  label: string;\n  /** The URL emitted when the breadcrumb is clicked. */\n  url?: string;\n}\n\n/**\n * A customizable breadcrumbs component used to help users"
-        },
-        "customClass": {
-          "type": "string",
-          "description": "/** The text to render in the breadcrumb. */\n  label: string;\n  /** The URL emitted when the breadcrumb is clicked. */\n  url?: string;\n}\n\n/**\n * A customizable breadcrumbs component used to help users"
-        },
-        "size": {
-          "type": "ModusSize",
-          "description": "/** The text to render in the breadcrumb. */\n  label: string;\n  /** The URL emitted when the breadcrumb is clicked. */\n  url?: string;\n}\n\n/**\n * A customizable breadcrumbs component used to help users"
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-collapse": {
@@ -1637,29 +1567,7 @@
       "available_slots": [
         "content",
         "header"
-      ],
-      "prop_details": {
-        "bordered": {
-          "type": "boolean",
-          "description": "/** The description to render in the collapse header. */\n  description?: string;\n  /** The Modus icon name to render in the collapse header. */\n  icon?: string;\n  /** The icon's aria-label. */\n  iconA"
-        },
-        "customClass": {
-          "type": "string",
-          "description": "/** The description to render in the collapse header. */\n  description?: string;\n  /** The Modus icon name to render in the collapse header. */\n  icon?: string;\n  /** The icon's aria-label. */\n  iconA"
-        },
-        "expanded": {
-          "type": "boolean",
-          "description": "/** The description to render in the collapse header. */\n  description?: string;\n  /** The Modus icon name to render in the collapse header. */\n  icon?: string;\n  /** The icon's aria-label. */\n  iconA"
-        },
-        "collapseId": {
-          "type": "string",
-          "description": "/** The description to render in the collapse header. */\n  description?: string;\n  /** The Modus icon name to render in the collapse header. */\n  icon?: string;\n  /** The icon's aria-label. */\n  iconA"
-        },
-        "options": {
-          "type": "ICollapseOptions",
-          "description": "/** The description to render in the collapse header. */\n  description?: string;\n  /** The Modus icon name to render in the collapse header. */\n  icon?: string;\n  /** The icon's aria-label. */\n  iconA"
-        }
-      }
+      ]
     }
   },
   "[NEW] modus-wc-divider": {
@@ -1679,33 +1587,7 @@
         "responsive"
       ],
       "available_events": [],
-      "available_slots": [],
-      "prop_details": {
-        "color": {
-          "type": "| 'primary'\n    | 'secondary'\n    | 'tertiary'\n    | 'high-contrast'\n    | 'success'\n    | 'warning'\n    | 'danger'",
-          "description": "/**\n * A customizable divider component used to separate content horizontally or vertically\n */\n@Component({\n  tag: 'modus-wc-divider',\n  styleUrl: 'modus-wc-divider.scss',\n  shadow: false,\n})\nexport "
-        },
-        "content": {
-          "type": "string",
-          "description": "/**\n * A customizable divider component used to separate content horizontally or vertically\n */\n@Component({\n  tag: 'modus-wc-divider',\n  styleUrl: 'modus-wc-divider.scss',\n  shadow: false,\n})\nexport "
-        },
-        "customClass": {
-          "type": "string",
-          "description": "/**\n * A customizable divider component used to separate content horizontally or vertically\n */\n@Component({\n  tag: 'modus-wc-divider',\n  styleUrl: 'modus-wc-divider.scss',\n  shadow: false,\n})\nexport "
-        },
-        "orientation": {
-          "type": "Orientation",
-          "description": "/**\n * A customizable divider component used to separate content horizontally or vertically\n */\n@Component({\n  tag: 'modus-wc-divider',\n  styleUrl: 'modus-wc-divider.scss',\n  shadow: false,\n})\nexport "
-        },
-        "position": {
-          "type": "'center' | 'end' | 'start'",
-          "description": "/**\n * A customizable divider component used to separate content horizontally or vertically\n */\n@Component({\n  tag: 'modus-wc-divider',\n  styleUrl: 'modus-wc-divider.scss',\n  shadow: false,\n})\nexport "
-        },
-        "responsive": {
-          "type": "boolean",
-          "description": "/**\n * A customizable divider component used to separate content horizontally or vertically\n */\n@Component({\n  tag: 'modus-wc-divider',\n  styleUrl: 'modus-wc-divider.scss',\n  shadow: false,\n})\nexport "
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-input-feedback": {
@@ -1724,29 +1606,7 @@
         "size"
       ],
       "available_events": [],
-      "available_slots": [],
-      "prop_details": {
-        "customClass": {
-          "type": "string",
-          "description": "/**\n * A customizable feedback component used to provide additional context related to form input interactions.\n *\n * <b>To use a custom icon, this component requires Modus icons to be installed in th"
-        },
-        "icon": {
-          "type": "string",
-          "description": "/**\n * A customizable feedback component used to provide additional context related to form input interactions.\n *\n * <b>To use a custom icon, this component requires Modus icons to be installed in th"
-        },
-        "level": {
-          "type": "IInputFeedbackLevel",
-          "description": "/**\n * A customizable feedback component used to provide additional context related to form input interactions.\n *\n * <b>To use a custom icon, this component requires Modus icons to be installed in th"
-        },
-        "message": {
-          "type": "string",
-          "description": "/**\n * A customizable feedback component used to provide additional context related to form input interactions.\n *\n * <b>To use a custom icon, this component requires Modus icons to be installed in th"
-        },
-        "size": {
-          "type": "ModusSize",
-          "description": "/**\n * A customizable feedback component used to provide additional context related to form input interactions.\n *\n * <b>To use a custom icon, this component requires Modus icons to be installed in th"
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-menu": {
@@ -1760,31 +1620,14 @@
       "available_props": [
         "bordered",
         "customClass",
+        "isSubMenu",
         "orientation",
         "size"
       ],
       "available_events": [
         "menuFocusout"
       ],
-      "available_slots": [],
-      "prop_details": {
-        "bordered": {
-          "type": "boolean",
-          "description": "/**\n * A customizable menu component used to display a list of li elements vertically or horizontally.\n *\n * The component supports a `<slot>` for injecting custom li elements inside the ul\n */\n@Compo"
-        },
-        "customClass": {
-          "type": "string",
-          "description": "/**\n * A customizable menu component used to display a list of li elements vertically or horizontally.\n *\n * The component supports a `<slot>` for injecting custom li elements inside the ul\n */\n@Compo"
-        },
-        "orientation": {
-          "type": "Orientation",
-          "description": "/**\n * A customizable menu component used to display a list of li elements vertically or horizontally.\n *\n * The component supports a `<slot>` for injecting custom li elements inside the ul\n */\n@Compo"
-        },
-        "size": {
-          "type": "ModusSize",
-          "description": "/**\n * A customizable menu component used to display a list of li elements vertically or horizontally.\n *\n * The component supports a `<slot>` for injecting custom li elements inside the ul\n */\n@Compo"
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-navbar": {
@@ -1832,57 +1675,7 @@
         "end",
         "notifications",
         "start"
-      ],
-      "prop_details": {
-        "appsMenuOpen": {
-          "type": "boolean",
-          "description": "/** Replaces the text for \"Apps\" in the condensed menu. */\n  apps?: string;\n  /** Replaces the text for \"Help\" in the condensed menu. */\n  help?: string;\n  /** Replaces the text for \"Notifications\" in"
-        },
-        "condensed": {
-          "type": "boolean",
-          "description": "/** Replaces the text for \"Apps\" in the condensed menu. */\n  apps?: string;\n  /** Replaces the text for \"Help\" in the condensed menu. */\n  help?: string;\n  /** Replaces the text for \"Notifications\" in"
-        },
-        "condensedMenuOpen": {
-          "type": "boolean",
-          "description": "/** Replaces the text for \"Apps\" in the condensed menu. */\n  apps?: string;\n  /** Replaces the text for \"Help\" in the condensed menu. */\n  help?: string;\n  /** Replaces the text for \"Notifications\" in"
-        },
-        "customClass": {
-          "type": "string",
-          "description": "/** Replaces the text for \"Apps\" in the condensed menu. */\n  apps?: string;\n  /** Replaces the text for \"Help\" in the condensed menu. */\n  help?: string;\n  /** Replaces the text for \"Notifications\" in"
-        },
-        "mainMenuOpen": {
-          "type": "boolean",
-          "description": "/** Replaces the text for \"Apps\" in the condensed menu. */\n  apps?: string;\n  /** Replaces the text for \"Help\" in the condensed menu. */\n  help?: string;\n  /** Replaces the text for \"Notifications\" in"
-        },
-        "notificationsMenuOpen": {
-          "type": "boolean",
-          "description": "/** Replaces the text for \"Apps\" in the condensed menu. */\n  apps?: string;\n  /** Replaces the text for \"Help\" in the condensed menu. */\n  help?: string;\n  /** Replaces the text for \"Notifications\" in"
-        },
-        "searchDebounceMs": {
-          "type": "number",
-          "description": "/** Replaces the text for \"Apps\" in the condensed menu. */\n  apps?: string;\n  /** Replaces the text for \"Help\" in the condensed menu. */\n  help?: string;\n  /** Replaces the text for \"Notifications\" in"
-        },
-        "searchInputOpen": {
-          "type": "boolean",
-          "description": "/** Replaces the text for \"Apps\" in the condensed menu. */\n  apps?: string;\n  /** Replaces the text for \"Help\" in the condensed menu. */\n  help?: string;\n  /** Replaces the text for \"Notifications\" in"
-        },
-        "textOverrides": {
-          "type": "INavbarTextOverrides",
-          "description": "/** Replaces the text for \"Apps\" in the condensed menu. */\n  apps?: string;\n  /** Replaces the text for \"Help\" in the condensed menu. */\n  help?: string;\n  /** Replaces the text for \"Notifications\" in"
-        },
-        "userCard": {
-          "type": "INavbarUserCard",
-          "description": "/** Replaces the text for \"Apps\" in the condensed menu. */\n  apps?: string;\n  /** Replaces the text for \"Help\" in the condensed menu. */\n  help?: string;\n  /** Replaces the text for \"Notifications\" in"
-        },
-        "userMenuOpen": {
-          "type": "boolean",
-          "description": "/** Replaces the text for \"Apps\" in the condensed menu. */\n  apps?: string;\n  /** Replaces the text for \"Help\" in the condensed menu. */\n  help?: string;\n  /** Replaces the text for \"Notifications\" in"
-        },
-        "visibility": {
-          "type": "INavbarVisibility",
-          "description": "/** Replaces the text for \"Apps\" in the condensed menu. */\n  apps?: string;\n  /** Replaces the text for \"Help\" in the condensed menu. */\n  help?: string;\n  /** Replaces the text for \"Notifications\" in"
-        }
-      }
+      ]
     }
   },
   "[NEW] modus-wc-number-input": {
@@ -1919,85 +1712,7 @@
         "inputChange",
         "inputFocus"
       ],
-      "available_slots": [],
-      "prop_details": {
-        "autoComplete": {
-          "type": "'on' | 'off'",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "bordered": {
-          "type": "boolean",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "currencySymbol": {
-          "type": "string",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "customClass": {
-          "type": "string",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "disabled": {
-          "type": "boolean",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "feedback": {
-          "type": "IInputFeedbackProp",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "inputId": {
-          "type": "string",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "inputTabIndex": {
-          "type": "number",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "label": {
-          "type": "string",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "max": {
-          "type": "number",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "min": {
-          "type": "number",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "name": {
-          "type": "string",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "placeholder": {
-          "type": "string",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "readOnly": {
-          "type": "boolean",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "required": {
-          "type": "boolean",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "size": {
-          "type": "ModusSize",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "step": {
-          "type": "number",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "type": {
-          "type": "'number' | 'range'",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        },
-        "value": {
-          "type": "string",
-          "description": "/**\n * A customizable input component used to create number inputs with types\n */\n@Component({\n  tag: 'modus-wc-number-input',\n  styleUrl: 'modus-wc-number-input.scss',\n  shadow: false,\n})\nexport clas"
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-pagination": {
@@ -2018,37 +1733,7 @@
         "size"
       ],
       "available_events": [],
-      "available_slots": [],
-      "prop_details": {
-        "ariaLabelValues": {
-          "type": "IAriaLabelValues",
-          "description": "/** Aria label values for pagination buttons */\nexport interface IAriaLabelValues {\n  /** Aria label for the first page button */\n  firstPage?: string;\n  /** Aria label for the last page button */\n  l"
-        },
-        "count": {
-          "type": "number",
-          "description": "/** Aria label values for pagination buttons */\nexport interface IAriaLabelValues {\n  /** Aria label for the first page button */\n  firstPage?: string;\n  /** Aria label for the last page button */\n  l"
-        },
-        "customClass": {
-          "type": "string",
-          "description": "/** Aria label values for pagination buttons */\nexport interface IAriaLabelValues {\n  /** Aria label for the first page button */\n  firstPage?: string;\n  /** Aria label for the last page button */\n  l"
-        },
-        "nextButtonText": {
-          "type": "string",
-          "description": "/** Aria label values for pagination buttons */\nexport interface IAriaLabelValues {\n  /** Aria label for the first page button */\n  firstPage?: string;\n  /** Aria label for the last page button */\n  l"
-        },
-        "page": {
-          "type": "string",
-          "description": "/** Aria label values for pagination buttons */\nexport interface IAriaLabelValues {\n  /** Aria label for the first page button */\n  firstPage?: string;\n  /** Aria label for the last page button */\n  l"
-        },
-        "prevButtonText": {
-          "type": "string",
-          "description": "/** Aria label values for pagination buttons */\nexport interface IAriaLabelValues {\n  /** Aria label for the first page button */\n  firstPage?: string;\n  /** Aria label for the last page button */\n  l"
-        },
-        "size": {
-          "type": "ModusSize",
-          "description": "/** Aria label values for pagination buttons */\nexport interface IAriaLabelValues {\n  /** Aria label for the first page button */\n  firstPage?: string;\n  /** Aria label for the last page button */\n  l"
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-radio": {
@@ -2075,45 +1760,7 @@
         "inputChange",
         "inputFocus"
       ],
-      "available_slots": [],
-      "prop_details": {
-        "customClass": {
-          "type": "string",
-          "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes"
-        },
-        "disabled": {
-          "type": "boolean",
-          "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes"
-        },
-        "inputId": {
-          "type": "string",
-          "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes"
-        },
-        "inputTabIndex": {
-          "type": "number",
-          "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes"
-        },
-        "label": {
-          "type": "string",
-          "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes"
-        },
-        "name": {
-          "type": "string",
-          "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes"
-        },
-        "required": {
-          "type": "boolean",
-          "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes"
-        },
-        "size": {
-          "type": "ModusSize",
-          "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes"
-        },
-        "value": {
-          "type": "boolean",
-          "description": "/**\n * A customizable radio button component.\n */\n@Component({\n  tag: 'modus-wc-radio',\n  styleUrl: 'modus-wc-radio.scss',\n  shadow: false,\n})\nexport class ModusWcRadio {\n  private inheritedAttributes"
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-rating": {
@@ -2135,41 +1782,7 @@
         "variant"
       ],
       "available_events": [],
-      "available_slots": [],
-      "prop_details": {
-        "allowHalf": {
-          "type": "boolean",
-          "description": "/**\n * A rating component that allows users to choose a rating from predefined options\n */\n@Component({\n  tag: 'modus-wc-rating',\n  styleUrl: 'modus-wc-rating.scss',\n  shadow: false,\n})\nexport class M"
-        },
-        "count": {
-          "type": "number",
-          "description": "/**\n * A rating component that allows users to choose a rating from predefined options\n */\n@Component({\n  tag: 'modus-wc-rating',\n  styleUrl: 'modus-wc-rating.scss',\n  shadow: false,\n})\nexport class M"
-        },
-        "customClass": {
-          "type": "string",
-          "description": "/**\n * A rating component that allows users to choose a rating from predefined options\n */\n@Component({\n  tag: 'modus-wc-rating',\n  styleUrl: 'modus-wc-rating.scss',\n  shadow: false,\n})\nexport class M"
-        },
-        "disabled": {
-          "type": "boolean",
-          "description": "/**\n * A rating component that allows users to choose a rating from predefined options\n */\n@Component({\n  tag: 'modus-wc-rating',\n  styleUrl: 'modus-wc-rating.scss',\n  shadow: false,\n})\nexport class M"
-        },
-        "getAriaLabelText": {
-          "type": "(ratingValue: number)",
-          "description": "/**\n * A rating component that allows users to choose a rating from predefined options\n */\n@Component({\n  tag: 'modus-wc-rating',\n  styleUrl: 'modus-wc-rating.scss',\n  shadow: false,\n})\nexport class M"
-        },
-        "size": {
-          "type": "ModusSize",
-          "description": "/**\n * A rating component that allows users to choose a rating from predefined options\n */\n@Component({\n  tag: 'modus-wc-rating',\n  styleUrl: 'modus-wc-rating.scss',\n  shadow: false,\n})\nexport class M"
-        },
-        "variant": {
-          "type": "ModusWcRatingVariant",
-          "description": "/**\n * A rating component that allows users to choose a rating from predefined options\n */\n@Component({\n  tag: 'modus-wc-rating',\n  styleUrl: 'modus-wc-rating.scss',\n  shadow: false,\n})\nexport class M"
-        },
-        "value": {
-          "type": "number",
-          "description": "/**\n * A rating component that allows users to choose a rating from predefined options\n */\n@Component({\n  tag: 'modus-wc-rating',\n  styleUrl: 'modus-wc-rating.scss',\n  shadow: false,\n})\nexport class M"
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-side-navigation": {
@@ -2191,33 +1804,7 @@
       "available_events": [
         "expandedChange"
       ],
-      "available_slots": [],
-      "prop_details": {
-        "collapseOnClickOutside": {
-          "type": "",
-          "description": "/**\n * A customizable side navigation component for organizing primary navigation and content areas in an application.\n */\n@Component({\n  tag: 'modus-wc-side-navigation',\n  styleUrl: 'modus-wc-side-na"
-        },
-        "customClass": {
-          "type": "string",
-          "description": "/**\n * A customizable side navigation component for organizing primary navigation and content areas in an application.\n */\n@Component({\n  tag: 'modus-wc-side-navigation',\n  styleUrl: 'modus-wc-side-na"
-        },
-        "expanded": {
-          "type": "this.expanded,\n    })",
-          "description": "/**\n * A customizable side navigation component for organizing primary navigation and content areas in an application.\n */\n@Component({\n  tag: 'modus-wc-side-navigation',\n  styleUrl: 'modus-wc-side-na"
-        },
-        "maxWidth": {
-          "type": "this.minWidth",
-          "description": "/**\n * A customizable side navigation component for organizing primary navigation and content areas in an application.\n */\n@Component({\n  tag: 'modus-wc-side-navigation',\n  styleUrl: 'modus-wc-side-na"
-        },
-        "mode": {
-          "type": "'overlay' | 'push'",
-          "description": "/**\n * A customizable side navigation component for organizing primary navigation and content areas in an application.\n */\n@Component({\n  tag: 'modus-wc-side-navigation',\n  styleUrl: 'modus-wc-side-na"
-        },
-        "targetContent": {
-          "type": "string",
-          "description": "/**\n * A customizable side navigation component for organizing primary navigation and content areas in an application.\n */\n@Component({\n  tag: 'modus-wc-side-navigation',\n  styleUrl: 'modus-wc-side-na"
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-skeleton": {
@@ -2235,25 +1822,7 @@
         "width"
       ],
       "available_events": [],
-      "available_slots": [],
-      "prop_details": {
-        "customClass": {
-          "type": "string",
-          "description": "/**\n * A customizable skeleton component used to create skeletons of various sizes and shapes\n */\n@Component({\n  tag: 'modus-wc-skeleton',\n  styleUrl: 'modus-wc-skeleton.scss',\n  shadow: false,\n})\nexp"
-        },
-        "height": {
-          "type": "string",
-          "description": "/**\n * A customizable skeleton component used to create skeletons of various sizes and shapes\n */\n@Component({\n  tag: 'modus-wc-skeleton',\n  styleUrl: 'modus-wc-skeleton.scss',\n  shadow: false,\n})\nexp"
-        },
-        "shape": {
-          "type": "'circle' | 'rectangle'",
-          "description": "/**\n * A customizable skeleton component used to create skeletons of various sizes and shapes\n */\n@Component({\n  tag: 'modus-wc-skeleton',\n  styleUrl: 'modus-wc-skeleton.scss',\n  shadow: false,\n})\nexp"
-        },
-        "width": {
-          "type": "string",
-          "description": "/**\n * A customizable skeleton component used to create skeletons of various sizes and shapes\n */\n@Component({\n  tag: 'modus-wc-skeleton',\n  styleUrl: 'modus-wc-skeleton.scss',\n  shadow: false,\n})\nexp"
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-slider": {
@@ -2283,57 +1852,7 @@
         "inputChange",
         "inputFocus"
       ],
-      "available_slots": [],
-      "prop_details": {
-        "customClass": {
-          "type": "string",
-          "description": "/**\n * A customizable slider component\n */\n@Component({\n  tag: 'modus-wc-slider',\n  styleUrl: 'modus-wc-slider.scss',\n  shadow: false,\n})\nexport class ModusWcSlider {\n  private inheritedAttributes: At"
-        },
-        "disabled": {
-          "type": "boolean",
-          "description": "/**\n * A customizable slider component\n */\n@Component({\n  tag: 'modus-wc-slider',\n  styleUrl: 'modus-wc-slider.scss',\n  shadow: false,\n})\nexport class ModusWcSlider {\n  private inheritedAttributes: At"
-        },
-        "inputId": {
-          "type": "string",
-          "description": "/**\n * A customizable slider component\n */\n@Component({\n  tag: 'modus-wc-slider',\n  styleUrl: 'modus-wc-slider.scss',\n  shadow: false,\n})\nexport class ModusWcSlider {\n  private inheritedAttributes: At"
-        },
-        "inputTabIndex": {
-          "type": "number",
-          "description": "/**\n * A customizable slider component\n */\n@Component({\n  tag: 'modus-wc-slider',\n  styleUrl: 'modus-wc-slider.scss',\n  shadow: false,\n})\nexport class ModusWcSlider {\n  private inheritedAttributes: At"
-        },
-        "label": {
-          "type": "string",
-          "description": "/**\n * A customizable slider component\n */\n@Component({\n  tag: 'modus-wc-slider',\n  styleUrl: 'modus-wc-slider.scss',\n  shadow: false,\n})\nexport class ModusWcSlider {\n  private inheritedAttributes: At"
-        },
-        "max": {
-          "type": "number",
-          "description": "/**\n * A customizable slider component\n */\n@Component({\n  tag: 'modus-wc-slider',\n  styleUrl: 'modus-wc-slider.scss',\n  shadow: false,\n})\nexport class ModusWcSlider {\n  private inheritedAttributes: At"
-        },
-        "min": {
-          "type": "number",
-          "description": "/**\n * A customizable slider component\n */\n@Component({\n  tag: 'modus-wc-slider',\n  styleUrl: 'modus-wc-slider.scss',\n  shadow: false,\n})\nexport class ModusWcSlider {\n  private inheritedAttributes: At"
-        },
-        "name": {
-          "type": "string",
-          "description": "/**\n * A customizable slider component\n */\n@Component({\n  tag: 'modus-wc-slider',\n  styleUrl: 'modus-wc-slider.scss',\n  shadow: false,\n})\nexport class ModusWcSlider {\n  private inheritedAttributes: At"
-        },
-        "required": {
-          "type": "boolean",
-          "description": "/**\n * A customizable slider component\n */\n@Component({\n  tag: 'modus-wc-slider',\n  styleUrl: 'modus-wc-slider.scss',\n  shadow: false,\n})\nexport class ModusWcSlider {\n  private inheritedAttributes: At"
-        },
-        "size": {
-          "type": "ModusSize",
-          "description": "/**\n * A customizable slider component\n */\n@Component({\n  tag: 'modus-wc-slider',\n  styleUrl: 'modus-wc-slider.scss',\n  shadow: false,\n})\nexport class ModusWcSlider {\n  private inheritedAttributes: At"
-        },
-        "step": {
-          "type": "number",
-          "description": "/**\n * A customizable slider component\n */\n@Component({\n  tag: 'modus-wc-slider',\n  styleUrl: 'modus-wc-slider.scss',\n  shadow: false,\n})\nexport class ModusWcSlider {\n  private inheritedAttributes: At"
-        },
-        "value": {
-          "type": "number",
-          "description": "/**\n * A customizable slider component\n */\n@Component({\n  tag: 'modus-wc-slider',\n  styleUrl: 'modus-wc-slider.scss',\n  shadow: false,\n})\nexport class ModusWcSlider {\n  private inheritedAttributes: At"
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-stepper": {
@@ -2350,21 +1869,7 @@
         "steps"
       ],
       "available_events": [],
-      "available_slots": [],
-      "prop_details": {
-        "customClass": {
-          "type": "string",
-          "description": "/** The color theme of the step */\n  color?:\n    | 'primary'\n    | 'secondary'\n    | 'accent'\n    | 'info'\n    | 'success'\n    | 'warning'\n    | 'error'\n    | 'neutral';\n  /** Custom content to displa"
-        },
-        "orientation": {
-          "type": "Orientation",
-          "description": "/** The color theme of the step */\n  color?:\n    | 'primary'\n    | 'secondary'\n    | 'accent'\n    | 'info'\n    | 'success'\n    | 'warning'\n    | 'error'\n    | 'neutral';\n  /** Custom content to displa"
-        },
-        "steps": {
-          "type": "IStepperItem[]",
-          "description": "/** The color theme of the step */\n  color?:\n    | 'primary'\n    | 'secondary'\n    | 'accent'\n    | 'info'\n    | 'success'\n    | 'warning'\n    | 'error'\n    | 'neutral';\n  /** Custom content to displa"
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-table": {
@@ -2400,69 +1905,7 @@
         "rowSelectionChange",
         "sortChange"
       ],
-      "available_slots": [],
-      "prop_details": {
-        "editable": {
-          "type": "boolean | ((row: Record<string, unknown>)",
-          "description": "/** Key to access data from row object */\n  accessor: string;\n  /** Custom cell renderer */\n  cellRenderer?: (value: unknown, row: unknown) => string | HTMLElement;\n  /** Class names for the column */"
-        },
-        "columns": {
-          "type": "ITableColumn[]",
-          "description": "/** Key to access data from row object */\n  accessor: string;\n  /** Custom cell renderer */\n  cellRenderer?: (value: unknown, row: unknown) => string | HTMLElement;\n  /** Class names for the column */"
-        },
-        "customClass": {
-          "type": "string",
-          "description": "/** Key to access data from row object */\n  accessor: string;\n  /** Custom cell renderer */\n  cellRenderer?: (value: unknown, row: unknown) => string | HTMLElement;\n  /** Class names for the column */"
-        },
-        "data": {
-          "type": "Record<string, unknown>[]",
-          "description": "/** Key to access data from row object */\n  accessor: string;\n  /** Custom cell renderer */\n  cellRenderer?: (value: unknown, row: unknown) => string | HTMLElement;\n  /** Class names for the column */"
-        },
-        "density": {
-          "type": "Density",
-          "description": "/** Key to access data from row object */\n  accessor: string;\n  /** Custom cell renderer */\n  cellRenderer?: (value: unknown, row: unknown) => string | HTMLElement;\n  /** Class names for the column */"
-        },
-        "hover": {
-          "type": "boolean",
-          "description": "/** Key to access data from row object */\n  accessor: string;\n  /** Custom cell renderer */\n  cellRenderer?: (value: unknown, row: unknown) => string | HTMLElement;\n  /** Class names for the column */"
-        },
-        "currentPage": {
-          "type": "number",
-          "description": "/** Key to access data from row object */\n  accessor: string;\n  /** Custom cell renderer */\n  cellRenderer?: (value: unknown, row: unknown) => string | HTMLElement;\n  /** Class names for the column */"
-        },
-        "paginated": {
-          "type": "boolean",
-          "description": "/** Key to access data from row object */\n  accessor: string;\n  /** Custom cell renderer */\n  cellRenderer?: (value: unknown, row: unknown) => string | HTMLElement;\n  /** Class names for the column */"
-        },
-        "pageSizeOptions": {
-          "type": "number[]",
-          "description": "/** Key to access data from row object */\n  accessor: string;\n  /** Custom cell renderer */\n  cellRenderer?: (value: unknown, row: unknown) => string | HTMLElement;\n  /** Class names for the column */"
-        },
-        "showPageSizeSelector": {
-          "type": "boolean",
-          "description": "/** Key to access data from row object */\n  accessor: string;\n  /** Custom cell renderer */\n  cellRenderer?: (value: unknown, row: unknown) => string | HTMLElement;\n  /** Class names for the column */"
-        },
-        "sortable": {
-          "type": "boolean",
-          "description": "/** Key to access data from row object */\n  accessor: string;\n  /** Custom cell renderer */\n  cellRenderer?: (value: unknown, row: unknown) => string | HTMLElement;\n  /** Class names for the column */"
-        },
-        "selectable": {
-          "type": "'none' | 'single' | 'multi'",
-          "description": "/** Key to access data from row object */\n  accessor: string;\n  /** Custom cell renderer */\n  cellRenderer?: (value: unknown, row: unknown) => string | HTMLElement;\n  /** Class names for the column */"
-        },
-        "selectedRowIds": {
-          "type": "string[]",
-          "description": "/** Key to access data from row object */\n  accessor: string;\n  /** Custom cell renderer */\n  cellRenderer?: (value: unknown, row: unknown) => string | HTMLElement;\n  /** Class names for the column */"
-        },
-        "zebra": {
-          "type": "boolean",
-          "description": "/** Key to access data from row object */\n  accessor: string;\n  /** Custom cell renderer */\n  cellRenderer?: (value: unknown, row: unknown) => string | HTMLElement;\n  /** Class names for the column */"
-        },
-        "caption": {
-          "type": "string",
-          "description": "/** Key to access data from row object */\n  accessor: string;\n  /** Custom cell renderer */\n  cellRenderer?: (value: unknown, row: unknown) => string | HTMLElement;\n  /** Class names for the column */"
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-theme-switcher": {
@@ -2477,13 +1920,7 @@
         "customClass"
       ],
       "available_events": [],
-      "available_slots": [],
-      "prop_details": {
-        "customClass": {
-          "type": "string",
-          "description": "/**\n * A theme switcher component used to toggle the application theme and/or mode.\n *\n * Allows consumers to set the initial theme (Modus Classic, Modus Modern, etc.) and end-users to toggle modes (L"
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-time-input": {
@@ -2520,85 +1957,7 @@
         "inputChange",
         "inputFocus"
       ],
-      "available_slots": [],
-      "prop_details": {
-        "autoComplete": {
-          "type": "'on' | 'off'",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "bordered": {
-          "type": "boolean",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "customClass": {
-          "type": "string",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "datalistOptions": {
-          "type": "string[]",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "disabled": {
-          "type": "boolean",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "feedback": {
-          "type": "IInputFeedbackProp",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "inputId": {
-          "type": "string",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "inputTabIndex": {
-          "type": "number",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "datalistId": {
-          "type": "string",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "label": {
-          "type": "string",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "max": {
-          "type": "string",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "min": {
-          "type": "string",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "name": {
-          "type": "string",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "readOnly": {
-          "type": "boolean",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "required": {
-          "type": "boolean",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "showSeconds": {
-          "type": "boolean",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "size": {
-          "type": "ModusSize",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "step": {
-          "type": "number",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        },
-        "value": {
-          "type": "string",
-          "description": "/**\n * A customizable input component used to create time inputs.\n */\n@Component({\n  tag: 'modus-wc-time-input',\n  styleUrl: 'modus-wc-time-input.scss',\n  shadow: false,\n})\nexport class ModusWcTimeInp"
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-toolbar": {
@@ -2617,13 +1976,7 @@
         "center",
         "end",
         "start"
-      ],
-      "prop_details": {
-        "customClass": {
-          "type": "string",
-          "description": "/**\n * A customizable toolbar component used to organize content across the entire page.\n */\n@Component({\n  tag: 'modus-wc-toolbar',\n  styleUrl: 'modus-wc-toolbar.scss',\n  shadow: false,\n})\nexport cla"
-        }
-      }
+      ]
     }
   },
   "[NEW] modus-wc-typography": {
@@ -2637,29 +1990,12 @@
       "available_props": [
         "customClass",
         "hierarchy",
+        "label",
         "size",
         "weight"
       ],
       "available_events": [],
-      "available_slots": [],
-      "prop_details": {
-        "customClass": {
-          "type": "string",
-          "description": "/**\n * A customizable typography component used to render text with different sizes, hierarchy, and weights.\n *\n * Note: When using heading elements (h1-h6), the default heading CSS styling can be acc"
-        },
-        "hierarchy": {
-          "type": "TypographyHierarchy",
-          "description": "/**\n * A customizable typography component used to render text with different sizes, hierarchy, and weights.\n *\n * Note: When using heading elements (h1-h6), the default heading CSS styling can be acc"
-        },
-        "size": {
-          "type": "TypographySize",
-          "description": "/**\n * A customizable typography component used to render text with different sizes, hierarchy, and weights.\n *\n * Note: When using heading elements (h1-h6), the default heading CSS styling can be acc"
-        },
-        "weight": {
-          "type": "TypographyWeight",
-          "description": "/**\n * A customizable typography component used to render text with different sizes, hierarchy, and weights.\n *\n * Note: When using heading elements (h1-h6), the default heading CSS styling can be acc"
-        }
-      }
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-panel": {
@@ -2678,28 +2014,10 @@
       ],
       "available_events": [],
       "available_slots": [
-        "header",
         "body",
-        "footer"
-      ],
-      "prop_details": {
-        "customClass": {
-          "type": "string",
-          "description": "Custom CSS class to apply to the outer div."
-        },
-        "floating": {
-          "type": "boolean",
-          "description": "Enable floating mode with elevated shadow. Default: false"
-        },
-        "height": {
-          "type": "string",
-          "description": "Height of the panel in pixels. Default: '700px'"
-        },
-        "width": {
-          "type": "string",
-          "description": "Width of the panel in pixels. Default: '350px'"
-        }
-      }
+        "footer",
+        "header"
+      ]
     }
   },
   "[NEW] modus-wc-button-group": {
@@ -2717,35 +2035,8 @@
         "selectionType",
         "variant"
       ],
-      "available_events": [
-        "buttonGroupClick",
-        "buttonSelectionChange"
-      ],
-      "available_slots": [
-        "(default)"
-      ],
-      "prop_details": {
-        "color": {
-          "type": "'primary' | 'secondary' | 'tertiary' | 'warning' | 'danger'",
-          "description": "Color to apply to all buttons"
-        },
-        "disabled": {
-          "type": "boolean",
-          "description": "Disables all buttons. Default: false"
-        },
-        "orientation": {
-          "type": "'horizontal' | 'vertical'",
-          "description": "Button group orientation. Default: 'horizontal'"
-        },
-        "selectionType": {
-          "type": "'default' | 'single' | 'multiple'",
-          "description": "Selection type. Default: 'default'"
-        },
-        "variant": {
-          "type": "'filled' | 'outlined' | 'borderless'",
-          "description": "Style variant. Default: 'outlined'"
-        }
-      }
+      "available_events": [],
+      "available_slots": []
     }
   },
   "[NEW] modus-wc-file-dropzone": {
@@ -2775,57 +2066,7 @@
       ],
       "available_slots": [
         "dropzone"
-      ],
-      "prop_details": {
-        "acceptFileTypes": {
-          "type": "string",
-          "description": "Accepted file types (e.g. '.jpg,.png' or 'image/*')"
-        },
-        "customClass": {
-          "type": "string",
-          "description": "Custom CSS class"
-        },
-        "disabled": {
-          "type": "boolean",
-          "description": "Disable the file input"
-        },
-        "fileDraggedOverInstructions": {
-          "type": "string",
-          "description": "Instructions shown when files dragged over"
-        },
-        "includeStateIcon": {
-          "type": "boolean",
-          "description": "Include state icon (upload, success, error). Default: true"
-        },
-        "instructions": {
-          "type": "string",
-          "description": "Default dropzone message"
-        },
-        "invalidFileTypeMessage": {
-          "type": "string",
-          "description": "Error message for invalid file type"
-        },
-        "maxFileCount": {
-          "type": "number",
-          "description": "Maximum number of files allowed"
-        },
-        "maxFileNameLength": {
-          "type": "number",
-          "description": "Maximum filename length"
-        },
-        "maxTotalFileSizeBytes": {
-          "type": "number",
-          "description": "Maximum total file size in bytes"
-        },
-        "multiple": {
-          "type": "boolean",
-          "description": "Allow multiple file selection"
-        },
-        "successMessage": {
-          "type": "string",
-          "description": "Success message after upload"
-        }
-      }
+      ]
     }
   },
   "[NEW] modus-wc-logo": {
@@ -2843,25 +2084,32 @@
         "name"
       ],
       "available_events": [],
-      "available_slots": [],
-      "prop_details": {
-        "alt": {
-          "type": "string",
-          "description": "Alt text for accessibility. Defaults to logo name if not provided"
-        },
-        "customClass": {
-          "type": "string",
-          "description": "Custom CSS class"
-        },
-        "emblem": {
-          "type": "boolean",
-          "description": "Show emblem version (icon only) instead of full logo. Default: false"
-        },
-        "name": {
-          "type": "string (40+ options)",
-          "description": "REQUIRED. Logo name: 'trimble', 'connect', 'siteworks', 'earthworks', 'viewpoint', etc."
-        }
-      }
+      "available_slots": []
+    }
+  },
+  "[NEW] modus-wc-handle": {
+    "connect_component": "[No Connect equivalent - Handle]",
+    "connect_properties": {},
+    "modus_equivalent": "modus-wc-handle",
+    "property_mappings": {},
+    "migration_notes": "NEW in Modus v2 (Jan 2026). A draggable handle component for resizing adjacent elements. Use for split panes or resizable layouts. Props: orientation (horizontal/vertical), leftTarget, rightTarget (elements to resize), type (bar/button), size, density (compact/comfortable/relaxed).",
+    "migration_type": "new_component",
+    "modus_component_details": {
+      "available_props": [
+        "buttonColor",
+        "buttonSize",
+        "buttonVariant",
+        "customClass",
+        "defaultSplit",
+        "density",
+        "leftTarget",
+        "orientation",
+        "rightTarget",
+        "size",
+        "type"
+      ],
+      "available_events": [],
+      "available_slots": []
     }
   }
 }
