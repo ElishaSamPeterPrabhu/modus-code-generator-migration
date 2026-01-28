@@ -4,13 +4,17 @@
       "title": "string",
       "isExpanded": "boolean",
       "content": "string | JSX.Element"
-    }
+    },
+    "events": {}
   },
   "ActionButton": {
     "props": {
       "icon": "string | TempSvgIcon",
       "title": "string",
       "testId": "string"
+    },
+    "events": {
+      "onClick": "() => void"
     }
   },
   "Alert": {
@@ -26,6 +30,9 @@
       "data-cy": "string",
       "role": "AlertRole",
       "class": "string"
+    },
+    "events": {
+      "onButtonClick": "() => void"
     }
   },
   "AuthImage": {
@@ -33,13 +40,15 @@
       "src": "string",
       "className": "string",
       "errImg": "string",
-      "e": "MouseEvent): void",
       "asBackground": "boolean",
       "alt": "string",
       "style": "Record<string, string | number>",
       "imageProps": "Record<string, any>",
-      "accessToken": "string",
-      "url": "string): string"
+      "accessToken": "string"
+    },
+    "events": {
+      "onClick": "(e: MouseEvent) => void",
+      "updateForFeatureBranch": "(url: string) => string"
     }
   },
   "Button": {
@@ -49,6 +58,7 @@
       "type": "ButtonType",
       "color": "BtnClasses",
       "size": "ButtonSize",
+      "shape": "'ellipse' | 'rectangle' | 'square' | 'circle'",
       "fullWidth": "boolean",
       "icon": "string",
       "iconPosition": "IconPosition",
@@ -60,6 +70,9 @@
       "aria-label": "string",
       "data-cy": "string",
       "class": "string"
+    },
+    "events": {
+      "onClick": "() => void"
     }
   },
   "Cards": {
@@ -68,9 +81,11 @@
       "defaultImageUrl": "string",
       "className": "string",
       "clickable": "boolean",
-      "columnClasses": "string",
-      "card": "CardItem): void",
-      "cardId": "string, option: string, index: number): void"
+      "columnClasses": "string"
+    },
+    "events": {
+      "onCardClick": "(card: CardItem) => void",
+      "onDropdownOptionSelect": "(cardId: string, option: string, index: number) => void"
     }
   },
   "Chips": {
@@ -78,7 +93,8 @@
       "chips": "string[]",
       "limit": "number",
       "chipShape": "'REGULAR' | 'RECTANGLE'"
-    }
+    },
+    "events": {}
   },
   "ConfirmPopup": {
     "props": {
@@ -91,13 +107,18 @@
       "primaryBtnClass": "BtnClasses",
       "secondaryBtnLabel": "string",
       "secondaryBtnClass": "BtnClasses"
+    },
+    "events": {
+      "onClose": "() => void",
+      "onAction": "() => void"
     }
   },
   "ConnectSnackbar": {
     "props": {
       "message": "ISnackBarMessage",
       "color": "string"
-    }
+    },
+    "events": {}
   },
   "CustomCheckbox": {
     "props": {
@@ -108,8 +129,14 @@
       "disabled": "boolean",
       "required": "boolean",
       "data-cy": "string",
-      "dataCy": "string",
-      "event": "Event & { currentTarget: HTMLInputElement"
+      "dataCy": "string"
+    },
+    "events": {
+      "onChange": "(event: Event & { currentTarget: HTMLInputElement }) => void",
+      "onInput": "(event: InputEvent & { currentTarget: HTMLInputElement }) => void",
+      "onBlur": "(event: FocusEvent & { currentTarget: HTMLInputElement }) => void",
+      "onFocus": "(event: FocusEvent & { currentTarget: HTMLInputElement }) => void",
+      "onInputRef": "(ref: HTMLInputElement | undefined) => void"
     }
   },
   "CustomDatePicker": {
@@ -126,15 +153,21 @@
       "data-cy": "string",
       "dataCy": "string",
       "error": "string",
-      "touched": "boolean",
-      "event": "InputEvent & { currentTarget: HTMLInputElement"
+      "touched": "boolean"
+    },
+    "events": {
+      "onInput": "(event: InputEvent & { currentTarget: HTMLInputElement }) => void",
+      "onChange": "(event: Event & { currentTarget: HTMLInputElement }) => void",
+      "onBlur": "(event: FocusEvent & { currentTarget: HTMLInputElement }) => void",
+      "onFocus": "(event: FocusEvent & { currentTarget: HTMLInputElement }) => void"
     }
   },
   "CustomError": {
     "props": {
       "msg": "string",
       "id": "string"
-    }
+    },
+    "events": {}
   },
   "CustomInput": {
     "props": {
@@ -152,9 +185,15 @@
       "dataCy": "string",
       "autocomplete": "boolean",
       "error": "string",
-      "touched": "boolean",
-      "ref": "HTMLInputElement | undefined): void",
-      "event": "InputEvent & { currentTarget: HTMLInputElement"
+      "touched": "boolean"
+    },
+    "events": {
+      "onInputRef": "(ref: HTMLInputElement | undefined) => void",
+      "onInput": "(event: InputEvent & { currentTarget: HTMLInputElement }) => void",
+      "onChange": "(event: Event & { currentTarget: HTMLInputElement }) => void",
+      "onBlur": "(event: FocusEvent & { currentTarget: HTMLInputElement }) => void",
+      "onFocus": "(event: FocusEvent & { currentTarget: HTMLInputElement }) => void",
+      "onKeyDown": "(event: KeyboardEvent & { currentTarget: HTMLInputElement }) => void"
     }
   },
   "CustomSelect": {
@@ -162,10 +201,18 @@
       "name": "string",
       "label": "string",
       "options": "readonly unknown[] | string",
-      "item": "unknown): string",
       "defaultValue": "string | number",
       "value": "string | number",
-      "event": "Event & { currentTarget: HTMLSelectElement"
+      "errorMsg": "string",
+      "disabled": "boolean",
+      "id": "string",
+      "data-cy": "string",
+      "dataCy": "string"
+    },
+    "events": {
+      "getValue": "(item: unknown) => string | number",
+      "getDisplayValue": "(item: unknown) => string",
+      "onChange": "(event: Event & { currentTarget: HTMLSelectElement }) => void"
     }
   },
   "CustomTextarea": {
@@ -184,8 +231,13 @@
       "data-cy": "string",
       "dataCy": "string",
       "error": "string",
-      "touched": "boolean",
-      "event": "InputEvent & { currentTarget: HTMLTextAreaElement"
+      "touched": "boolean"
+    },
+    "events": {
+      "onInput": "(event: InputEvent & { currentTarget: HTMLTextAreaElement }) => void",
+      "onChange": "(event: Event & { currentTarget: HTMLTextAreaElement }) => void",
+      "onBlur": "(event: FocusEvent & { currentTarget: HTMLTextAreaElement }) => void",
+      "onFocus": "(event: FocusEvent & { currentTarget: HTMLTextAreaElement }) => void"
     }
   },
   "CustomTooltip": {
@@ -197,9 +249,11 @@
       "className": "string",
       "arrow": "boolean",
       "children": "JSXElement",
-      "el": "HTMLDivElement): void",
       "tooltipClass": "string",
       "class": "string"
+    },
+    "events": {
+      "containerRef": "(el: HTMLDivElement) => void"
     }
   },
   "DeleteConfirmationModal": {
@@ -207,6 +261,10 @@
       "title": "string",
       "message": "string",
       "waiting": "boolean"
+    },
+    "events": {
+      "onCancel": "() => void",
+      "onConfirm": "() => void"
     }
   },
   "DropDownMenu": {
@@ -228,7 +286,7 @@
       "disabledOptionsTooltipTitle": "string",
       "disabledOptionsTooltipClassName": "string",
       "size": "'small' | 'medium'",
-      "position": "| 'left'\n    | 'right'\n    | 'top left'\n    | 'top right'\n    | 'middle'\n    | 'top middle'",
+      "position": "'left' | 'right' | 'top left' | 'top right' | 'middle' | 'top middle'",
       "iconPosition": "'left' | 'right'",
       "showOnScroll": "boolean",
       "disabled": "boolean",
@@ -239,12 +297,25 @@
       "customPositionStyle": "string",
       "setWidth": "string",
       "unsetHeight": "boolean",
-      "addSeparators": "number[]"
+      "addSeparators": "number[]",
+      "addGroupTitles": "{ [key: string]: string }",
+      "disabledItem": "number[]",
+      "fabButton": "boolean",
+      "dontCloseOnClick": "boolean",
+      "customMenuItemIcon": "string",
+      "tooltip": "string",
+      "dataCy": "string",
+      "isActionAllowed": "boolean"
+    },
+    "events": {
+      "onMenuOpen": "(isOpen: boolean) => void",
+      "onIconClick": "() => void",
+      "onSelectionChanged": "(selected: string, index: number) => void"
     }
   },
   "DropdownOptions": {
     "props": {
-      "position": "| 'left'\n    | 'right'\n    | 'top left'\n    | 'top right'\n    | 'middle'\n    | 'top middle'",
+      "position": "'left' | 'right' | 'top left' | 'top right' | 'middle' | 'top middle'",
       "iconPosition": "'left' | 'right'",
       "className": "string",
       "optionsType": "'text' | 'icon' | 'both'",
@@ -255,7 +326,19 @@
       "isOpen": "boolean",
       "setWidth": "string",
       "unsetHeight": "boolean",
-      "addSeparators": "number[]"
+      "addSeparators": "number[]",
+      "addGroupTitles": "{ [key: string]: string }",
+      "disabledItem": "number[]",
+      "fabButton": "boolean",
+      "customMenuItemIcon": "string",
+      "tooltipTitle": "string",
+      "tooltipPosition": "string",
+      "tooltipDisplayArrow": "boolean",
+      "tooltipClassName": "string"
+    },
+    "events": {
+      "onKeepOpen": "(keepOpen: boolean) => void",
+      "onSelectionChanged": "(selected: string, index: number) => void"
     }
   },
   "Empty": {
@@ -267,7 +350,8 @@
       "isSmallContainer": "boolean",
       "class": "string",
       "data-testid": "string"
-    }
+    },
+    "events": {}
   },
   "FabButton": {
     "props": {
@@ -278,6 +362,9 @@
       "disable": "boolean",
       "policyToolTip": "IPolicyToolTipAttributes",
       "isToolTipDisabled": "boolean"
+    },
+    "events": {
+      "onClick": "() => void"
     }
   },
   "Icon": {
@@ -286,7 +373,8 @@
       "size": "IconSize",
       "class": "string",
       "modusHostClass": "string"
-    }
+    },
+    "events": {}
   },
   "IconButton": {
     "props": {
@@ -299,13 +387,18 @@
       "data-cy": "string",
       "buttonClasses": "string",
       "classes": "string"
+    },
+    "events": {
+      "clicked": "() => void"
     }
   },
   "Image": {
     "props": {
       "src": "string",
       "className": "string",
-      "errImg": "string",
+      "errImg": "string"
+    },
+    "events": {
       "onClick": "() => void"
     }
   },
@@ -316,6 +409,9 @@
       "showMore": "string",
       "showLess": "string",
       "content": "JSXElement"
+    },
+    "events": {
+      "onToggle": "(showAll: boolean) => void"
     }
   },
   "PanelLayout": {
@@ -327,7 +423,8 @@
       "leftActions": "JSXElement | JSXElement[]",
       "rightActions": "JSXElement | JSXElement[]",
       "content": "JSXElement"
-    }
+    },
+    "events": {}
   },
   "Popup": {
     "props": {
@@ -346,6 +443,11 @@
       "secondaryBtnLabel": "string",
       "secondaryBtnClass": "BtnClasses",
       "secondaryBtnDisabled": "boolean"
+    },
+    "events": {
+      "onPrimaryClick": "() => void",
+      "onSecondaryClick": "() => void",
+      "onClose": "() => void"
     }
   },
   "ProgressBar": {
@@ -356,7 +458,8 @@
       "show": "boolean",
       "content": "JSXElement",
       "inFooter": "boolean"
-    }
+    },
+    "events": {}
   },
   "ProgressWidget": {
     "props": {
@@ -365,10 +468,13 @@
       "progress": "number",
       "progressPercent": "string",
       "content": "JSXElement",
-      "collapsed": "boolean): void",
+      "collapsed": "boolean",
       "showProgress": "boolean",
       "class": "string",
       "progressClass": "string"
+    },
+    "events": {
+      "onCollapseChange": "(collapsed: boolean) => void"
     }
   },
   "RestrictedAccessSplashScreen": {
@@ -384,6 +490,10 @@
       "buttonType": "ButtonType",
       "isLoading": "boolean",
       "content": "JSXElement"
+    },
+    "events": {
+      "onButtonClick": "() => void",
+      "onLinkClick": "() => void"
     }
   },
   "Rightpanel": {
@@ -396,8 +506,13 @@
       "footer": "IRightpanelFooter",
       "sectionProps": "any",
       "bodyProps": "any",
-      "content": "JSXElement",
-      "button": "IRightpanelFooterButton,\n    event: MouseEvent\n  ): void"
+      "content": "JSXElement"
+    },
+    "events": {
+      "onFooterButtonClick": "(button: IRightpanelFooterButton, event: MouseEvent) => void",
+      "onLeftButtonClick": "() => void",
+      "onPrimaryButtonClick": "() => void",
+      "onSecondaryButtonClick": "() => void"
     }
   },
   "Spinner": {
@@ -405,16 +520,19 @@
       "show": "boolean",
       "message": "string",
       "class": "string"
-    }
+    },
+    "events": {}
   },
   "SwitchButton": {
     "props": {
       "name": "string",
-      "checked": "boolean): void",
       "id": "string",
       "isChecked": "boolean",
       "label": "string",
       "disabled": "boolean"
+    },
+    "events": {
+      "onChange": "(checked: boolean) => void"
     }
   },
   "Tabs": {
@@ -427,13 +545,16 @@
       "tabDragBarClass": "string",
       "tabButtonClass": "string",
       "tabContentClass": "string",
-      "index": "number, key?: string): void",
-      "resizing": "boolean): void",
       "movedX": "number",
       "finishedMoving": "number",
       "minWidth": "number",
-      "ids": "string[]): void",
       "content": "JSXElement"
+    },
+    "events": {
+      "onSelectedChanged": "(index: number, key?: string) => void",
+      "onHandleTouchEvents": "(resizing: boolean) => void",
+      "onTabsRendered": "(ids: string[]) => void",
+      "onTabSelected": "(index: number, key?: string) => void"
     }
   },
   "TagEditor": {
@@ -459,9 +580,12 @@
       "tagListTitle": "string",
       "maxLength": "number",
       "inputCount": "IInputCount",
-      "limitErrorMessage": "string",
-      "tags": "ITagItem[]): void",
-      "query": "string): void"
+      "limitErrorMessage": "string"
+    },
+    "events": {
+      "onTagChange": "(tags: ITagItem[]) => void",
+      "onTypeText": "(query: string) => void",
+      "onSearchClose": "() => void"
     }
   },
   "WithLabel": {
@@ -470,6 +594,7 @@
       "label": "string",
       "children": "JSX.Element",
       "id": "string"
-    }
+    },
+    "events": {}
   }
 }

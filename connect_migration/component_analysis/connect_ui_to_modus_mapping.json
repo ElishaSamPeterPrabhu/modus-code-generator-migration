@@ -64,6 +64,7 @@
       "icon": "string",
       "buttonText": "string",
       "buttonColor": "AlertButtonColor",
+      "onButtonClick": "() => void",
       "title": "string",
       "aria-label": "string",
       "data-cy": "string",
@@ -71,21 +72,21 @@
       "class": "string"
     },
     "modus_equivalent": "modus-wc-alert",
-    "property_mappings": {
-      "content": "alert-description or use content slot",
-      "children": "alert-description or use content slot",
-      "type": "variant",
-      "icon": "icon",
-      "buttonText": "Place <modus-wc-button slot='button'> with text",
-      "buttonColor": "Set color on button: <modus-wc-button slot='button' color='tertiary'>",
-      "title": "title",
-      "aria-label": "aria-label",
-      "data-cy": "data-testid",
-      "role": "role",
-      "class": "class"
-    },
-    "migration_notes": "Use modus-wc-alert. Has alert-title and alert-description props. For action buttons, use button slot: <modus-wc-button slot='button'>. Icon is a prop, not slotted.",
+    "migration_notes": "Uses modus-wc-alert with content and button slots. Type maps to variant. Icon rendered via Icon component. Button rendered via Button component in button slot.",
     "migration_type": "direct_with_slots",
+    "property_mappings": {
+      "content": "Rendered in content slot",
+      "children": "Rendered in content slot",
+      "type": "variant (default->info, info->info, warning->warning, error->error)",
+      "icon": "Rendered via Icon component before content",
+      "buttonText": "Button in button slot",
+      "buttonColor": "color prop on Button",
+      "onButtonClick": "onClick on Button",
+      "title": "alert-title prop",
+      "aria-label": "aria-label prop",
+      "role": "role prop",
+      "class": "custom-class prop"
+    },
     "modus_component_details": {
       "available_props": [
         "alertDescription",
@@ -101,7 +102,12 @@
         "button",
         "content"
       ]
-    }
+    },
+    "modus_components_used": [
+      "modus-wc-alert",
+      "Icon (modus-wc-icon)",
+      "Button (modus-wc-button)"
+    ]
   },
   "AuthImage": {
     "connect_component": "AuthImage",
@@ -139,12 +145,14 @@
       "type": "ButtonType",
       "color": "BtnClasses",
       "size": "ButtonSize",
+      "shape": "'ellipse' | 'rectangle' | 'square' | 'circle'",
       "fullWidth": "boolean",
       "icon": "string",
       "iconPosition": "IconPosition",
       "iconOnly": "boolean",
       "disabled": "boolean",
       "state": "ButtonState",
+      "onClick": "() => void",
       "buttonType": "'button' | 'submit' | 'reset'",
       "title": "string",
       "aria-label": "string",
@@ -152,26 +160,27 @@
       "class": "string"
     },
     "modus_equivalent": "modus-wc-button",
-    "property_mappings": {
-      "content": "content",
-      "children": "children",
-      "type": "variant (map type values: solid->filled, hollow->outlined, outline->outlined)",
-      "color": "color",
-      "size": "size",
-      "fullWidth": "full-width",
-      "icon": "Place <modus-wc-icon name='icon-name'> in default slot",
-      "iconPosition": "Place icon before or after text in slot",
-      "iconOnly": "icon-only",
-      "disabled": "disabled",
-      "state": "not available",
-      "buttonType": "type",
-      "title": "title",
-      "aria-label": "aria-label",
-      "data-cy": "data-testid",
-      "class": "class"
-    },
-    "migration_notes": "Use modus-wc-button. Icons placed in default slot as <modus-wc-icon>. Supports variant (filled/outlined/borderless), shape (rectangle/circle/square), size (xs/sm/md/lg).",
+    "migration_notes": "Uses modus-wc-button with Icon component for icons. Type maps to variant (solid->filled, hollow->borderless, outline->outlined). Size maps (small->sm, medium->md, large->lg). Inverse color uses borderless variant with custom CSS for white text.",
     "migration_type": "direct_with_icon_slot",
+    "property_mappings": {
+      "content": "Rendered as <span> child",
+      "children": "Rendered as <span> child",
+      "type": "variant (solid->filled, hollow->borderless, outline->outlined)",
+      "color": "color prop",
+      "size": "size (small->sm, medium->md, large->lg)",
+      "shape": "shape prop",
+      "fullWidth": "full-width prop",
+      "icon": "Rendered via Icon component as child",
+      "iconPosition": "Determines icon placement (left/right/dropdown)",
+      "iconOnly": "Only renders icon, no text",
+      "disabled": "disabled prop",
+      "state": "Added as CSS class (active/checked) - not native Modus",
+      "onClick": "onClick handler",
+      "buttonType": "type prop",
+      "aria-label": "aria-label prop",
+      "data-cy": "data-testid prop",
+      "class": "custom-class prop"
+    },
     "modus_component_details": {
       "available_props": [
         "color",
@@ -186,7 +195,11 @@
       ],
       "available_events": [],
       "available_slots": []
-    }
+    },
+    "modus_components_used": [
+      "modus-wc-button",
+      "Icon (modus-wc-icon)"
+    ]
   },
   "Cards": {
     "connect_component": "Cards",
@@ -329,22 +342,28 @@
       "required": "boolean",
       "data-cy": "string",
       "dataCy": "string",
-      "event": "Event & { currentTarget: HTMLInputElement"
+      "onChange": "(event) => void",
+      "onInput": "(event) => void",
+      "onBlur": "(event) => void",
+      "onFocus": "(event) => void",
+      "onInputRef": "(ref) => void"
     },
     "modus_equivalent": "modus-wc-checkbox",
-    "property_mappings": {
-      "name": "name",
-      "value": "value",
-      "id": "input-id",
-      "checked": "value",
-      "disabled": "disabled",
-      "required": "required",
-      "data-cy": "not available",
-      "dataCy": "not available",
-      "event": "inputChange event"
-    },
-    "migration_notes": "Use modus-wc-checkbox. Props: value (instead of checked), label, disabled, indeterminate, required, size (sm/md/lg). Events: inputChange (instead of checkboxClick), inputBlur, inputFocus.",
+    "migration_notes": "Uses modus-wc-checkbox. checked prop maps to value. Events use synthetic event wrappers to match original signatures. Uses createSignal for internal checked state synced with prop.",
     "migration_type": "direct",
+    "property_mappings": {
+      "name": "name prop",
+      "value": "Not used directly (checkbox value is boolean)",
+      "id": "input-id prop",
+      "checked": "value prop (boolean)",
+      "disabled": "disabled prop",
+      "required": "required prop",
+      "onChange": "onInputChange event handler",
+      "onInput": "onInputChange event handler",
+      "onBlur": "onInputBlur event handler",
+      "onFocus": "onInputFocus event handler",
+      "onInputRef": "ref callback to expose internal input"
+    },
     "modus_component_details": {
       "available_props": [
         "customClass",
@@ -894,13 +913,20 @@
       "data-testid": "string"
     },
     "modus_equivalent": "not available",
-    "migration_notes": "No direct equivalent. Create custom component with centered layout using modus-wc-typography for title/description and modus-wc-icon for icon.",
-    "migration_type": "custom_implementation",
+    "migration_notes": "No Modus equivalent. Custom empty state component using native HTML with migrated Icon component (modus-wc-icon). Centered layout with gray background. Icon displayed with opacity 0.3.",
+    "migration_type": "custom_implementation_with_modus_components",
     "property_mappings": {
-      "title": "not available",
-      "description": "not available",
-      "icon": "not available"
-    }
+      "title": "Rendered in <h3 class='text-muted'>",
+      "message": "Rendered in <p class='text-sm text-muted'>",
+      "icon": "Passed to Icon component with size='icon-xlarge'",
+      "content": "Rendered in empty-action div",
+      "isSmallContainer": "Adds 'small' class to wrapper",
+      "class": "Added to wrapper div classes",
+      "data-testid": "data-testid attribute on wrapper"
+    },
+    "modus_components_used": [
+      "Icon (modus-wc-icon)"
+    ]
   },
   "FabButton": {
     "connect_component": "FabButton",
@@ -952,14 +978,14 @@
       "modusHostClass": "string"
     },
     "modus_equivalent": "modus-wc-icon",
-    "property_mappings": {
-      "icon": "name (for Modus icons) OR custom-class='icon-font tc-icon-name' with empty name (for Connect icons)",
-      "size": "size (map icon-small->sm, icon-medium->md, icon-large->lg)",
-      "class": "custom-class",
-      "modusHostClass": "not available (apply to parent element)"
-    },
-    "migration_notes": "Use modus-wc-icon with name prop for Modus icons (solid/outlined variants). For Connect icons (tc-icon-*), install Connect icon font via CDN and use custom-class: <modus-wc-icon custom-class='icon-font tc-icon-name' name='' size='lg'>. Link: https://resources.connect.trimble.com/1.12.0/fonts/icon-font.min.css",
+    "migration_notes": "Uses modus-wc-icon with Switch/Match for different icon types. For tc-icon-* (Connect icons), uses custom-class with icon-font class and empty name. For svg-* icons, renders inline SVG. For Modus icons, uses name prop directly.",
     "migration_type": "direct_with_custom_icons",
+    "property_mappings": {
+      "icon": "name prop (Modus icons) OR custom-class='icon-font {icon}' with name='' (Connect icons)",
+      "size": "size (icon-small->sm, icon-medium->md, icon-large->lg, icon-xlarge->lg)",
+      "class": "Added to custom-class for tc-icons",
+      "modusHostClass": "Not directly mapped"
+    },
     "modus_component_details": {
       "available_props": [
         "customClass",
@@ -970,7 +996,8 @@
       ],
       "available_events": [],
       "available_slots": []
-    }
+    },
+    "actual_migration_pattern": "<Switch fallback={<modus-wc-icon name={props.icon} size={toModusSize(props.size)} />}>\n  <Match when={isTcIcon()}>\n    <modus-wc-icon custom-class={`icon-font ${props.icon} ${props.class ?? ''}`} name=\"\" size={toModusSize(props.size)} />\n  </Match>\n  <Match when={isSvgIcon()}>\n    {getSvgIcon(props.icon, props.size)}\n  </Match>\n</Switch>"
   },
   "IconButton": {
     "connect_component": "IconButton",
@@ -1045,13 +1072,18 @@
       "content": "JSXElement"
     },
     "modus_equivalent": "not available",
+    "migration_notes": "No Modus equivalent. Custom show/hide component using createSignal for state. Uses migrated Button component for toggle. Emits 'toggle' custom event for wrapper integration. Default limit is 5 items.",
+    "migration_type": "custom_implementation_with_modus_components",
     "property_mappings": {
-      "itemLimit": "not available",
-      "className": "not available",
-      "showMore": "not available",
-      "showLess": "not available",
-      "content": "not available"
-    }
+      "itemLimit": "Controls how many items shown (default 5)",
+      "className": "Applied to wrapper div",
+      "showMore": "Button label when collapsed (supports {{count}} placeholder)",
+      "showLess": "Button label when expanded",
+      "content": "JSXElement array to limit"
+    },
+    "modus_components_used": [
+      "Button (modus-wc-button)"
+    ]
   },
   "PanelLayout": {
     "connect_component": "PanelLayout",
@@ -1108,26 +1140,47 @@
       "primaryBtnDisabled": "boolean",
       "secondaryBtnLabel": "string",
       "secondaryBtnClass": "BtnClasses",
-      "secondaryBtnDisabled": "boolean"
+      "secondaryBtnDisabled": "boolean",
+      "onPrimaryClick": "() => void",
+      "onSecondaryClick": "() => void",
+      "onClose": "() => void"
     },
-    "modus_equivalent": "not available",
+    "modus_equivalent": "modus-wc-modal",
+    "migration_notes": "Uses modus-wc-modal with slots for header, content, footer. Modal visibility controlled via showModal()/close() methods on dialog element. Uses createEffect to sync show prop with dialog state. Footer buttons use migrated Button component.",
+    "migration_type": "direct_with_slots",
     "property_mappings": {
-      "show": "not available",
-      "name": "not available",
-      "heading": "not available",
-      "subHeading": "not available",
-      "content": "not available",
-      "overflowClass": "not available",
-      "overflowStyle": "not available",
-      "hideFooter": "not available",
-      "hideClose": "not available",
-      "primaryBtnLabel": "not available",
-      "primaryBtnClass": "not available",
-      "primaryBtnDisabled": "not available",
-      "secondaryBtnLabel": "not available",
-      "secondaryBtnClass": "not available",
-      "secondaryBtnDisabled": "not available"
-    }
+      "show": "Controls dialog via showModal()/close() in createEffect",
+      "name": "Used to generate modal-id",
+      "heading": "Rendered in header slot as <h2>",
+      "subHeading": "Rendered in header slot as <p class='text-muted'>",
+      "content": "Rendered in content slot",
+      "hideFooter": "Conditionally renders footer slot",
+      "hideClose": "show-close prop on modus-wc-modal",
+      "primaryBtnLabel": "Button in footer slot",
+      "secondaryBtnLabel": "Button in footer slot",
+      "onClose": "Called on dialog close event"
+    },
+    "modus_component_details": {
+      "available_props": [
+        "backdrop",
+        "customClass",
+        "fullscreen",
+        "modalId",
+        "position",
+        "showClose",
+        "showFullscreenToggle"
+      ],
+      "available_events": [],
+      "available_slots": [
+        "content",
+        "footer",
+        "header"
+      ]
+    },
+    "modus_components_used": [
+      "modus-wc-modal",
+      "Button (modus-wc-button)"
+    ]
   },
   "ProgressBar": {
     "connect_component": "ProgressBar",
@@ -1140,16 +1193,16 @@
       "inFooter": "boolean"
     },
     "modus_equivalent": "modus-wc-progress",
-    "property_mappings": {
-      "progress": "value",
-      "progressPercent": "value (numeric 0-100)",
-      "class": "custom-class",
-      "show": "Conditional rendering",
-      "content": "label",
-      "inFooter": "inFooter"
-    },
-    "migration_notes": "Use modus-wc-progress with value prop (0-100). Has variant='default' for bar or 'radial' for circular. Can add label prop for text. Indeterminate mode for unknown progress.",
+    "migration_notes": "Uses modus-wc-progress with value prop. progressPercent string is parsed to number. inFooter wraps in <footer> element. content is rendered after the progress bar.",
     "migration_type": "direct",
+    "property_mappings": {
+      "progress": "value (0-100)",
+      "progressPercent": "value (parsed from string like '45%' to number 45)",
+      "class": "Applied to wrapper div",
+      "show": "Conditional rendering via <Show when={props.show}>",
+      "content": "Rendered as child after modus-wc-progress",
+      "inFooter": "Wraps content in <footer> element when true"
+    },
     "modus_component_details": {
       "available_props": [
         "customClass",
@@ -1161,7 +1214,8 @@
       ],
       "available_events": [],
       "available_slots": []
-    }
+    },
+    "actual_migration_example": "<modus-wc-progress value={getProgressValue()} max={100} variant=\"default\" />"
   },
   "ProgressWidget": {
     "connect_component": "ProgressWidget",
@@ -1171,23 +1225,31 @@
       "progress": "number",
       "progressPercent": "string",
       "content": "JSXElement",
-      "collapsed": "boolean): void",
+      "collapsed": "boolean",
+      "onCollapseChange": "(collapsed: boolean) => void",
       "showProgress": "boolean",
       "class": "string",
       "progressClass": "string"
     },
     "modus_equivalent": "not available",
+    "migration_notes": "No Modus equivalent. Custom implementation using native HTML elements with ProgressBar component for the progress indicator. Uses createSignal for collapse state management. Header has icon, title, and collapse toggle button. Footer contains ProgressBar when showProgress is true.",
+    "migration_type": "custom_implementation_with_modus_components",
     "property_mappings": {
-      "title": "not available",
-      "icon": "not available",
-      "progress": "not available",
-      "progressPercent": "not available",
-      "content": "not available",
-      "collapsed": "not available",
-      "showProgress": "not available",
-      "class": "not available",
-      "progressClass": "not available"
-    }
+      "title": "Rendered in <h4> inside header",
+      "icon": "Rendered as <i class='icon-font {icon}'> in header",
+      "progress": "Passed to ProgressBar component",
+      "progressPercent": "Passed to ProgressBar component",
+      "content": "Rendered in <section> body",
+      "collapsed": "Controls initial state via createSignal",
+      "onCollapseChange": "Called when collapse button clicked",
+      "showProgress": "Conditionally renders ProgressBar in footer",
+      "class": "Added to wrapper div classes",
+      "progressClass": "Passed to ProgressBar component"
+    },
+    "modus_components_used": [
+      "ProgressBar (which uses modus-wc-progress internally)"
+    ],
+    "actual_migration_pattern": "Custom div structure with header/section/footer, uses ProgressBar component"
   },
   "RestrictedAccessSplashScreen": {
     "connect_component": "RestrictedAccessSplashScreen",
@@ -1201,23 +1263,33 @@
       "buttonLabel": "string",
       "showBackgroundImage": "boolean",
       "buttonType": "ButtonType",
+      "onButtonClick": "() => void",
+      "onLinkClick": "() => void",
       "isLoading": "boolean",
       "content": "JSXElement"
     },
     "modus_equivalent": "not available",
+    "migration_notes": "No Modus equivalent. Custom splash screen layout using native HTML elements. Uses migrated Spinner component for loading state and migrated Button component for actions. Background image support via inline styles.",
+    "migration_type": "custom_implementation_with_modus_components",
     "property_mappings": {
-      "title": "not available",
-      "subHeading": "not available",
-      "description": "not available",
-      "showIcon": "not available",
-      "linkText": "not available",
-      "linkUrl": "not available",
-      "buttonLabel": "not available",
-      "showBackgroundImage": "not available",
-      "buttonType": "not available",
-      "isLoading": "not available",
-      "content": "not available"
-    }
+      "title": "Rendered in <h1 class='heading'>",
+      "subHeading": "Rendered in <h2 class='sub-heading'>",
+      "description": "Rendered in <p> inside body div",
+      "showIcon": "Conditionally renders <img> with lock icon",
+      "linkText": "Rendered as <a> element",
+      "linkUrl": "href attribute on link",
+      "buttonLabel": "Passed to Button component",
+      "showBackgroundImage": "Sets background-image style on container",
+      "buttonType": "Maps to Button color prop (primary->PRIMARY, upgrade->TERTIARY)",
+      "onButtonClick": "Passed to Button onClick",
+      "onLinkClick": "onClick handler on link element",
+      "isLoading": "Shows Spinner component when true",
+      "content": "Rendered at end of container"
+    },
+    "modus_components_used": [
+      "Spinner (modus-wc-loader)",
+      "Button (modus-wc-button)"
+    ]
   },
   "Rightpanel": {
     "connect_component": "Rightpanel",
@@ -1231,21 +1303,27 @@
       "sectionProps": "any",
       "bodyProps": "any",
       "content": "JSXElement",
-      "button": "IRightpanelFooterButton,\n    event: MouseEvent\n  ): void"
+      "onFooterButtonClick": "(button, event) => void",
+      "onLeftButtonClick": "() => void",
+      "onPrimaryButtonClick": "() => void",
+      "onSecondaryButtonClick": "() => void"
     },
     "modus_equivalent": "modus-wc-utility-panel",
-    "migration_notes": "Use modus-wc-utility-panel with expanded property. Use slots: <div slot='header'> for title/buttons, <div slot='body'> for content, <div slot='footer'> for footer buttons. Listen to panelClosed event for close handling.",
+    "migration_notes": "Uses modus-wc-utility-panel with header, body, footer slots. Header can be custom JSX or auto-generated from title/button props. Footer buttons rendered as native buttons with click handlers.",
     "migration_type": "direct_with_slots",
     "property_mappings": {
-      "panelVisible": "expanded",
-      "headerTitle": "Place in header slot",
-      "leftButton": "Place button in header slot",
-      "primaryButton": "Place button in header slot",
-      "content": "Place in body slot",
-      "footerButtons": "Place buttons in footer slot",
-      "onClose": "Listen to panelClosed event",
-      "onLeftButtonClick": "not available",
-      "onPrimaryButtonClick": "not available"
+      "header": "Rendered in header slot (if provided, overrides auto-generated header)",
+      "headerTitle": "Rendered as <h3> in header slot",
+      "topLeftButton": "Icon button in header (icon class name)",
+      "topRightPrimaryButton": "Primary icon button in header",
+      "topRightSecondaryButton": "Secondary icon button in header",
+      "footer": "IRightpanelFooter with button[] and children",
+      "bodyProps": "Spread on body slot div",
+      "content": "Rendered in body slot",
+      "onFooterButtonClick": "Called for each footer button click",
+      "onLeftButtonClick": "Called when left header button clicked",
+      "onPrimaryButtonClick": "Called when primary header button clicked",
+      "onSecondaryButtonClick": "Called when secondary header button clicked"
     },
     "modus_component_details": {
       "available_props": [
@@ -1259,17 +1337,7 @@
         "footer",
         "header"
       ]
-    },
-    "unmapped_connect_properties": [
-      "header",
-      "topLeftButton",
-      "topRightPrimaryButton",
-      "topRightSecondaryButton",
-      "footer",
-      "sectionProps",
-      "bodyProps",
-      "button"
-    ]
+    }
   },
   "Spinner": {
     "connect_component": "Spinner",
@@ -1279,12 +1347,12 @@
       "class": "string"
     },
     "modus_equivalent": "modus-wc-loader",
-    "migration_notes": "Use modus-wc-loader with variant='spinner'. Loader doesn't support text - place message separately using modus-wc-typography if needed.",
-    "migration_type": "direct",
+    "migration_notes": "Uses modus-wc-loader with variant='spinner'. Message is displayed separately in a div since modus-wc-loader has no text prop. Wrapped in Show component for conditional rendering based on 'show' prop.",
+    "migration_type": "direct_with_wrapper",
     "property_mappings": {
-      "show": "Conditional rendering (not a prop)",
-      "message": "not available (loader has no text prop)",
-      "class": "custom-class"
+      "show": "Conditional rendering via <Show when={props.show}>",
+      "message": "Rendered as separate <div class='text-meta mt-2'> after loader",
+      "class": "Applied to wrapper div, not directly to modus-wc-loader"
     },
     "modus_component_details": {
       "available_props": [
@@ -1295,7 +1363,8 @@
       ],
       "available_events": [],
       "available_slots": []
-    }
+    },
+    "actual_migration_example": "<Show when={props.show}>\n  <div class={`flex flex-col items-center justify-center ${props.class ?? ''}`}>\n    <modus-wc-loader variant=\"spinner\" size=\"md\" custom-class=\"my-4\" />\n    <Show when={props.message}>\n      <div class=\"text-meta mt-2\">{props.message}</div>\n    </Show>\n  </div>\n</Show>"
   },
   "SwitchButton": {
     "connect_component": "SwitchButton",
@@ -1417,36 +1486,26 @@
       "maxLength": "number",
       "inputCount": "IInputCount",
       "limitErrorMessage": "string",
-      "tags": "ITagItem[]): void",
-      "query": "string): void"
+      "onTagChange": "(tags: ITagItem[]) => void",
+      "onTypeText": "(query: string) => void",
+      "onSearchClose": "() => void"
     },
     "modus_equivalent": "not available",
+    "migration_notes": "No Modus equivalent. Complex custom implementation using modus-wc-chip for tags, modus-wc-loader for loading state, modus-wc-icon for search/close icons. Native input for text entry with autocomplete dropdown.",
+    "migration_type": "custom_implementation_with_modus_components",
     "property_mappings": {
-      "separator": "not available",
-      "selectedTagList": "not available",
-      "matchCase": "not available",
-      "title": "not available",
-      "placeHolder": "not available",
-      "validateRx": "not available",
-      "invalidErrorMsg": "not available",
-      "notFoundErrorMsg": "not available",
-      "tagList": "not available",
-      "searchBy": "not available",
-      "allowCustomTag": "not available",
-      "setFocus": "not available",
-      "id": "not available",
-      "customErrorMessage": "not available",
-      "matchBy": "not available",
-      "autoSave": "not available",
-      "enableSearchIcon": "not available",
-      "predefinedTagList": "not available",
-      "tagListTitle": "not available",
-      "maxLength": "not available",
-      "inputCount": "not available",
-      "limitErrorMessage": "not available",
-      "tags": "not available",
-      "query": "not available"
-    }
+      "separator": "Key codes that trigger tag creation",
+      "selectedTagList": "Array of selected tags rendered as modus-wc-chip",
+      "tagList": "Available tags for autocomplete",
+      "onTagChange": "Callback when tags change",
+      "onTypeText": "Callback when user types",
+      "onSearchClose": "Callback when search closed"
+    },
+    "modus_components_used": [
+      "modus-wc-chip",
+      "modus-wc-loader",
+      "modus-wc-icon"
+    ]
   },
   "WithLabel": {
     "connect_component": "WithLabel",
