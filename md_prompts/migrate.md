@@ -1,7 +1,24 @@
 # Modus Component Migration: Migration Phase
 
 ## Objective
-Transform Modus V1 component usage in the source code to Modus V2, based on the framework identified and migration strategy outlined in the `analysis_report.md` for each file.
+Transform component usage to Modus Web Components based on the framework identified and migration strategy outlined in the `analysis_report.md` for each file.
+
+This supports:
+- **Modus V1 → V2**: Direct component tag replacement
+- **Connect UI → Modus**: Internal implementation migration while preserving Connect component interface
+
+## Connect UI Migration Principle
+**CRITICAL**: For Connect UI components, the migration happens INSIDE the component implementation. The component's public interface (props, events, TypeScript types) must remain exactly the same. This ensures:
+- Zero breaking changes for applications using Connect UI
+- Existing code continues to work without modification
+- Event handlers receive the same event signatures
+
+**Key Techniques:**
+1. **Property Mapping**: Transform Connect props to Modus props internally
+   - Example: `error + touched` → `feedback` object
+2. **Event Transformation**: Wrap Modus CustomEvents to emit Connect-compatible Events
+   - Example: `onInputChange(CustomEvent)` → call `onChange(synthetic Event)`
+3. **Interface Preservation**: Keep original TypeScript interfaces unchanged
 
 ## Inputs
 *   Source code file(s) containing Modus V1 components.
@@ -113,6 +130,12 @@ The LLM/tool executing this prompt is responsible for creating the following fil
 ## Important Considerations for the LLM Implementing This:
 
 *   **DO NOT ADD `defineCustomElements`**: The migration script **must not** add `import { defineCustomElements } ...` or any calls to `defineCustomElements()` into the migrated files. This setup is the sole responsibility of the user at their application's entry point. The script should only transform component instances within the file being processed.
+*   **CONNECT UI BACKWARD COMPATIBILITY**: When migrating Connect UI components:
+    *   **PRESERVE**: All original prop names and types in the component interface
+    *   **PRESERVE**: All original event handler signatures (onChange, onInput, etc.)
+    *   **ADD INTERNALLY**: Property transformation logic (Connect props → Modus props)
+    *   **ADD INTERNALLY**: Event wrappers that transform Modus CustomEvents to Connect-compatible Events
+    *   **RESULT**: Component users see no API changes, zero breaking changes
 *   **Adhere Strictly to Analysis Report AND V2 Component Definitions (`v2_components.json`) for ALL Component Attributes and Structure**:
     *   The `analysis_report.md` guides V2 targets and direct attribute mappings.
     *   **For any structural changes (e.g., nesting an icon for a V1 `left-icon` attribute) or when assigning ANY attribute to ANY V2 component (parent or nested child like `modus-wc-icon`):**

@@ -1,11 +1,30 @@
 # Modus Migration Analyze Tool
 
 ## Purpose
-Analyze provided code for Modus V1 components. For each V1 component, identify its V2 web component equivalent and outline the migration approach based on the detected framework (React, Angular, or Vanilla JS). This analysis will serve as the blueprint for the `migrate.md` phase.
+Analyze provided code for components that need migration to Modus Web Components. This supports:
+- **Modus V1 → V2**: Analyze V1 components and identify V2 web component equivalents
+- **Connect UI → Modus**: Analyze Connect UI components and identify Modus equivalents with property/event mappings
+
+For each component, identify its Modus web component equivalent and outline the migration approach based on the detected framework (React, Angular, SolidJS, or Vanilla JS). This analysis will serve as the blueprint for the `migrate.md` phase.
+
+## Connect UI Migration Focus
+For Connect UI components, the analysis must emphasize:
+- **Interface Preservation**: Connect component props and events remain unchanged
+- **Internal Mapping**: Document how Connect props map to Modus props
+- **Event Compatibility**: Document how to wrap Modus events to match Connect signatures
+- **Zero Breaking Changes**: Consuming applications require no code changes
 
 ## Data Sources
-- `component_mapping.json`: Maps V1 component tags to their V2 **web component** equivalents (e.g., `modus-button` maps to `modus-wc-button`). This file may also contain notes on specific attribute changes or, in *exceptional cases*, map a V1 component to a specific V2 importable framework component name if one is intentionally provided and distinct from the web component tag.
-- `v1_components.json`: Details about V1 web components.
+- `component_mapping.json`: Maps source component tags to Modus **web component** equivalents:
+  - For Modus V1→V2: `modus-button` → `modus-wc-button`
+  - For Connect UI→Modus: Available via `connect_ui_to_modus_mapping.json`
+- `connect_ui_to_modus_mapping.json`: Complete Connect UI → Modus mappings including:
+  - Connect component props and their Modus equivalents
+  - Property transformation patterns (e.g., error+touched → feedback object)
+  - Event mappings (e.g., onChange → onInputChange)
+  - Migration type and patterns
+  - Actual migration code examples
+- `v1_components.json`: Details about V1 web components (for Modus V1→V2).
 - `v2_components.json`: Details about V2 **web components** (e.g., `modus-wc-button`, `modus-wc-alert`). This is the source of truth for existing V2 web components, their properties, and events.
 - `v1_angular_framework_data.json`: V1 Angular integration context.
 - `v1_react_framework_data.json`: V1 React integration context.

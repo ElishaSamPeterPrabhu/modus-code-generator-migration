@@ -1,7 +1,14 @@
 # Modus Component Migration Workflow
 
 ## Overview
-This document outlines the end-to-end workflow for migrating Modus V1 components to Modus V2 within a codebase. The process has distinct phases (Analyze, Migrate, Verify, Log) with user confirmation gates. Each phase attempts to use a dedicated server tool for guidance; if unavailable, it falls back to local prompt files.
+This document outlines the end-to-end workflow for migrating components to Modus Web Components. This supports:
+- **Modus V1 → V2 migration**: Upgrading existing Modus components
+- **Connect UI → Modus migration**: Migrating Connect UI components to Modus Web Components
+
+The process has distinct phases (Analyze, Migrate, Verify, Log) with user confirmation gates. Each phase attempts to use a dedicated server tool for guidance; if unavailable, it falls back to local prompt files.
+
+## Connect UI Migration Key Principle
+**Zero Breaking Changes**: When migrating Connect UI components to Modus, the component interface remains unchanged. Connect UI consumers continue using the same props and events - the migration happens internally within the component implementation. This ensures existing applications work without modification.
 
 ## Phase 1: Analyze
 
@@ -23,7 +30,8 @@ This document outlines the end-to-end workflow for migrating Modus V1 components
 ## Phase 2: Migrate
 
 *   **(Pre-condition: User confirmed after analysis review.)**
-*   **Objective**: Transform V1 components to V2 based on the `analysis_report.md`.
+*   **Objective**: Transform components to Modus based on the `analysis_report.md`.
+*   **For Connect UI Migration**: Map Connect props/events to Modus internally while preserving the external Connect interface. Create event wrappers to transform Modus CustomEvents to Connect-compatible native Events.
 *   **Agent Action**:
     1.  **Primary**: Call `mcp_modus_migration_server_get_migrate_guidance` to retrieve `migrate.md` (`guidance_text`) and `component_data`.
     2.  **Fallback**: Attempt to read `md_prompts/migrate.md` and use local `component_data.json`.
