@@ -1,10 +1,15 @@
-# Shadcn to Modus Migration MCP Server - Local Setup
+# Complete Modus Migration MCP Server - Local Setup
 
-This branch (`master-local`) contains a streamlined local MCP server setup for the shadcn/ui to Modus V2 web components migration system.
+This branch (`master-local`) contains a comprehensive local MCP server setup for migrating **all major UI libraries** to Modus V2 web components.
 
 ## Purpose
 
-This local server provides AI assistants with access to shadcn migration data through the Model Context Protocol (MCP), enabling intelligent code migration assistance.
+This local server provides AI assistants with access to migration data for **four different UI migration systems** through the Model Context Protocol (MCP), enabling intelligent code migration assistance for:
+
+1. **Shadcn/UI → Modus V2** - React components with Tailwind CSS
+2. **Material UI (MUI) → Modus V2** - MUI React component library
+3. **Connect UI → Modus V2** - Trimble internal UI library
+4. **Modus V1 → Modus V2** - Upgrade from Modus V1 to V2
 
 ## Quick Start
 
@@ -46,100 +51,94 @@ Configure according to your client's MCP setup documentation, pointing to the `s
 
 ## Available MCP Tools
 
-### 1. `get_shadcn_component_mapping()`
+### Overview Tool
 
-Get the complete bidirectional mapping between shadcn/ui and Modus V2 components.
+#### `get_migration_system_overview()`
+Get an overview of all four migration systems and their capabilities.
+
+**Returns:** Information about all migration systems, their challenges, and available tools.
+
+**Example:**
+```python
+get_migration_system_overview()
+```
+
+---
+
+### Shadcn/UI Migration Tools
+
+#### 1. `get_shadcn_component_mapping()`
+Get complete bidirectional mapping between shadcn/ui and Modus V2 components.
+
+#### 2. `get_migration_workflow_guide()`
+Get complete shadcn migration workflow documentation (all phases).
+
+#### 3. `get_migration_phase_guide(phase: str)`
+Get shadcn-specific phase guide (`"analyze"`, `"migrate"`, `"verify"`, `"log"`).
+
+#### 4. `get_shadcn_to_modus_migration_data(shadcn_component: str)`
+Get complete migration data for a specific shadcn component.
+
+---
+
+### Material UI (MUI) Migration Tools
+
+#### 5. `get_mui_component_mapping()`
+Get complete bidirectional mapping between MUI and Modus V2 components.
 
 **Returns:**
-- `shadcn_to_modus`: Maps shadcn component names to Modus tags (e.g., `Button` → `modus-wc-button`)
-- `modus_to_shadcn`: Reverse mapping (e.g., `modus-wc-button` → `Button`)
+- `mui_to_modus`: Maps MUI components to Modus tags (e.g., `TextField` → `modus-wc-text-input`)
+- `modus_to_mui`: Reverse mapping
 
-**Example:**
-```python
-get_shadcn_component_mapping()
-```
+#### 6. `get_mui_migration_guide(phase: str)`
+Get MUI-specific migration guide (`"analyze"`, `"migrate"`, `"verify"`, `"log"`, `"workflow"`).
 
-### 2. `get_migration_workflow_guide()`
+---
 
-Get the complete migration workflow documentation covering all phases.
+### Connect UI Migration Tools
 
-**Returns:** Markdown documentation with:
-- Migration process overview
-- Phase-by-phase workflow (Analyze, Migrate, Verify, Log)
-- Key differences from other migrations
-- Best practices and checklists
-- Common challenges and solutions
+#### 7. `get_connect_ui_component_mapping()`
+Get comprehensive Connect UI to Modus mapping with detailed property mappings and migration notes.
 
-**Example:**
-```python
-get_migration_workflow_guide()
-```
+**Returns:** Detailed mapping including:
+- Property mappings
+- Event mappings
+- Migration notes
+- Required structural changes
 
-### 3. `get_migration_phase_guide(phase: str)`
+#### 8. `get_connect_migration_guide(phase: str)`
+Get Connect UI-specific migration guide for each phase.
 
-Get detailed guidance for a specific migration phase.
+---
 
-**Parameters:**
-- `phase`: One of `"analyze"`, `"migrate"`, `"verify"`, or `"log"`
+### Modus V1 to V2 Migration Tools
 
-**Returns:** Phase-specific markdown guidance
+#### 9. `get_modus_v1_to_v2_mapping()`
+Get mapping between Modus V1 and V2 components.
 
-**Example:**
-```python
-get_migration_phase_guide("migrate")
-```
+**Returns:**
+- Component mappings
+- Deprecated components
+- Verification rules
+- Migration plan
 
-### 4. `get_modus_component_data(component_name: str)`
+#### 10. `get_modus_v1_component_data(component_name: str)`
+Get detailed Modus V1 component specifications.
 
-Get detailed specifications for a Modus V2 web component.
+---
 
-**Parameters:**
-- `component_name`: Component name with or without `modus-wc-` prefix (e.g., `"button"` or `"modus-wc-button"`)
+### Common Tools (All Migration Systems)
 
-**Returns:** JSON with:
-- Component props
-- Events
-- Slots
-- Documentation
-
-**Example:**
-```python
-get_modus_component_data("button")
-```
-
-### 5. `get_shadcn_to_modus_migration_data(shadcn_component: str)`
-
-Get complete migration data for converting a specific shadcn component to Modus.
+#### 11. `get_modus_component_data(component_name: str)`
+Get detailed Modus V2 component specifications.
 
 **Parameters:**
-- `shadcn_component`: shadcn component name (e.g., `"Button"`, `"Input"`, `"Card"`)
+- `component_name`: Component name with or without `modus-wc-` prefix
 
-**Returns:** JSON with:
-- shadcn component name
-- Modus equivalent tag
-- Complete Modus component specification
-- Migration notes and guidance
+**Returns:** JSON with props, events, slots, and documentation.
 
-**Example:**
-```python
-get_shadcn_to_modus_migration_data("Button")
-```
-
-### 6. `list_all_modus_components()`
-
+#### 12. `list_all_modus_components()`
 List all available Modus V2 web components.
-
-**Returns:** JSON with array of all components and their:
-- Name
-- Tag
-- Description
-- Props count
-- Events count
-
-**Example:**
-```python
-list_all_modus_components()
-```
 
 ## Data Structure
 

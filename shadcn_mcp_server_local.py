@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Create FastMCP server instance
-mcp = FastMCP("Shadcn to Modus Migration Server")
+mcp = FastMCP("Complete Modus Migration Server - All UI Libraries")
 
 
 @mcp.tool()
@@ -343,6 +343,372 @@ def list_all_modus_components() -> str:
     except Exception as e:
         logger.error(f"Error listing components: {e}")
         return json.dumps({"error": f"Error listing components: {str(e)}"})
+
+
+@mcp.tool()
+def get_mui_component_mapping() -> str:
+    """
+    Get the complete mapping between Material UI (MUI) components and Modus V2 web components
+    
+    Returns:
+        JSON string with bidirectional component mappings:
+        - mui_to_modus: Maps MUI component names to Modus V2 tags
+        - modus_to_mui: Maps Modus V2 tags to MUI component names
+    
+    Example:
+        >>> get_mui_component_mapping()
+    """
+    logger.info("Retrieving MUI to Modus component mappings")
+    
+    try:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        mapping_path = os.path.join(
+            script_dir,
+            "mui_migration",
+            "mapping",
+            "component_mappings.json"
+        )
+        
+        with open(mapping_path, "r") as f:
+            mapping_data = json.load(f)
+            
+        return json.dumps(mapping_data, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Error loading MUI component mappings: {e}")
+        return json.dumps({"error": f"Error loading MUI component mappings: {str(e)}"})
+
+
+@mcp.tool()
+def get_mui_migration_guide(phase: str) -> str:
+    """
+    Get detailed guidance for a specific MUI migration phase
+    
+    Args:
+        phase: The migration phase name ("analyze", "migrate", "verify", "log", or "workflow")
+    
+    Returns:
+        Markdown string with phase-specific guidance for MUI migration
+    
+    Example:
+        >>> get_mui_migration_guide("analyze")
+        >>> get_mui_migration_guide("workflow")
+    """
+    logger.info(f"Retrieving MUI migration guide for phase: {phase}")
+    
+    valid_phases = ["analyze", "migrate", "verify", "log", "workflow"]
+    
+    if phase.lower() not in valid_phases:
+        return json.dumps({
+            "error": f"Invalid phase '{phase}'. Valid phases are: {', '.join(valid_phases)}"
+        })
+    
+    try:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        guide_path = os.path.join(
+            script_dir,
+            "mui_migration",
+            "md_prompts",
+            f"{phase.lower()}_mui.md"
+        )
+        
+        with open(guide_path, "r") as f:
+            guide_content = f.read()
+            
+        return guide_content
+        
+    except Exception as e:
+        logger.error(f"Error loading MUI phase guide for {phase}: {e}")
+        return json.dumps({"error": f"Error loading MUI phase guide: {str(e)}"})
+
+
+@mcp.tool()
+def get_connect_ui_component_mapping() -> str:
+    """
+    Get the complete mapping between Connect UI components and Modus V2 web components
+    
+    This includes detailed property mappings, migration notes, and event mappings
+    for each Connect UI component.
+    
+    Returns:
+        JSON string with comprehensive Connect UI to Modus migration data
+    
+    Example:
+        >>> get_connect_ui_component_mapping()
+    """
+    logger.info("Retrieving Connect UI to Modus component mappings")
+    
+    try:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        mapping_path = os.path.join(
+            script_dir,
+            "connect_migration",
+            "component_analysis",
+            "connect_ui_to_modus_mapping.json"
+        )
+        
+        with open(mapping_path, "r") as f:
+            mapping_data = json.load(f)
+            
+        return json.dumps(mapping_data, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Error loading Connect UI component mappings: {e}")
+        return json.dumps({"error": f"Error loading Connect UI component mappings: {str(e)}"})
+
+
+@mcp.tool()
+def get_connect_migration_guide(phase: str) -> str:
+    """
+    Get detailed guidance for a specific Connect UI migration phase
+    
+    Args:
+        phase: The migration phase name ("analyze", "migrate", "verify", "log", or "workflow")
+    
+    Returns:
+        Markdown string with phase-specific guidance for Connect UI migration
+    
+    Example:
+        >>> get_connect_migration_guide("migrate")
+    """
+    logger.info(f"Retrieving Connect UI migration guide for phase: {phase}")
+    
+    valid_phases = ["analyze", "migrate", "verify", "log", "workflow"]
+    
+    if phase.lower() not in valid_phases:
+        return json.dumps({
+            "error": f"Invalid phase '{phase}'. Valid phases are: {', '.join(valid_phases)}"
+        })
+    
+    try:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        guide_path = os.path.join(
+            script_dir,
+            "connect_migration",
+            "docs",
+            f"{phase.lower()}_connect.md"
+        )
+        
+        with open(guide_path, "r") as f:
+            guide_content = f.read()
+            
+        return guide_content
+        
+    except Exception as e:
+        logger.error(f"Error loading Connect UI phase guide for {phase}: {e}")
+        return json.dumps({"error": f"Error loading Connect UI phase guide: {str(e)}"})
+
+
+@mcp.tool()
+def get_modus_v1_to_v2_mapping() -> str:
+    """
+    Get the complete mapping between Modus V1 and Modus V2 web components
+    
+    This includes which V1 components have V2 equivalents and which are deprecated.
+    
+    Returns:
+        JSON string with Modus V1 to V2 component mappings
+    
+    Example:
+        >>> get_modus_v1_to_v2_mapping()
+    """
+    logger.info("Retrieving Modus V1 to V2 component mappings")
+    
+    try:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        mapping_path = os.path.join(
+            script_dir,
+            "modus_migration",
+            "component_analysis",
+            "component_mapping.json"
+        )
+        
+        with open(mapping_path, "r") as f:
+            mapping_data = json.load(f)
+            
+        # Return just the mapping portion
+        result = {
+            "Mapping_v1_v2": mapping_data.get("Mapping_v1_v2", {}),
+            "verification_rules": mapping_data.get("verification_rules", []),
+            "migration_plan": mapping_data.get("migration_plan", [])
+        }
+            
+        return json.dumps(result, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Error loading Modus V1 to V2 mappings: {e}")
+        return json.dumps({"error": f"Error loading Modus V1 to V2 mappings: {str(e)}"})
+
+
+@mcp.tool()
+def get_modus_v1_component_data(component_name: str) -> str:
+    """
+    Get detailed component data for a Modus V1 web component
+    
+    Args:
+        component_name: The name of the Modus V1 component (e.g., 'button', 'alert')
+                       Can be provided with or without 'modus-' prefix
+    
+    Returns:
+        JSON string with component properties, events, and documentation
+    
+    Example:
+        >>> get_modus_v1_component_data('button')
+        >>> get_modus_v1_component_data('modus-alert')
+    """
+    logger.info(f"Retrieving Modus V1 component data for: {component_name}")
+    
+    # Standardize component name
+    if not component_name.startswith("modus-"):
+        component_name = f"modus-{component_name}"
+    
+    try:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        v1_path = os.path.join(
+            script_dir,
+            "modus_migration",
+            "component_analysis",
+            "v1_components.json"
+        )
+        
+        with open(v1_path, "r") as f:
+            v1_components = json.load(f)
+        
+        # Try to find the component
+        v1_file = f"{component_name}.js"
+        component_data = v1_components.get(v1_file)
+        
+        if not component_data:
+            # Try flexible matching
+            for key in v1_components.keys():
+                if component_name.lower() in key.lower():
+                    component_data = v1_components[key]
+                    v1_file = key
+                    break
+        
+        if not component_data:
+            available_components = [
+                key.replace("modus-", "").replace(".js", "")
+                for key in v1_components.keys()
+                if key.startswith("modus-")
+            ]
+            return json.dumps({
+                "error": f"Component '{component_name}' not found",
+                "available_components": sorted(available_components)
+            })
+        
+        result = {
+            "component_name": component_name,
+            "file": v1_file,
+            "props": component_data.get("props", []),
+            "events": component_data.get("events", []),
+            "slots": component_data.get("slots", []),
+            "documentation": component_data.get("documentation", "")
+        }
+        
+        return json.dumps(result, indent=2)
+        
+    except Exception as e:
+        logger.error(f"Error loading Modus V1 component data: {e}")
+        return json.dumps({"error": f"Error loading Modus V1 component data: {str(e)}"})
+
+
+@mcp.tool()
+def get_migration_system_overview() -> str:
+    """
+    Get an overview of all available migration systems and their capabilities
+    
+    Returns:
+        JSON string with information about all four migration systems:
+        - Shadcn UI → Modus V2
+        - Material UI (MUI) → Modus V2
+        - Connect UI → Modus V2
+        - Modus V1 → Modus V2
+    
+    Example:
+        >>> get_migration_system_overview()
+    """
+    logger.info("Providing migration system overview")
+    
+    overview = {
+        "migration_systems": [
+            {
+                "name": "shadcn/ui to Modus V2",
+                "description": "Migrate shadcn/ui (React + Radix UI + Tailwind) components to Modus V2 web components",
+                "components_covered": "42+ shadcn components",
+                "key_challenges": [
+                    "Tailwind CSS conversion",
+                    "Radix UI primitive mapping",
+                    "Copy-paste component model",
+                    "Composition patterns"
+                ],
+                "tools_available": [
+                    "get_shadcn_component_mapping()",
+                    "get_migration_workflow_guide()",
+                    "get_migration_phase_guide(phase)",
+                    "get_shadcn_to_modus_migration_data(component)"
+                ]
+            },
+            {
+                "name": "Material UI (MUI) to Modus V2",
+                "description": "Migrate Material UI React components to Modus V2 web components",
+                "components_covered": "40+ MUI components",
+                "key_challenges": [
+                    "Theme system conversion",
+                    "sx prop handling",
+                    "Style overrides",
+                    "Component variants"
+                ],
+                "tools_available": [
+                    "get_mui_component_mapping()",
+                    "get_mui_migration_guide(phase)"
+                ]
+            },
+            {
+                "name": "Connect UI to Modus V2",
+                "description": "Migrate Connect UI (Trimble internal) components to Modus V2",
+                "components_covered": "50+ Connect UI components",
+                "key_challenges": [
+                    "Custom component patterns",
+                    "Internal dependencies",
+                    "Event handler mapping",
+                    "Slot-based composition"
+                ],
+                "tools_available": [
+                    "get_connect_ui_component_mapping()",
+                    "get_connect_migration_guide(phase)"
+                ]
+            },
+            {
+                "name": "Modus V1 to Modus V2",
+                "description": "Upgrade from Modus V1 web components to Modus V2",
+                "components_covered": "All Modus V1 components",
+                "key_challenges": [
+                    "Breaking API changes",
+                    "Deprecated components",
+                    "Property renames",
+                    "Event updates"
+                ],
+                "tools_available": [
+                    "get_modus_v1_to_v2_mapping()",
+                    "get_modus_v1_component_data(component)",
+                    "get_modus_component_data(component)"
+                ]
+            }
+        ],
+        "common_tools": [
+            "get_modus_component_data(component) - Get Modus V2 component specs",
+            "list_all_modus_components() - List all Modus V2 components"
+        ],
+        "migration_workflow": [
+            "Phase 1: Analyze - Identify components and migration strategies",
+            "Phase 2: Migrate - Transform components to Modus V2",
+            "Phase 3: Verify - Validate correctness and best practices",
+            "Phase 4: Log - Generate reports and consolidate results"
+        ]
+    }
+    
+    return json.dumps(overview, indent=2)
 
 
 # Execute and return the stdio output
