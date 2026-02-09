@@ -41,15 +41,21 @@ Thumbs.db
 # MCP Config (contains local paths)
 mcp_config_local.json
 
-# Migration Output
-migration_logs/**/*.log
+# Migration Output (local results, not shared)
+migration_logs/
 analysis_reports/
 verification_reports/
+migrated_code/
 *.migrated.*
 
 # Temporary files
 *.tmp
 *.bak
 
-# External repos (not needed for local MCP server)
+# External repos and local projects (not shared)
 modus_migration/repos/
+modus-wc-2.0/
+trimble-web-apps/
+modus-code-generation/
+mui-modus-demo/
+node_modules/
