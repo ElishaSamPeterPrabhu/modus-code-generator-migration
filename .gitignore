@@ -1,29 +1,55 @@
-# Python cache files
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# Virtual environment
+# Virtual Environment
 venv/
 env/
 ENV/
+.venv
 
-# IDE specific files
-.cursor/
+# IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 
-# Distribution / packaging
-dist/
-build/
-*.egg-info/
+# OS
+.DS_Store
+Thumbs.db
 
-# Logs
-*.log
+# MCP Config (contains local paths)
+mcp_config_local.json
 
-# Environment variables
-.env
+# Migration Output
+migration_logs/**/*.log
+analysis_reports/
+verification_reports/
+*.migrated.*
 
-# Embedded repositories
-modus_migration/repos/modus-wc-2.0/
-modus_migration/repos/modus-web-components/ 
+# Temporary files
+*.tmp
+*.bak
+
+# External repos (not needed for local MCP server)
+modus_migration/repos/
