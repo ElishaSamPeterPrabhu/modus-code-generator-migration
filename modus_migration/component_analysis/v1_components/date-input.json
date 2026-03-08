@@ -1,0 +1,142 @@
+{
+  "component_name": "modus-date-input",
+  "version": "v1",
+  "props": [
+    {
+      "name": "allowedCharsRegex",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "RegExp | string"
+    },
+    {
+      "name": "ariaLabel",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "string | null"
+    },
+    {
+      "name": "autoFocusInput",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "boolean"
+    },
+    {
+      "name": "autoFormat",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "boolean) {\n    if (!this.allowedCharsRegex) {\n      this.allowedCharsRegex"
+    },
+    {
+      "name": "disabled",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "boolean"
+    },
+    {
+      "name": "disableValidation",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "boolean"
+    },
+    {
+      "name": "errorText",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "string"
+    },
+    {
+      "name": "fillerDate",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "string"
+    },
+    {
+      "name": "format",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": ""
+    },
+    {
+      "name": "altFormats",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "string"
+    },
+    {
+      "name": "helperText",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "string"
+    },
+    {
+      "name": "label",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "string"
+    },
+    {
+      "name": "placeholder",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "string"
+    },
+    {
+      "name": "readOnly",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "boolean"
+    },
+    {
+      "name": "required",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "boolean"
+    },
+    {
+      "name": "showCalendarIcon",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "boolean"
+    },
+    {
+      "name": "size",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "'medium' | 'large'"
+    },
+    {
+      "name": "type",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "ModusDateInputType"
+    },
+    {
+      "name": "validText",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "string"
+    },
+    {
+      "name": "min",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "string"
+    },
+    {
+      "name": "max",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "string"
+    },
+    {
+      "name": "value",
+      "description": "/** (optional) Regular expression to allow characters while typing the input.\n   */",
+      "type": "string"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "default_values": {
+    "allowedCharsRegex": "autoFormat ? /\\d/gi : /.*/",
+    "autoFormat": "true",
+    "disabled": "{this.disabled}\n            id={this._dateInputId}\n            onBlur={() => this.handleBlur()}\n            onInput={(event) => this.handleOnInput(event)}\n            onKeyPress={(e) => this.handleInputKeyPress(e)}\n            onKeyDown={(e) => this.handleInputKeyDown(e)}\n            placeholder={this.placeholder}\n            readonly={this.readOnly}\n            ref={(el) => (this._dateInput = el as HTMLInputElement)}\n            tabIndex={0}\n            type=\"text\"\n            value={this._dateDisplay}\n          />\n          {this.showCalendarIcon && (\n            <span\n              class=\"icons\"\n              tabIndex={0}\n              onKeyDown={(e) => this.handleDefaultKeyDown(e, () => this.handleCalendarClick())}\n              onClick={() => this.handleCalendarClick()}\n              role=\"button\"\n              aria-label=\"Open calendar\">\n              <ModusIconMap icon=\"calendar\" size=\"16\" />\n            </span>\n          )}\n        </div>\n        <div class=\"sub-text\" part=\"sub-text\">\n          {displayErrorMessage ? (\n            <label class=\"error\">{displayErrorMessage}</label>\n          ) : displayValidMessage ? (\n            <label class=\"valid\">{this.validText}</label>\n          ) : null}\n        </div>\n      </div>\n    )",
+    "format": "'mm/dd/yyyy'",
+    "helperText": "\"sub-text helper\">{this.helperText}</label> : null}\n          </div>\n        ) : null}\n        <div\n          class={`input-container ${displayErrorMessage ? 'error' : this.validText ? 'valid' : ''} ${this.classBySize.get(\n            this.size\n          )}`}\n          part={`input-container ${displayErrorMessage ? 'error' : this.validText ? 'valid' : ''}`}>\n          <input\n            aria-invalid={!!displayErrorMessage}\n            aria-label={this.ariaLabel || undefined}\n            aria-required={this.required?.toString()}\n            autofocus={this.autoFocusInput}\n            class={{ 'has-right-icon': this.showCalendarIcon }}\n            disabled={this.disabled}\n            id={this._dateInputId}\n            onBlur={() => this.handleBlur()}\n            onInput={(event) => this.handleOnInput(event)}\n            onKeyPress={(e) => this.handleInputKeyPress(e)}\n            onKeyDown={(e) => this.handleInputKeyDown(e)}\n            placeholder={this.placeholder}\n            readonly={this.readOnly}\n            ref={(el) => (this._dateInput = el as HTMLInputElement)}\n            tabIndex={0}\n            type=\"text\"\n            value={this._dateDisplay}\n          />\n          {this.showCalendarIcon && (\n            <span\n              class=\"icons\"\n              tabIndex={0}\n              onKeyDown={(e) => this.handleDefaultKeyDown(e, () => this.handleCalendarClick())}\n              onClick={() => this.handleCalendarClick()}\n              role=\"button\"\n              aria-label=\"Open calendar\">\n              <ModusIconMap icon=\"calendar\" size=\"16\" />\n            </span>\n          )}\n        </div>\n        <div class=\"sub-text\" part=\"sub-text\">\n          {displayErrorMessage ? (\n            <label class=\"error\">{displayErrorMessage}</label>\n          ) : displayValidMessage ? (\n            <label class=\"valid\">{this.validText}</label>\n          ) : null}\n        </div>\n      </div>\n    )",
+    "label": "{this._dateInputId}>{this.label}</label> : null}\n            {this.required ? <span class=\"required\">*</span> : null}\n            {this.helperText ? <label class=\"sub-text helper\">{this.helperText}</label> : null}\n          </div>\n        ) : null}\n        <div\n          class={`input-container ${displayErrorMessage ? 'error' : this.validText ? 'valid' : ''} ${this.classBySize.get(\n            this.size\n          )}`}\n          part={`input-container ${displayErrorMessage ? 'error' : this.validText ? 'valid' : ''}`}>\n          <input\n            aria-invalid={!!displayErrorMessage}\n            aria-label={this.ariaLabel || undefined}\n            aria-required={this.required?.toString()}\n            autofocus={this.autoFocusInput}\n            class={{ 'has-right-icon': this.showCalendarIcon }}\n            disabled={this.disabled}\n            id={this._dateInputId}\n            onBlur={() => this.handleBlur()}\n            onInput={(event) => this.handleOnInput(event)}\n            onKeyPress={(e) => this.handleInputKeyPress(e)}\n            onKeyDown={(e) => this.handleInputKeyDown(e)}\n            placeholder={this.placeholder}\n            readonly={this.readOnly}\n            ref={(el) => (this._dateInput = el as HTMLInputElement)}\n            tabIndex={0}\n            type=\"text\"\n            value={this._dateDisplay}\n          />\n          {this.showCalendarIcon && (\n            <span\n              class=\"icons\"\n              tabIndex={0}\n              onKeyDown={(e) => this.handleDefaultKeyDown(e, () => this.handleCalendarClick())}\n              onClick={() => this.handleCalendarClick()}\n              role=\"button\"\n              aria-label=\"Open calendar\">\n              <ModusIconMap icon=\"calendar\" size=\"16\" />\n            </span>\n          )}\n        </div>\n        <div class=\"sub-text\" part=\"sub-text\">\n          {displayErrorMessage ? (\n            <label class=\"error\">{displayErrorMessage}</label>\n          ) : displayValidMessage ? (\n            <label class=\"valid\">{this.validText}</label>\n          ) : null}\n        </div>\n      </div>\n    )",
+    "placeholder": "{this.placeholder}\n            readonly={this.readOnly}\n            ref={(el) => (this._dateInput = el as HTMLInputElement)}\n            tabIndex={0}\n            type=\"text\"\n            value={this._dateDisplay}\n          />\n          {this.showCalendarIcon && (\n            <span\n              class=\"icons\"\n              tabIndex={0}\n              onKeyDown={(e) => this.handleDefaultKeyDown(e, () => this.handleCalendarClick())}\n              onClick={() => this.handleCalendarClick()}\n              role=\"button\"\n              aria-label=\"Open calendar\">\n              <ModusIconMap icon=\"calendar\" size=\"16\" />\n            </span>\n          )}\n        </div>\n        <div class=\"sub-text\" part=\"sub-text\">\n          {displayErrorMessage ? (\n            <label class=\"error\">{displayErrorMessage}</label>\n          ) : displayValidMessage ? (\n            <label class=\"valid\">{this.validText}</label>\n          ) : null}\n        </div>\n      </div>\n    )",
+    "required": "\"label-container\">\n            {this.label ? <label htmlFor={this._dateInputId}>{this.label}</label> : null}\n            {this.required ? <span class=\"required\">*</span> : null}\n            {this.helperText ? <label class=\"sub-text helper\">{this.helperText}</label> : null}\n          </div>\n        ) : null}\n        <div\n          class={`input-container ${displayErrorMessage ? 'error' : this.validText ? 'valid' : ''} ${this.classBySize.get(\n            this.size\n          )}`}\n          part={`input-container ${displayErrorMessage ? 'error' : this.validText ? 'valid' : ''}`}>\n          <input\n            aria-invalid={!!displayErrorMessage}\n            aria-label={this.ariaLabel || undefined}\n            aria-required={this.required?.toString()}\n            autofocus={this.autoFocusInput}\n            class={{ 'has-right-icon': this.showCalendarIcon }}\n            disabled={this.disabled}\n            id={this._dateInputId}\n            onBlur={() => this.handleBlur()}\n            onInput={(event) => this.handleOnInput(event)}\n            onKeyPress={(e) => this.handleInputKeyPress(e)}\n            onKeyDown={(e) => this.handleInputKeyDown(e)}\n            placeholder={this.placeholder}\n            readonly={this.readOnly}\n            ref={(el) => (this._dateInput = el as HTMLInputElement)}\n            tabIndex={0}\n            type=\"text\"\n            value={this._dateDisplay}\n          />\n          {this.showCalendarIcon && (\n            <span\n              class=\"icons\"\n              tabIndex={0}\n              onKeyDown={(e) => this.handleDefaultKeyDown(e, () => this.handleCalendarClick())}\n              onClick={() => this.handleCalendarClick()}\n              role=\"button\"\n              aria-label=\"Open calendar\">\n              <ModusIconMap icon=\"calendar\" size=\"16\" />\n            </span>\n          )}\n        </div>\n        <div class=\"sub-text\" part=\"sub-text\">\n          {displayErrorMessage ? (\n            <label class=\"error\">{displayErrorMessage}</label>\n          ) : displayValidMessage ? (\n            <label class=\"valid\">{this.validText}</label>\n          ) : null}\n        </div>\n      </div>\n    )",
+    "size": "'medium'",
+    "type": "'single'",
+    "validText": "{`input-container ${displayErrorMessage ? 'error' : this.validText ? 'valid' : ''}`}>\n          <input\n            aria-invalid={!!displayErrorMessage}\n            aria-label={this.ariaLabel || undefined}\n            aria-required={this.required?.toString()}\n            autofocus={this.autoFocusInput}\n            class={{ 'has-right-icon': this.showCalendarIcon }}\n            disabled={this.disabled}\n            id={this._dateInputId}\n            onBlur={() => this.handleBlur()}\n            onInput={(event) => this.handleOnInput(event)}\n            onKeyPress={(e) => this.handleInputKeyPress(e)}\n            onKeyDown={(e) => this.handleInputKeyDown(e)}\n            placeholder={this.placeholder}\n            readonly={this.readOnly}\n            ref={(el) => (this._dateInput = el as HTMLInputElement)}\n            tabIndex={0}\n            type=\"text\"\n            value={this._dateDisplay}\n          />\n          {this.showCalendarIcon && (\n            <span\n              class=\"icons\"\n              tabIndex={0}\n              onKeyDown={(e) => this.handleDefaultKeyDown(e, () => this.handleCalendarClick())}\n              onClick={() => this.handleCalendarClick()}\n              role=\"button\"\n              aria-label=\"Open calendar\">\n              <ModusIconMap icon=\"calendar\" size=\"16\" />\n            </span>\n          )}\n        </div>\n        <div class=\"sub-text\" part=\"sub-text\">\n          {displayErrorMessage ? (\n            <label class=\"error\">{displayErrorMessage}</label>\n          ) : displayValidMessage ? (\n            <label class=\"valid\">{this.validText}</label>\n          ) : null}\n        </div>\n      </div>\n    )",
+    "min": "this._formatter.parseIsoToDate(this.min)",
+    "max": "this._formatter.parseIsoToDate(this.max)",
+    "value": "this._formatter.parseDisplayString(inputString.trim())"
+  },
+  "documentation": "",
+  "storybook_content": "",
+  "storybook": {
+    "examples": [],
+    "variants": [],
+    "prop_usage": {}
+  },
+  "tag_name": "modus-date-input"
+}

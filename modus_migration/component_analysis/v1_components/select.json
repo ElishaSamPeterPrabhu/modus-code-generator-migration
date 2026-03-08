@@ -1,0 +1,120 @@
+{
+  "component_name": "modus-select",
+  "version": "v1",
+  "props": [
+    {
+      "name": "ariaLabel",
+      "description": "/** (optional) The select's aria-label. */",
+      "type": "string | null"
+    },
+    {
+      "name": "disabled",
+      "description": "/** (optional) The select's aria-label. */",
+      "type": "boolean"
+    },
+    {
+      "name": "errorText",
+      "description": "/** (optional) The select's aria-label. */",
+      "type": "string"
+    },
+    {
+      "name": "helperText",
+      "description": "/** (optional) The select's aria-label. */",
+      "type": "string"
+    },
+    {
+      "name": "label",
+      "description": "/** (optional) The select's aria-label. */",
+      "type": "string"
+    },
+    {
+      "name": "options",
+      "description": "/** (optional) The select's aria-label. */",
+      "type": "unknown[]"
+    },
+    {
+      "name": "optionsDisplayProp",
+      "description": "/** (optional) The select's aria-label. */",
+      "type": "string"
+    },
+    {
+      "name": "placeholder",
+      "description": "/** (optional) The select's aria-label. */",
+      "type": ""
+    },
+    {
+      "name": "required",
+      "description": "/** (optional) The select's aria-label. */",
+      "type": "boolean"
+    },
+    {
+      "name": "size",
+      "description": "/** (optional) The select's aria-label. */",
+      "type": "'medium' | 'large'"
+    },
+    {
+      "name": "validText",
+      "description": "/** (optional) The select's aria-label. */",
+      "type": "string"
+    },
+    {
+      "name": "value",
+      "description": "/** (optional) The select's aria-label. */",
+      "type": "unknown"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "default_values": {
+    "disabled": "\"input-container\">\n          <select\n            part=\"input\"\n            ref={(el) => (this.selectInput = el)}\n            disabled={this.disabled}\n            id={this.selectId}\n            class={selectClass}\n            aria-label={this.ariaLabel || undefined}\n            onBlur={(e) => this.inputBlur.emit(e)}\n            onChange={(event) => {\n              this.handleSelectChange(event)",
+    "label": "{this.selectId}>{this.label}</label> : null}\n        {this.required ? <span class=\"required\">*</span> : null}\n      </div>\n    ) : null",
+    "options": "[]",
+    "placeholder": "'Please Select'",
+    "required": "\"label-container\">\n        {this.label ? <label htmlFor={this.selectId}>{this.label}</label> : null}\n        {this.required ? <span class=\"required\">*</span> : null}\n      </div>\n    ) : null",
+    "size": "'medium'",
+    "value": "{optionId} key={optionId} selected={option[this.optionsDisplayProp] === this.internalValue}>\n          {option[this.optionsDisplayProp]}\n        </option>\n      )"
+  },
+  "documentation": "\n\n--- modus-select-storybook-docs.mdx ---\n\nimport { Story } from '@storybook/blocks';\nimport * as Select from './modus-select.stories';\n\n# Select\n\n---\n\n[Modus Select](https://modus.trimble.com/components/inputs/) web components are replacements for native `<select>` elements. They are referenced using the `<modus-select>` custom HTML element.\n\nThis component is compatible with Angular reactive forms. This can be achieved through the implementation of a simple directive.\n\n### Default\n\n<Story of={Select.Default} />\n\n```html\n<!-- Without preset value -->\n<modus-select id=\"select-demo-1\" label=\"Select Demo 1\" options-display-prop=\"display\"></modus-select><br />\n\n<!-- Disabled with helper text and preset value -->\n<modus-select\n  id=\"select-demo-2\"\n  disabled\n  helper-text=\"Helper demo\"\n  label=\"Select Demo 2\"\n  options-display-prop=\"display\"></modus-select\n><br />\n\n<!-- Error -->\n<modus-select error-text=\"Error demo\" label=\"Select Demo 3\"></modus-select><br />\n\n<!-- Valid -->\n<modus-select label=\"Select Demo 4\" valid-text=\"Valid demo\"></modus-select><br />\n\n<!-- Large select -->\n<modus-select id=\"select-demo-5\" label=\"Select Demo 5\" size=\"large\" options-display-prop=\"display\"></modus-select><br />\n\n<!-- Custom Placeholder -->\n<modus-select\n  id=\"select-demo-6\"\n  label=\"Custom Placeholder\"\n  placeholder=\"Custom Placeholder\"\n  options-display-prop=\"display\"></modus-select\n><br />\n\n<script>\n  const options = [{ display: 'Option 1' }, { display: 'Option 2' }, { display: 'Option 3' }];\n\n  const select1 = document.querySelector('#select-demo-1');\n  select1.options = options;\n  select1.value = options[0];\n  select1.addEventListener('valueChange', function handleValueChange(e) {\n    const selectedOption = e.detail;\n    select1.value = selectedOption.display;\n  });\n\n  const select2 = document.querySelector('#select-demo-2');\n  select2.options = options;\n  select2.value = options[1];\n  select2.addEventListener('valueChange', function handleValueChange(e) {\n    const selectedOption = e.detail;\n    select2.value = selectedOption.display;\n  });\n\n  const select5 = document.querySelector('#select-demo-5');\n  select5.options = options;\n  select5.value = options[2];\n  select5.addEventListener('valueChange', function handleValueChange(e) {\n    const selectedOption = e.detail;\n    select5.value = selectedOption.display;\n  });\n\n  const select6 = document.querySelector('#select-demo-6');\n  select6.options = options;\n  select6.addEventListener('valueChange', function handleValueChange(e) {\n    const selectedOption = e.detail;\n    select6.value = selectedOption.display;\n  });\n</script>\n```\n\n## Properties\n\n| Property             | Attribute              | Description                                          | Type        | Default         |\n| -------------------- | ---------------------- | ---------------------------------------------------- | ----------- | --------------- |\n| `ariaLabel`          | `aria-label`           | (optional) The select's aria-label.                  | `string`    | `undefined`     |\n| `disabled`           | `disabled`             | (optional) Whether the input is disabled.            | `boolean`   | `undefined`     |\n| `errorText`          | `error-text`           | (optional) The input's error text.                   | `string`    | `undefined`     |\n| `helperText`         | `helper-text`          | (optional) The input's helper text.                  | `string`    | `undefined`     |\n| `label`              | `label`                | (optional) The input label.                          | `string`    | `undefined`     |\n| `options`            | --                     | The options for the dropdown list.                   | `unknown[]` | `[]`            |\n| `optionsDisplayProp` | `options-display-prop` | The options property to render in the dropdown list. | `string`    | `undefined`     |\n| `placeholder`        | `placeholder`          | (optional) The input's placeholder.                  | `string`    | `Please Select` |\n| `required`           | `required`             | (optional) Whether the input is required.            | `boolean`   | `undefined`     |\n| `size`               | `size`                 | (optional) The input's size.                         | `\"large\"    | \"medium\"`       |\n| `validText`          | `valid-text`           | (optional) The input's valid text.                   | `string`    | `undefined`     |\n| `value`              | --                     | (optional) The input value.                          | `unknown`   | `undefined`     |\n\n### DOM Events\n\n| Name          | Description           | Emits                            |\n| ------------- | --------------------- | -------------------------------- |\n| `valueChange` | Fires on value change | The value of the selected option |\n\n### Methods\n\n| Method name  | Description     | Parameter | Return          |\n| ------------ | --------------- | --------- | --------------- |\n| `focusInput` | Focus the input |           | `Promise<void>` |\n\n### Accessibility\n\n- Select has `role` of `listbox`.\n- Select gets an `aria-label` provided by the `aria-label` property input.\n- It is recommended to pass `aria-label` when there is no label used so the input is accessible to screen readers.\n- Select gets an `aria-disabled` set to whether Select is disabled.\n- Select gets an `aria-required` set to whether the Select is required.\n- When Select has focus:\n  - <kbd>Enter</kbd> opens the option list.\n  - **ArrowUp**, **ArrowDown** navigate the list.\n  - <kbd>Enter</kbd> selects an item from the list.\n- Select Items get:\n  - An `aria-label` set to the display value.\n  - An `aria-selected` set to whether the item is selected.\n",
+  "storybook_content": "\n\n--- modus-select.stories.tsx ---\n\n// @ts-ignore: JSX/MDX with Stencil\nimport docs from './modus-select-storybook-docs.mdx';\nimport { html } from 'lit-html';\nimport { withActions } from '@storybook/addon-actions/decorator';\n\nexport default {\n  title: 'User Inputs/Select',\n  parameters: {\n    docs: {\n      inlineStories: false,\n      page: docs,\n    },\n    options: {\n      isToolshown: true,\n    },\n    controls: {\n      disable: true,\n    },\n    viewMode: 'docs',\n    actions: {\n      handles: ['valueChange'],\n    },\n    design: {\n      type: 'figma',\n      url: 'https://www.figma.com/design/wyfVJUHWRMkeCfdB38HFEE/Modus---Web?node-id=1346-5&m=dev',\n    },\n  },\n  decorators: [withActions],\n};\n\nconst Template = () => html`\n  <modus-select id=\"select-demo-1\" label=\"Select Demo 1\" options-display-prop=\"display\"></modus-select><br />\n  <modus-select\n    disabled\n    helper-text=\"Helper demo\"\n    id=\"select-demo-2\"\n    label=\"Select Demo 2\"\n    options-display-prop=\"display\"></modus-select\n  ><br />\n  <modus-select error-text=\"Error demo\" label=\"Select Demo 3\"></modus-select><br />\n  <modus-select label=\"Select Demo 4\" valid-text=\"Valid demo\"></modus-select><br />\n  <modus-select id=\"select-demo-5\" label=\"Select Demo 5\" size=\"large\" options-display-prop=\"display\"></modus-select><br />\n  <modus-select\n    id=\"select-demo-6\"\n    label=\"Custom Placeholder\"\n    placeholder=\"Custom Placeholder\"\n    options-display-prop=\"display\"></modus-select\n  ><br />\n  ${setSelects()}\n`;\n\nexport const Default = Template.bind({});\n\nconst setSelects = () => {\n  const tag = document.createElement('script');\n  tag.innerHTML = `\n      const options = [\n        { display: 'Option 1' },\n        { display: 'Option 2' },\n        { display: 'Option 3' },\n      ];\n\n      const select1 = document.querySelector('#select-demo-1');\n      select1.options = options;\n      select1.value = options[0];\n\n      const select2 = document.querySelector('#select-demo-2');\n      select2.options = options;\n      select2.value = options[1];\n\n      const select5 = document.querySelector('#select-demo-5');\n      select5.options = options;\n      select5.value = options[2];\n\n      const select6 = document.querySelector('#select-demo-6');\n      select6.options = options;\n      select6.addEventListener('valueChange', function handleValueChange(e) {\n         const selectedOption = e.detail;\n         select6.value = selectedOption.display;\n      });\n  `;\n\n  return tag;\n};\n",
+  "storybook": {
+    "examples": [
+      "<modus-select id=\"select-demo-1\" label=\"Select Demo 1\" options-display-prop=\"display\"></modus-select>",
+      "<modus-select\n    disabled\n    helper-text=\"Helper demo\"\n    id=\"select-demo-2\"\n    label=\"Select Demo 2\"\n    options-display-prop=\"display\"></modus-select\n  >",
+      "<modus-select error-text=\"Error demo\" label=\"Select Demo 3\"></modus-select>",
+      "<modus-select label=\"Select Demo 4\" valid-text=\"Valid demo\"></modus-select>",
+      "<modus-select id=\"select-demo-5\" label=\"Select Demo 5\" size=\"large\" options-display-prop=\"display\"></modus-select>"
+    ],
+    "variants": [],
+    "prop_usage": {
+      "id": [
+        "select-demo-1",
+        "select-demo-2",
+        "select-demo-5",
+        "select-demo-6"
+      ],
+      "label": [
+        "Select Demo 1",
+        "Select Demo 2",
+        "Select Demo 3",
+        "Select Demo 4",
+        "Select Demo 5",
+        "Custom Placeholder"
+      ],
+      "prop": [
+        "display"
+      ],
+      "text": [
+        "Helper demo",
+        "Error demo",
+        "Valid demo"
+      ],
+      "size": [
+        "large"
+      ],
+      "placeholder": [
+        "Custom Placeholder"
+      ]
+    }
+  },
+  "tag_name": "modus-select"
+}

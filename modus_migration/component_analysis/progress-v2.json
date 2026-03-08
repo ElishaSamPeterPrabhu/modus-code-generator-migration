@@ -4,32 +4,32 @@
   "props": [
     {
       "name": "customClass",
-      "description": "/**\n * A customizable progress component used to show the progress of a task or show the passing of time.\n *\n * The radial variant supports slotting in custom HTML to be displayed within the progress circle\n */\n@Component({\n  tag: 'modus-wc-progress',\n  styleUrl: 'modus-wc-progress.scss',\n  shadow: false,\n})\nexport class ModusWcProgress {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the progress element. */",
+      "description": "/**\n * A customizable progress component used to show the progress of a task or show the passing of time.\n *\n * The radial variant supports slotting in custom HTML to be displayed within the progress circle.\n */\n@Component({\n  tag: 'modus-wc-progress',\n  styleUrl: 'modus-wc-progress.scss',\n  shadow: false,\n})\nexport class ModusWcProgress {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the progress element. */",
       "type": ": string"
     },
     {
       "name": "indeterminate",
-      "description": "/**\n * A customizable progress component used to show the progress of a task or show the passing of time.\n *\n * The radial variant supports slotting in custom HTML to be displayed within the progress circle\n */\n@Component({\n  tag: 'modus-wc-progress',\n  styleUrl: 'modus-wc-progress.scss',\n  shadow: false,\n})\nexport class ModusWcProgress {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the progress element. */",
+      "description": "/**\n * A customizable progress component used to show the progress of a task or show the passing of time.\n *\n * The radial variant supports slotting in custom HTML to be displayed within the progress circle.\n */\n@Component({\n  tag: 'modus-wc-progress',\n  styleUrl: 'modus-wc-progress.scss',\n  shadow: false,\n})\nexport class ModusWcProgress {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the progress element. */",
       "type": "boolean"
     },
     {
       "name": "label",
-      "description": "/**\n * A customizable progress component used to show the progress of a task or show the passing of time.\n *\n * The radial variant supports slotting in custom HTML to be displayed within the progress circle\n */\n@Component({\n  tag: 'modus-wc-progress',\n  styleUrl: 'modus-wc-progress.scss',\n  shadow: false,\n})\nexport class ModusWcProgress {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the progress element. */",
+      "description": "/**\n * A customizable progress component used to show the progress of a task or show the passing of time.\n *\n * The radial variant supports slotting in custom HTML to be displayed within the progress circle.\n */\n@Component({\n  tag: 'modus-wc-progress',\n  styleUrl: 'modus-wc-progress.scss',\n  shadow: false,\n})\nexport class ModusWcProgress {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the progress element. */",
       "type": ": string"
     },
     {
       "name": "max",
-      "description": "/**\n * A customizable progress component used to show the progress of a task or show the passing of time.\n *\n * The radial variant supports slotting in custom HTML to be displayed within the progress circle\n */\n@Component({\n  tag: 'modus-wc-progress',\n  styleUrl: 'modus-wc-progress.scss',\n  shadow: false,\n})\nexport class ModusWcProgress {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the progress element. */",
+      "description": "/**\n * A customizable progress component used to show the progress of a task or show the passing of time.\n *\n * The radial variant supports slotting in custom HTML to be displayed within the progress circle.\n */\n@Component({\n  tag: 'modus-wc-progress',\n  styleUrl: 'modus-wc-progress.scss',\n  shadow: false,\n})\nexport class ModusWcProgress {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the progress element. */",
       "type": ": number"
     },
     {
       "name": "value",
-      "description": "/**\n * A customizable progress component used to show the progress of a task or show the passing of time.\n *\n * The radial variant supports slotting in custom HTML to be displayed within the progress circle\n */\n@Component({\n  tag: 'modus-wc-progress',\n  styleUrl: 'modus-wc-progress.scss',\n  shadow: false,\n})\nexport class ModusWcProgress {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the progress element. */",
+      "description": "/**\n * A customizable progress component used to show the progress of a task or show the passing of time.\n *\n * The radial variant supports slotting in custom HTML to be displayed within the progress circle.\n */\n@Component({\n  tag: 'modus-wc-progress',\n  styleUrl: 'modus-wc-progress.scss',\n  shadow: false,\n})\nexport class ModusWcProgress {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the progress element. */",
       "type": "number"
     },
     {
       "name": "variant",
-      "description": "/**\n * A customizable progress component used to show the progress of a task or show the passing of time.\n *\n * The radial variant supports slotting in custom HTML to be displayed within the progress circle\n */\n@Component({\n  tag: 'modus-wc-progress',\n  styleUrl: 'modus-wc-progress.scss',\n  shadow: false,\n})\nexport class ModusWcProgress {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the progress element. */",
+      "description": "/**\n * A customizable progress component used to show the progress of a task or show the passing of time.\n *\n * The radial variant supports slotting in custom HTML to be displayed within the progress circle.\n */\n@Component({\n  tag: 'modus-wc-progress',\n  styleUrl: 'modus-wc-progress.scss',\n  shadow: false,\n})\nexport class ModusWcProgress {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the progress element. */",
       "type": ": 'default' | 'radial'"
     }
   ],

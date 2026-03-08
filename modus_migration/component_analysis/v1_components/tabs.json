@@ -1,0 +1,51 @@
+{
+  "component_name": "modus-tabs",
+  "version": "v1",
+  "props": [
+    {
+      "name": "fullWidth",
+      "description": "/** The tabs to render. */",
+      "type": "'resizable' : ''\n          } `}\n          onClick"
+    },
+    {
+      "name": "ariaLabel",
+      "description": "/** The tabs to render. */",
+      "type": "string | null"
+    },
+    {
+      "name": "size",
+      "description": "/** The tabs to render. */",
+      "type": "'medium' | 'small'"
+    },
+    {
+      "name": "tabs",
+      "description": "/** The tabs to render. */",
+      "type": "Tab[]"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "default_values": {
+    "fullWidth": "false",
+    "size": "'medium'",
+    "tabs": "[]"
+  },
+  "documentation": "\n\n--- modus-tabs-storybook-docs.mdx ---\n\nimport { Story } from '@storybook/blocks';\nimport * as Tabs from './modus-tabs.stories.tsx';\n\n# Tabs\n\n---\n\n[Modus Tabs](https://modus.trimble.com/components/tabs/) web components are referenced using the `<modus-tabs>` custom HTML element.\n\nA new TypeScript typing has been provided named Tab defined as:\n\n```ts\n{\n  active?: boolean;\n  iconOnly?: string;\n  id: string;\n  label?: string;\n  leftIcon?: string;\n  rightIcon?: string;\n}\n```\n\n### Default\n\n<Story id=\"components-tabs--default\" height={'125px'} />\n\n### Small\n\n<Story of={Tabs.Small} height={'125px'} />\n\n```html\n<modus-tabs></modus-tabs>\n<modus-tabs size=\"small\"></modus-tabs>\n\n<script>\n  const modusTabs = document.querySelector('modus-tabs');\n  modusTabs.tabs = [\n    {\n      id: 0,\n      label: 'Tab 1',\n    },\n    {\n      active: true,\n      id: 1,\n      label: 'Tab 2',\n    },\n    {\n      id: 'tab-3',\n      label: 'Tab 3',\n      leftIcon: 'sun',\n    },\n    {\n      id: 'tab-4',\n      label: 'Tab 4',\n      rightIcon: 'moon',\n    },\n    {\n      id: 'tab-5',\n      label: 'Tab 5',\n      leftIcon: 'sun',\n      rightIcon: 'moon',\n    },\n    {\n      id: 'tab-6',\n      iconOnly: 'settings',\n    },\n  ];\n</script>\n```\n\n### Properties\n\n| Name         | Description          | Type      | Options           | Default Value | Required |\n| ------------ | -------------------- | --------- | ----------------- | ------------- | -------- |\n| `tabs`       | The tabs' tabs       | `Tab[]`   |                   |               | \u2714       |\n| `aria-label` | The tabs' aria-label | `string`  |                   |               |          |\n| `size`       | The tabs' size       | `string`  | 'medium', 'small' | 'medium'      |          |\n| `full-width` | The tabs' width      | `boolean` | true, false       | false         |          |\n\n### DOM Events\n\n| Name        | Description         | Emits           |\n| ----------- | ------------------- | --------------- |\n| `tabChange` | Fires on tab change | The current tab |\n\n### Accessibility\n\n- Tabs gets an `aria-label` provided by the `aria-label` property input.\n- When a Tab has focus, <kbd>Enter</kbd> activates the Tab, and emits the `tabChange` event.\n- Set `full-width` on `true` for Tab component in order to make it resizable inside a parent.\n",
+  "storybook_content": "\n\n--- modus-tabs.stories.tsx ---\n\n// @ts-ignore: JSX/MDX with Stencil\nimport { html } from 'lit-html';\nimport docs from './modus-tabs-storybook-docs.mdx';\nimport { withActions } from '@storybook/addon-actions/decorator';\n\nexport default {\n  title: 'Components/Tabs',\n  argTypes: {\n    size: {\n      name: 'size',\n      description: 'Sets the size of the tabs',\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n  },\n  parameters: {\n    actions: {\n      handles: ['tabChange'],\n    },\n    docs: {\n      inlineStories: false,\n      page: docs,\n    },\n    options: {\n      isToolshown: true,\n    },\n    controls: {\n      disable: false,\n    },\n    viewMode: 'docs',\n    design: {\n      type: 'figma',\n      url: 'https://www.figma.com/design/wyfVJUHWRMkeCfdB38HFEE/Modus---Web?node-id=1346-2&m=dev',\n    },\n  },\n  decorators: [withActions],\n};\n\nconst Template = ({ size }) => html`\n  <modus-tabs id=\"medium-tabs\" size=${size}></modus-tabs>\n  ${setMediumTabs()}\n`;\nconst SmallTemplate = ({ size }) => html`\n  <modus-tabs id=\"small-tabs\" size=${size}></modus-tabs>\n  ${setSmallTabs()}\n`;\nexport const Default = Template.bind({});\nDefault.args = {\n  size: 'medium',\n};\n\nexport const Small = SmallTemplate.bind({});\nSmall.args = {\n  size: 'small',\n};\n\nconst setMediumTabs = () => {\n  const tag = document.createElement('script');\n  tag.innerHTML = `\n    document.querySelector('#medium-tabs').tabs = [\n      {\n        id: 0,\n        label: 'Tab 1'\n      },\n      {\n        active: true,\n        id: 1,\n        label: 'Tab 2'\n      },\n      {\n        id: 'tab-3',\n        label: 'Tab 3',\n        leftIcon: 'sun',\n      },\n      {\n        id: 'tab-4',\n        label: 'Tab 4',\n        rightIcon: 'moon',\n      },\n      {\n        id: 'tab-5',\n        label: 'Tab 5',\n        leftIcon: 'sun',\n        rightIcon: 'moon',\n      },\n      {\n        id: 'tab-6',\n        iconOnly: 'settings',\n      }\n    ];\n  `;\n\n  return tag;\n};\nconst setSmallTabs = () => {\n  const tag = document.createElement('script');\n  tag.innerHTML = `\n    document.querySelector('#small-tabs').tabs = [\n      {\n        id: 0,\n        label: 'Tab 1'\n      },\n      {\n        active: true,\n        id: 1,\n        label: 'Tab 2'\n      },\n      {\n        id: 'tab-3',\n        label: 'Tab 3',\n        leftIcon: 'sun',\n      },\n      {\n        id: 'tab-4',\n        label: 'Tab 4',\n        rightIcon: 'moon',\n      },\n      {\n        id: 'tab-5',\n        label: 'Tab 5',\n        leftIcon: 'sun',\n        rightIcon: 'moon',\n      },\n      {\n        id: 'tab-6',\n        iconOnly: 'settings',\n      }\n    ];\n  `;\n\n  return tag;\n};\n",
+  "storybook": {
+    "examples": [
+      "<modus-tabs id=\"medium-tabs\" size=${size}></modus-tabs>",
+      "<modus-tabs id=\"small-tabs\" size=${size}></modus-tabs>",
+      "\n  <modus-tabs id=\"medium-tabs\" size=${size}></modus-tabs>\n  ${setMediumTabs()}\n",
+      "\n  <modus-tabs id=\"small-tabs\" size=${size}></modus-tabs>\n  ${setSmallTabs()}\n"
+    ],
+    "variants": [],
+    "prop_usage": {
+      "id": [
+        "medium-tabs",
+        "small-tabs"
+      ]
+    }
+  },
+  "tag_name": "modus-tabs"
+}

@@ -16,20 +16,20 @@ def handle_remove_error(func, path, exc_info):
 
 
 def clone_repo(repo_url, target_dir, skip_clone_if_exists: bool):
-    """Clone a git repository to the specified directory.
-    If skip_clone_if_exists is True, it will skip if the directory already exists.
+    """Clone or update a git repository at the specified directory.
+    If the directory already exists and is a git repo, performs a git pull instead.
+    The skip_clone_if_exists parameter is kept for backwards compatibility but is no longer used.
     """
-    if skip_clone_if_exists and os.path.exists(target_dir):
-        print(
-            f"Repository directory {target_dir} already exists, skipping clone as per configuration."
-        )
-        return True
+    if os.path.exists(target_dir) and os.path.exists(os.path.join(target_dir, ".git")):
+        print(f"Repository already exists at {target_dir}, pulling latest changes...")
+        try:
+            subprocess.run(["git", "-C", target_dir, "pull"], check=True)
+            return True
+        except subprocess.CalledProcessError as e:
+            print(f"Error pulling repository: {e}")
+            return False
 
-    # The previous logic for removing the directory has been taken out as per user request.
-    # Git will handle cloning into an existing directory (e.g. if it's already a git repo and clean, or if it's empty).
-    # If the directory exists and is non-empty and not a git repo, git clone will fail, which is standard behavior.
-
-    print(f"Attempting to clone {repo_url} into {target_dir}...")
+    print(f"Cloning {repo_url} into {target_dir}...")
     try:
         subprocess.run(["git", "clone", repo_url, target_dir], check=True)
         return True

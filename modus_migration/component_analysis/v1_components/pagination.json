@@ -1,0 +1,65 @@
+{
+  "component_name": "modus-pagination",
+  "version": "v1",
+  "props": [
+    {
+      "name": "ariaLabel",
+      "description": "",
+      "type": "string | null"
+    },
+    {
+      "name": "activePage",
+      "description": "",
+      "type": "'active' : ''} ${!isNaN(+page) ? 'hoverable' : ''}`}\n            onClick"
+    },
+    {
+      "name": "maxPage",
+      "description": "",
+      "type": "number"
+    },
+    {
+      "name": "minPage",
+      "description": "",
+      "type": "number"
+    },
+    {
+      "name": "prevPageButtonText",
+      "description": "",
+      "type": ": string"
+    },
+    {
+      "name": "nextPageButtonText",
+      "description": "",
+      "type": ": string"
+    },
+    {
+      "name": "size",
+      "description": "",
+      "type": "'large' | 'medium' | 'small'"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "default_values": {
+    "activePage": "1",
+    "maxPage": "{this.activePage === this.maxPage}\n            onClick={() => this.handleChevronClick(PaginationDirection.Next)}\n            onKeyDown={(event) => this.handleChevronKeydown(event, PaginationDirection.Next)}>\n            {this.nextPageButtonText ? (\n              <span data-test-id=\"next-button-text\">{this.nextPageButtonText}</span>\n            ) : (\n              <IconChevronRight size={this.chevronSizeBySize.get(this.size)} />\n            )}\n          </button>\n        </li>\n      )\n    )",
+    "minPage": "{this.activePage === this.minPage}\n            onClick={() => this.handleChevronClick(PaginationDirection.Previous)}\n            onKeyDown={(event) => this.handleChevronKeydown(event, PaginationDirection.Previous)}>\n            {this.prevPageButtonText ? (\n              <span data-test-id=\"prev-button-text\">{this.prevPageButtonText}</span>\n            ) : (\n              <IconChevronLeft size={this.chevronSizeBySize.get(this.size)} />\n            )}\n          </button>\n        </li>\n      )\n    )",
+    "prevPageButtonText": "\"prev-button-text\">{this.prevPageButtonText}</span>\n            ) : (\n              <IconChevronLeft size={this.chevronSizeBySize.get(this.size)} />\n            )}\n          </button>\n        </li>\n      )\n    )",
+    "nextPageButtonText": "\"next-button-text\">{this.nextPageButtonText}</span>\n            ) : (\n              <IconChevronRight size={this.chevronSizeBySize.get(this.size)} />\n            )}\n          </button>\n        </li>\n      )\n    )",
+    "size": "'medium'"
+  },
+  "documentation": "\n\n--- modus-pagination-storybook-docs.mdx ---\n\nimport { Anchor } from '@storybook/addon-docs';\n\n# Pagination\n\n---\n\n[Modus Pagination](https://modus.trimble.com/components/web/pagination/) web components are referenced using the `<modus-pagination>` custom HTML element.\n\n<Anchor storyId=\"components-pagination--default\" />\n\n### Default\n\n<modus-pagination active-page=\"8\" max-page=\"32\" min-page=\"1\" size=\"medium\"></modus-pagination>\n\n<Anchor storyId=\"components-pagination--large\" />\n\n### Large\n\n<modus-pagination active-page=\"8\" max-page=\"32\" min-page=\"1\" size=\"large\"></modus-pagination>\n\n<Anchor storyId=\"components-pagination--small\" />\n\n### Small\n\n<modus-pagination active-page=\"8\" max-page=\"32\" min-page=\"1\" size=\"small\"></modus-pagination>\n\n### Previous and Next Text Controls\n\n<modus-pagination active-page=\"8\" max-page=\"32\" min-page=\"1\" size=\"medium\" prev-page-button-text=\"Prev\" next-page-button-text=\"Next\"></modus-pagination>\n\n```html\n<modus-pagination active-page=\"8\" max-page=\"32\" min-page=\"1\" size=\"medium\"></modus-pagination>\n<modus-pagination active-page=\"8\" max-page=\"32\" min-page=\"1\" size=\"large\"></modus-pagination>\n<modus-pagination active-page=\"8\" max-page=\"32\" min-page=\"1\" size=\"small\"></modus-pagination>\n<modus-pagination\n  active-page=\"8\"\n  max-page=\"32\"\n  min-page=\"1\"\n  prev-page-button-text=\"Prev\"\n  next-page-button-text=\"Next\"\n  size=\"medium\"></modus-pagination>\n```\n\n## Properties\n\n| Property             | Attribute               | Description                                                                         | Type                         | Default     |\n| -------------------- | ----------------------- | ----------------------------------------------------------------------------------- | ---------------------------- | ----------- |\n| `activePage`         | `active-page`           | The pagination's active page                                                        | `number`                     | `1`         |\n| `ariaLabel`          | `aria-label`            | The pagination's aria-label                                                         | `string`                     | `undefined` |\n| `maxPage`            | `max-page`              | The pagination's maximum page                                                       | `number`                     | `undefined` |\n| `minPage`            | `min-page`              | The pagination's minimum page                                                       | `number`                     | `undefined` |\n| `nextPageButtonText` | `next-page-button-text` | (Optional) The previous page button text. If not set, an icon control will be used. | `string`                     | `undefined` |\n| `prevPageButtonText` | `prev-page-button-text` | (Optional) The next page button text. If not set, an icon control will be used.     | `string`                     | `undefined` |\n| `size`               | `size`                  | The pagination's size                                                               | `\"large\", \"medium\", \"small\"` | `'medium'`  |\n\n### DOM Events\n\n<section>\n  <table>\n    <thead>\n      <tr>\n        <th>Name</th>\n        <th>Description</th>\n        <th>Emits</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n        <td>pageChange</td>\n        <td>Fires on page change</td>\n        <td>The current page</td>\n      </tr>\n    </tbody>\n  </table>\n</section>\n\n### Accessibility\n\n- Pagination gets an `aria-label` provided by the `aria-label` property input.\n- When Left Chevron has focus, <kbd>Enter</kbd> goes back a page, and emits the `pageChange` event.\n- When Right Chevron has focus, <kbd>Enter</kbd> goes forward a page, and emits the `pageChange` event.\n",
+  "storybook_content": "\n\n--- modus-pagination.stories.tsx ---\n\n// @ts-ignore: JSX/MDX with Stencil\nimport docs from './modus-pagination-storybook-docs.mdx';\nimport { html } from 'lit-html';\nimport { withActions } from '@storybook/addon-actions/decorator';\n\nexport default {\n  title: 'Components/Pagination',\n  argTypes: {\n    activePage: {\n      name: 'active-page',\n      description: \"The pagination's active page\",\n      table: {\n        type: { summary: 'number' },\n      },\n      type: { required: true },\n    },\n    ariaLabel: {\n      name: 'aria-label',\n      description: \"The pagination's aria-label\",\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n    maxPage: {\n      name: 'max-page',\n      description: \"The pagination's maximum page\",\n      table: {\n        type: { summary: 'number' },\n      },\n      type: { required: true },\n    },\n    minPage: {\n      name: 'min-page',\n      description: \"The pagination's minimum page\",\n      table: {\n        type: { summary: 'number' },\n      },\n      type: { required: true },\n    },\n    prevPageButtonText: {\n      name: 'prev-page-button-text',\n      description: 'The previous page button text. If not set, an icon control will be used.',\n      table: {\n        type: { summary: 'string' },\n      },\n      type: { required: false },\n    },\n    nextPageButtonText: {\n      name: 'next-page-button-text',\n      description: 'The next page button text. If not set, an icon control will be used.',\n      table: {\n        type: { summary: 'string' },\n      },\n      type: { required: false },\n    },\n    size: {\n      options: ['small', 'medium', 'large'],\n      type: 'select',\n      description: 'The size of the pagination',\n      table: {\n        defaultValue: { summary: `'medium'` },\n        type: { summary: `'small' | 'medium' | 'large'` },\n      },\n    },\n  },\n  parameters: {\n    controls: { expanded: true, sort: 'requiredFirst' },\n    actions: {\n      handles: ['pageChange'],\n    },\n    docs: {\n      page: docs,\n    },\n    options: {\n      isToolshown: true,\n    },\n    design: {\n      type: 'figma',\n      url: 'https://www.figma.com/design/wyfVJUHWRMkeCfdB38HFEE/Modus---Web?node-id=1850-15310&m=dev',\n    },\n  },\n  decorators: [withActions],\n};\n\nexport const Default = ({ activePage, ariaLabel, maxPage, minPage, prevPageButtonText, nextPageButtonText, size }) => html`\n  <modus-pagination\n    active-page=${activePage}\n    aria-label=${ariaLabel}\n    max-page=${maxPage}\n    min-page=${minPage}\n    prev-page-button-text=${prevPageButtonText}\n    next-page-button-text=${nextPageButtonText}\n    size=${size}>\n    Default\n  </modus-pagination>\n`;\nDefault.args = {\n  activePage: '4',\n  ariaLabel: '',\n  maxPage: '100',\n  minPage: '1',\n  prevPageButtonText: '',\n  nextPageButtonText: '',\n  size: 'medium',\n};\n\nexport const Large = ({ activePage, ariaLabel, maxPage, minPage, prevPageButtonText, nextPageButtonText, size }) => html`\n  <modus-pagination\n    active-page=${activePage}\n    aria-label=${ariaLabel}\n    max-page=${maxPage}\n    min-page=${minPage}\n    prev-page-button-text=${prevPageButtonText}\n    next-page-button-text=${nextPageButtonText}\n    size=${size}>\n    Large\n  </modus-pagination>\n`;\nLarge.args = {\n  activePage: '4',\n  ariaLabel: '',\n  maxPage: '100',\n  minPage: '1',\n  prevPageButtonText: '',\n  nextPageButtonText: '',\n  size: 'large',\n};\n\nexport const Small = ({ activePage, ariaLabel, maxPage, minPage, prevPageButtonText, nextPageButtonText, size }) => html`\n  <modus-pagination\n    active-page=${activePage}\n    aria-label=${ariaLabel}\n    max-page=${maxPage}\n    min-page=${minPage}\n    prev-page-button-text=${prevPageButtonText}\n    next-page-button-text=${nextPageButtonText}\n    size=${size}>\n    Small\n  </modus-pagination>\n`;\nSmall.args = {\n  activePage: '4',\n  ariaLabel: '',\n  maxPage: '100',\n  minPage: '1',\n  prevPageButtonText: '',\n  nextPageButtonText: '',\n  size: 'small',\n};\n\nexport const PrevNextTextButton = ({\n  activePage,\n  ariaLabel,\n  maxPage,\n  minPage,\n  prevPageButtonText,\n  nextPageButtonText,\n  size,\n}) => html`\n  <modus-pagination\n    active-page=${activePage}\n    aria-label=${ariaLabel}\n    max-page=${maxPage}\n    min-page=${minPage}\n    prev-page-button-text=${prevPageButtonText}\n    next-page-button-text=${nextPageButtonText}\n    size=${size}>\n  </modus-pagination>\n`;\nPrevNextTextButton.args = {\n  activePage: '4',\n  ariaLabel: '',\n  maxPage: '100',\n  minPage: '1',\n  prevPageButtonText: 'Prev',\n  nextPageButtonText: 'Next',\n  size: 'medium',\n};\n",
+  "storybook": {
+    "examples": [
+      "<modus-pagination\n    active-page=${activePage}\n    aria-label=${ariaLabel}\n    max-page=${maxPage}\n    min-page=${minPage}\n    prev-page-button-text=${prevPageButtonText}\n    next-page-button-text=${nextPageButtonText}\n    size=${size}>\n    Default\n  </modus-pagination>",
+      "<modus-pagination\n    active-page=${activePage}\n    aria-label=${ariaLabel}\n    max-page=${maxPage}\n    min-page=${minPage}\n    prev-page-button-text=${prevPageButtonText}\n    next-page-button-text=${nextPageButtonText}\n    size=${size}>\n    Large\n  </modus-pagination>",
+      "<modus-pagination\n    active-page=${activePage}\n    aria-label=${ariaLabel}\n    max-page=${maxPage}\n    min-page=${minPage}\n    prev-page-button-text=${prevPageButtonText}\n    next-page-button-text=${nextPageButtonText}\n    size=${size}>\n    Small\n  </modus-pagination>",
+      "<modus-pagination\n    active-page=${activePage}\n    aria-label=${ariaLabel}\n    max-page=${maxPage}\n    min-page=${minPage}\n    prev-page-button-text=${prevPageButtonText}\n    next-page-button-text=${nextPageButtonText}\n    size=${size}>\n  </modus-pagination>",
+      "\n  <modus-pagination\n    active-page=${activePage}\n    aria-label=${ariaLabel}\n    max-page=${maxPage}\n    min-page=${minPage}\n    prev-page-button-text=${prevPageButtonText}\n    next-page-button-text=${nextPageButtonText}\n    size=${size}>\n    Default\n  </modus-pagination>\n"
+    ],
+    "variants": [],
+    "prop_usage": {}
+  },
+  "tag_name": "modus-pagination"
+}

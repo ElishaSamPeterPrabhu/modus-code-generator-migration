@@ -41,12 +41,12 @@
       "<modus-wc-loader\n        aria-label=\"Loading infinity symbol\"\n        color=\"${args.color}\"\n        custom-class=\"${ifDefined(args['custom-class'])}\"\n        size=\"md\"\n        variant=\"infinity\"\n      ></modus-wc-loader>"
     ],
     "variants": [
-      "ball",
-      "ring",
+      "infinity",
       "dots",
+      "ring",
       "bars",
       "${args.variant}",
-      "infinity"
+      "ball"
     ],
     "prop_usage": {
       "label": [

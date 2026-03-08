@@ -1,0 +1,98 @@
+{
+  "component_name": "modus-dropdown",
+  "version": "v1",
+  "props": [
+    {
+      "name": "animateList",
+      "description": "/** Reference to host HTML element. */\n  @Element() el: HTMLElement;\n\n  /** Whether to apply list opening animation. */",
+      "type": "'animate-list' : ''} ${this.classByPlacement.get(this.placement)}`"
+    },
+    {
+      "name": "ariaLabel",
+      "description": "/** Reference to host HTML element. */\n  @Element() el: HTMLElement;\n\n  /** Whether to apply list opening animation. */",
+      "type": "string | null"
+    },
+    {
+      "name": "customPlacement",
+      "description": "/** Reference to host HTML element. */\n  @Element() el: HTMLElement;\n\n  /** Whether to apply list opening animation. */",
+      "type": "{\n    top?: number"
+    },
+    {
+      "name": "disabled",
+      "description": "/** Reference to host HTML element. */\n  @Element() el: HTMLElement;\n\n  /** Whether to apply list opening animation. */",
+      "type": "boolean"
+    },
+    {
+      "name": "toggleDropdown",
+      "description": "/** Reference to host HTML element. */\n  @Element() el: HTMLElement;\n\n  /** Whether to apply list opening animation. */",
+      "type": ""
+    },
+    {
+      "name": "placement",
+      "description": "/** Reference to host HTML element. */\n  @Element() el: HTMLElement;\n\n  /** Whether to apply list opening animation. */",
+      "type": "'top' | 'right' | 'bottom' | 'left'"
+    },
+    {
+      "name": "showDropdownListBorder",
+      "description": "/** Reference to host HTML element. */\n  @Element() el: HTMLElement;\n\n  /** Whether to apply list opening animation. */",
+      "type": "'list-border' : ''\n    } ${this.animateList ? 'animate-list' : ''} ${this.classByPlacement.get(this.placement)}`"
+    },
+    {
+      "name": "borderRadius",
+      "description": "/** Reference to host HTML element. */\n  @Element() el: HTMLElement;\n\n  /** Whether to apply list opening animation. */",
+      "type": ""
+    },
+    {
+      "name": "toggleElementId",
+      "description": "/** Reference to host HTML element. */\n  @Element() el: HTMLElement;\n\n  /** Whether to apply list opening animation. */",
+      "type": "string"
+    },
+    {
+      "name": "disableCloseOnSelect",
+      "description": "/** Reference to host HTML element. */\n  @Element() el: HTMLElement;\n\n  /** Whether to apply list opening animation. */",
+      "type": ""
+    }
+  ],
+  "events": [],
+  "slots": [
+    "dropdownToggle",
+    "dropdownList"
+  ],
+  "default_values": {
+    "animateList": "false",
+    "customPlacement": "\"dropdownList\" />\n        </div>\n      </div>\n    )",
+    "toggleDropdown": "true",
+    "placement": "'bottom'",
+    "showDropdownListBorder": "true",
+    "borderRadius": "'0'",
+    "disableCloseOnSelect": "false"
+  },
+  "documentation": "\n\n--- modus-dropdown-storybook-docs.mdx ---\n\n# Dropdown\n\n---\n\n[Modus Dropdown](https://modus.trimble.com/components/web/dropdowns/) web components are wrappers around 2 elements rendered in HTML slot elements. The dropdown links a toggle element to a list element. Clicking the toggle element shows/hides the list element. While clicking the list element or anywhere else on the page hides the list element. They are referenced using the `<modus-dropdown>` custom HTML element.\n\n#### Implementation Details\n\n- The toggle-element-id property is required and must match the id of the element you expect to toggle the list.\n- 2 slots are provided named 'dropdownToggle' and 'dropdownList'.\n- The dropdownList slot was built to work with the `<modus-list>` and `<modus-list-item>` elements. The item size property should be set to 'condensed'.\n- The list will show 5 condensed items before adding a vertical scroll.\n\n### Default\n\n<modus-dropdown toggle-element-id=\"toggleElement\">\n  <modus-button id=\"toggleElement\" slot=\"dropdownToggle\" show-caret=\"true\">\n    Dropdown\n  </modus-button>\n  <modus-list slot=\"dropdownList\">\n    <modus-list-item size=\"condensed\" borderless>\n      Item 1\n    </modus-list-item>\n    <modus-list-item size=\"condensed\" borderless>\n      Item 2\n    </modus-list-item>\n    <modus-list-item size=\"condensed\" borderless>\n      Item 3\n    </modus-list-item>\n  </modus-list>\n</modus-dropdown>\n\n```html\n<modus-dropdown toggle-element-id=\"toggleElement\">\n  <modus-button id=\"toggleElement\" slot=\"dropdownToggle\" show-caret=\"true\">Dropdown</modus-button>\n  <modus-list slot=\"dropdownList\">\n    <modus-list-item size=\"condensed\" borderless>Item 1</modus-list-item>\n    <modus-list-item size=\"condensed\" borderless>Item 2</modus-list-item>\n    <modus-list-item size=\"condensed\" borderless>Item 3</modus-list-item>\n  </modus-list>\n</modus-dropdown>\n```\n\n### Properties\n\n| Property                 | Attribute                   | Description                                                                                      | Type                                                                | Default     |\n| ------------------------ | --------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- | ----------- |\n| `animateList`            | `animate-list`              | Whether to apply list opening animation.                                                         | `boolean`                                                           | `false`     |\n| `ariaLabel`              | `aria-label`                | (optional) The dropdown's `aria-label`. (Not recommended)                                        | `string`                                                            | `undefined` |\n| `borderRadius`           | `border-radius`             | (optional) The border radius of the dropdown list.                                               | `string`                                                            | `'0'`       |\n| `customPlacement`        | --                          | (optional) Determines custom dropdown placement offset.                                          | `{ top?: number; right?: number; bottom?: number; left?: number; }` | `undefined` |\n| `disabled`               | `disabled`                  | (optional) Disables the dropdown.                                                                | `boolean`                                                           | `undefined` |\n| `disableCloseOnSelect`   | `disable-close-on-select`   | (optional) Prevents the dropdown from closing when an option is selected.                        | `boolean`                                                           | `false`     |\n| `placement`              | `placement`                 | (optional) The placement of the dropdown in related to the toggleElement.                        | `\"bottom\", \"left\", \"right\", \"top\"`                                  | `'bottom'`  |\n| `showDropdownListBorder` | `show-dropdown-list-border` | (optional) Whether to show the dropdown list's border.                                           | `boolean`                                                           | `true`      |\n| `toggleElementId`        | `toggle-element-id`         | (required) The element id that the list renders near and that triggers the toggling of the list. | `string`                                                            | `undefined` |\n\n### Events\n\n| Event           | Description                            | Type               |\n| --------------- | -------------------------------------- | ------------------ |\n| `dropdownClose` | An event that fires on dropdown close. | `CustomEvent<any>` |\n\n### Accessibility\n\n- When the Dropdown Toggle has focus, <kbd>Enter</kbd> toggles the dropdown.\n",
+  "storybook_content": "\n\n--- modus-dropdown.stories.tsx ---\n\n// @ts-ignore: JSX/MDX with Stencil\nimport docs from './modus-dropdown-storybook-docs.mdx';\nimport { html } from 'lit-html';\nimport { withActions } from '@storybook/addon-actions/decorator';\n\nexport default {\n  title: 'Components/Dropdown',\n  argTypes: {\n    animateList: {\n      name: 'animate-list',\n      description: 'Whether the dropdown list should animate',\n      table: {\n        type: { summary: 'boolean' },\n        defaultValue: { summary: false },\n      },\n    },\n    ariaLabel: {\n      name: 'aria-label',\n      description: \"The dropdowns's aria-label\",\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n    borderRadius: {\n      name: 'border-radius',\n      description: 'The border radius of the dropdown list.',\n      table: {\n        type: { summary: 'string' },\n      },\n      type: { required: false },\n    },\n    customPlacement: {\n      name: 'custom-placement',\n      description: 'Determines custom dropdown placement offset.',\n      table: {\n        type: { summary: '{ top?: number; right?: number; bottom?: number; left?: number; }' },\n      },\n      type: { required: false },\n    },\n    disabled: {\n      name: 'disabled',\n      description: 'Whether the dropdown is disabled',\n      table: {\n        type: { summary: 'boolean' },\n        defaultValue: { summary: false },\n      },\n    },\n    disableCloseOnSelect: {\n      name: 'disable-close-on-select',\n      description: 'Prevents the dropdown from closing when an option is selected.',\n      table: {\n        type: { summary: 'boolean' },\n        defaultValue: { summary: false },\n      },\n    },\n    placement: {\n      name: 'placement',\n      description: 'The placement of the dropdown in relation to the toggleElement.',\n      options: ['top', 'right', 'bottom', 'left'],\n      type: 'select',\n      table: {\n        type: { summary: `'top' | 'right' | 'bottom' | 'left'` },\n\n        defaultValue: { summary: 'bottom' },\n      },\n    },\n    showDropdownListBorder: {\n      name: 'show-dropdown-list-border',\n      description: 'Whether to show the dropdown list border',\n      table: {\n        type: {\n          summary: 'boolean',\n        },\n        defaultValue: { summary: true },\n      },\n    },\n  },\n  parameters: {\n    actions: {\n      handles: ['dropdownClose'],\n    },\n    docs: {\n      page: docs,\n    },\n    controls: { expanded: true, sort: 'requiredFirst' },\n    options: {\n      isToolshown: true,\n    },\n    design: {\n      type: 'figma',\n      url: 'https://www.figma.com/design/wyfVJUHWRMkeCfdB38HFEE/Modus---Web?node-id=1346-11&m=dev',\n    },\n  },\n  decorators: [withActions],\n};\n\nconst DefaultTemplate = ({\n  animateList,\n  ariaLabel,\n  borderRadius,\n  customPlacement,\n  disableCloseOnSelect,\n  disabled,\n  placement,\n  showDropdownListBorder,\n}) => html`\n  <modus-dropdown\n    animate-list=${animateList}\n    aria-label=${ariaLabel}\n    border-radius=${borderRadius}\n    disabled=${disabled}\n    disable-close-on-select=${disableCloseOnSelect}\n    placement=${placement}\n    show-dropdown-list-border=${showDropdownListBorder}\n    toggle-element-id=\"toggleElement\">\n    <modus-button id=\"toggleElement\" slot=\"dropdownToggle\" show-caret=\"true\">Dropdown</modus-button>\n    <modus-list slot=\"dropdownList\">\n      <modus-list-item size=\"condensed\" borderless>Item 1</modus-list-item>\n      <modus-list-item size=\"condensed\" borderless>Item 2</modus-list-item>\n      <modus-list-item size=\"condensed\" borderless>Item 3</modus-list-item>\n    </modus-list>\n  </modus-dropdown>\n  ${initializeCustomPlacement(customPlacement)}\n`;\nexport const Default = DefaultTemplate.bind({});\nDefault.args = {\n  animateList: false,\n  ariaLabel: '',\n  borderRadius: '0',\n  customPlacement: { top: 0, right: 0, bottom: 0, left: 0 },\n  disabled: false,\n  disableCloseOnSelect: false,\n  placement: 'bottom',\n  showDropdownListBorder: true,\n};\n\nconst WithManyItemsTemplate = ({\n  animateList,\n  ariaLabel,\n  borderRadius,\n  customPlacement,\n  disabled,\n  disableCloseOnSelect,\n  placement,\n  showDropdownListBorder,\n}) => html`\n  <modus-dropdown\n    animate-list=${animateList}\n    aria-label=${ariaLabel}\n    border-radius=${borderRadius}\n    disabled=${disabled}\n    disable-close-on-select=${disableCloseOnSelect}\n    placement=${placement}\n    show-dropdown-list-border=${showDropdownListBorder}\n    toggle-element-id=\"toggleElement\">\n    <modus-button id=\"toggleElement\" slot=\"dropdownToggle\" show-caret=\"true\">Dropdown</modus-button>\n    <modus-list slot=\"dropdownList\">\n      <modus-list-item size=\"condensed\" borderless>Item 1</modus-list-item>\n      <modus-list-item size=\"condensed\" borderless>Item 2</modus-list-item>\n      <modus-list-item size=\"condensed\" borderless>Item 3</modus-list-item>\n      <modus-list-item size=\"condensed\" borderless>Item 4</modus-list-item>\n      <modus-list-item size=\"condensed\" borderless>Item 5</modus-list-item>\n      <modus-list-item size=\"condensed\" borderless>Item 6</modus-list-item>\n      <modus-list-item size=\"condensed\" borderless>Item 7</modus-list-item>\n      <modus-list-item size=\"condensed\" borderless>Item 8</modus-list-item>\n      <modus-list-item size=\"condensed\" borderless>Item 9</modus-list-item>\n      <modus-list-item size=\"condensed\" borderless>Item 10</modus-list-item>\n    </modus-list>\n  </modus-dropdown>\n  ${initializeCustomPlacement(customPlacement)}\n`;\nexport const WithManyItems = WithManyItemsTemplate.bind({});\nWithManyItems.args = {\n  animateList: false,\n  ariaLabel: '',\n  borderRadius: '0',\n  customPlacement: { top: 0, right: 0, bottom: 0, left: 0 },\n  disabled: false,\n  disableCloseOnSelect: false,\n  placement: 'bottom',\n  showDropdownListBorder: true,\n};\n\nfunction initializeCustomPlacement(customPlacement) {\n  const tag = document.createElement('script');\n  tag.innerHTML = `\n  var modusDropdown = document.querySelector('modus-dropdown');\n  modusDropdown.customPlacement = ${JSON.stringify(customPlacement)};\n  `;\n  return tag;\n}\n",
+  "storybook": {
+    "examples": [
+      "<modus-button id=\"toggleElement\" slot=\"dropdownToggle\" show-caret=\"true\">Dropdown</modus-button>",
+      "<modus-list-item size=\"condensed\" borderless>Item 1</modus-list-item>",
+      "<modus-list-item size=\"condensed\" borderless>Item 2</modus-list-item>",
+      "<modus-list-item size=\"condensed\" borderless>Item 3</modus-list-item>",
+      "<modus-button id=\"toggleElement\" slot=\"dropdownToggle\" show-caret=\"true\">Dropdown</modus-button>"
+    ],
+    "variants": [],
+    "prop_usage": {
+      "id": [
+        "toggleElement"
+      ],
+      "slot": [
+        "dropdownToggle",
+        "dropdownList"
+      ],
+      "caret": [
+        "true"
+      ],
+      "size": [
+        "condensed"
+      ]
+    }
+  },
+  "tag_name": "modus-dropdown"
+}

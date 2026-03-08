@@ -1,0 +1,47 @@
+{
+  "component_name": "modus-badge",
+  "version": "v1",
+  "props": [
+    {
+      "name": "ariaLabel",
+      "description": "/** (optional) The badge's aria-label */",
+      "type": "string | null"
+    },
+    {
+      "name": "color",
+      "description": "/** (optional) The badge's aria-label */",
+      "type": ": 'danger' | 'dark' | 'primary' | 'secondary' | 'success' | 'tertiary' | 'warning'"
+    },
+    {
+      "name": "size",
+      "description": "/** (optional) The badge's aria-label */",
+      "type": ": 'small' | 'medium' | 'large'"
+    },
+    {
+      "name": "type",
+      "description": "/** (optional) The badge's aria-label */",
+      "type": ": 'counter' | 'default' | 'text'"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "default_values": {
+    "color": "'primary'",
+    "size": "'medium'",
+    "type": "'default'"
+  },
+  "documentation": "\n\n--- modus-badge-storybook-docs.mdx ---\n\nimport { Anchor } from '@storybook/addon-docs';\n\n# Badge\n\n---\n\n[Modus Badge](https://modus.trimble.com/components/web/badges/) web components provide non-interactive labels for displaying small amounts of information. They are referenced using the `<modus-badge>` custom HTML element.\nThis component utilizes the slot element, allowing you to render your own HTML in the badge.\n\n<Anchor storyId=\"components-badge--default\" />\n\n### Default\n\n<modus-badge color=\"primary\">Primary</modus-badge>\n<modus-badge color=\"secondary\">Secondary</modus-badge>\n<modus-badge color=\"tertiary\">Tertiary</modus-badge>\n<modus-badge color=\"dark\">High Contrast</modus-badge>\n<modus-badge color=\"success\">Success</modus-badge>\n<modus-badge color=\"warning\">Warning</modus-badge>\n<modus-badge color=\"danger\">Danger</modus-badge>\n\n<modus-badge size=\"small\">Small</modus-badge>\n<modus-badge size=\"medium\">Medium</modus-badge>\n<modus-badge size=\"large\">Large</modus-badge>\n\n<Anchor storyId=\"components-badge--counter\" />\n\n### Counter\n\n<modus-badge type=\"counter\">1</modus-badge>\n<modus-badge color=\"secondary\" type=\"counter\">2</modus-badge>\n<modus-badge color=\"tertiary\" type=\"counter\">3</modus-badge>\n<modus-badge color=\"dark\" type=\"counter\">4</modus-badge>\n<modus-badge color=\"success\" type=\"counter\">5</modus-badge>\n<modus-badge color=\"warning\" type=\"counter\">6</modus-badge>\n<modus-badge color=\"danger\" type=\"counter\">7</modus-badge>\n\n<modus-badge size=\"small\" type=\"counter\">sm</modus-badge>\n<modus-badge size=\"medium\" type=\"counter\">md</modus-badge>\n<modus-badge size=\"large\" type=\"counter\">lg</modus-badge>\n\n<Anchor storyId=\"components-badge--text\" />\n\n### Text\n\n<modus-badge type=\"text\">Primary</modus-badge>\n<modus-badge color=\"secondary\" type=\"text\">Secondary</modus-badge>\n<modus-badge color=\"dark\" type=\"text\">High Contrast</modus-badge>\n<modus-badge color=\"success\" type=\"text\">Success</modus-badge>\n<modus-badge color=\"danger\" type=\"text\">Danger</modus-badge>\n\n<modus-badge size=\"small\" type=\"text\">Small</modus-badge>\n<modus-badge size=\"medium\" type=\"text\">Medium</modus-badge>\n<modus-badge size=\"large\" type=\"text\">Large</modus-badge>\n\n```html\n<modus-badge>Default</modus-badge>\n<modus-badge color=\"secondary\">Secondary</modus-badge>\n<modus-badge color=\"tertiary\">Tertiary</modus-badge>\n<modus-badge color=\"dark\">Dark</modus-badge>\n<modus-badge color=\"warning\">Warning</modus-badge>\n<modus-badge color=\"danger\">Danger</modus-badge>\n\n<modus-badge size=\"small\">Small</modus-badge>\n<modus-badge size=\"medium\">Medium</modus-badge>\n<modus-badge size=\"large\">Large</modus-badge>\n\n<modus-badge type=\"counter\">Counter</modus-badge>\n<modus-badge color=\"secondary\" type=\"counter\">Counter</modus-badge>\n<modus-badge color=\"tertiary\" type=\"counter\">Counter</modus-badge>\n<modus-badge color=\"dark\" type=\"counter\">Counter</modus-badge>\n<modus-badge color=\"warning\" type=\"counter\">Counter</modus-badge>\n<modus-badge color=\"danger\" type=\"counter\">Counter</modus-badge>\n\n<modus-badge size=\"small\" type=\"counter\">Small</modus-badge>\n<modus-badge size=\"medium\" type=\"counter\">Medium</modus-badge>\n<modus-badge size=\"large\" type=\"counter\">Large</modus-badge>\n\n<modus-badge type=\"text\">Primary</modus-badge>\n<modus-badge color=\"secondary\" type=\"text\">Secondary</modus-badge>\n<modus-badge color=\"dark\" type=\"text\">High Contrast</modus-badge>\n<modus-badge color=\"success\" type=\"text\">Success</modus-badge>\n<modus-badge color=\"danger\" type=\"text\">Danger</modus-badge>\n\n<modus-badge size=\"small\" type=\"text\">Small</modus-badge>\n<modus-badge size=\"medium\" type=\"text\">Medium</modus-badge>\n<modus-badge size=\"large\" type=\"text\">Large</modus-badge>\n```\n\n### Properties\n\n<section>\n  <table>\n    <thead>\n      <tr>\n        <th>Name</th>\n        <th>Description</th>\n        <th>Type</th>\n        <th>Options</th>\n        <th>Default Value</th>\n        <th>Required</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n        <td>aria-label</td>\n        <td>The badge's aria-label</td>\n        <td>string</td>\n        <td></td>\n        <td></td>\n        <td></td>\n      </tr>\n      <tr>\n        <td>color</td>\n        <td>The color of the badge</td>\n        <td>string</td>\n        <td>'danger', 'dark', 'primary', 'secondary', 'success', 'tertiary', 'warning'</td>\n        <td>'primary'</td>\n        <td></td>\n      </tr>\n      <tr>\n        <td>size</td>\n        <td>The size of the badge</td>\n        <td>string</td>\n        <td>'small', 'medium', 'large'</td>\n        <td>'medium'</td>\n        <td></td>\n      </tr>\n      <tr>\n        <td>type</td>\n        <td>The type of the badge</td>\n        <td>string</td>\n        <td>'counter', 'default', 'text'</td>\n        <td>'default'</td>\n        <td></td>\n      </tr>\n    </tbody>\n  </table>\n</section>\n\n### Accessibility\n\n- Badge has `role` of `status`.\n- Badge gets an `aria-label` provided by the `aria-label` property input.\n",
+  "storybook_content": "\n\n--- modus-badge.stories.tsx ---\n\nimport { html } from 'lit-html';\n// @ts-ignore: JSX/MDX with Stencil\nimport docs from './modus-badge-storybook-docs.mdx';\n\nexport default {\n  title: 'Components/Badge',\n  argTypes: {\n    ariaLabel: {\n      name: 'aria-label',\n      description: \"The badge's aria-label\",\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n    color: {\n      options: ['danger', 'dark', 'primary', 'secondary', 'success', 'tertiary', 'warning'],\n      type: 'select',\n      description: 'The color of the badge',\n      table: {\n        defaultValue: { summary: `'primary'` },\n        type: {\n          summary: `'danger' | 'dark' | 'primary' | 'secondary' | 'success' | 'tertiary' | 'warning'`,\n        },\n      },\n    },\n    size: {\n      options: ['small', 'medium', 'large'],\n      type: 'select',\n      description: 'The size of the badge',\n      table: {\n        defaultValue: { summary: `'medium'` },\n        type: { summary: `'small' | 'medium' | 'large'` },\n      },\n    },\n    type: {\n      options: ['counter', 'default', 'text'],\n      type: 'select',\n      description: 'The type of the badge',\n      table: {\n        defaultValue: { summary: `'default'` },\n        type: { summary: `'counter' | 'default' | 'text'` },\n      },\n    },\n  },\n  parameters: {\n    controls: { expanded: true, sort: 'requiredFirst' },\n    docs: {\n      page: docs,\n    },\n    options: {\n      isToolshown: true,\n    },\n    design: {\n      type: 'figma',\n      url: 'https://www.figma.com/design/wyfVJUHWRMkeCfdB38HFEE/Modus---Web?node-id=1346-16&m=dev',\n    },\n  },\n};\n\n// TODO - Figure how to work with slots.\nexport const Default = ({ ariaLabel, color, size, type }) => html`\n  <modus-badge aria-label=${ariaLabel} color=${color} size=${size} type=${type}> Default </modus-badge>\n`;\nDefault.args = {\n  ariaLabel: '',\n  color: 'primary',\n  size: 'medium',\n  type: 'default',\n};\n\nexport const Counter = ({ ariaLabel, color, size, type }) => html`\n  <modus-badge aria-label=${ariaLabel} color=${color} size=${size} type=${type}> 12 </modus-badge>\n`;\nCounter.args = {\n  ariaLabel: '',\n  color: 'primary',\n  size: 'medium',\n  type: 'counter',\n};\n\nexport const Text = ({ ariaLabel, color, size, type }) => html`\n  <modus-badge aria-label=${ariaLabel} color=${color} size=${size} type=${type}> Text </modus-badge>\n`;\nText.args = { ariaLabel: '', color: 'primary', size: 'medium', type: 'text' };\n",
+  "storybook": {
+    "examples": [
+      "<modus-badge aria-label=${ariaLabel} color=${color} size=${size} type=${type}> Default </modus-badge>",
+      "<modus-badge aria-label=${ariaLabel} color=${color} size=${size} type=${type}> 12 </modus-badge>",
+      "<modus-badge aria-label=${ariaLabel} color=${color} size=${size} type=${type}> Text </modus-badge>",
+      "\n  <modus-badge aria-label=${ariaLabel} color=${color} size=${size} type=${type}> Default </modus-badge>\n",
+      "\n  <modus-badge aria-label=${ariaLabel} color=${color} size=${size} type=${type}> 12 </modus-badge>\n"
+    ],
+    "variants": [],
+    "prop_usage": {}
+  },
+  "tag_name": "modus-badge"
+}

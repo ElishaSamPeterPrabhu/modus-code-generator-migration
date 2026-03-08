@@ -1,0 +1,42 @@
+{
+  "component_name": "modus-tooltip",
+  "version": "v1",
+  "props": [
+    {
+      "name": "ariaLabel",
+      "description": "/** (optional) The tooltip's aria-label. */",
+      "type": "string | null"
+    },
+    {
+      "name": "position",
+      "description": "/** (optional) The tooltip's aria-label. */",
+      "type": "ModusToolTipPlacement"
+    },
+    {
+      "name": "text",
+      "description": "/** (optional) The tooltip's aria-label. */",
+      "type": "string"
+    },
+    {
+      "name": "disabled",
+      "description": "/** (optional) The tooltip's aria-label. */",
+      "type": "boolean"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "default_values": {
+    "position": "'top'"
+  },
+  "documentation": "\n\n--- modus-tooltip-storybook-docs.mdx ---\n\n# Tooltip\n\n---\n\n[Modus Tooltip](https://modus.trimble.com/components/web/tooltips/) web components display the completion progress of a task. They are referenced using the `<modus-tooltip>` custom HTML element.\nThis component utilizes the slot element, allowing you to wrap anything with a tooltip.\n\n### Default\n\n<modus-tooltip text=\"Tooltip text...\" position=\"right\">\n  <modus-button>Button</modus-button>\n</modus-tooltip>\n\n```html\n<modus-tooltip text=\"Tooltip text...\" position=\"right\">\n  <modus-button>Button</modus-button>\n</modus-tooltip>\n```\n\n### Properties\n\n| Name         | Description                                               | Type      | Options                          | Default Value | Required |\n| ------------ | --------------------------------------------------------- | --------- | -------------------------------- | ------------- | -------- |\n| `aria-label` | The tooltip's aria-label                                  |           |                                  |               |          |\n| `disabled`   | (optional) Hide the tooltip                               | `boolean` |                                  | false         |          |\n| `text`       | The tooltip's text                                        | `string`  |                                  |               |          |\n| `position`   | The tooltip's position relative to the item it's wrapping | `string`  | 'bottom', 'left', 'right', 'top' | 'top'         |          |\n\n### Accessibility\n\n- Tooltip has `role` of `tooltip`.\n- Tooltip gets an `aria-label` provided by the `aria-label` property input.\n",
+  "storybook_content": "\n\n--- modus-tooltip.stories.tsx ---\n\n// @ts-ignore: JSX/MDX with Stencil\nimport docs from './modus-tooltip-storybook-docs.mdx';\nimport { html } from 'lit-html';\n\nexport default {\n  title: 'Components/Tooltip',\n  argTypes: {\n    ariaLabel: {\n      name: 'aria-label',\n      description: \"The tooltip's aria-label\",\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n    disabled: {\n      description: 'Hide the tooltip',\n      table: {\n        type: { summary: 'boolean' },\n      },\n    },\n    position: {\n      options: ['bottom', 'left', 'right', 'top'],\n      type: 'select',\n      description: \"The tooltip's position relative to the item it's wrapping\",\n      table: {\n        defaultValue: { summary: `'top'` },\n        type: { summary: `'bottom' | 'left' | 'right' | 'top'` },\n      },\n    },\n    text: {\n      description: \"The tooltip's text\",\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n  },\n  parameters: {\n    controls: { expanded: true },\n    docs: {\n      page: docs,\n    },\n    options: {\n      isToolshown: true,\n    },\n    layout: 'centered',\n    design: {\n      type: 'figma',\n      url: 'https://www.figma.com/design/wyfVJUHWRMkeCfdB38HFEE/Modus---Web?node-id=1346-3&m=dev',\n    },\n  },\n};\n\nexport const Default = ({ ariaLabel, position, text, disabled }) => html`\n  <modus-tooltip aria-label=${ariaLabel} position=${position} text=${text} ?disabled=${disabled}>\n    <modus-button>Button</modus-button>\n  </modus-tooltip>\n`;\nDefault.args = {\n  ariaLabel: '',\n  position: 'bottom',\n  text: 'Tooltip text...',\n  disabled: false,\n};\n",
+  "storybook": {
+    "examples": [
+      "<modus-button>Button</modus-button>",
+      "\n  <modus-tooltip aria-label=${ariaLabel} position=${position} text=${text} ?disabled=${disabled}>\n    <modus-button>Button</modus-button>\n  </modus-tooltip>\n"
+    ],
+    "variants": [],
+    "prop_usage": {}
+  },
+  "tag_name": "modus-tooltip"
+}

@@ -1,0 +1,38 @@
+{
+  "component_name": "modus-breadcrumb",
+  "version": "v1",
+  "props": [
+    {
+      "name": "ariaLabel",
+      "description": "/** The breadcrumb's aria-label. */",
+      "type": "string | null"
+    },
+    {
+      "name": "crumbs",
+      "description": "/** The breadcrumb's aria-label. */",
+      "type": "Crumb[]"
+    },
+    {
+      "name": "underlineLinks",
+      "description": "/** The breadcrumb's aria-label. */",
+      "type": "boolean"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "default_values": {
+    "crumbs": "[]",
+    "underlineLinks": "{() => this.crumbClick.emit(crumb)}>{crumb.display}</a>\n                  <span class=\"divider\">{'>'}</span>\n                </span>\n              ) : (\n                <span class=\"last-crumb\" aria-current=\"page\">\n                  {crumb.display}\n                </span>\n              )}\n            </li>\n          ))}\n        </ol>\n      </nav>\n    )"
+  },
+  "documentation": "\n\n--- modus-breadcrumb-storybook-docs.mdx ---\n\nimport { Story } from '@storybook/blocks';\nimport * as Breadcrumb from './modus-breadcrumb.stories.tsx';\n\n# Breadcrumb\n\n---\n\n[Modus Breadcrumb](https://modus.trimble.com/components/web/breadcrumbs/) web components are wrappers around native `<nav>` elements. They are referenced using the `<modus-breadcrumb>` custom HTML element.\n\nA new TypeScript typing has been provided named Crumb defined as:\n\n```ts\n{\n  id: string; // required, must be unique.\n  display: string; // required.\n}\n```\n\n#### Implementation Details\n\n- Crumb id values must be unique within the crumbs collection.\n\n### Default\n\n<Story of={Breadcrumb.Default} height={'72px'} />\n\n```html\n<modus-breadcrumb></modus-breadcrumb>\n\n<script>\n  const modusBreadcrumb = document.querySelector('modus-breadcrumb');\n  const crumbs = [\n    { id: '1', display: 'Crumb 1' },\n    { id: '2', display: 'Crumb 2' },\n    { id: '3', display: 'Crumb 3' },\n    { id: '4', display: 'Crumb 4' },\n  ];\n  modusBreadcrumb.crumbs = crumbs;\n</script>\n```\n\n### Properties\n\n| Name             | Description                                   | Type      | Options | Default Value | Required |\n| ---------------- | --------------------------------------------- | --------- | ------- | ------------- | -------- |\n| `ariaLabel`      | The breadcrumb's aria-label                   | `string`  |         |               |          |\n| `crumbs`         | The breadcrumbs to render                     | `Crumb[]` |         | `[]`          | &#10004; |\n| `underlineLinks` | A flag that controls the display of underline | `boolean` |         | `false`       |          |\n\n### DOM Events\n\n| Name         | Description               | Emits                    |\n| ------------ | ------------------------- | ------------------------ |\n| `crumbClick` | Fires on breadcrumb click | The clicked crumb object |\n\n### Accessibility\n\n- When a Breadcrumb has focus, <kbd>Enter</kbd> emits the `crumbClick` event.\n",
+  "storybook_content": "\n\n--- modus-breadcrumb.stories.tsx ---\n\n// @ts-ignore: JSX/MDX with Stencil\nimport docs from './modus-breadcrumb-storybook-docs.mdx';\nimport { html } from 'lit-html';\nimport { withActions } from '@storybook/addon-actions/decorator';\n\nexport default {\n  title: 'Components/Breadcrumb',\n  argTypes: {\n    underlineLinks: {\n      name: 'underlineLinks',\n      description: 'A flag that controls the display of underline',\n      type: 'boolean',\n      table: {\n        defaultValue: { summary: false },\n        type: { summary: 'boolean' },\n      },\n    },\n  },\n  parameters: {\n    docs: {\n      inlineStories: false,\n      page: docs,\n    },\n    actions: {\n      handles: ['crumbClick'],\n    },\n    controls: {\n      disabled: false,\n      expanded: true,\n    },\n    options: {\n      isToolshown: true,\n    },\n    design: {\n      type: 'figma',\n      url: 'https://www.figma.com/design/wyfVJUHWRMkeCfdB38HFEE/Modus---Web?node-id=1346-15&m=dev',\n    },\n  },\n  decorators: [withActions],\n};\n\nconst defaultCrumbs = [\n  { id: '1', display: 'Crumb 1' },\n  { id: '2', display: 'Crumb 2' },\n  { id: '3', display: 'Crumb 3' },\n  { id: '4', display: 'Crumb 4' },\n];\n\nconst Template = ({ underlineLinks }) => html`\n  <modus-breadcrumb underline-links=${underlineLinks} .crumbs=${defaultCrumbs}></modus-breadcrumb>\n`;\nexport const Default = Template.bind({});\nDefault.args = { underlineLinks: false };\n\nexport const Underline = Template.bind({});\nUnderline.args = { underlineLinks: true };\n",
+  "storybook": {
+    "examples": [
+      "<modus-breadcrumb underline-links=${underlineLinks} .crumbs=${defaultCrumbs}></modus-breadcrumb>",
+      "\n  <modus-breadcrumb underline-links=${underlineLinks} .crumbs=${defaultCrumbs}></modus-breadcrumb>\n"
+    ],
+    "variants": [],
+    "prop_usage": {}
+  },
+  "tag_name": "modus-breadcrumb"
+}

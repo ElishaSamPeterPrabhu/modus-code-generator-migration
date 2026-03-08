@@ -1,6 +1,6 @@
 {
   "description": "Unified index of all Modus components (V1 and V2)",
-  "total_components": 87,
+  "total_components": 93,
   "v1_components": [
     {
       "file": "accordion-item.json",
@@ -348,6 +348,13 @@
       "slots_count": 0
     },
     {
+      "file": "button-group.json",
+      "component_name": "modus-wc-button-group",
+      "props_count": 5,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
       "file": "button.json",
       "component_name": "modus-wc-button",
       "props_count": 9,
@@ -385,8 +392,8 @@
     {
       "file": "date.json",
       "component_name": "modus-wc-date",
-      "props_count": 14,
-      "events_count": 3,
+      "props_count": 17,
+      "events_count": 5,
       "slots_count": 0
     },
     {
@@ -402,6 +409,20 @@
       "props_count": 11,
       "events_count": 1,
       "slots_count": 2
+    },
+    {
+      "file": "file-dropzone.json",
+      "component_name": "modus-wc-file-dropzone",
+      "props_count": 12,
+      "events_count": 1,
+      "slots_count": 1
+    },
+    {
+      "file": "handle.json",
+      "component_name": "modus-wc-handle",
+      "props_count": 11,
+      "events_count": 0,
+      "slots_count": 0
     },
     {
       "file": "icon.json",
@@ -432,16 +453,23 @@
       "slots_count": 0
     },
     {
+      "file": "logo.json",
+      "component_name": "modus-wc-logo",
+      "props_count": 4,
+      "events_count": 0,
+      "slots_count": 0
+    },
+    {
       "file": "menu-item.json",
       "component_name": "modus-wc-menu-item",
-      "props_count": 13,
+      "props_count": 14,
       "events_count": 1,
       "slots_count": 0
     },
     {
       "file": "menu.json",
       "component_name": "modus-wc-menu",
-      "props_count": 4,
+      "props_count": 5,
       "events_count": 1,
       "slots_count": 0
     },
@@ -455,7 +483,7 @@
     {
       "file": "navbar.json",
       "component_name": "modus-wc-navbar",
-      "props_count": 12,
+      "props_count": 13,
       "events_count": 15,
       "slots_count": 5
     },
@@ -471,6 +499,20 @@
       "component_name": "modus-wc-pagination",
       "props_count": 7,
       "events_count": 0,
+      "slots_count": 0
+    },
+    {
+      "file": "panel.json",
+      "component_name": "modus-wc-panel",
+      "props_count": 4,
+      "events_count": 0,
+      "slots_count": 3
+    },
+    {
+      "file": "profile-menu.json",
+      "component_name": "modus-wc-profile-menu",
+      "props_count": 3,
+      "events_count": 2,
       "slots_count": 0
     },
     {
@@ -554,7 +596,7 @@
       "file": "text-input.json",
       "component_name": "modus-wc-text-input",
       "props_count": 24,
-      "events_count": 3,
+      "events_count": 4,
       "slots_count": 0
     },
     {
@@ -602,7 +644,7 @@
     {
       "file": "typography.json",
       "component_name": "modus-wc-typography",
-      "props_count": 4,
+      "props_count": 5,
       "events_count": 0,
       "slots_count": 0
     },

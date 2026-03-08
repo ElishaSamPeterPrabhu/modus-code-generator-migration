@@ -1,0 +1,54 @@
+{
+  "component_name": "modus-toolbar",
+  "version": "v1",
+  "props": [
+    {
+      "name": "ariaLabel",
+      "description": "/** (optional) The button's aria-label. */",
+      "type": "string | null"
+    },
+    {
+      "name": "disabled",
+      "description": "/** (optional) The button's aria-label. */",
+      "type": "boolean"
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "default_values": {
+    "ariaLabel": "child.getAttribute('aria-label') || 'button'",
+    "disabled": "{this.disabled}\n        icon-only={iconOnly}>\n        {label}\n      </modus-button>\n    )"
+  },
+  "documentation": "\n\n--- modus-toolbar-storybook-docs.mdx ---\n\nimport { Story } from '@storybook/blocks';\nimport * as Toolbar from './modus-toolbar.stories.tsx';\n\n# Toolbar\n\nThe `modus-toolbar` component provides a customizable Toolbar that can be positioned at the bottom of the screen, other positions are a work in progress. It's designed to offer users quick access to common actions or tools.\n\n### Default\n\n<Story of={Toolbar.Default} height=\"100px\" />\n\n```html\n<modus-toolbar>\n  <modus-button>Button 1</modus-button>\n  <modus-button>Button 2</modus-button>\n  <modus-button>Button 3</modus-button>\n</modus-toolbar>\n```\n\n### Icon Only\n\n<Story of={Toolbar.IconOnly} height=\"100px\" />\n\n```html\n<modus-toolbar>\n  <modus-tooltip text=\"undo\" position=\"top\">\n    <modus-button icon-only=\"undo\"></modus-button>\n  </modus-tooltip>\n  <modus-tooltip text=\"redo\" position=\"top\">\n    <modus-button icon-only=\"redo\"></modus-button>\n  </modus-tooltip>\n  <modus-tooltip text=\"expand\" position=\"top\">\n    <modus-button icon-only=\"expand\"></modus-button>\n  </modus-tooltip>\n  <modus-tooltip text=\"collapse\" position=\"top\">\n    <modus-button icon-only=\"collapse\"></modus-button>\n  </modus-tooltip>\n  <modus-divider></modus-divider>\n  <modus-tooltip text=\"window_dock_undock\" position=\"top\">\n    <modus-button icon-only=\"window_dock_undock\"></modus-button>\n  </modus-tooltip>\n</modus-toolbar>\n```\n\n## Properties\n\n| Property    | Attribute    | Description                     | Type      | Default |\n| ----------- | ------------ | ------------------------------- | --------- | ------- |\n| `ariaLabel` | `aria-label` | The Toolbar's aria-label        | `string`  |         |\n| `disabled`  | `disabled`   | Whether the Toolbar is disabled | `boolean` | `false` |\n\n### Accessibility\n\n- Toolbar gets `role=\"toolbar\"`.\n- Toolbar gets an `aria-label` provided by the `aria-label` property input.\n- Toolbar button gets an `aria-label` provided by the `aria-label` property input.\n",
+  "storybook_content": "\n\n--- modus-toolbar.stories.tsx ---\n\nimport { html } from 'lit-html';\nimport docs from './modus-toolbar-storybook-docs.mdx';\nimport { withActions } from '@storybook/addon-actions/decorator';\n\nexport default {\n  title: 'Components/Toolbar',\n  component: 'modus-toolbar',\n  argTypes: {\n    ariaLabel: {\n      name: 'aria-label',\n      description: \"The Toolbar's aria-label\",\n      table: {\n        type: { summary: 'string' },\n      },\n    },\n    disabled: {\n      name: 'disabled',\n      description: 'Whether the Toolbar is disabled',\n      table: {\n        type: { summary: 'boolean' },\n        defaultValue: { summary: false },\n      },\n    },\n  },\n  parameters: {\n    actions: {\n      handles: ['buttonClick'],\n    },\n    controls: { expanded: true, sort: 'requiredFirst' },\n    docs: {\n      page: docs,\n    },\n    design: {\n      type: 'figma',\n      url: 'https://www.figma.com/design/wyfVJUHWRMkeCfdB38HFEE/Modus---Web?node-id=23208-3351&m=dev',\n    },\n  },\n  decorators: [withActions],\n};\n\nconst Template = ({ ariaLabel, disabled }) => html`\n  <modus-toolbar .disabled=${disabled} aria-label=${ariaLabel}>\n    <modus-button>Button 1</modus-button>\n    <modus-button>Button 2</modus-button>\n    <modus-button>Button 3</modus-button>\n  </modus-toolbar>\n`;\n\nconst IconOnlyTemplate = ({ ariaLabel, disabled }) => html`\n  <modus-toolbar .disabled=${disabled} aria-label=${ariaLabel}>\n    <modus-tooltip text=\"Undo\" position=\"top\">\n      <modus-button icon-only=\"undo\"></modus-button>\n    </modus-tooltip>\n    <modus-tooltip text=\"Redo\" position=\"top\">\n      <modus-button icon-only=\"redo\"></modus-button>\n    </modus-tooltip>\n    <modus-tooltip text=\"Expand\" position=\"top\">\n      <modus-button icon-only=\"expand\"></modus-button>\n    </modus-tooltip>\n    <modus-tooltip text=\"Collapse\" position=\"top\">\n      <modus-button icon-only=\"collapse\"></modus-button>\n    </modus-tooltip>\n    <modus-divider></modus-divider>\n    <modus-tooltip text=\"Window Dock / Undock\" position=\"top\">\n      <modus-button icon-only=\"window_dock_undock\"></modus-button>\n    </modus-tooltip>\n  </modus-toolbar>\n`;\n\nexport const Default = Template.bind({});\nDefault.args = {\n  ariaLabel: 'Toolbar',\n  disabled: false,\n  tabIndex: 0,\n};\n\nexport const IconOnly = IconOnlyTemplate.bind({});\nIconOnly.args = {\n  ariaLabel: 'Toolbar',\n  disabled: false,\n  tabIndex: 0,\n};\n",
+  "storybook": {
+    "examples": [
+      "<modus-button>Button 1</modus-button>",
+      "<modus-button>Button 2</modus-button>",
+      "<modus-button>Button 3</modus-button>",
+      "<modus-button icon-only=\"undo\"></modus-button>",
+      "<modus-button icon-only=\"redo\"></modus-button>"
+    ],
+    "variants": [],
+    "prop_usage": {
+      "text": [
+        "Undo",
+        "Redo",
+        "Expand",
+        "Collapse",
+        "Window Dock / Undock"
+      ],
+      "position": [
+        "top"
+      ],
+      "only": [
+        "undo",
+        "redo",
+        "expand",
+        "collapse",
+        "window_dock_undock"
+      ]
+    }
+  },
+  "tag_name": "modus-toolbar"
+}

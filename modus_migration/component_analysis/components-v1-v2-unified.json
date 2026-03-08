@@ -1,0 +1,415 @@
+{
+  "flex-renderer": {
+    "v1_tag": "flex-renderer",
+    "v2_tag": null,
+    "v1_file": null,
+    "v2_file": null,
+    "partial": false
+  },
+  "modus-accordion": {
+    "v1_tag": "modus-accordion",
+    "v2_tag": "modus-wc-accordion",
+    "v1_file": "accordion-v1.json",
+    "v2_file": "accordion-v2.json",
+    "partial": false
+  },
+  "modus-accordion-item": {
+    "v1_tag": "modus-accordion-item",
+    "v2_tag": "modus-wc-accordion",
+    "v1_file": "accordion-item-v1.json",
+    "v2_file": "accordion-v2.json",
+    "partial": false
+  },
+  "modus-action-bar": {
+    "v1_tag": "modus-action-bar",
+    "v2_tag": null,
+    "v1_file": "action-bar-v1.json",
+    "v2_file": null,
+    "partial": false
+  },
+  "modus-action-bar-item": {
+    "v1_tag": "modus-action-bar-item",
+    "v2_tag": null,
+    "v1_file": null,
+    "v2_file": null,
+    "partial": false
+  },
+  "modus-alert": {
+    "v1_tag": "modus-alert",
+    "v2_tag": "modus-wc-alert",
+    "v1_file": "alert-v1.json",
+    "v2_file": "alert-v2.json",
+    "partial": false
+  },
+  "modus-autocomplete": {
+    "v1_tag": "modus-autocomplete",
+    "v2_tag": "modus-wc-autocomplete",
+    "v1_file": "autocomplete-v1.json",
+    "v2_file": "autocomplete-v2.json",
+    "partial": false
+  },
+  "modus-badge": {
+    "v1_tag": "modus-badge",
+    "v2_tag": "modus-wc-badge",
+    "v1_file": "badge-v1.json",
+    "v2_file": "badge-v2.json",
+    "partial": false
+  },
+  "modus-breadcrumb": {
+    "v1_tag": "modus-breadcrumb",
+    "v2_tag": "modus-wc-breadcrumbs",
+    "v1_file": "breadcrumb-v1.json",
+    "v2_file": "breadcrumbs-v2.json",
+    "partial": false
+  },
+  "modus-button": {
+    "v1_tag": "modus-button",
+    "v2_tag": "modus-wc-button",
+    "v1_file": "button-v1.json",
+    "v2_file": "button-v2.json",
+    "partial": false
+  },
+  "modus-button-group": {
+    "v1_tag": "modus-button-group",
+    "v2_tag": "modus-wc-button-group",
+    "v1_file": "button-group-v1.json",
+    "v2_file": "button-group-v2.json",
+    "partial": false
+  },
+  "modus-card": {
+    "v1_tag": "modus-card",
+    "v2_tag": "modus-wc-card",
+    "v1_file": "card-v1.json",
+    "v2_file": "card-v2.json",
+    "partial": false
+  },
+  "modus-checkbox": {
+    "v1_tag": "modus-checkbox",
+    "v2_tag": "modus-wc-checkbox",
+    "v1_file": "checkbox-v1.json",
+    "v2_file": "checkbox-v2.json",
+    "partial": false
+  },
+  "modus-chip": {
+    "v1_tag": "modus-chip",
+    "v2_tag": "modus-wc-chip",
+    "v1_file": "chip-v1.json",
+    "v2_file": "chip-v2.json",
+    "partial": false
+  },
+  "modus-content-tree": {
+    "v1_tag": "modus-content-tree",
+    "v2_tag": null,
+    "v1_file": "content-tree-v1.json",
+    "v2_file": null,
+    "partial": false
+  },
+  "modus-data-table": {
+    "v1_tag": "modus-data-table",
+    "v2_tag": "modus-wc-table",
+    "v1_file": "data-table-v1.json",
+    "v2_file": "table-v2.json",
+    "partial": true
+  },
+  "modus-date-input": {
+    "v1_tag": "modus-date-input",
+    "v2_tag": "modus-wc-date",
+    "v1_file": "date-input-v1.json",
+    "v2_file": "date-v2.json",
+    "partial": false
+  },
+  "modus-date-picker": {
+    "v1_tag": "modus-date-picker",
+    "v2_tag": "modus-wc-date",
+    "v1_file": "date-picker-v1.json",
+    "v2_file": "date-v2.json",
+    "partial": false
+  },
+  "modus-divider": {
+    "v1_tag": "modus-divider",
+    "v2_tag": "modus-wc-divider",
+    "v1_file": null,
+    "v2_file": "divider-v2.json",
+    "partial": false
+  },
+  "modus-dropdown": {
+    "v1_tag": "modus-dropdown",
+    "v2_tag": "modus-wc-dropdown-menu",
+    "v1_file": "dropdown-v1.json",
+    "v2_file": "dropdown-menu-v2.json",
+    "partial": false
+  },
+  "modus-file-dropzone": {
+    "v1_tag": "modus-file-dropzone",
+    "v2_tag": "modus-wc-file-dropzone",
+    "v1_file": "file-dropzone-v1.json",
+    "v2_file": "file-dropzone-v2.json",
+    "partial": false
+  },
+  "modus-icons": {
+    "v1_tag": "modus-icons",
+    "v2_tag": "modus-wc-icon",
+    "v1_file": "icons-v1.json",
+    "v2_file": "icon-v2.json",
+    "partial": false
+  },
+  "modus-list": {
+    "v1_tag": "modus-list",
+    "v2_tag": "modus-wc-menu",
+    "v1_file": "list-v1.json",
+    "v2_file": "menu-v2.json",
+    "partial": false
+  },
+  "modus-list-item": {
+    "v1_tag": "modus-list-item",
+    "v2_tag": "modus-wc-menu-item",
+    "v1_file": "list-item-v1.json",
+    "v2_file": "menu-item-v2.json",
+    "partial": false
+  },
+  "modus-message": {
+    "v1_tag": "modus-message",
+    "v2_tag": null,
+    "v1_file": "message-v1.json",
+    "v2_file": null,
+    "partial": false
+  },
+  "modus-modal": {
+    "v1_tag": "modus-modal",
+    "v2_tag": "modus-wc-modal",
+    "v1_file": "modal-v1.json",
+    "v2_file": "modal-v2.json",
+    "partial": false
+  },
+  "modus-navbar": {
+    "v1_tag": "modus-navbar",
+    "v2_tag": "modus-wc-navbar",
+    "v1_file": "navbar-v1.json",
+    "v2_file": "navbar-v2.json",
+    "partial": false
+  },
+  "modus-number-input": {
+    "v1_tag": "modus-number-input",
+    "v2_tag": "modus-wc-number-input",
+    "v1_file": "number-input-v1.json",
+    "v2_file": "number-input-v2.json",
+    "partial": false
+  },
+  "modus-pagination": {
+    "v1_tag": "modus-pagination",
+    "v2_tag": "modus-wc-pagination",
+    "v1_file": "pagination-v1.json",
+    "v2_file": "pagination-v2.json",
+    "partial": false
+  },
+  "modus-progress-bar": {
+    "v1_tag": "modus-progress-bar",
+    "v2_tag": "modus-wc-progress",
+    "v1_file": "progress-bar-v1.json",
+    "v2_file": "progress-v2.json",
+    "partial": false
+  },
+  "modus-radio-group": {
+    "v1_tag": "modus-radio-group",
+    "v2_tag": "modus-wc-radio",
+    "v1_file": "radio-group-v1.json",
+    "v2_file": "radio-v2.json",
+    "partial": false
+  },
+  "modus-select": {
+    "v1_tag": "modus-select",
+    "v2_tag": "modus-wc-select",
+    "v1_file": "select-v1.json",
+    "v2_file": "select-v2.json",
+    "partial": false
+  },
+  "modus-sentiment-scale": {
+    "v1_tag": "modus-sentiment-scale",
+    "v2_tag": "modus-wc-rating",
+    "v1_file": "sentiment-scale-v1.json",
+    "v2_file": "rating-v2.json",
+    "partial": false
+  },
+  "modus-side-navigation": {
+    "v1_tag": "modus-side-navigation",
+    "v2_tag": "modus-wc-side-navigation",
+    "v1_file": "side-navigation-v1.json",
+    "v2_file": "side-navigation-v2.json",
+    "partial": false
+  },
+  "modus-side-navigation-item": {
+    "v1_tag": "modus-side-navigation-item",
+    "v2_tag": "modus-wc-menu-item",
+    "v1_file": null,
+    "v2_file": "menu-item-v2.json",
+    "partial": false
+  },
+  "modus-slider": {
+    "v1_tag": "modus-slider",
+    "v2_tag": "modus-wc-slider",
+    "v1_file": "slider-v1.json",
+    "v2_file": "slider-v2.json",
+    "partial": false
+  },
+  "modus-spinner": {
+    "v1_tag": "modus-spinner",
+    "v2_tag": "modus-wc-loader",
+    "v1_file": "spinner-v1.json",
+    "v2_file": "loader-v2.json",
+    "partial": false
+  },
+  "modus-switch": {
+    "v1_tag": "modus-switch",
+    "v2_tag": "modus-wc-switch",
+    "v1_file": "switch-v1.json",
+    "v2_file": "switch-v2.json",
+    "partial": false
+  },
+  "modus-table": {
+    "v1_tag": "modus-table",
+    "v2_tag": "modus-wc-table",
+    "v1_file": "table-v1.json",
+    "v2_file": "table-v2.json",
+    "partial": false
+  },
+  "modus-table-cell-editor": {
+    "v1_tag": "modus-table-cell-editor",
+    "v2_tag": null,
+    "v1_file": null,
+    "v2_file": null,
+    "partial": false
+  },
+  "modus-table-cell-main": {
+    "v1_tag": "modus-table-cell-main",
+    "v2_tag": null,
+    "v1_file": null,
+    "v2_file": null,
+    "partial": false
+  },
+  "modus-table-columns-visibility": {
+    "v1_tag": "modus-table-columns-visibility",
+    "v2_tag": null,
+    "v1_file": null,
+    "v2_file": null,
+    "partial": false
+  },
+  "modus-table-dropdown-menu": {
+    "v1_tag": "modus-table-dropdown-menu",
+    "v2_tag": null,
+    "v1_file": null,
+    "v2_file": null,
+    "partial": false
+  },
+  "modus-table-filler-column": {
+    "v1_tag": "modus-table-filler-column",
+    "v2_tag": null,
+    "v1_file": null,
+    "v2_file": null,
+    "partial": false
+  },
+  "modus-table-row-actions": {
+    "v1_tag": "modus-table-row-actions",
+    "v2_tag": null,
+    "v1_file": null,
+    "v2_file": null,
+    "partial": false
+  },
+  "modus-table-row-actions-cell": {
+    "v1_tag": "modus-table-row-actions-cell",
+    "v2_tag": null,
+    "v1_file": null,
+    "v2_file": null,
+    "partial": false
+  },
+  "modus-table-row-actions-menu": {
+    "v1_tag": "modus-table-row-actions-menu",
+    "v2_tag": null,
+    "v1_file": null,
+    "v2_file": null,
+    "partial": false
+  },
+  "modus-table-toolbar": {
+    "v1_tag": "modus-table-toolbar",
+    "v2_tag": null,
+    "v1_file": null,
+    "v2_file": null,
+    "partial": false
+  },
+  "modus-tabs": {
+    "v1_tag": "modus-tabs",
+    "v2_tag": "modus-wc-tabs",
+    "v1_file": "tabs-v1.json",
+    "v2_file": "tabs-v2.json",
+    "partial": false
+  },
+  "modus-text-input": {
+    "v1_tag": "modus-text-input",
+    "v2_tag": "modus-wc-text-input",
+    "v1_file": "text-input-v1.json",
+    "v2_file": "text-input-v2.json",
+    "partial": false
+  },
+  "modus-textarea-input": {
+    "v1_tag": "modus-textarea-input",
+    "v2_tag": "modus-wc-textarea",
+    "v1_file": "textarea-input-v1.json",
+    "v2_file": "textarea-v2.json",
+    "partial": false
+  },
+  "modus-time-input": {
+    "v1_tag": "modus-time-input",
+    "v2_tag": "modus-wc-time-input",
+    "v1_file": null,
+    "v2_file": "time-input-v2.json",
+    "partial": false
+  },
+  "modus-time-picker": {
+    "v1_tag": "modus-time-picker",
+    "v2_tag": "modus-wc-time-input",
+    "v1_file": "time-picker-v1.json",
+    "v2_file": "time-input-v2.json",
+    "partial": false
+  },
+  "modus-toast": {
+    "v1_tag": "modus-toast",
+    "v2_tag": "modus-wc-toast",
+    "v1_file": "toast-v1.json",
+    "v2_file": "toast-v2.json",
+    "partial": false
+  },
+  "modus-toolbar": {
+    "v1_tag": "modus-toolbar",
+    "v2_tag": "modus-wc-toolbar",
+    "v1_file": "toolbar-v1.json",
+    "v2_file": "toolbar-v2.json",
+    "partial": false
+  },
+  "modus-tooltip": {
+    "v1_tag": "modus-tooltip",
+    "v2_tag": "modus-wc-tooltip",
+    "v1_file": "tooltip-v1.json",
+    "v2_file": "tooltip-v2.json",
+    "partial": false
+  },
+  "modus-tree-view": {
+    "v1_tag": "modus-tree-view",
+    "v2_tag": null,
+    "v1_file": null,
+    "v2_file": null,
+    "partial": false
+  },
+  "modus-tree-view-item": {
+    "v1_tag": "modus-tree-view-item",
+    "v2_tag": null,
+    "v1_file": null,
+    "v2_file": null,
+    "partial": false
+  },
+  "modus-utility-panel": {
+    "v1_tag": "modus-utility-panel",
+    "v2_tag": "modus-wc-utility-panel",
+    "v1_file": "utility-panel-v1.json",
+    "v2_file": "utility-panel-v2.json",
+    "partial": false
+  }
+}

@@ -3,12 +3,115 @@
 Reorganize component files into a single folder with version suffixes.
 This script moves all component files from v1_components/ and v2_components/ 
 into the main component_analysis folder with -v1 and -v2 suffixes.
+Also generates a lightweight components-v1-v2-unified.json mapping index.
 """
 
 import os
 import shutil
 import json
 from pathlib import Path
+
+# V1 components that have partial V2 equivalents (not all features carry over)
+PARTIAL_MAPPINGS = {
+    "modus-data-table",  # maps to modus-wc-table but missing many V1 sub-features
+}
+
+# Manual mapping overrides for components the extractor marks as "Not Found"
+# but which do have V2 equivalents
+MAPPING_OVERRIDES = {
+    "modus-spinner": "modus-wc-loader",
+    "modus-progress-bar": "modus-wc-progress",
+    "modus-dropdown": "modus-wc-dropdown-menu",
+    "modus-radio-group": "modus-wc-radio",
+    "modus-date-input": "modus-wc-date",
+    "modus-date-picker": "modus-wc-date",
+    "modus-textarea-input": "modus-wc-textarea",
+    "modus-time-picker": "modus-wc-time-input",
+    "modus-sentiment-scale": "modus-wc-rating",
+    "modus-accordion-item": "modus-wc-accordion",
+    "modus-icons": "modus-wc-icon",
+    "modus-data-table": "modus-wc-table",
+}
+
+
+def v2_tag_to_filename(v2_tag: str) -> str:
+    """Convert a modus-wc-* tag to its -v2.json filename.
+    E.g. 'modus-wc-button' -> 'button-v2.json'
+         'modus-wc-dropdown-menu' -> 'dropdown-menu-v2.json'
+    """
+    if not v2_tag or v2_tag == "Not Found":
+        return None
+    stem = v2_tag.replace("modus-wc-", "")
+    return f"{stem}-v2.json"
+
+
+def v1_tag_to_filename(v1_tag: str, component_analysis_dir: Path) -> str:
+    """Convert a V1 tag to its -v1.json filename if the file exists.
+    E.g. 'modus-button' -> 'button-v1.json'
+    """
+    stem = v1_tag.replace("modus-", "")
+    candidate = f"{stem}-v1.json"
+    if (component_analysis_dir / candidate).exists():
+        return candidate
+    return None
+
+
+def generate_v1_v2_unified_mapping(component_analysis_dir: Path):
+    """Generate components-v1-v2-unified.json — a lightweight lookup index
+    mapping each V1 component to its V2 equivalent, with file references."""
+
+    mapping_path = component_analysis_dir / "component_mapping.json"
+    if not mapping_path.exists():
+        print("  ⚠️  component_mapping.json not found, skipping unified mapping.")
+        return
+
+    with open(mapping_path, "r", encoding="utf-8") as f:
+        mapping_data = json.load(f)
+
+    raw_mapping = mapping_data.get("Mapping_v1_v2", {})
+
+    # Apply overrides for known "Not Found" entries that do have V2 equivalents
+    for v1_tag, v2_tag in MAPPING_OVERRIDES.items():
+        if raw_mapping.get(v1_tag) == "Not Found":
+            raw_mapping[v1_tag] = v2_tag
+
+    # Persist the updated mapping back so component_mapping.json stays in sync
+    mapping_data["Mapping_v1_v2"] = raw_mapping
+    with open(mapping_path, "w", encoding="utf-8") as f:
+        json.dump(mapping_data, f, indent=2)
+    print("  ✅ Updated component_mapping.json with corrected mappings")
+
+    # Build the unified index (only for modus-* V1 components, skip HTML tag aliases)
+    unified = {}
+    for v1_tag, v2_tag in sorted(raw_mapping.items()):
+        # Skip HTML tag aliases (label, p, h1..h6, button, hr, textarea, input type=...)
+        if not v1_tag.startswith("modus-") and not v1_tag.startswith("flex-"):
+            continue
+
+        v2_resolved = v2_tag if v2_tag != "Not Found" else None
+        v2_file = v2_tag_to_filename(v2_resolved) if v2_resolved else None
+        v1_file = v1_tag_to_filename(v1_tag, component_analysis_dir)
+
+        unified[v1_tag] = {
+            "v1_tag": v1_tag,
+            "v2_tag": v2_resolved,
+            "v1_file": v1_file,
+            "v2_file": v2_file,
+            "partial": v1_tag in PARTIAL_MAPPINGS,
+        }
+
+    unified_path = component_analysis_dir / "components-v1-v2-unified.json"
+    with open(unified_path, "w", encoding="utf-8") as f:
+        json.dump(unified, f, indent=2)
+
+    mapped = sum(1 for v in unified.values() if v["v2_tag"])
+    not_found = sum(1 for v in unified.values() if not v["v2_tag"])
+    partial = sum(1 for v in unified.values() if v["partial"])
+    print(
+        f"  ✅ Created components-v1-v2-unified.json "
+        f"({mapped} mapped, {not_found} not found, {partial} partial)"
+    )
+
 
 def reorganize_components():
     """Reorganize all component files into single folder with version suffixes"""
@@ -124,6 +227,10 @@ def reorganize_components():
     
     print(f"  ✅ Created unified index: {unified_index_path.name}")
     
+    # Generate lightweight V1→V2 unified mapping index
+    print(f"\n🗺️  Generating V1→V2 unified mapping index...")
+    generate_v1_v2_unified_mapping(component_analysis_dir)
+
     # Summary
     print(f"\n🎉 Reorganization Complete!")
     print(f"📊 Summary:")

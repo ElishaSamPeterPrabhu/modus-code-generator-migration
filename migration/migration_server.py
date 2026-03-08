@@ -163,6 +163,20 @@ def _get_migration_data(guidance_type: str) -> dict:
                     f"V2 React framework data file not found for {guidance_type}: {v2_react_framework_data_path}"
                 )
 
+            # Load lightweight V1→V2 unified mapping index
+            v1_v2_unified_path = os.path.join(
+                component_analysis_dir, "components-v1-v2-unified.json"
+            )
+            if os.path.exists(v1_v2_unified_path):
+                with open(v1_v2_unified_path, "r") as f:
+                    loaded_data["component_data"]["components_v1_v2_unified"] = (
+                        json.load(f)
+                    )
+            else:
+                logger.warning(
+                    f"V1→V2 unified mapping file not found for {guidance_type}: {v1_v2_unified_path}"
+                )
+
         # Load gold standard if needed
         if guidance_type in ["verify", "workflow"]:
             gold_standard_path = os.path.join(script_dir, "gold_standard.md")

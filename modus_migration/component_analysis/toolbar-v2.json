@@ -4,7 +4,7 @@
   "props": [
     {
       "name": "customClass",
-      "description": "/**\n * A customizable toolbar component used to organize content across the entire page.\n */\n@Component({\n  tag: 'modus-wc-toolbar',\n  styleUrl: 'modus-wc-toolbar.scss',\n  shadow: false,\n})\nexport class ModusWcToolbar {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the outer div. */",
+      "description": "/**\n * A customizable toolbar component used to organize content across the entire page.\n *\n * This component provides 'start', 'center', and 'end' `<slot>` elements for inserting custom HTML.\n */\n@Component({\n  tag: 'modus-wc-toolbar',\n  styleUrl: 'modus-wc-toolbar.scss',\n  shadow: false,\n})\nexport class ModusWcToolbar {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the outer div. */",
       "type": ": string"
     }
   ],
