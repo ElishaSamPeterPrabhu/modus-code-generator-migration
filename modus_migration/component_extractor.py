@@ -832,22 +832,30 @@ def main():
     for v1_name_key in v1_components.keys(): # v1_components is a dict { "modus-button": {details...}, ... }
         v2_name_candidate = "" # Initialize candidate for each v1 component
 
-        # Handle specific known mappings first
-        if v1_name_key == "modus-breadcrumb":
-            if "modus-wc-breadcrumbs" in v2_components:
-                v2_name_candidate = "modus-wc-breadcrumbs"
-        elif v1_name_key == "modus-switch":
-            if "modus-wc-toggle" in v2_components: # As per user's likely preference from existing JSON
-                v2_name_candidate = "modus-wc-toggle"
-            elif "modus-wc-switch" in v2_components: # Fallback if modus-wc-toggle is not found
-                 v2_name_candidate = "modus-wc-switch"
-        elif v1_name_key == "modus-list":
-            if "modus-wc-menu" in v2_components:
-                v2_name_candidate = "modus-wc-menu"
-        elif v1_name_key == "modus-list-item":
-            if "modus-wc-menu-item" in v2_components:
-                v2_name_candidate = "modus-wc-menu-item"
-        # Add other specific, non-standard mappings here if necessary
+        # Explicit v1 → v2 mappings verified against Modus 2.0 MCP docs
+        explicit_mappings = {
+            "modus-accordion-item": "modus-wc-collapse",   # accordion-item maps to collapse in v2
+            "modus-breadcrumb":     "modus-wc-breadcrumbs",
+            "modus-data-table":     "modus-wc-table",
+            "modus-date-input":     "modus-wc-date",
+            "modus-date-picker":    "modus-wc-date",
+            "modus-dropdown":       "modus-wc-dropdown-menu",
+            "modus-icons":          "modus-wc-icon",
+            "modus-list":           "modus-wc-menu",
+            "modus-list-item":      "modus-wc-menu-item",
+            "modus-message":        "modus-wc-alert",
+            "modus-progress-bar":   "modus-wc-progress",
+            "modus-radio-group":    "modus-wc-radio",
+            "modus-sentiment-scale":"modus-wc-rating",
+            "modus-spinner":        "modus-wc-loader",
+            "modus-switch":         "modus-wc-switch",
+            "modus-textarea-input": "modus-wc-textarea",
+            "modus-time-picker":    "modus-wc-time-input",
+        }
+        if v1_name_key in explicit_mappings:
+            candidate = explicit_mappings[v1_name_key]
+            if candidate in v2_components:
+                v2_name_candidate = candidate
 
         # Default rule if no special mapping produced a candidate
         if not v2_name_candidate:
