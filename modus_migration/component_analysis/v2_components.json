@@ -573,12 +573,12 @@
         "<modus-wc-loader\n        aria-label=\"Loading infinity symbol\"\n        color=\"${args.color}\"\n        custom-class=\"${ifDefined(args['custom-class'])}\"\n        size=\"md\"\n        variant=\"infinity\"\n      ></modus-wc-loader>"
       ],
       "variants": [
-        "ring",
+        "ball",
         "dots",
+        "bars",
         "infinity",
         "${args.variant}",
-        "ball",
-        "bars"
+        "ring"
       ],
       "prop_usage": {
         "label": [
@@ -4444,9 +4444,9 @@
         "<modus-wc-badge\n      color=\"primary\"\n      size=\"md\"\n      variant=\"counter\"\n      >5</modus-wc-badge\n    >"
       ],
       "variants": [
+        "solid",
         "counter",
-        "filled",
-        "solid"
+        "filled"
       ],
       "prop_usage": {
         "label": [
