@@ -56,7 +56,10 @@
       "<modus-pagination\n    active-page=${activePage}\n    aria-label=${ariaLabel}\n    max-page=${maxPage}\n    min-page=${minPage}\n    prev-page-button-text=${prevPageButtonText}\n    next-page-button-text=${nextPageButtonText}\n    size=${size}>\n    Large\n  </modus-pagination>",
       "<modus-pagination\n    active-page=${activePage}\n    aria-label=${ariaLabel}\n    max-page=${maxPage}\n    min-page=${minPage}\n    prev-page-button-text=${prevPageButtonText}\n    next-page-button-text=${nextPageButtonText}\n    size=${size}>\n    Small\n  </modus-pagination>",
       "<modus-pagination\n    active-page=${activePage}\n    aria-label=${ariaLabel}\n    max-page=${maxPage}\n    min-page=${minPage}\n    prev-page-button-text=${prevPageButtonText}\n    next-page-button-text=${nextPageButtonText}\n    size=${size}>\n  </modus-pagination>",
-      "\n  <modus-pagination\n    active-page=${activePage}\n    aria-label=${ariaLabel}\n    max-page=${maxPage}\n    min-page=${minPage}\n    prev-page-button-text=${prevPageButtonText}\n    next-page-button-text=${nextPageButtonText}\n    size=${size}>\n    Default\n  </modus-pagination>\n"
+      "\n  <modus-pagination\n    active-page=${activePage}\n    aria-label=${ariaLabel}\n    max-page=${maxPage}\n    min-page=${minPage}\n    prev-page-button-text=${prevPageButtonText}\n    next-page-button-text=${nextPageButtonText}\n    size=${size}>\n    Default\n  </modus-pagination>\n",
+      "\n  <modus-pagination\n    active-page=${activePage}\n    aria-label=${ariaLabel}\n    max-page=${maxPage}\n    min-page=${minPage}\n    prev-page-button-text=${prevPageButtonText}\n    next-page-button-text=${nextPageButtonText}\n    size=${size}>\n    Large\n  </modus-pagination>\n",
+      "\n  <modus-pagination\n    active-page=${activePage}\n    aria-label=${ariaLabel}\n    max-page=${maxPage}\n    min-page=${minPage}\n    prev-page-button-text=${prevPageButtonText}\n    next-page-button-text=${nextPageButtonText}\n    size=${size}>\n    Small\n  </modus-pagination>\n",
+      "\n  <modus-pagination\n    active-page=${activePage}\n    aria-label=${ariaLabel}\n    max-page=${maxPage}\n    min-page=${minPage}\n    prev-page-button-text=${prevPageButtonText}\n    next-page-button-text=${nextPageButtonText}\n    size=${size}>\n  </modus-pagination>\n"
     ],
     "variants": [],
     "prop_usage": {}

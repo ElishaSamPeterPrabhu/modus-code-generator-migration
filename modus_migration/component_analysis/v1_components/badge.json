@@ -38,7 +38,8 @@
       "<modus-badge aria-label=${ariaLabel} color=${color} size=${size} type=${type}> 12 </modus-badge>",
       "<modus-badge aria-label=${ariaLabel} color=${color} size=${size} type=${type}> Text </modus-badge>",
       "\n  <modus-badge aria-label=${ariaLabel} color=${color} size=${size} type=${type}> Default </modus-badge>\n",
-      "\n  <modus-badge aria-label=${ariaLabel} color=${color} size=${size} type=${type}> 12 </modus-badge>\n"
+      "\n  <modus-badge aria-label=${ariaLabel} color=${color} size=${size} type=${type}> 12 </modus-badge>\n",
+      "\n  <modus-badge aria-label=${ariaLabel} color=${color} size=${size} type=${type}> Text </modus-badge>\n"
     ],
     "variants": [],
     "prop_usage": {}

@@ -44,6 +44,7 @@
       "<modus-switch aria-label=${ariaLabel} checked=${checked} ?disabled=${disabled} label=${label} size=${size}> </modus-switch>",
       "<modus-switch aria-label=${ariaLabel} checked=${checked} ?disabled=${disabled} label=${label} size=${size}> </modus-switch>",
       "\n  <modus-switch aria-label=${ariaLabel} checked=${checked} ?disabled=${disabled} label=${label} size=${size}> </modus-switch>\n",
+      "\n  <modus-switch aria-label=${ariaLabel} checked=${checked} ?disabled=${disabled} label=${label} size=${size}> </modus-switch>\n",
       "\n  <modus-switch aria-label=${ariaLabel} checked=${checked} ?disabled=${disabled} label=${label} size=${size}> </modus-switch>\n"
     ],
     "variants": [],

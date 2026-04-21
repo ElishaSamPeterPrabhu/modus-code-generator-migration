@@ -82,7 +82,9 @@
       "<modus-select\n    disabled\n    helper-text=\"Helper demo\"\n    id=\"select-demo-2\"\n    label=\"Select Demo 2\"\n    options-display-prop=\"display\"></modus-select\n  >",
       "<modus-select error-text=\"Error demo\" label=\"Select Demo 3\"></modus-select>",
       "<modus-select label=\"Select Demo 4\" valid-text=\"Valid demo\"></modus-select>",
-      "<modus-select id=\"select-demo-5\" label=\"Select Demo 5\" size=\"large\" options-display-prop=\"display\"></modus-select>"
+      "<modus-select id=\"select-demo-5\" label=\"Select Demo 5\" size=\"large\" options-display-prop=\"display\"></modus-select>",
+      "<modus-select\n    id=\"select-demo-6\"\n    label=\"Custom Placeholder\"\n    placeholder=\"Custom Placeholder\"\n    options-display-prop=\"display\"></modus-select\n  >",
+      "\n  <modus-select id=\"select-demo-1\" label=\"Select Demo 1\" options-display-prop=\"display\"></modus-select><br />\n  <modus-select\n    disabled\n    helper-text=\"Helper demo\"\n    id=\"select-demo-2\"\n    label=\"Select Demo 2\"\n    options-display-prop=\"display\"></modus-select\n  ><br />\n  <modus-select error-text=\"Error demo\" label=\"Select Demo 3\"></modus-select><br />\n  <modus-select label=\"Select Demo 4\" valid-text=\"Valid demo\"></modus-select><br />\n  <modus-select id=\"select-demo-5\" label=\"Select Demo 5\" size=\"large\" options-display-prop=\"display\"></modus-select><br />\n  <modus-select\n    id=\"select-demo-6\"\n    label=\"Custom Placeholder\"\n    placeholder=\"Custom Placeholder\"\n    options-display-prop=\"display\"></modus-select\n  ><br />\n  ${setSelects()}\n"
     ],
     "variants": [],
     "prop_usage": {

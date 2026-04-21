@@ -158,6 +158,8 @@ def extract_storybook_and_docs(dir_path: str, is_v2: bool) -> dict:
         "examples": [],
         "variants": [],
         "prop_usage": {},
+        "full_story_content": "",  # Complete raw story file content
+        "all_stories": [],         # All named exports (story names) found
     }
 
     try:
@@ -169,26 +171,26 @@ def extract_storybook_and_docs(dir_path: str, is_v2: bool) -> dict:
         ]
         doc_files = [f for f in os.listdir(dir_path) if f.endswith(".mdx")]
 
-        # Process story files
+        # Process story files — capture EVERYTHING
         for story_file in story_files:
             file_path = os.path.join(dir_path, story_file)
             try:
                 with open(file_path, "r", encoding="utf-8") as f:
                     content = f.read()
 
-                    # Store full storybook content
-                    if is_v2:
-                        # For v2, add to documentation directly
-                        result[
-                            "documentation"
-                        ] += f"\n\n--- {story_file} ---\n\n{content}"
-                    else:
-                        # For v1, store separately as we'll also have .mdx docs
-                        result[
-                            "storybook_content"
-                        ] += f"\n\n--- {story_file} ---\n\n{content}"
+                    # Store FULL file content — no truncation
+                    result["full_story_content"] += content
 
-                    # Extract tag examples for convenience
+                    if is_v2:
+                        result["documentation"] += f"\n\n--- {story_file} ---\n\n{content}"
+                    else:
+                        result["storybook_content"] += f"\n\n--- {story_file} ---\n\n{content}"
+
+                    # Extract ALL named story exports (e.g. Default, ShadowDomParent, Migration, etc.)
+                    story_names = re.findall(r'^export const (\w+)(?:\s*:\s*Story)?\s*=', content, re.MULTILINE)
+                    result["all_stories"].extend(story_names)
+
+                    # Extract tag examples — ALL of them (no cap)
                     tag_prefix = "modus-wc-" if is_v2 else "modus-"
                     examples = re.findall(
                         f"<{tag_prefix}[^>]+>[^<]*</{tag_prefix}[^>]+>", content
@@ -201,7 +203,8 @@ def extract_storybook_and_docs(dir_path: str, is_v2: bool) -> dict:
                         if f"<{tag_prefix}" in literal:
                             examples.append(literal)
 
-                    result["examples"].extend(examples[:5])
+                    # No cap — extract all examples
+                    result["examples"].extend(examples)
 
                     # Extract variants
                     variants = re.findall(
@@ -726,6 +729,8 @@ def main():
                     docs_info = extract_storybook_and_docs(component_dir, is_v2=True)
 
                     component_details["documentation"] = docs_info["documentation"]
+                    component_details["full_story_content"] = docs_info["full_story_content"]
+                    component_details["all_stories"] = docs_info["all_stories"]
                     component_details["storybook"] = {
                         "examples": docs_info["examples"],
                         "variants": docs_info["variants"],

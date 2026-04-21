@@ -1,53 +1,42 @@
 {
   "component_name": "modus-wc-toolbar",
   "version": "v2",
-  "description": "A customizable toolbar component used to organize content across the entire page. This component provides 'start', 'center', and 'end' `<slot>` elements for inserting custom HTML.",
-  "properties": [
+  "props": [
     {
       "name": "customClass",
-      "type": "string",
-      "description": "Custom CSS class to apply to the outer div.",
-      "default": "''",
-      "mutable": false,
-      "end_line": 20
+      "description": "/**\n * A customizable toolbar component used to organize content across the entire page.\n *\n * This component provides 'start', 'center', and 'end' `<slot>` elements for inserting custom HTML.\n */\n@Component({\n  tag: 'modus-wc-toolbar',\n  styleUrl: 'modus-wc-toolbar.scss',\n  shadow: false,\n})\nexport class ModusWcToolbar {\n  private inheritedAttributes: Attributes = {};\n\n  /** Reference to the host element */\n  @Element() el!: HTMLElement;\n\n  /** Custom CSS class to apply to the outer div. */",
+      "type": ": string"
     }
   ],
   "events": [],
-  "methods": [],
   "slots": [
-    {
-      "name": "start",
-      "description": "Slot for start content"
-    },
-    {
-      "name": "center",
-      "description": "Slot for center content"
-    },
-    {
-      "name": "end",
-      "description": "Slot for end content"
-    }
+    "start",
+    "center",
+    "end"
   ],
-  "examples": {
-    "basic": "<modus-wc-toolbar custom-class=\"${ifDefined(args['custom-class'])}\">\n  <div slot=\"start\">Start</div>\n  <div slot=\"center\">Center</div>\n  <div slot=\"end\">End</div>\n</modus-wc-toolbar>",
-    "variations": [],
-    "args": {},
-    "argTypes": {},
-    "usage": []
+  "default_values": {
+    "customClass": "''"
   },
-  "scripts": [
-    {
-      "title": "Basic Usage",
-      "code": "<modus-wc-toolbar ></modus-wc-toolbar>",
-      "description": "Minimal required properties"
-    }
+  "documentation": "\n\n--- modus-wc-toolbar.stories.ts ---\n\nimport { Meta, StoryObj } from '@storybook/web-components';\nimport { html } from 'lit';\nimport { ifDefined } from 'lit/directives/if-defined.js';\n\ninterface ToolbarArgs {\n  'custom-class'?: string;\n}\n\nconst meta: Meta<ToolbarArgs> = {\n  title: 'Components/Toolbar',\n  component: 'modus-wc-toolbar',\n  parameters: {\n    layout: 'padded',\n  },\n};\n\nexport default meta;\n\ntype Story = StoryObj<ToolbarArgs>;\n\nconst Template: Story = {\n  render: (args) => {\n    // prettier-ignore\n    return html`\n<modus-wc-toolbar custom-class=\"${ifDefined(args['custom-class'])}\">\n  <div slot=\"start\">Start</div>\n  <div slot=\"center\">Center</div>\n  <div slot=\"end\">End</div>\n</modus-wc-toolbar>\n    `;\n  },\n};\n\nexport const Default: Story = { ...Template };\n",
+  "full_story_content": "import { Meta, StoryObj } from '@storybook/web-components';\nimport { html } from 'lit';\nimport { ifDefined } from 'lit/directives/if-defined.js';\n\ninterface ToolbarArgs {\n  'custom-class'?: string;\n}\n\nconst meta: Meta<ToolbarArgs> = {\n  title: 'Components/Toolbar',\n  component: 'modus-wc-toolbar',\n  parameters: {\n    layout: 'padded',\n  },\n};\n\nexport default meta;\n\ntype Story = StoryObj<ToolbarArgs>;\n\nconst Template: Story = {\n  render: (args) => {\n    // prettier-ignore\n    return html`\n<modus-wc-toolbar custom-class=\"${ifDefined(args['custom-class'])}\">\n  <div slot=\"start\">Start</div>\n  <div slot=\"center\">Center</div>\n  <div slot=\"end\">End</div>\n</modus-wc-toolbar>\n    `;\n  },\n};\n\nexport const Default: Story = { ...Template };\n",
+  "all_stories": [
+    "Default"
   ],
-  "tag": "modus-wc-toolbar",
-  "storyExample": {
-    "template": "<modus-wc-toolbar custom-class=\"${ifDefined(args['custom-class'])}\">\n  <div slot=\"start\">Start</div>\n  <div slot=\"center\">Center</div>\n  <div slot=\"end\">End</div>\n</modus-wc-toolbar>",
-    "args": {},
-    "argTypes": {},
-    "events": [],
-    "fullContent": "import { Meta, StoryObj } from '@storybook/web-components';\nimport { html } from 'lit';\nimport { ifDefined } from 'lit/directives/if-defined.js';\n\ninterface ToolbarArgs {\n  'custom-class'?: string;\n}\n\nconst meta: Meta<ToolbarArgs> = {\n  title: 'Components/Toolbar',\n  component: 'modus-wc-toolbar',\n  parameters: {\n    layout: 'padded',\n  },\n};\n\nexport default meta;\n\ntype Story = StoryObj<ToolbarArgs>;\n\nconst Template: Story = {\n  render: (args) => {\n    // prettier-ignore\n    return html`\n<modus-wc-toolbar custom-class=\"${ifDefined(args['custom-class'])}\">\n  <div slot=\"start\">Start</div>\n  <div slot=\"center\">Center</div>\n  <div slot=\"end\">End</div>\n</modus-wc-toolbar>\n    `;\n  },\n};\n\nexport const Default: Story = { ...Template };\n"
-  }
+  "storybook": {
+    "examples": [
+      "\n<modus-wc-toolbar custom-class=\"${ifDefined(args['custom-class'])}\">\n  <div slot=\"start\">Start</div>\n  <div slot=\"center\">Center</div>\n  <div slot=\"end\">End</div>\n</modus-wc-toolbar>\n    "
+    ],
+    "variants": [],
+    "prop_usage": {
+      "class": [
+        "${ifDefined(args["
+      ],
+      "slot": [
+        "start",
+        "center",
+        "end"
+      ]
+    }
+  },
+  "tag_name": "modus-wc-toolbar"
 }

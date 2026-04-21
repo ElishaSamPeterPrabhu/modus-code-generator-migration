@@ -82,7 +82,9 @@
       "<modus-button id=\"btn-modal-footer\" color=\"primary\">Open modal</modus-button>",
       "<modus-button color=\"tertiary\">Cancel</modus-button>",
       "<modus-button color=\"secondary\">Check later</modus-button>",
-      "<modus-button color=\"primary\">Approve</modus-button>"
+      "<modus-button color=\"primary\">Approve</modus-button>",
+      "\n  <modus-button id=\"btn-modal\" color=\"primary\">Open modal</modus-button>\n  <modus-modal\n    aria-label=${ariaLabel}\n    header-text=${headerText}\n    primary-button-aria-label=${primaryButtonAriaLabel}\n    primary-button-disabled=${primaryButtonDisabled}\n    primary-button-text=${primaryButtonText}\n    secondary-button-aria-label=${secondaryButtonAriaLabel}\n    secondary-button-disabled=${secondaryButtonDisabled}\n    secondary-button-text=${secondaryButtonText}\n    z-index=${zIndex}\n    backdrop=${backdrop}\n    fullscreen=${fullscreen}\n    show-fullscreen-toggle=${showFullscreenToggle}>\n    <p>Woo-hoo, you're reading this text in a modal!</p>\n  </modus-modal>\n  ${setScript()}\n",
+      "\n  <modus-button id=\"btn-modal-footer\" color=\"primary\">Open modal</modus-button>\n  <modus-modal\n    id=\"modal-footer\"\n    aria-label=${ariaLabel}\n    header-text=${headerText}\n    z-index=${zIndex}\n    backdrop=${backdrop}\n    fullscreen=${fullscreen}\n    show-fullscreen-toggle=${showFullscreenToggle}>\n    <p>\n      A dialog or a modal is a window overlaid on the primary window. It interrupts the user and requires an action. It\n      disables the main content until the user explicitly interacts with the modal dialog.\n    </p>\n    <div\n      style=\"align-items: center;\n    display: flex;\n    justify-content: flex-end; gap: 8px; height:100%;\"\n      slot=\"footerContent\">\n      <modus-button color=\"tertiary\">Cancel</modus-button>\n      <modus-button color=\"secondary\">Check later</modus-button>\n      <modus-button color=\"primary\">Approve</modus-button>\n    </div>\n  </modus-modal>\n  ${setFooterScript()}\n"
     ],
     "variants": [],
     "prop_usage": {

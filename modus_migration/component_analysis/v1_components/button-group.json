@@ -13,7 +13,14 @@
       "<modus-button>Button 2</modus-button>",
       "<modus-button>Button 3</modus-button>",
       "<modus-button selected>Button 1</modus-button>",
-      "<modus-button>Button 2</modus-button>"
+      "<modus-button>Button 2</modus-button>",
+      "<modus-button>Button 3</modus-button>",
+      "<modus-button selected>Button 1</modus-button>",
+      "<modus-button selected>Button 2</modus-button>",
+      "<modus-button>Button 3</modus-button>",
+      "\n  <modus-button-group\n    aria-label=${ariaLabel}\n    button-style=${buttonStyle}\n    color=${color}\n    .disabled=${disabled}\n    selection-type=${selectionType}\n    size=${size}>\n    <modus-button>Button 1</modus-button>\n    <modus-button>Button 2</modus-button>\n    <modus-button>Button 3</modus-button>\n  </modus-button-group>\n",
+      "\n  <modus-button-group\n    aria-label=${ariaLabel}\n    button-style=${buttonStyle}\n    color=${color}\n    .disabled=${disabled}\n    selection-type=${selectionType}\n    size=${size}>\n    <modus-button selected>Button 1</modus-button>\n    <modus-button>Button 2</modus-button>\n    <modus-button>Button 3</modus-button>\n  </modus-button-group>\n",
+      "\n  <modus-button-group\n    aria-label=${ariaLabel}\n    button-style=${buttonStyle}\n    color=${color}\n    .disabled=${disabled}\n    selection-type=${selectionType}\n    size=${size}>\n    <modus-button selected>Button 1</modus-button>\n    <modus-button selected>Button 2</modus-button>\n    <modus-button>Button 3</modus-button>\n  </modus-button-group>\n"
     ],
     "variants": [],
     "prop_usage": {}
